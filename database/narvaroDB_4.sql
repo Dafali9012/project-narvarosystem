@@ -5,7 +5,6 @@ CREATE DATABASE IF NOT EXISTS `narvarosystem` /*!40100 DEFAULT CHARACTER SET utf
 USE `narvarosystem`;
 
 
-
 -- ************************************** `Role`
 
 CREATE TABLE `Role`
@@ -156,5 +155,17 @@ CONSTRAINT `FK_204` FOREIGN KEY `fkIdx_204` (`CourseID`) REFERENCES `Course` (`C
 CREATE TABLE `Attendance`
 (
  `Status`    varchar(45) NOT NULL ,
+ `StudentID` int NOT NULL ,
+ `LectureID` int NOT NULL ,
+
+PRIMARY KEY (`Status`),
+KEY `fkIdx_198` (`StudentID`),
+CONSTRAINT `FK_198` FOREIGN KEY `fkIdx_198` (`StudentID`) REFERENCES `Student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE,
+KEY `fkIdx_207` (`LectureID`),
+CONSTRAINT `FK_207` FOREIGN KEY `fkIdx_207` (`LectureID`) REFERENCES `Lecture` (`LectureID`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
 
 
