@@ -1,25 +1,39 @@
 <template>
-  <div class="user container-fluid">
+  <div class="user d-flex flex-column container-fluid">
     <div class="row">
-        <div class="navbar d-flex justify-content-center col bg-primary text-white">
-            <p>Temp Navbar</p>
-        </div>
+      <div clas="col">
+        <Navbar/>
+      </div>
     </div>
-    <div class="content d-flex row">
-        <div class="sidebar col-3 flex-grow-1 bg-success">1</div>
-        <div class="main col-9 bg-danger">2</div>
+    <div class="content row mt-3">
+      <div class="sidebar col-3"></div>
+      <div class="main col-9"></div>
     </div>
   </div>
 </template>
 
 <style scoped>
-    .sidebar, .main, .content {
-        height: 96vh;
-    }
-    .navbar {
-        height: 4vh;
-    }
-    p {
-        margin:0;
-    }
+.user {
+  height: 100vh;
+}
+.content {
+  flex-grow: 1;
+}
+p {
+  margin: 0;
+}
+.sidebar {
+  background-color: #0e6dee;
+  border-top-right-radius: 25vh;
+}
 </style>
+
+<script>
+import Navbar from "@/components/Navbar.vue";
+
+export default {
+  components: {
+    Navbar
+  }
+};
+</script>
