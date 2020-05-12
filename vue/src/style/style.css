@@ -2,3 +2,20 @@ html,body {
     min-height:100vh;
     background-color: #f7f7f7;
 }
+
+.text-vit {
+    color: #f7f7f7;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.no-margin {
+    margin: 0;
+}
