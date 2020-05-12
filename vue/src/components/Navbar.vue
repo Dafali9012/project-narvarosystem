@@ -2,7 +2,7 @@
   <div class="navbar text-cream container-fluid">
     <div class="row logo navrow">
       <div class="col-8 logo d-flex">
-        <router-link class="navbar-brand d-flex" to="/">
+        <router-link class="navbar-brand link align-self-start" to="/">
           <img src="@/assets/images/logo.png" class="logo ml-3" />
         </router-link>
       </div>
@@ -25,6 +25,9 @@
 </template>
 
 <style scoped>
+.link {
+  height: 100%;
+}
 .navrow {
   width: 100%;
 }

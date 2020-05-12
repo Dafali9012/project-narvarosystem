@@ -17,41 +17,41 @@
           <div class="mt-5">
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['far','id-badge']" class="align-self-center ml-1" />
-              <p class="ml-3 unselectable">Skapa nytt konto</p>
+              <p class="ml-3 unselectable menu-link">Skapa nytt konto</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','graduation-cap']" class="align-self-center" />
-              <p class="ml-3 unselectable">Skapa ny utbildning</p>
+              <p class="ml-3 unselectable menu-link">Skapa ny utbildning</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','book-open']" class="align-self-center" />
-              <p class="ml-3 unselectable">Skapa ny kurs</p>
+              <p class="ml-3 unselectable menu-link">Skapa ny kurs</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','chalkboard']" class="align-self-center" />
-              <p class="ml-3 unselectable">Skapa ny klass</p>
+              <p class="ml-3 unselectable menu-link">Skapa ny klass</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
-              <p class="ml-3 unselectable">Overview</p>
+              <p class="ml-3 unselectable menu-link">Overview</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
-              <p class="ml-3 unselectable">Lista över användare</p>
+              <p class="ml-3 unselectable menu-link">Lista över användare</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
-              <p class="ml-3 unselectable">Rapport</p>
+              <p class="ml-3 unselectable menu-link">Rapport</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','comments']" class="align-self-center" />
-              <p class="ml-3 unselectable">PIM</p>
+              <p class="ml-3 unselectable menu-link">PIM</p>
             </div>
           </div>
         </div>
       </div>
       <div class="main col-9">
-        <NewEducation />
+        <NewClass />
       </div>
     </div>
   </div>
@@ -90,13 +90,17 @@ p {
 <script>
 import Navbar from "@/components/Navbar.vue";
 //import NewAccount from "@/components/NewAccount.vue";
-import NewEducation from "@/components/NewEducation.vue";
+//import NewEducation from "@/components/NewEducation.vue";
+//import NewCourse from "@/components/NewCourse.vue";
+import NewClass from "@/components/NewClass.vue";
 
 export default {
   components: {
     Navbar,
     //NewAccount,
-    NewEducation
+    //NewEducation
+    //NewCourse
+    NewClass
   }
 };
 </script>
