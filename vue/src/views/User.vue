@@ -51,7 +51,7 @@
         </div>
       </div>
       <div class="main col-9">
-        <NewAccount />
+        <NewEducation />
       </div>
     </div>
   </div>
@@ -89,12 +89,14 @@ p {
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import NewAccount from "@/components/NewAccount.vue";
+//import NewAccount from "@/components/NewAccount.vue";
+import NewEducation from "@/components/NewEducation.vue";
 
 export default {
   components: {
     Navbar,
-    NewAccount
+    //NewAccount,
+    NewEducation
   }
 };
 </script>
