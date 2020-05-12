@@ -27,6 +27,18 @@ public class Course {
 
     @Column(name = "Teacher")
     private int teacherId;
+
+    @Column(name = "Description")
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Course(){}
 
     public long getCourseID() {

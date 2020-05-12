@@ -15,6 +15,7 @@ public class Lecture {
 
     @Column(name = "CourseID")
     private int courseId;
+
     public Lecture(){}
 
     public long getLectureID() {

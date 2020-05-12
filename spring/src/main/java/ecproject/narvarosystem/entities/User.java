@@ -10,10 +10,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
-    @Column(name = "CustomerFirstName")
+    @Column(name = "FirstName")
     private String name;
-    @Column(name = "CustomerLastName")
-    private String lastname;
+    @Column(name = "LastName")
+    private String lastName;
     @Column(name = "Phone")
     private String phone;
     @Column(name = "SIN")
@@ -44,12 +44,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPhone() {

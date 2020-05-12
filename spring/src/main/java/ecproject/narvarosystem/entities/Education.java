@@ -17,7 +17,19 @@ public class Education {
 
     @Column(name = "Leader")
     private int leaderId;
+
+    @Column(name = "Description")
+    private String description;
+
     public Education(){}
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public long getEdId() {
         return edId;
