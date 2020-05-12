@@ -35,10 +35,10 @@
       <div class="row d-flex mt-4">
         <input
           v-model="name"
-          type="text"
+          type="username"
           name="name"
           class="form-control col-4 ml-3"
-          placeholder=" "
+          placeholder=""
           required
         />
         <label for="name" class="col-9 formlabel mt-2 ml-2">name</label>
@@ -49,7 +49,7 @@
           type="password"
           name="password"
           class="form-control col-4 ml-3"
-          placeholder=" "
+          placeholder=""
           required
         />
         <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
@@ -75,7 +75,7 @@ export default {
         "&password=" +
         encodeURIComponent(this.password);
 
-      let response = await fetch("http://localhost:8080/rest/login", {
+      let response = await fetch("/rest/login", {
         method: "POST",
         redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

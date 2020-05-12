@@ -16,7 +16,7 @@ export default new Vuex.Store({
     async updateLoggedUser({
       commit
     }) {
-      let response = await fetch("http://localhost:8080/login/name")
+      let response = await fetch("/login/name")
       let result = await response.json()
       commit('changeLoggedUser', result)
     },
