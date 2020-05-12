@@ -25,13 +25,74 @@
         <input type="button" value="Logga in" class="btn mt-5"/>
       </form>
     </div>
+    
+    <form
+      @submit.prevent="springLogin"
+      class="col border rounded py-3 pl-5 text-left bg-light p-0 rounded"
+      autocomplete="off"
+    >
+      <p class="font-weight-bold">Logga in</p>
+      <div class="row d-flex mt-4">
+        <input
+          v-model="name"
+          type="text"
+          name="name"
+          class="form-control col-4 ml-3"
+          placeholder=" "
+          required
+        />
+        <label for="name" class="col-9 formlabel mt-2 ml-2">name</label>
+      </div>
+      <div class="row d-flex mt-4">
+        <input
+          v-model="password"
+          type="password"
+          name="password"
+          class="form-control col-4 ml-3"
+          placeholder=" "
+          required
+        />
+        <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
+      </div>
+      <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'Login',
-}
+  data() {
+    return {
+      name: "",
+      password: ""
+    };
+  },
+  methods: {
+    springLogin: async function() {
+      const credentials =
+        "username=" +
+        encodeURIComponent(this.name) +
+        "&password=" +
+        encodeURIComponent(this.password);
+
+      let response = await fetch("http://localhost:8080/rest/login", {
+        method: "POST",
+        redirect: "manual",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: credentials
+        
+      });
+
+      if (response.url.includes("error")) {
+        window.confirm("Inloggningen misslyckades");
+      } else {
+        this.$store.dispatch('updateLoggedUser')
+        this.$router.push("/");
+        
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>
