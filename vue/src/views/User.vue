@@ -7,16 +7,16 @@
     </div>
     <div class="content row mt-3">
       <div class="sidebar col-3">
-        <div class="d-flex flex-column align-items-center text-vit">
+        <div class="d-flex flex-column align-items-center text-white">
           <img
             src="https://www.fivestardestination.com/wp-content/uploads/2019/03/Just-white-square-300x300.png"
             class="avatar rounded-circle"
           />
-          <h5 class="unselectable">Du är inloggad som Användare</h5>
+          <h5 class="unselectable">Du är inloggad som Admin</h5>
           <div class="line rounded" />
           <div class="mt-5">
             <div class="option d-flex align-self-center">
-              <font-awesome-icon :icon="['far','id-badge']" class="align-self-center" />
+              <font-awesome-icon :icon="['far','id-badge']" class="align-self-center ml-1" />
               <p class="ml-3 unselectable">Skapa nytt konto</p>
             </div>
             <div class="option d-flex align-self-center">
@@ -26,6 +26,14 @@
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','book-open']" class="align-self-center" />
               <p class="ml-3 unselectable">Skapa ny kurs</p>
+            </div>
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['fas','chalkboard']" class="align-self-center" />
+              <p class="ml-3 unselectable">Skapa ny klass</p>
+            </div>
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
+              <p class="ml-3 unselectable">Overview</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
@@ -42,7 +50,9 @@
           </div>
         </div>
       </div>
-      <div class="main col-9"></div>
+      <div class="main col-9">
+        <NewAccount />
+      </div>
     </div>
   </div>
 </template>
@@ -73,16 +83,18 @@ p {
 }
 .sidebar {
   background-color: #0e6dee;
-  border-top-right-radius: 25vh;
+  border-top-right-radius: 15vh;
 }
 </style>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
+import NewAccount from "@/components/NewAccount.vue";
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    NewAccount
   }
 };
 </script>

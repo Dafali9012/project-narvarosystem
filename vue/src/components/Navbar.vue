@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar text-vit container-fluid">
+  <div class="navbar text-cream container-fluid">
     <div class="row logo navrow">
       <div class="col-8 logo d-flex">
         <router-link class="navbar-brand d-flex" to="/">
@@ -8,17 +8,17 @@
       </div>
       <div class="col-4 d-flex align-items-center justify-content-between">
         <router-link to="/">
-        <p class="no-margin unselectable text-vit">Hem</p>
+          <p class="no-margin unselectable text-cream">Hem</p>
         </router-link>
         <router-link to="/">
-        <p class="no-margin unselectable text-vit">PIM</p>
-         </router-link>
+          <p class="no-margin unselectable text-cream">PIM</p>
+        </router-link>
         <router-link to="/">
-        <p class="no-margin unselectable text-vit">Profil</p>
-         </router-link>
-        <router-link to="/">
-        <p class="no-margin unselectable text-vit">Logout</p>
-         </router-link>
+          <p class="no-margin unselectable text-cream">Profil</p>
+        </router-link>
+        <router-link to="/login">
+          <p class="no-margin unselectable text-cream">Logout</p>
+        </router-link>
       </div>
     </div>
   </div>
