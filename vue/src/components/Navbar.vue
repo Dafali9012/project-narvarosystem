@@ -2,8 +2,8 @@
   <div class="navbar text-vit container-fluid">
     <div class="row logo navrow">
       <div class="col-8 logo d-flex">
-        <router-link class="navbar-brand logo" to="/">
-          <img src="@/assets/images/logo.png" class="logo" />
+        <router-link class="navbar-brand d-flex" to="/">
+          <img src="@/assets/images/logo.png" class="logo ml-3" />
         </router-link>
       </div>
       <div class="col-4 d-flex align-items-center justify-content-between">

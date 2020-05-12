@@ -7,16 +7,39 @@
     </div>
     <div class="content row mt-3">
       <div class="sidebar col-3">
-        <div class="row d-flex flex-column align-items-center text-vit">
+        <div class="d-flex flex-column align-items-center text-vit">
           <img
             src="https://www.fivestardestination.com/wp-content/uploads/2019/03/Just-white-square-300x300.png"
             class="avatar rounded-circle"
           />
           <h5 class="unselectable">Du är inloggad som Användare</h5>
           <div class="line rounded" />
-          <h5 class="option unselectable">Option 1</h5>
-          <h5 class="option unselectable">Option 2</h5>
-          <h5 class="option unselectable">Option 3</h5>
+          <div class="mt-5">
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['far','id-badge']" class="align-self-center" />
+              <p class="ml-3 unselectable">Skapa nytt konto</p>
+            </div>
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['fas','graduation-cap']" class="align-self-center" />
+              <p class="ml-3 unselectable">Skapa ny utbildning</p>
+            </div>
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['fas','book-open']" class="align-self-center" />
+              <p class="ml-3 unselectable">Skapa ny kurs</p>
+            </div>
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
+              <p class="ml-3 unselectable">Lista över användare</p>
+            </div>
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
+              <p class="ml-3 unselectable">Rapport</p>
+            </div>
+            <div class="option d-flex align-self-center">
+              <font-awesome-icon :icon="['fas','comments']" class="align-self-center" />
+              <p class="ml-3 unselectable">PIM</p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="main col-9"></div>
@@ -27,16 +50,17 @@
 <style scoped>
 .avatar {
   margin-top: 15%;
-  margin-bottom: 6%;
+  margin-bottom: 10%;
   width: 30%;
 }
 .line {
-  height: 0.2em;
-  width: 65%;
+  height: 0.1em;
+  width: 75%;
   background-color: #44c7c9;
 }
 .option {
   margin-top: 5%;
+  font-size: 1.5rem;
 }
 .user {
   height: 100vh;

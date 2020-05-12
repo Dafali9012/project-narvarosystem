@@ -9,6 +9,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faIdBadge } from '@fortawesome/free-regular-svg-icons'
+import { faBookOpen, faList, faGraduationCap, faChartBar, faComments } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.config.productionTip = false
 
 new Vue({
