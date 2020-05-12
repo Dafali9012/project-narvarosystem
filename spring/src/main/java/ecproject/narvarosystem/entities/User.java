@@ -1,6 +1,8 @@
 package ecproject.narvarosystem.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -12,20 +14,33 @@ public class User {
     private long userId;
     @Column(name = "FirstName")
     private String name;
+
     @Column(name = "LastName")
     private String lastName;
+
     @Column(name = "Phone")
     private String phone;
+
     @Column(name = "SIN")
     private String sin;
+
     @Column(name = "Address")
     private String address;
+
     @Column(name = "Email")
     private String email;
+
+    @Column(name = "Password")
+    private String password;
+
     @Column(name = "RoleId")
     private int roleId;
 
-    public User() {
+    public User() {}
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
     }
 
     public long getUserId() {
@@ -82,6 +97,16 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+
+    @JsonProperty
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getRoleId() {
