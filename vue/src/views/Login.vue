@@ -5,28 +5,30 @@
     </div>
     <div class="col-4 wrapper2">
       <h2>Välkommen</h2>
-      <form class="inputs">
+      <form @submit.prevent="springLogin" class="inputs">
         <div>
           <input
+          v-model="name"
             class="inputField"
-            type="text"
-            name="email"
-            placeholder="Email"
+            type="name"
+            name="name"
+            placeholder="name"
           />
         </div>
         <div>
           <input
+          v-model="password"
             class="inputField"
             type="password"
             name="password"
-            placeholder="Lösenord"
+            placeholder="password"
           />
         </div>
-        <input type="button" value="Logga in" class="btn mt-5"/>
+        <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
       </form>
     </div>
     
-    <form
+    <!-- <form
       @submit.prevent="springLogin"
       class="col border rounded py-3 pl-5 text-left bg-light p-0 rounded"
       autocomplete="off"
@@ -55,7 +57,7 @@
         <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
       </div>
       <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
-    </form>
+    </form> -->
   </div>
 </template>
 
