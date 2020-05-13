@@ -9,8 +9,8 @@
           <select class="form-control" id="education" name="education">
             <option value="education">Utbildning</option>
           </select>
-          <select class="form-control" id="accountable" name="accountable">
-            <option value="accountable">Ansvarig</option>
+          <select class="form-control" id="leader" name="leader">
+            <option value="leader">Ansvarig</option>
           </select>
         </div>
         <div class="mt-4 d-flex justify-content-center">

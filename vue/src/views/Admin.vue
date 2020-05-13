@@ -1,11 +1,11 @@
 <template>
-  <div class="user d-flex flex-column container-fluid">
+  <div class="admin container-fluid">
     <div class="row">
-      <div clas="col">
+      <div class="col mb-3">
         <Navbar />
       </div>
     </div>
-    <div class="content row mt-3">
+    <div class="content row">
       <div class="sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
@@ -17,47 +17,63 @@
           <div class="mt-5">
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['far','id-badge']" class="align-self-center ml-1" />
-              <p v-on:click="changeContent(0)" class="ml-3 unselectable menu-link">Skapa nytt konto</p>
+              <p
+                v-on:click="changeContent(0)"
+                class="ml-3 unselectable menu-link no-margin"
+              >Skapa nytt konto</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','graduation-cap']" class="align-self-center" />
               <p
                 v-on:click="changeContent(1)"
-                class="ml-3 unselectable menu-link"
+                class="ml-3 unselectable menu-link no-margin"
               >Skapa ny utbildning</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','book-open']" class="align-self-center" />
-              <p v-on:click="changeContent(2)" class="ml-3 unselectable menu-link">Skapa ny kurs</p>
+              <p
+                v-on:click="changeContent(2)"
+                class="ml-3 unselectable menu-link no-margin"
+              >Skapa ny kurs</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','chalkboard']" class="align-self-center" />
-              <p v-on:click="changeContent(3)" class="ml-3 unselectable menu-link">Skapa ny klass</p>
+              <p
+                v-on:click="changeContent(3)"
+                class="ml-3 unselectable menu-link no-margin"
+              >Skapa ny klass</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
-              <p class="ml-3 unselectable menu-link">Overview</p>
+              <p
+                v-on:click="changeContent(4)"
+                class="ml-3 unselectable menu-link no-margin"
+              >Overview</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
-              <p class="ml-3 unselectable menu-link">Lista över användare</p>
+              <p
+                v-on:click="changeContent(5)"
+                class="ml-3 unselectable menu-link no-margin"
+              >Lista över användare</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
-              <p class="ml-3 unselectable menu-link">Rapport</p>
+              <p v-on:click="changeContent(6)" class="ml-3 unselectable menu-link no-margin">Rapport</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','comments']" class="align-self-center" />
-              <p class="ml-3 unselectable menu-link">PIM</p>
+              <p v-on:click="changeContent(7)" class="ml-3 unselectable menu-link no-margin">PIM</p>
             </div>
           </div>
         </div>
       </div>
       <div class="main col-9">
-        <NewAccount v-if="this.$store.state.contentIndex==0"/>
-        <NewEducation v-if="this.$store.state.contentIndex==1"/>
-        <NewCourse v-if="this.$store.state.contentIndex==2"/>
-        <NewClass v-if="this.$store.state.contentIndex==3"/>
+        <NewAccount v-if="this.$store.state.contentIndex==0" />
+        <NewEducation v-if="this.$store.state.contentIndex==1" />
+        <NewCourse v-if="this.$store.state.contentIndex==2" />
+        <NewClass v-if="this.$store.state.contentIndex==3" />
+        <Overview v-if="this.$store.state.contentIndex==4" />
       </div>
     </div>
   </div>
@@ -78,14 +94,11 @@
   margin-top: 5%;
   font-size: 1.5rem;
 }
-.user {
+.admin {
   height: 100vh;
 }
 .content {
   flex-grow: 1;
-}
-p {
-  margin: 0;
 }
 .sidebar {
   background-color: #0e6dee;
@@ -99,6 +112,7 @@ import NewAccount from "@/components/NewAccount.vue";
 import NewEducation from "@/components/NewEducation.vue";
 import NewCourse from "@/components/NewCourse.vue";
 import NewClass from "@/components/NewClass.vue";
+import Overview from "@/components/Overview.vue";
 
 export default {
   components: {
@@ -106,7 +120,8 @@ export default {
     NewAccount,
     NewEducation,
     NewCourse,
-    NewClass
+    NewClass,
+    Overview
   },
   methods: {
     helloWorld() {
