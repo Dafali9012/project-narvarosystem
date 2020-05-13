@@ -10,6 +10,7 @@ export default new Vuex.Store({
   mutations: {
     changeLoggedUser(state, value) {
       state.loggedInUser = value
+      console.log(this.state.loggedInUser)
     }
   },
   actions: {
@@ -19,6 +20,7 @@ export default new Vuex.Store({
       let response = await fetch("/login/name")
       let result = await response.json()
       commit('changeLoggedUser', result)
+      console.log(this.state.loggedInUser)
     },
   },
   modules: {

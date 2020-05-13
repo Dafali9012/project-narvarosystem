@@ -74,8 +74,9 @@ export default {
         encodeURIComponent(this.name) +
         "&password=" +
         encodeURIComponent(this.password);
+        console.log(credentials)
 
-      let response = await fetch("/rest/login", {
+      let response = await fetch("http://localhost:8080/rest/login", {
         method: "POST",
         redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -84,10 +85,13 @@ export default {
       });
 
       if (response.url.includes("error")) {
+        console.log("wrong password")
         window.confirm("Inloggningen misslyckades");
       } else {
+        console.log(response)
         this.$store.dispatch('updateLoggedUser')
         this.$router.push("/");
+        console.log(this.$store.state.loggedInUser)
         
       }
     }
