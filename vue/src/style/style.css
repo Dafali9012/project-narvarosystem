@@ -28,3 +28,72 @@ body {
 .menu-link {
     cursor: pointer;
 }
+
+/* ------ vue default ----*/
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  #nav {
+    padding: 10px;
+  }
+  
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  #nav a.router-link-exact-active {
+    color: #42b983;
+  }
+
+/* ------ Navbar ----*/
+
+  .link {
+    height: 100%;
+  }
+  .navrow {
+    width: 100%;
+  }
+  .navbar {
+    height: 8vh;
+    width: 100vw;
+    background-color: #28343a;
+  }
+  .logo {
+    height: 100%;
+  }
+
+/* ------ Sidebar ----*/
+  .avatar {
+    margin-top: 15%;
+    margin-bottom: 10%;
+    width: 30%;
+  }
+  .line {
+    height: 0.1em;
+    width: 75%;
+    background-color: #44c7c9;
+  }
+  .option {
+    margin-top: 5%;
+    font-size: 1.5rem;
+  }
+  .user {
+    height: 100vh;
+  }
+  .content {
+    flex-grow: 1;
+  }
+  p {
+    margin: 0;
+  }
+  .sidebar {
+    background-color: #0e6dee;
+    border-top-right-radius: 15vh;
+  }
+

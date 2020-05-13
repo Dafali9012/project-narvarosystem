@@ -9,7 +9,7 @@
       <UserSideBar/>
       
       <div class="main col-9">
-        <h1>Välkommen</h1>
+        <h1>Scheme</h1>
       </div>
     </div>
   </div>

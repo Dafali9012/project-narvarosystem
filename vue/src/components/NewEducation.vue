@@ -1,62 +1,60 @@
 <template>
-  <div class="newaccount container">
-    <div class="row">
-      <div class="col unselectable text-darkgray d-flex flex-column">
-        <h2 class="title align-self-start">Skapa ny utbildning</h2>
-        <div class="line rounded" />
-        <form class="mt-5">
-          <div class="mt-5">
-            <input type="text" placeholder="Utbildningsnamn" />
-            <input type="text" placeholder="Poäng" />
-          </div>
-          <div class="mt-4">
-            <textarea name="" id="" cols="85" rows="6" placeholder="Beskrivning"></textarea>
-          </div>
-          <div class="mt-4">
-            <select name="edu-leader" id="edu-leader" style="width:73%">
-              <option value="Alexandra">Utbildningsledare</option>
-            </select>
-          </div>
-          <div class="button mt-4 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary">Skapa</button>
-          </div>
-        </form>
-      </div>
+  <div class="root d-flex justify-content-center">
+    <div class="main d-flex flex-column">
+      <h2 class="align-self-start">Skapa ny utbildning</h2>
+      <div class="line rounded" />
+
+      <form>
+        <div class="mt-5 d-flex justify-content-center">
+          <input class="form-control" type="text" placeholder="Utbildningsnamn" />
+          <input class="form-control" type="number" placeholder="Poäng" />
+        </div>
+        <div class="mt-4 d-flex justify-content-center">
+          <textarea class="form-control full-width" type="text" rows="6" placeholder="Beskrivning" />
+        </div>
+        <div class="mt-4 d-flex unselectable">
+          
+            <label for="from" style="margin-left:9%">Från:</label>
+            <label for="to" style="margin-left:39%">Till:</label>
+          
+        </div>
+        <div class="d-flex justify-content-center">
+          <input class="form-control" type="date" id="from" />
+          <input class="form-control" type="date" id="to" />
+        </div>
+        <div class="button-create mt-4 d-flex justify-content-end">
+          <button type="button" class="btn btn-primary">Skapa</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <style scoped>
-form {
-  width: 80%;
-}
-input,
-select {
-  width: 36%;
-  margin-left: 1%;
-  margin-right: 1%;
-}
-.title {
-  margin-top: 10%;
-}
-.newaccount {
+.root {
   width: 100%;
   height: 100%;
 }
+.main {
+  width: 65%;
+  margin-top: 5%;
+  margin-left: 0%;
+}
 .line {
   height: 0.1em;
-  width: 80%;
+  width: 100%;
   background-color: #28343a;
 }
-.account-selector {
-  margin-top: 2%;
-  width: 80%;
-}
-.account-button {
-  height: 5vh;
+input,
+select {
   width: 40%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
-.button {
-  width: 87%;
+.full-width {
+  width: 84%;
+}
+.button-create {
+  margin-right: 8%;
 }
 </style>
