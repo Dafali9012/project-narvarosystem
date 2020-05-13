@@ -13,17 +13,15 @@
           <textarea class="form-control full-width" type="text" rows="6" placeholder="Beskrivning" />
         </div>
         <div class="mt-4 d-flex unselectable">
-          
-            <label for="from" style="margin-left:9%">Från:</label>
-            <label for="to" style="margin-left:39%">Till:</label>
-          
+          <label for="from" style="margin-left:9%">Från:</label>
+          <label for="to" style="margin-left:39%">Till:</label>
         </div>
         <div class="d-flex justify-content-center">
           <input class="form-control" type="date" id="from" />
           <input class="form-control" type="date" id="to" />
         </div>
         <div class="button-create mt-4 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary">Skapa</button>
+          <button v-on:click="createEducation" type="button" class="btn btn-primary">Skapa</button>
         </div>
       </form>
     </div>
@@ -58,3 +56,13 @@ select {
   margin-right: 8%;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    createEducation() {
+      console.log("skapa utbildning");
+    }
+  }
+};
+</script>

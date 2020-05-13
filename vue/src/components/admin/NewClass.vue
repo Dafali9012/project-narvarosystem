@@ -26,7 +26,7 @@
           <input class="form-control" type="date" id="to" />
         </div>
         <div class="button-create mt-4 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary">Skapa</button>
+          <button v-on:click="createClass" type="button" class="btn btn-primary">Skapa</button>
         </div>
       </form>
     </div>
@@ -61,3 +61,13 @@ select {
   margin-right: 8%;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    createClass() {
+      console.log("skapa klass");
+    }
+  }
+};
+</script>

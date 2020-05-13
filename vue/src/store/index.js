@@ -5,16 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    contentIndex : 0
+    contentIndex: 0
   },
   mutations: {
     changeContentIndex(state, value) {
       state.contentIndex = value
-      console.log(state.contentIndex)
     }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  modules: {}
 })

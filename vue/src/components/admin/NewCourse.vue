@@ -27,7 +27,7 @@
           <textarea class="form-control full-width" type="text" rows="3" placeholder="Beskrivning" />
         </div>
         <div class="button-create mt-4 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary">Skapa</button>
+          <button v-on:click="createCourse" type="button" class="btn btn-primary">Skapa</button>
         </div>
       </form>
     </div>
@@ -62,3 +62,13 @@ select {
   margin-right: 8%;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    createCourse() {
+      console.log("skapa kurs");
+    }
+  }
+};
+</script>

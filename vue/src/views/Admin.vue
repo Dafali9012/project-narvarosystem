@@ -3,7 +3,7 @@
     <div class="row">
       <Navbar />
     </div>
-    <div class="content row">
+    <div class="content row mt-3">
       <div class="sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
