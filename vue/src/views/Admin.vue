@@ -1,9 +1,7 @@
 <template>
-  <div class="admin container-fluid">
+  <div class="admin d-flex flex-column container-fluid">
     <div class="row">
-      <div class="col mb-3">
-        <Navbar />
-      </div>
+      <Navbar />
     </div>
     <div class="content row">
       <div class="sidebar col-3">
@@ -95,7 +93,7 @@
   font-size: 1.5rem;
 }
 .admin {
-  height: 100vh;
+  min-height: 100vh;
 }
 .content {
   flex-grow: 1;
@@ -108,11 +106,11 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import NewAccount from "@/components/NewAccount.vue";
-import NewEducation from "@/components/NewEducation.vue";
-import NewCourse from "@/components/NewCourse.vue";
-import NewClass from "@/components/NewClass.vue";
-import Overview from "@/components/Overview.vue";
+import NewAccount from "@/components/admin/NewAccount.vue";
+import NewEducation from "@/components/admin/NewEducation.vue";
+import NewCourse from "@/components/admin/NewCourse.vue";
+import NewClass from "@/components/admin/NewClass.vue";
+import Overview from "@/components/admin/Overview.vue";
 
 export default {
   components: {
