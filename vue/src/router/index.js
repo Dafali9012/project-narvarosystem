@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
-import User from '@/views/User.vue'
+import Admin from '@/views/Admin.vue'
 import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
@@ -19,9 +19,9 @@ Vue.use(VueRouter)
     component: About
   },
   {
-    path: '/user',
-    name: 'User',
-    component: User
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
   },
   {
     path: '/login',
