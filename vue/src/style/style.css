@@ -1,6 +1,6 @@
 html,
 body {
-    min-height: 100vh;
+    min-height: 100%;
     background-color: #f7f7f7;
 }
 
@@ -60,8 +60,7 @@ body {
     width: 100%;
   }
   .navbar {
-    height: 8vh;
-    width: 100vw;
+    height: 8vh;    
     background-color: #28343a;
   }
   .logo {
@@ -69,7 +68,14 @@ body {
   }
 
 /* ------ Sidebar ----*/
-  .avatar {
+  
+.user{
+  height: 100%;
+}
+.content{
+  height: 100%;
+}
+.avatar {
     margin-top: 15%;
     margin-bottom: 10%;
     width: 30%;
@@ -83,17 +89,12 @@ body {
     margin-top: 5%;
     font-size: 1.5rem;
   }
-  .user {
-    height: 100vh;
-  }
-  .content {
-    flex-grow: 1;
-  }
+  
   p {
     margin: 0;
   }
-  .sidebar {
-    background-color: #0e6dee;
+  .user-sidebar {
+    background-color: #28343a;
     border-top-right-radius: 15vh;
   }
 
