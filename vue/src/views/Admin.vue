@@ -17,19 +17,22 @@
           <div class="mt-5">
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['far','id-badge']" class="align-self-center ml-1" />
-              <p class="ml-3 unselectable menu-link">Skapa nytt konto</p>
+              <p v-on:click="changeContent(0)" class="ml-3 unselectable menu-link">Skapa nytt konto</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','graduation-cap']" class="align-self-center" />
-              <p class="ml-3 unselectable menu-link">Skapa ny utbildning</p>
+              <p
+                v-on:click="changeContent(1)"
+                class="ml-3 unselectable menu-link"
+              >Skapa ny utbildning</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','book-open']" class="align-self-center" />
-              <p class="ml-3 unselectable menu-link">Skapa ny kurs</p>
+              <p v-on:click="changeContent(2)" class="ml-3 unselectable menu-link">Skapa ny kurs</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','chalkboard']" class="align-self-center" />
-              <p class="ml-3 unselectable menu-link">Skapa ny klass</p>
+              <p v-on:click="changeContent(3)" class="ml-3 unselectable menu-link">Skapa ny klass</p>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
@@ -51,7 +54,10 @@
         </div>
       </div>
       <div class="main col-9">
-        <NewAccount />
+        <NewAccount v-if="this.$store.state.contentIndex==0"/>
+        <NewEducation v-if="this.$store.state.contentIndex==1"/>
+        <NewCourse v-if="this.$store.state.contentIndex==2"/>
+        <NewClass v-if="this.$store.state.contentIndex==3"/>
       </div>
     </div>
   </div>
@@ -90,17 +96,25 @@ p {
 <script>
 import Navbar from "@/components/Navbar.vue";
 import NewAccount from "@/components/NewAccount.vue";
-//import NewEducation from "@/components/NewEducation.vue";
-//import NewCourse from "@/components/NewCourse.vue";
-//import NewClass from "@/components/NewClass.vue";
+import NewEducation from "@/components/NewEducation.vue";
+import NewCourse from "@/components/NewCourse.vue";
+import NewClass from "@/components/NewClass.vue";
 
 export default {
   components: {
     Navbar,
     NewAccount,
-    //NewEducation
-    //NewCourse
-    //NewClass
+    NewEducation,
+    NewCourse,
+    NewClass
+  },
+  methods: {
+    helloWorld() {
+      console.log("hello world!");
+    },
+    changeContent(newContentIndex) {
+      this.$store.commit("changeContentIndex", newContentIndex);
+    }
   }
 };
 </script>

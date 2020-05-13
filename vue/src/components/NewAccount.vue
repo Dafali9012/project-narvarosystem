@@ -1,13 +1,13 @@
 <template>
 <div class="root d-flex justify-content-center">
-  <div class="newaccount d-flex flex-column">
-    <h2 class="title align-self-start">Skapa nytt konto</h2>
+  <div class="main d-flex flex-column">
+    <h2 class="align-self-start">Skapa nytt konto</h2>
     <div class="line rounded" />
 
     <div class="unselectable mt-5 d-flex justify-content-center">
       <div class="button-account border border-bottom-0 border-dark d-flex align-items-center justify-content-center">
         <font-awesome-icon :icon="['fas','user-graduate']" class="align-self-center mr-3" />
-        <p class="no-margin">Skapa nytt elevkonto</p>
+        <p class="no-margin">Skapa nytt studentkonto</p>
       </div>
       <div class="button-account border border-gray d-flex align-items-center justify-content-center menu-link">
         <font-awesome-icon :icon="['fas','chalkboard-teacher']" class="align-self-center mr-3" />
@@ -48,7 +48,7 @@
   width: 100%;
   height: 100%;
 }
-.newaccount {
+.main {
   width: 65%;
   margin-top: 5%;
   margin-left: 0%;
@@ -72,3 +72,11 @@ select {
   margin-right:8%;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    
+  }
+}
+</script>
