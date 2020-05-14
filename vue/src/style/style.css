@@ -83,9 +83,13 @@
     flex-grow: 1;
 }
 
+.full-width {
+    width: 84% !important;
+}
+
 input,
 select {
-    width: 40%;
+    width: 40% !important;
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -99,9 +103,7 @@ select {
     margin-right: 8%;
 }
 
-.full-width {
-    width: 84%;
-}
+
 
 .admin-sidebar {
     background-color: #0e6dee;
