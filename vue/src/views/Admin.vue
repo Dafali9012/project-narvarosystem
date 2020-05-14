@@ -1,8 +1,10 @@
 <template>
-  <div class="admin d-flex flex-column container-fluid">
+  <div class="root d-flex flex-column container-fluid">
+    <!--
     <div class="row">
       <Navbar />
     </div>
+    -->
     <div class="content row mt-3">
       <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
@@ -66,33 +68,36 @@
           </div>
         </div>
       </div>
-      <div class="main col-9">
+      <div class="col-9">
         <NewAccount v-if="this.$store.state.contentIndex==0" />
         <NewEducation v-if="this.$store.state.contentIndex==1" />
         <NewCourse v-if="this.$store.state.contentIndex==2" />
         <NewClass v-if="this.$store.state.contentIndex==3" />
         <Overview v-if="this.$store.state.contentIndex==4" />
+        <ListUsers v-if="this.$store.state.contentIndex==5" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+//import Navbar from "@/components/Navbar.vue";
 import NewAccount from "@/components/admin/NewAccount.vue";
 import NewEducation from "@/components/admin/NewEducation.vue";
 import NewCourse from "@/components/admin/NewCourse.vue";
 import NewClass from "@/components/admin/NewClass.vue";
 import Overview from "@/components/admin/Overview.vue";
+import ListUsers from "@/components/admin/ListUsers.vue";
 
 export default {
   components: {
-    Navbar,
+    //Navbar,
     NewAccount,
     NewEducation,
     NewCourse,
     NewClass,
-    Overview
+    Overview,
+    ListUsers
   },
   methods: {
     helloWorld() {

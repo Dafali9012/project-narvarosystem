@@ -15,11 +15,13 @@ import i18n from './translations';
 
 Vue.use(VueI18n);
 
-import {messages} from 'vue-bootstrap-calendar'; // you can include your own translation here if you want!
+import {
+  messages
+} from 'vue-bootstrap-calendar'; // you can include your own translation here if you want!
 
 window.i18n = new VueI18n({
-    locale: 'en',
-    messages
+  locale: 'en',
+  messages
 })
 
 
@@ -41,6 +43,7 @@ import {
   faChalkboard,
   faUserGraduate,
   faChalkboardTeacher,
+  faPlusCircle,
   faCalendarAlt,
   faCog
 } from '@fortawesome/free-solid-svg-icons'
@@ -48,15 +51,16 @@ import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faCog, faCalendarAlt)
+library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle, faCog, faCalendarAlt)
+
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
 new Vue({
-  i18n,  
-  router,   
-  store,  
+  i18n,
+  router,
+  store,
   render: h => h(App)
 }).$mount('#app')

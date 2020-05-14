@@ -1,5 +1,5 @@
 <template>
-  <div class="col navbar text-cream">
+  <div class="navbar text-cream">
     <div class="logo d-flex">
       <router-link class="navbar-brand link" to="/">
         <img src="@/assets/images/logo.png" class="logo ml-3" />
@@ -21,5 +21,3 @@
     </div>
   </div>
 </template>
-
-
