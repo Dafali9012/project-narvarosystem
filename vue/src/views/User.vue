@@ -5,7 +5,7 @@
         <Navbar />
       </div>
     </div>
-    <div class="content row mt-3 h-100">
+    <div class="content row mt-3">
       <UserSideBar/>
       
       <div class="main col-9">

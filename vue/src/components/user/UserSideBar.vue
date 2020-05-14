@@ -1,5 +1,5 @@
 <template>
-    <div class="user-sidebar col-3 h-100">
+    <div class="user-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
             src="https://www.fivestardestination.com/wp-content/uploads/2019/03/Just-white-square-300x300.png"
