@@ -51,7 +51,7 @@ export default {
   components: {     
     UserSideBar    
   }
-  methods: {
+  ,methods: {
     updateRecord: function(index, id){
       var FirstName = this.user[index].FirstName;
       var LastName = this.user[index].LastName;
