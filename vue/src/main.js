@@ -11,6 +11,8 @@ import store from './store'
 
 import VueI18n from 'vue-i18n' //needed for calendar locale
 
+import i18n from './translations';
+
 Vue.use(VueI18n);
 
 import {messages} from 'vue-bootstrap-calendar'; // you can include your own translation here if you want!
