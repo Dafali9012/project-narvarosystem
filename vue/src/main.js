@@ -9,6 +9,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+/*import VueBootstrap4Table from 'vue-bootstrap4-table'
+import {Calendar} from 'vue-bootstrap-calendar' 
+import {messages} from 'vue-bootstrap-calendar'*/
+
 import {
   library
 } from '@fortawesome/fontawesome-svg-core'
@@ -23,13 +27,15 @@ import {
   faComments,
   faChalkboard,
   faUserGraduate,
-  faChalkboardTeacher
+  faChalkboardTeacher,
+  faCalendarAlt,
+  faCog
 } from '@fortawesome/free-solid-svg-icons'
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher)
+library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faCog, faCalendarAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

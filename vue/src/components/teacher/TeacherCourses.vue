@@ -1,10 +1,10 @@
 <template>
-  <div class="user d-flex flex-column container-fluid">    
+  <div class="user d-flex flex-column container-fluid">   
     <div class="content row mt-3">
       <TeacherSideBar/>
       
       <div class="main col-9">
-        <h1>Classes</h1>
+        <h1>Klasser</h1>
       </div>
     </div>
   </div>

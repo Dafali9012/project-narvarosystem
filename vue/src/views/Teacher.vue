@@ -4,7 +4,7 @@
       <TeacherSideBar/>
       
       <div class="main col-9">
-        <h1>Classes</h1>
+        <h1>Välkommen</h1>
       </div>
     </div>
   </div>
