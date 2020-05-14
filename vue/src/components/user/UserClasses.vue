@@ -5,8 +5,7 @@
       <UserSideBar/>
       
       <div class="main col-9 mt-5">
-        <div class="user-table mt-5">
-          <div class="table-header"></div>
+        <div class="user-table mt-5">          
           <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config">
           </vue-bootstrap4-table>
         </div> 
