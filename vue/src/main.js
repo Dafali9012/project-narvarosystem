@@ -9,9 +9,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+
 /*import VueBootstrap4Table from 'vue-bootstrap4-table'
-import {Calendar} from 'vue-bootstrap-calendar' 
-import {messages} from 'vue-bootstrap-calendar'*/
+import {Calendar} from 'vue-bootstrap-calendar' */
 
 import {
   library
@@ -42,7 +42,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
+  router,  
+ 
+  store,  
   render: h => h(App)
 }).$mount('#app')

@@ -8,12 +8,21 @@
     <div class="content row mt-3">
       <UserSideBar/>
       
-      <div class="main col-9">
-        <h1>Scheme</h1>
+      <div class="main col-9 mt-5">
+        <calendar
+                :first-day="1"
+                :all-events="events"
+        ></calendar>
+     
+
       </div>
     </div>
   </div>
 </template>
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
 
 
 <script>
@@ -21,9 +30,13 @@
 import UserSideBar from "@/components/user/UserSideBar.vue";
 
 
+
+
 export default {
-  components: {     
-    UserSideBar    
-  }
-};
+ 
+        components: {
+          UserSideBar,
+            Calendar
+        }
+    }
 </script>
