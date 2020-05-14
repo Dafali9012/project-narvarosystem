@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    contentIndex: 0,
     loggedInUser: {},
   },
   mutations: {
     changeLoggedUser(state, value) {
       state.loggedInUser = value
+    },
+    changeContentIndex(state, value) {
+      state.contentIndex = value
     }
   },
   actions: {
@@ -24,3 +28,4 @@ export default new Vuex.Store({
   modules: {
   }
 })
+    
