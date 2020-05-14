@@ -1,30 +1,41 @@
 <template>
   <div class="col d-flex border-box row wrap">
     <div class="col-lg-8 col-sm-12 wrapper1">
-        
+
     </div>
     <div class="col-4 wrapper2">
       <h2>Välkommen</h2>
       <form @submit.prevent="springLogin" class="inputs">
         <div>
           <input
-          v-model="name"
+            v-model="name"
             class="inputField"
             type="name"
             name="name"
-            placeholder="name"
+            placeholder="Namn"
           />
+          <font-awesome-icon :icon="['fas','user-graduate']" class="" id="icon" />
         </div>
         <div>
           <input
-          v-model="password"
+            v-model="password"
             class="inputField"
             type="password"
             name="password"
             placeholder="password"
           />
+          <font-awesome-icon :icon="['fas','user-graduate']" class="" id="icon" />
+        </div>
+        <div class="d-flex row mt-5 align-items-center justify-content-around">
+        <div class="d-flex flex-column">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember"> Kom ihåg mig </label>
+        <span class="extras">
+          <a class="redirect" href="/reset">Glömt lösenord?</a>
+        </span>
         </div>
         <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
+        </div>
       </form>
     </div>
   </div>
@@ -69,48 +80,68 @@ export default {
 </script>
 
 <style scoped>
-    .wrap {
+.wrap {
     padding: 0;
     }
-    .wrapper1 {
-    background-image: url("../assets/images/EC-utb.png");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    height: 100vh;
+#remember {
+    
+}
+.redirect {
+  color:rgba(0, 0, 0, 0.658);
+  text-decoration: none;
+}
+.redirect:visited {
+  color:rgba(0, 0, 0, 0.658);
+  text-decoration: none;
+}
+h2 {
+    padding-bottom: 100px;
+    font-size: 60px;
+}
+    .wrap {
+  padding: 0;
+}
+.wrapper1 {
+  background-image: url("../assets/images/EC-utb.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
     .wrapper2 {
-    align-content: center;
-    padding-top: 20vh;
-    border-bottom-right-radius: 5px;
+  align-content: center;
+  padding-top: 20vh;
+  border-bottom-right-radius: 5px;
+}
+.inputs {
+    align-items: center;
 }
     .inputField {
     font-family: "Nunito", sans-serif;
     font-size: 16px;
-    color: rgb(59, 59, 59);
-    line-height: 1.2;
-    width: 250px;
+    color: rgba(0, 0, 0, 0.658);
+    width: 50%;
     height: 45px;
-    background-position: center;
-    padding: 0 5px 0 38px;
-    box-shadow: 0 0 10px #2727279f inset;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #2b2b2b;
-    transition: all 0.5s ease;
-    margin-top: 10px;
-    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.356);
+    margin-bottom: 30px;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 20px;
 }
 
     .btn {
-    width: 125px;
-    height: 50px;
-    font-size: 25px;
-    text-align: center;
-    background: rgb(238, 238, 238);
-    color: #f7f7f7;
-    border-radius: 10px;
-    border-color: #f7f7f7;
-    background-color: #0e6dee;
-    align-self: flex-end;
+  width: 125px;
+  height: 50px;
+  font-size: 25px;
+  text-align: center;
+  background: rgb(238, 238, 238);
+  color: #f7f7f7;
+  border-radius: 10px;
+  border-color: #f7f7f7;
+  background-color: #0e6dee;
+  align-self: flex-end;
 }
 @media screen and (max-width: 500px) {
   .wrapper1 {
