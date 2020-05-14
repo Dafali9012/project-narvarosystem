@@ -152,6 +152,7 @@ body {
     cursor: pointer;
 }
 
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -163,3 +164,80 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
+/* ------ vue default ----*/
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  #nav {
+    padding: 10px;
+  }
+  
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  #nav a.router-link-exact-active {
+    color: #42b983;
+  }
+
+/* ------ Navbar ----*/
+
+  .link {
+    height: 100%;
+  }
+  .navrow {
+    width: 100%;
+  }
+  .navbar {
+    height: 8vh;    
+    background-color: #28343a;
+  }
+  .logo {
+    height: 100%;
+  }
+
+/* ------ Sidebar ----*/
+  
+.user{
+  height: 100%;
+}
+.content{
+  height: 100vh;
+}
+.avatar {
+    margin-top: 15%;
+    margin-bottom: 10%;
+    width: 30%;
+  }
+  .line {
+    height: 0.1em;
+    width: 75%;
+    background-color: #44c7c9;
+  }
+  .option {
+    margin-top: 5%;
+    font-size: 1.5rem;
+  }
+  
+  p {
+    margin: 0;
+  }
+  .user-sidebar {
+    background-color: #28343a;
+    border-top-right-radius: 15vh;
+  }
+
+
+  .con-header h1{   
+    color: #28343a; 
+    text-align: left;
+    border-bottom: 1px solid #28343a;
+  }
+
+
