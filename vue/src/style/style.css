@@ -6,6 +6,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    min-height: 100%;
 }
 
 #nav {
@@ -75,11 +76,8 @@
     font-size: 1.5rem;
 }
 
-.admin {
-    min-height: 100vh;
-}
-
 .content {
+    min-height: 100%;
     flex-grow: 1;
 }
 
@@ -112,6 +110,7 @@ select {
 .admin-sidebar {
     background-color: #0e6dee;
     border-top-right-radius: 15vh;
+    min-height: 100%;
 }
 
 .user-sidebar {
@@ -127,7 +126,6 @@ select {
 
 /* extra */
 
-html,
 body {
     min-height: 100vh;
     background-color: #f7f7f7;
@@ -157,6 +155,7 @@ body {
 .menu-link {
     cursor: pointer;
 }
+
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
