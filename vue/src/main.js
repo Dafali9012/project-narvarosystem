@@ -23,13 +23,14 @@ import {
   faComments,
   faChalkboard,
   faUserGraduate,
-  faChalkboardTeacher
+  faChalkboardTeacher,
+  faPlusCircle
 } from '@fortawesome/free-solid-svg-icons'
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher)
+library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
