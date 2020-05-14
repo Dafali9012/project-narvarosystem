@@ -30,10 +30,8 @@ public class User {
     @Column(name = "Email")
     private String email;
 
-
     @Column(name = "Password")
     private String password;
-
 
     @Column(name = "RoleId")
     private int roleId;
@@ -110,7 +108,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public int getRoleId() {
         return roleId;
     }
