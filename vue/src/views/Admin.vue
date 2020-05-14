@@ -1,8 +1,10 @@
 <template>
-  <div class="admin d-flex flex-column container-fluid">
+  <div class="root d-flex flex-column container-fluid">
+    <!--
     <div class="row">
       <Navbar />
     </div>
+    -->
     <div class="content row mt-3">
       <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
@@ -66,7 +68,7 @@
           </div>
         </div>
       </div>
-      <div class="main col-9">
+      <div class="col-9">
         <NewAccount v-if="this.$store.state.contentIndex==0" />
         <NewEducation v-if="this.$store.state.contentIndex==1" />
         <NewCourse v-if="this.$store.state.contentIndex==2" />
@@ -79,7 +81,7 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+//import Navbar from "@/components/Navbar.vue";
 import NewAccount from "@/components/admin/NewAccount.vue";
 import NewEducation from "@/components/admin/NewEducation.vue";
 import NewCourse from "@/components/admin/NewCourse.vue";
@@ -89,7 +91,7 @@ import ListUsers from "@/components/admin/ListUsers.vue";
 
 export default {
   components: {
-    Navbar,
+    //Navbar,
     NewAccount,
     NewEducation,
     NewCourse,

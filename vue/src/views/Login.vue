@@ -22,7 +22,7 @@
             class="inputField"
             type="password"
             name="password"
-            placeholder="Lösenord"
+            placeholder="password"
           />
           <font-awesome-icon :icon="['fas','user-graduate']" class="" id="icon" />
         </div>
