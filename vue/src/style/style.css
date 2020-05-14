@@ -83,7 +83,11 @@
     flex-grow: 1;
 }
 
-.full-width {
+.width-100 {
+    width: 100% !important;
+}
+
+.width-84 {
     width: 84% !important;
 }
 

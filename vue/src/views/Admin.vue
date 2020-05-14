@@ -72,6 +72,7 @@
         <NewCourse v-if="this.$store.state.contentIndex==2" />
         <NewClass v-if="this.$store.state.contentIndex==3" />
         <Overview v-if="this.$store.state.contentIndex==4" />
+        <ListUsers v-if="this.$store.state.contentIndex==5" />
       </div>
     </div>
   </div>
@@ -84,6 +85,7 @@ import NewEducation from "@/components/admin/NewEducation.vue";
 import NewCourse from "@/components/admin/NewCourse.vue";
 import NewClass from "@/components/admin/NewClass.vue";
 import Overview from "@/components/admin/Overview.vue";
+import ListUsers from "@/components/admin/ListUsers.vue";
 
 export default {
   components: {
@@ -92,7 +94,8 @@ export default {
     NewEducation,
     NewCourse,
     NewClass,
-    Overview
+    Overview,
+    ListUsers
   },
   methods: {
     helloWorld() {

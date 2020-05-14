@@ -14,7 +14,7 @@
           </select>
         </div>
         <div class="mt-4 d-flex justify-content-center">
-          <input class="form-control full-width" type="text" placeholder="Klassnamn" />
+          <input class="form-control width-84" type="text" placeholder="Klassnamn" />
         </div>
 
         <div class="mt-4 d-flex unselectable">
