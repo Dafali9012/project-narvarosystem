@@ -4,14 +4,14 @@
       <Navbar />
     </div>
     <div class="content row mt-3">
-      <div class="sidebar col-3">
+      <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
             src="https://www.fivestardestination.com/wp-content/uploads/2019/03/Just-white-square-300x300.png"
             class="avatar rounded-circle"
           />
           <h5 class="unselectable">Du är inloggad som Admin</h5>
-          <div class="line rounded" />
+          <div class="sidebar-line rounded" />
           <div class="mt-5">
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['far','id-badge']" class="align-self-center ml-1" />
@@ -76,33 +76,6 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-.avatar {
-  margin-top: 15%;
-  margin-bottom: 10%;
-  width: 30%;
-}
-.line {
-  height: 0.1em;
-  width: 75%;
-  background-color: #44c7c9;
-}
-.option {
-  margin-top: 5%;
-  font-size: 1.5rem;
-}
-.admin {
-  min-height: 100vh;
-}
-.content {
-  flex-grow: 1;
-}
-.sidebar {
-  background-color: #0e6dee;
-  border-top-right-radius: 15vh;
-}
-</style>
 
 <script>
 import Navbar from "@/components/Navbar.vue";

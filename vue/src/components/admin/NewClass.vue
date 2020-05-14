@@ -2,7 +2,7 @@
   <div class="root d-flex justify-content-center">
     <div class="main d-flex flex-column">
       <h2 class="align-self-start">Skapa ny klass</h2>
-      <div class="line rounded" />
+      <div class="content-line rounded" />
 
       <form>
         <div class="mt-5 d-flex justify-content-center">
@@ -32,35 +32,6 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-.root {
-  width: 100%;
-  height: 100%;
-}
-.main {
-  width: 65%;
-  margin-top: 5%;
-  margin-left: 0%;
-}
-.line {
-  height: 0.1em;
-  width: 100%;
-  background-color: #28343a;
-}
-input,
-select {
-  width: 40%;
-  margin-left: 2%;
-  margin-right: 2%;
-}
-.full-width {
-  width: 84%;
-}
-.button-create {
-  margin-right: 8%;
-}
-</style>
 
 <script>
 export default {
