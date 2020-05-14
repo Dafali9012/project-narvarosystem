@@ -1,10 +1,5 @@
 <template>
-  <div class="user d-flex flex-column container-fluid">
-    <div class="row">
-      <div clas="col">
-        <Navbar />
-      </div>
-    </div>
+  <div class="user d-flex flex-column container-fluid">    
     <div class="content row mt-3">
       <UserSideBar/>
       
@@ -21,22 +16,39 @@
 </template>
 
 
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
-
 
 <script>
 
 import UserSideBar from "@/components/user/UserSideBar.vue";
-
+    import {Calendar} from 'vue-bootstrap-calendar';
 
 
 
 export default {
  
+       data() {
+            return {
+                events: []
+            }
+        },
         components: {
-          UserSideBar,
-            Calendar
+            Calendar,
+            UserSideBar
+        },
+        mounted() {
+            let me = this;
+            setTimeout(function () {
+                me.events = [ // you can make ajax call here
+                    {
+                        id:1,
+                        title:'Event 1',
+                        color: 'panel-danger',
+                        date: new Date()
+                    },
+                  
+                ];
+            }, 1000);
         }
+    
     }
 </script>
