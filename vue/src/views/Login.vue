@@ -1,20 +1,24 @@
 <template>
   <div class="col d-flex border-box row wrap">
-    <div class="col-lg-8 col-sm-12 wrapper1"></div>
+    <div class="col-lg-8 col-sm-12 wrapper1">
+
+    </div>
     <div class="col-4 wrapper2">
       <h2>Välkommen</h2>
-      <form class="inputs">
+      <form @submit.prevent="springLogin" class="inputs">
         <div>
           <input
+            v-model="name"
             class="inputField"
-            type="text"
-            name="email"
-            placeholder="Email"
+            type="name"
+            name="name"
+            placeholder="Namn"
           />
           <font-awesome-icon :icon="['fas','user-graduate']" class="" id="icon" />
         </div>
         <div>
           <input
+            v-model="password"
             class="inputField"
             type="password"
             name="password"
@@ -30,7 +34,7 @@
           <a class="redirect" href="/reset">Glömt lösenord?</a>
         </span>
         </div>
-        <input type="button" value="Logga in" class="btn" /> <!-- v-on:click="login" -->
+        <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
         </div>
       </form>
     </div>
@@ -39,11 +43,46 @@
 
 <script>
 export default {
-    name: 'Login',
-}
+  data() {
+    return {
+      name: "",
+      password: ""
+    };
+  },
+  methods: {
+    springLogin: async function() {
+      const credentials =
+        "username=" +
+        encodeURIComponent(this.name) +
+        "&password=" +
+        encodeURIComponent(this.password);
+
+      let response = await fetch("/rest/login", {
+        method: "POST",
+        redirect: "manual",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: credentials
+        
+      });
+
+      if (response.url.includes("error")) {
+        window.confirm("Inloggningen misslyckades");
+      } else {
+
+        this.$store.dispatch('updateLoggedUser')
+        this.$router.push("/");
+        console.log(this.$store.state.loggedInUser)
+        
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>
+.wrap {
+    padding: 0;
+    }
 #remember {
     
 }
