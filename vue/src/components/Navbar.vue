@@ -21,20 +21,3 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-.link {
-  height: 100%;
-}
-.navrow {
-  width: 100%;
-}
-.navbar {
-  height: 8vh;
-  /*width: 100vw;*/
-  background-color: #28343a;
-}
-.logo {
-  height: 100%;
-}
-</style>
