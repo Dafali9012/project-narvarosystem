@@ -4,11 +4,14 @@
       <UserSideBar/>
       
       <div class="main col-9 mt-5">
+          <div class="row ml-5">
+              <div class="col-12 ml-5">
         <calendar
-                :first-day="1"
+                :first-day="1"                
                 :all-events="events"
         ></calendar>
-     
+     </div>
+     </div>
 
       </div>
     </div>
