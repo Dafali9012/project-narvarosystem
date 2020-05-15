@@ -8,23 +8,21 @@
           </div>
         </div>
         <div class="d-flex flex-column align-items-center bg-lightblue text-cream">
-          <input class="form-control my-3 width-84" type="text" placeholder="Sök" />
-          <div class="d-flex mb-2 width-84">
-            <input id="ec" type="checkbox" style="width:auto !important;" />
-            <label class="no-margin" for="ec">EC Personal</label>
-          </div>
-          <div class="d-flex mb-2 width-84">
-            <input id="teacher" type="checkbox" style="width:auto !important;" />
-            <label class="no-margin" for="teacher">Lärare</label>
-          </div>
-          <div class="d-flex mb-2 width-84">
-            <input id="consult" type="checkbox" style="width:auto !important;" />
-            <label class="no-margin" for="consult">Konsult</label>
-          </div>
-          <div class="d-flex mb-2 width-84">
-            <input id="student" type="checkbox" style="width:auto !important;" />
-            <label class="no-margin" for="student">Student</label>
-          </div>
+          <input class="form-control my-4 width-84" type="text" placeholder="Sök" />
+
+          <select class="form-control mb-2 width-84" id="education">
+            <option value="education">Utbildning</option>
+          </select>
+          <select class="form-control mb-2 width-84" id="course">
+            <option value="course">Kurs</option>
+          </select>
+          <select class="form-control mb-4 width-84" id="class">
+            <option value="class">Klass</option>
+          </select>
+          <label class="align-self-start ml-4" for="from">Från:</label>
+          <input class="form-control mb-2 width-84" type="date" id="from" />
+          <label class="align-self-start ml-4" for="to">Till:</label>
+          <input class="form-control mb-4 width-84" type="date" id="to" />
         </div>
       </div>
 
@@ -42,24 +40,20 @@
         </div>
         <div class="bg-white container-fluid">
           <div class="row">
-            <div class="col-2 d-flex">
-              <p>Förnamn</p>
+            <div class="col-3 d-flex">
+              <p>Lektion</p>
               <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
             </div>
             <div class="col-2 d-flex">
-              <p>Efternamn</p>
+              <p>Datum</p>
               <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
             </div>
             <div class="col-2 d-flex">
-              <p>E-post</p>
+              <p>Status</p>
               <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
             </div>
-            <div class="col-2 d-flex">
-              <p>Telefon</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-2 d-flex">
-              <p>Roll</p>
+            <div class="col-3 d-flex">
+              <p>Kurs</p>
               <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
             </div>
           </div>

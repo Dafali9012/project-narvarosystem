@@ -122,6 +122,11 @@ select {
     border-bottom: 1px solid #28343a;
 }
 
+.pic-input {
+    margin-left: 8%;
+    width: 40%;
+}
+
 /* search / filter */
 
 .filter-window {
