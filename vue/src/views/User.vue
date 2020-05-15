@@ -15,13 +15,12 @@
   </div>
 </template>
 
-
 <script>
 import UserSideBar from "@/components/user/UserSideBar.vue";
 
 export default {
   components: {
-    UserSideBar
-  }
+    UserSideBar,
+  },
 };
 </script>
