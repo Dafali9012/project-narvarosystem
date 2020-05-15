@@ -3,6 +3,7 @@ import 'jquery/src/jquery.js'
 import 'popper.js/dist/popper.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import '@/style/style.css'
+import 'vue-cal/dist/vuecal.css'
 
 import Vue from 'vue'
 import App from './App.vue'
