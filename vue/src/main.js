@@ -46,14 +46,15 @@ import {
   faPlusCircle,
   faCalendarAlt,
   faCog,
-  faSort
+  faSort,
+  faKey,
+  faUser
 } from '@fortawesome/free-solid-svg-icons'
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle, faCog, faCalendarAlt, faSort)
-
+library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle, faCog, faCalendarAlt, faKey, faUser, faSort)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

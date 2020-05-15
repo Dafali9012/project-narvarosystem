@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="d-flex flex-column">
-    <Navbar></Navbar>
+    <Navbar v-if="$route.name != 'login'" />
     <router-view />
   </div>
 </template>
