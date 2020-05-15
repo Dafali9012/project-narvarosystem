@@ -14,7 +14,7 @@
             name="name"
             placeholder="Namn"
           />
-          <font-awesome-icon :icon="['fas','user-graduate']" class="" id="icon" />
+          <font-awesome-icon :icon="['fas','user']" class="fa-lg" id="icon" />
         </div>
         <div>
           <input
@@ -22,19 +22,19 @@
             class="inputField"
             type="password"
             name="password"
-            placeholder="password"
+            placeholder="Lösenord"
           />
-          <font-awesome-icon :icon="['fas','user-graduate']" class="" id="icon" />
+          <font-awesome-icon :icon="['fas','key']" class="fa-lg" id="icon" />
         </div>
         <div class="d-flex row mt-5 align-items-center justify-content-around">
         <div class="d-flex flex-column">
-            <input type="checkbox" id="remember" name="remember">
-            <label for="remember"> Kom ihåg mig </label>
+            <div class="d-flex row justify-content-center"><input type="checkbox" id="remember" name="remember">
+            <label for="remember"> Kom ihåg mig </label></div>
         <span class="extras">
-          <a class="redirect" href="/reset">Glömt lösenord?</a>
+          <a class="redirect ml-2" href="/reset">Glömt lösenord?</a>
         </span>
         </div>
-        <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
+        <button type="submit" class="btn btn-info border" id="submitButton">Logga in</button>
         </div>
       </form>
     </div>
@@ -84,7 +84,8 @@ export default {
     padding: 0;
     }
 #remember {
-    
+    width: 10% !important;
+    margin-top: 3px;
 }
 .redirect {
   color:rgba(0, 0, 0, 0.658);
@@ -98,7 +99,7 @@ h2 {
     padding-bottom: 100px;
     font-size: 60px;
 }
-    .wrap {
+.wrap {
   padding: 0;
 }
 .wrapper1 {
@@ -107,7 +108,7 @@ h2 {
   background-repeat: no-repeat;
   height: 100vh;
 }
-    .wrapper2 {
+.wrapper2 {
   align-content: center;
   padding-top: 20vh;
   border-bottom-right-radius: 5px;
@@ -115,7 +116,7 @@ h2 {
 .inputs {
     align-items: center;
 }
-    .inputField {
+.inputField {
     font-family: "Nunito", sans-serif;
     font-size: 16px;
     color: rgba(0, 0, 0, 0.658);
@@ -131,7 +132,7 @@ h2 {
     font-size: 20px;
 }
 
-    .btn {
+.btn {
   width: 125px;
   height: 50px;
   font-size: 25px;
@@ -141,7 +142,6 @@ h2 {
   border-radius: 10px;
   border-color: #f7f7f7;
   background-color: #0e6dee;
-  align-self: flex-end;
 }
 @media screen and (max-width: 500px) {
   .wrapper1 {
