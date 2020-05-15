@@ -9,7 +9,7 @@
       <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
-            src="https://www.fivestardestination.com/wp-content/uploads/2019/03/Just-white-square-300x300.png"
+            src="https://image.flaticon.com/icons/svg/2702/2702646.svg"
             class="avatar rounded-circle"
           />
           <h5 class="unselectable">Du är inloggad som Admin</h5>
