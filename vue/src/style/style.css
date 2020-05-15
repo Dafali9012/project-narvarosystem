@@ -1,5 +1,7 @@
 /* vue default */
 
+
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -103,8 +105,6 @@ select {
     margin-right: 8%;
 }
 
-
-
 .admin-sidebar {
     background-color: #0e6dee;
     border-top-right-radius: 15vh;
@@ -114,13 +114,58 @@ select {
 .user-sidebar {
     background-color: #28343a;
     border-top-right-radius: 15vh;
+    min-height: 100%;
 }
 
 .con-header h1 {
     color: #28343a;
     text-align: left;
-    border-bottom: 1px solid #28343a;
+    border-bottom: 2px solid #28343a;
+    width: 50vw;
+    margin-left: 1vw;
 }
+.menu-link {
+    color: rgba#fff;
+    text-decoration: none;
+}
+
+.menu-link:visited {
+    color: #fff;
+}
+.button-primary {
+    width: 150px;
+  height: 50px;
+  font-size: 25px;
+  text-align: center;
+  background: rgb(238, 238, 238);
+  color: #f7f7f7;
+  border-radius: 10px;
+  border-color: #f7f7f7;
+  background-color: #518ee2;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.button-primary span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  .button-primary span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .button-primary:hover span {
+    padding-right: 25px;
+  }
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 
 .pic-input {
     margin-left: 8%;
@@ -172,6 +217,7 @@ body {
 .menu-link {
     cursor: pointer;
 }
+
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

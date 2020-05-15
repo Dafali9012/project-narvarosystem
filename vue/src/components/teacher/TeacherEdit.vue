@@ -8,34 +8,35 @@
           <h1>Redigera information</h1>
          </div> 
 
-         <div class="editform mt-5">
+         <div class="editform mt-5 col-12">
+         
+          
            <form>
-
             <div class="form-row">
-              <div class="form-group col-md-6">      
-                <input type="text" class="form-control" placeholder="Förnamn">
+              <div class="form-group col-6">      
+                <input type="text" class="form-control w-100" placeholder="Förnamn">
               </div>
-              <div class="form-group col-md-6">              
-                <input type="text" class="form-control"  placeholder="Efternamn">
+              <div class="form-group col-6">              
+                <input type="text" class="form-control w-100"  placeholder="Efternamn">
               </div>
             </div>
 
             <div class="form-row">
-              <div class="form-group col-md-6">      
-                <input type="email" class="form-control" placeholder="E-post">
+              <div class="form-group col-6">      
+                <input type="email" class="form-control w-100" placeholder="E-post">
               </div>
-              <div class="form-group col-md-6">              
-                <input type="text" class="form-control"  placeholder="Telefonnummer">
+              <div class="form-group col-6">              
+                <input type="text" class="form-control w-100"  placeholder="Telefonnummer">
               </div>
             </div>
 
 
             <div class="form-row">
-              <div class="form-group col-md-6">      
-                <input type="text" class="form-control" placeholder="Personnummer" disabled>
+              <div class="form-group col-6">      
+                <input type="text" class="form-control w-100" placeholder="Personnummer" disabled>
               </div>
-              <div class="form-group col-md-6">              
-                <input type="text" class="form-control"  placeholder="Adress">
+              <div class="form-group col-6">              
+                <input type="text" class="form-control w-100"  placeholder="Adress">
               </div>
             </div>
             
