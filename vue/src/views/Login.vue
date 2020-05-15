@@ -34,7 +34,7 @@
           <a class="redirect ml-2" href="/reset">Glömt lösenord?</a>
         </span>
         </div>
-        <button type="submit" class="btn btn-info border" id="submitButton">Logga in</button>
+        <button type="submit" class="btn btn-info border" id="submitButton"><span>Logga in</span></button>
         </div>
       </form>
     </div>
@@ -133,7 +133,7 @@ h2 {
 }
 
 .btn {
-  width: 125px;
+  width: 150px;
   height: 50px;
   font-size: 25px;
   text-align: center;
@@ -141,8 +141,32 @@ h2 {
   color: #f7f7f7;
   border-radius: 10px;
   border-color: #f7f7f7;
-  background-color: #0e6dee;
+  background-color: #518ee2;
+  cursor: pointer;
+  transition: all 0.5s;
 }
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.btn:hover span {
+  padding-right: 25px;
+}
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 @media screen and (max-width: 500px) {
   .wrapper1 {
   }
