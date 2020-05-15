@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -17,8 +18,8 @@ public class SecurityController {
     private UserRepository userRepository;
 
     @GetMapping("/login/name")
-    public User user(Principal principal) {
-        User u = userRepository.findByName(principal.getName());
+    public Optional<User> user(Principal principal) {
+        Optional<User> u = userRepository.findByName(principal.getName());
         System.out.println(u);
         return u;
     }

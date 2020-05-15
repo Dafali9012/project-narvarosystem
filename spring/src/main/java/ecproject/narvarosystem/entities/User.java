@@ -10,9 +10,11 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    private int user_id;
+
     @Column(name = "FirstName")
     private String name;
 
@@ -36,13 +38,16 @@ public class User {
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public User() {}
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 
     public User(User user) {
-        this.userId = user.userId;
         this.name = user.getName();
         this.lastName = user.getLastName();
         this.phone = user.getPhone();
@@ -53,17 +58,13 @@ public class User {
         this.roles = user.getRoles();
     }
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+
+    public int getUser_id() {
+        return user_id;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {

@@ -46,7 +46,7 @@ export default {
         "&password=" +
         encodeURIComponent(this.password);
 
-      let response = await fetch("/rest/login", {
+      let response = await fetch("/login", {
         method: "POST",
         redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

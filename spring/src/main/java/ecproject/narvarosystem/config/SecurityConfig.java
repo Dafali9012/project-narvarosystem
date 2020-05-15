@@ -5,11 +5,13 @@ import ecproject.narvarosystem.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
 @EnableJpaRepositories(basePackageClasses = UserRepository.class)
@@ -30,6 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("**/admin/**").authenticated()
+                .antMatchers(HttpMethod.GET,"/login").permitAll()
+                .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().permitAll();
@@ -42,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .cors().and()
 //                .csrf().disable()
 //                .authorizeRequests()
-////                .antMatchers(HttpMethod.GET,"/user").permitAll()
-////                .antMatchers(HttpMethod.GET,"/rest/user").permitAll()
-//                .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
+//                .antMatchers(HttpMethod.GET,"/user").permitAll()
+//                .antMatchers(HttpMethod.GET,"/rest/user").permitAll()
+//                .antMatchers(HttpMethod.POST,"/user").permitAll()
 //                .antMatchers("/user/**").authenticated()
 //                .antMatchers("user/secured/all").hasRole("ADMIN")
 //                .antMatchers("/api/").authenticated()
@@ -64,5 +68,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                        .exceptionHandling()
 //                        .accessDeniedPage("/403");
 //    }
-//
+
 }
