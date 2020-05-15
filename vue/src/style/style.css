@@ -122,6 +122,16 @@ select {
     border-bottom: 1px solid #28343a;
 }
 
+/* search / filter */
+
+.filter-window {
+    width: 30%;
+}
+
+.results-window {
+    width: 70%;
+}
+
 /* extra */
 
 body {
@@ -157,7 +167,6 @@ body {
 .menu-link {
     cursor: pointer;
 }
-
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

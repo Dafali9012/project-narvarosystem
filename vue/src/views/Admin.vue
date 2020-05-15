@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-9 d-flex">
         <NewAccount v-if="this.$store.state.contentIndex==0" />
         <NewEducation v-if="this.$store.state.contentIndex==1" />
         <NewCourse v-if="this.$store.state.contentIndex==2" />
