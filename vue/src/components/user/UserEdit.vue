@@ -1,4 +1,6 @@
 <template>
+
+  
   <div class="root d-flex flex-column container-fluid">  
     <div class="content row mt-3">
       <UserSideBar/>    
@@ -56,7 +58,12 @@
   </div>
 </template>
 
+
 <script>
+
+  
+ 
+
 
 import UserSideBar from "@/components/user/UserSideBar.vue";
 
