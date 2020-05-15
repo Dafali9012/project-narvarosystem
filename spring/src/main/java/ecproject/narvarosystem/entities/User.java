@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -35,10 +36,23 @@ public class User {
     private String password;
 
 
-    @Column(name = "RoleId")
-    private int roleId;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
+    private Set<Role> roles;
 
     public User() {}
+
+    public User(User user) {
+        this.userId = user.userId;
+        this.name = user.getName();
+        this.lastName = user.getLastName();
+        this.phone = user.getPhone();
+        this.sin = user.getSin();
+        this.address = user.getAddress();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.roles = user.getRoles();
+    }
 
     public User(String name, String password) {
         this.name = name;
@@ -110,13 +124,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public int getRoleId() {
-        return roleId;
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
 

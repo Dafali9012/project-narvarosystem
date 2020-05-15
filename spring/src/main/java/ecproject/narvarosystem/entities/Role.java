@@ -7,10 +7,11 @@ import javax.persistence.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "RoleID")
     private long RoleID;
 
-    @Column(name = "Name")
-    private String name;
+    @Column(name = "role")
+    private String role;
 
     @Column(name = "Setting1")
     private int setting1;
@@ -28,12 +29,12 @@ public class Role {
         RoleID = roleID;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getSetting1() {
