@@ -114,6 +114,7 @@ select {
 .user-sidebar {
     background-color: #28343a;
     border-top-right-radius: 15vh;
+    min-height: 100%;
 }
 
 .con-header h1 {

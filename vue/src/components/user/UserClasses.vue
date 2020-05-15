@@ -1,5 +1,5 @@
 <template>
-  <div class="user d-flex flex-column container-fluid">
+  <div class="root d-flex flex-column container-fluid">
     
     <div class="content row mt-3">
       <UserSideBar/>
