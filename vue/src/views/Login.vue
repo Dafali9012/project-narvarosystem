@@ -1,38 +1,60 @@
 <template>
-  <div class="col d-flex border-box row wrap">
-    <div class="col-lg-8 col-sm-12 wrapper1"></div>
-    <div class="col-4 wrapper2">
-      <h2>Välkommen</h2>
-      <form @submit.prevent="springLogin" class="inputs">
-        <div>
-          <input v-model="name" class="inputField" type="name" name="name" placeholder="Namn" />
-          <font-awesome-icon :icon="['fas','user']" class="fa-lg" id="icon" />
-        </div>
-        <div>
-          <input
-            v-model="password"
-            class="inputField"
-            type="password"
-            name="password"
-            placeholder="Lösenord"
-          />
-          <font-awesome-icon :icon="['fas','key']" class="fa-lg" id="icon" />
-        </div>
-        <div class="d-flex row mt-5 align-items-center justify-content-around">
-          <div class="d-flex flex-column">
-            <div class="d-flex row justify-content-center">
-              <input type="checkbox" id="remember" name="remember" />
-              <label for="remember">Kom ihåg mig</label>
+  <div class="container">
+    <div class="row">
+      <div class="col d-flex border-box row wrap">
+        <div class="col-lg-8 col-sm-12 wrapper1"></div>
+        <div class="col-4 wrapper2">
+          <h2>Välkommen</h2>
+          <form @submit.prevent="springLogin" class="inputs">
+            <div>
+              <input
+                v-model="name"
+                class="inputField"
+                type="name"
+                name="name"
+                placeholder="Namn"
+              />
+              <font-awesome-icon
+                :icon="['fas', 'user']"
+                class="fa-lg"
+                id="icon"
+              />
             </div>
-            <span class="extras">
-              <a class="redirect ml-2" href="/reset">Glömt lösenord?</a>
-            </span>
-          </div>
-          <button type="submit" class="btn btn-info border" id="submitButton">
-            <span>Logga in</span>
-          </button>
+            <div>
+              <input
+                v-model="password"
+                class="inputField"
+                type="password"
+                name="password"
+                placeholder="Lösenord"
+              />
+              <font-awesome-icon
+                :icon="['fas', 'key']"
+                class="fa-lg"
+                id="icon"
+              />
+            </div>
+            <div class="d-flex mt-5 align-items-center justify-content-around">
+              <div class="d-flex flex-column">
+                <div class="d-flex justify-content-center">
+                  <input type="checkbox" id="remember" name="remember" />
+                  <label for="remember"> Kom ihåg mig </label>
+                </div>
+                <span class="extras">
+                  <a class="redirect ml-2" href="/reset">Glömt lösenord?</a>
+                </span>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-info border"
+                id="submitButton"
+              >
+                <span>Logga in</span>
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +64,7 @@ export default {
   data() {
     return {
       name: "",
-      password: ""
+      password: "",
     };
   },
   methods: {
@@ -57,7 +79,7 @@ export default {
         method: "POST",
         redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: credentials
+        body: credentials,
       });
 
       if (response.url.includes("error")) {
@@ -67,12 +89,15 @@ export default {
         this.$router.push("/");
         console.log(this.$store.state.loggedInUser);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
+.container {
+  max-width: 100vw;
+}
 .wrap {
   padding: 0;
 }
