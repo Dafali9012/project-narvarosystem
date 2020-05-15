@@ -31,7 +31,7 @@
       <div class="results-window ml-3">
         <div class="d-flex justify-content-between bg-primary">
           <div class="d-flex align-items-center">
-            <p class="no-margin ml-3 text-cream unselectable my-2">Användare</p>
+            <p class="no-margin ml-3 text-cream unselectable my-2">Rapport</p>
           </div>
           <div class="d-flex justify-content-end align-items-center">
             <font-awesome-icon

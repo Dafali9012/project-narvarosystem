@@ -1,13 +1,13 @@
 <template>
-  <div class="user d-flex flex-column container-fluid">
+  <div class="root d-flex flex-column container-fluid">
     <div class="row">
       <div clas="col">
         <Navbar />
       </div>
     </div>
     <div class="content row mt-3">
-      <UserSideBar/>
-      
+      <UserSideBar />
+
       <div class="main col-9">
         <h1>Välkommen</h1>
       </div>
@@ -17,13 +17,11 @@
 
 
 <script>
-
 import UserSideBar from "@/components/user/UserSideBar.vue";
 
-
 export default {
-  components: {     
-    UserSideBar    
+  components: {
+    UserSideBar
   }
 };
 </script>
