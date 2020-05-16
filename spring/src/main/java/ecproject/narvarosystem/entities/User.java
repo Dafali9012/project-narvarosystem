@@ -13,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    private int UserID;
 
     @Column(name = "FirstName")
     private String name;
@@ -38,7 +38,7 @@ public class User {
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
     private Set<Role> roles;
 
     public User() {}
@@ -59,12 +59,12 @@ public class User {
     }
 
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserID() {
+        return UserID;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserID(int userID) {
+        this.UserID = userID;
     }
 
     public String getName() {
