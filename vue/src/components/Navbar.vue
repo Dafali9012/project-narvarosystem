@@ -15,11 +15,28 @@
       <router-link to="/">
         <p class="no-margin unselectable text-cream ml-5">Profil</p>
       </router-link>
+      <div v-if="this.$store.state.loggedInUser.userID"  >
+    <a href="http://localhost:8080/logout">
+          <p class="no-margin unselectable text-cream ml-5" v-on:click='logout'>Logga ut</p>
+        </a>
+    </div>
+     <div v-else>
       <router-link to="/login">
-        <p class="no-margin unselectable text-cream ml-5">Logout</p>
+        <p class="no-margin unselectable text-cream ml-5">Login</p>
       </router-link>
+       </div>
     </div>
   </div>
 </template>
 
 
+<script>
+
+export default {
+ 
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')}
+    },
+}
+</script>

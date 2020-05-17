@@ -1,7 +1,7 @@
 <template>
   <div class="admin d-flex flex-column container-fluid">
     <div class="row">
-      <Navbar />
+      <Navbar/>
     </div>
     <div class="content row mt-3">
       <div class="admin-sidebar col-3">
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+// import Navbar from "@/components/Navbar.vue";
 import NewAccount from "@/components/admin/NewAccount.vue";
 import NewEducation from "@/components/admin/NewEducation.vue";
 import NewCourse from "@/components/admin/NewCourse.vue";
@@ -87,7 +87,7 @@ import Overview from "@/components/admin/Overview.vue";
 
 export default {
   components: {
-    Navbar,
+    // Navbar,
     NewAccount,
     NewEducation,
     NewCourse,
