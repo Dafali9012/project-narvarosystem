@@ -31,10 +31,6 @@ public class Course {
     @Column(name = "Description")
     private String description;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinTable(name = "Course_Education", joinColumns = @JoinColumn(name = "CourseID"), inverseJoinColumns = @JoinColumn(name = "EdID"))
-    
-
     public String getDescription() {
         return description;
     }
