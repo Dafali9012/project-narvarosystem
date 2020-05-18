@@ -12,7 +12,7 @@
       <router-link to="/">
         <p class="no-margin unselectable text-cream ml-5">PIM</p>
       </router-link>
-      <router-link to="/">
+      <router-link to="/user">
         <p class="no-margin unselectable text-cream ml-5">Profil</p>
       </router-link>
       <div v-if="this.$store.state.loggedInUser.userID"  >

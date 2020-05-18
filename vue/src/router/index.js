@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
+import store from '@/store'
 
 
 import Admin from '@/views/Admin.vue'
@@ -26,7 +27,7 @@ import TRapport from "../components/teacher/TeacherRapport.vue"
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
     name: 'Home',
@@ -39,71 +40,90 @@ Vue.use(VueRouter)
   },  
   {
     path: '/admin',
-    name: 'Admin',
-    component: Admin
-},
-{
-    path: '/user',
-    name: 'User',
-    component: User
-  },  
-  {
-    path: '/user/edit',
-    name: 'UEdit',
-    component: UEdit
+      name: 'Admin',
+      component: Admin,
+      
   },
   {
-    path: '/user/classes',
-    name: 'UClasses',
-    component: UClasses
+      path: '/user',
+      name: 'User',
+      component: User,
+      meta:{ requiresAuth: true }
+    },  
+    {
+      path: '/user/edit',
+      name: 'UEdit',
+      component: UEdit
+    },
+    {
+      path: '/user/classes',
+      name: 'UClasses',
+      component: UClasses
 
-  },
-  {
-    path: '/user/scheme',
-    name: 'UScheme',
-    component: UScheme
-  }, 
-  {
-    path: '/teacher',
-    name: 'Teacher',
-    component: Teacher
-  },
-  {
-    path: '/teacher/edit',
-    name: 'TEdit',
-    component: TEdit
-  },
-  {
-    path: '/teacher/classes',
-    name: 'TClasses',
-    component: TClasses
-  },
-  {
-    path: '/teacher/course',
-    name: 'TCourse',
-    component: TCourse
-  }, 
-  {
-    path: '/teacher/presence',
-    name: 'TPresence',
-    component: TPresence
-  }, 
-  {
-    path: '/teacher/rapport',
-    name: 'TRapport',
-    component: TRapport
-  }, 
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  }
-]
+    },
+    {
+      path: '/user/scheme',
+      name: 'UScheme',
+      component: UScheme
+    }, 
+    {
+      path: '/teacher',
+      name: 'Teacher',
+      component: Teacher
+    },
+    {
+      path: '/teacher/edit',
+      name: 'TEdit',
+      component: TEdit
+    },
+    {
+      path: '/teacher/classes',
+      name: 'TClasses',
+      component: TClasses
+    },
+    {
+      path: '/teacher/course',
+      name: 'TCourse',
+      component: TCourse
+    }, 
+    {
+      path: '/teacher/presence',
+      name: 'TPresence',
+      component: TPresence
+    }, 
+    {
+      path: '/teacher/rapport',
+      name: 'TRapport',
+      component: TRapport
+    }, 
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    }
+  ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)){
+
+    if(store.state.logged){
+      console.log("you are logged")
+      next()
+    }
+    
+    else{
+      router.replace('/login')
+    }
+
+  } else {
+    next();
+  }
+});
 
 export default router
