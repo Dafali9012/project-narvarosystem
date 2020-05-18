@@ -1,12 +1,12 @@
 package ecproject.narvarosystem.rest;
 
 import ecproject.narvarosystem.Repository.UserRepository;
-import ecproject.narvarosystem.config.MyUserDetailsService;
 import ecproject.narvarosystem.entities.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import ecproject.narvarosystem.service.MyUserDetailsService;
 import org.apache.catalina.Authenticator;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +26,7 @@ public class UserController {
         return (List<User>) this.userRepository.findAll();
     }
     @GetMapping("{id}")
-    public Iterable<User> userById(@PathVariable long id){
+    public Iterable<User> userById(@PathVariable int id){
         return this.userRepository.findAllById(Collections.singleton(id));
     }
     @PostMapping
@@ -34,4 +34,21 @@ public class UserController {
         user.setPassword(myUserDetailsService.getEncoder().encode(user.getPassword()));
         return userRepository.save(user);
     }
+
+    @GetMapping("/all")
+    public String hello() {
+        return "Hello Youtube";
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @GetMapping("/admin/all")
+    public String securedHello() {
+        return "Secured Hello Admin";
+    }
+
+    @GetMapping("/admin/alternate")
+    public String alternate() {
+        return "alternate";
+    }
+
 }
