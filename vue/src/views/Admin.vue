@@ -1,7 +1,7 @@
 <template>
   <div class="admin d-flex flex-column container-fluid">
     <div class="row">
-      <Navbar/>
+      <Navbar></Navbar>
     </div>
     <div class="content row mt-3">
       <div class="admin-sidebar col-3">
