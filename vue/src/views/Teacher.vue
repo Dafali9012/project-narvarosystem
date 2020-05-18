@@ -1,8 +1,8 @@
 <template>
-  <div class="user d-flex flex-column container-fluid">    
+  <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <TeacherSideBar/>
-      
+      <TeacherSideBar />
+
       <div class="main col-9">
         <h1>Välkommen</h1>
       </div>
@@ -12,13 +12,11 @@
 
 
 <script>
-
 import TeacherSideBar from "@/components/teacher/TeacherSideBar.vue";
 
-
 export default {
-  components: {     
-    TeacherSideBar    
+  components: {
+    TeacherSideBar
   }
 };
 </script>

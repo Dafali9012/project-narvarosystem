@@ -1,38 +1,110 @@
 <template>
   <div class="root d-flex justify-content-center">
-    <div class="main d-flex flex-column">
-      <div class="mt-5 d-flex d-row align-items-center bg-primary" style="height:5%;width:100%">
-        <p class="no-margin ml-3 text-cream unselectable">Utbildningar</p>
+    <div class="main d-flex flex-column width-84">
+      <div class="d-flex flex-column">
+        <div class="d-flex justify-content-between bg-primary">
+          <div class="d-flex align-items-center">
+            <p class="no-margin ml-3 text-cream unselectable my-2">Utbildningar</p>
+          </div>
+          <div class="d-flex justify-content-end align-items-center">
+            <input class="form-control width-100" type="text" placeholder="Sök" />
+            <font-awesome-icon
+              :icon="['fas','plus-circle']"
+              class="align-self-center mx-3 text-cream"
+            />
+          </div>
+        </div>
+        <div class="bg-white container-fluid">
+          <div class="row">
+            <div class="col-3 d-flex">
+              <p>Namn</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-3 d-flex">
+              <p>Poäng</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-3 d-flex">
+              <p>Ansvarig</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column">
+        <div class="d-flex justify-content-between bg-primary">
+          <div class="d-flex align-items-center">
+            <p class="no-margin ml-3 text-cream unselectable my-2">Klasser</p>
+          </div>
+          <div class="d-flex justify-content-end align-items-center">
+            <input class="form-control width-100" type="text" placeholder="Sök" />
+            <font-awesome-icon
+              :icon="['fas','plus-circle']"
+              class="align-self-center mx-3 text-cream"
+            />
+          </div>
+        </div>
+        <div class="bg-white container-fluid">
+          <div class="row">
+            <div class="col-2 d-flex">
+              <p>Namn</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-2 d-flex">
+              <p>Startdatum</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-2 d-flex">
+              <p>Slutdatum</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-3 d-flex">
+              <p>Ansvarig</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column">
+        <div class="d-flex justify-content-between bg-primary">
+          <div class="d-flex align-items-center">
+            <p class="no-margin ml-3 text-cream unselectable my-2">Kurser</p>
+          </div>
+          <div class="d-flex justify-content-end align-items-center">
+            <input class="form-control width-100" type="text" placeholder="Sök" />
+            <font-awesome-icon
+              :icon="['fas','plus-circle']"
+              class="align-self-center mx-3 text-cream"
+            />
+          </div>
+        </div>
+        <div class="bg-white container-fluid">
+          <div class="row">
+            <div class="col-2 d-flex">
+              <p>Namn</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-2 d-flex">
+              <p>Poäng</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-2 d-flex">
+              <p>Startdatum</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-2 d-flex">
+              <p>Slutdatum</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+            <div class="col-3 d-flex">
+              <p>Lärare</p>
+              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.root {
-  width: 100%;
-  height: 100%;
-}
-.main {
-  width: 85%;
-  margin-top: 5%;
-  margin-left: 0%;
-}
-.line {
-  height: 0.1em;
-  width: 100%;
-  background-color: #28343a;
-}
-input,
-select {
-  width: 40%;
-  margin-left: 2%;
-  margin-right: 2%;
-}
-.full-width {
-  width: 84%;
-}
-.button-create {
-  margin-right: 8%;
-}
-</style>

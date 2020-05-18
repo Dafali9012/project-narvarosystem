@@ -19,12 +19,12 @@
           <input class="form-control" type="date" id="to" />
         </div>
         <div class="mt-4 d-flex justify-content-center">
-          <select class="form-control full-width" id="teacher" name="teacher">
+          <select class="form-control width-84" id="teacher" name="teacher">
             <option value="teacher">Lärare</option>
           </select>
         </div>
         <div class="mt-4 d-flex justify-content-center">
-          <textarea class="form-control full-width" type="text" rows="3" placeholder="Beskrivning" />
+          <textarea class="form-control width-84" type="text" rows="3" placeholder="Beskrivning" />
         </div>
         <div class="button-create mt-4 d-flex justify-content-end">
           <button v-on:click="createCourse" type="button" class="btn btn-primary">Skapa</button>

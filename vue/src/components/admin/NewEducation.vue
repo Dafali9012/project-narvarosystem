@@ -10,7 +10,7 @@
           <input class="form-control" type="number" placeholder="Poäng" />
         </div>
         <div class="mt-4 d-flex justify-content-center">
-          <textarea class="form-control full-width" type="text" rows="6" placeholder="Beskrivning" />
+          <textarea class="form-control width-84" type="text" rows="6" placeholder="Beskrivning" />
         </div>
         <div class="mt-4 d-flex unselectable">
           <label for="from" style="margin-left:9%">Från:</label>

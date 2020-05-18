@@ -60,6 +60,13 @@
           
           <input v-model="password" class="form-control" type="password" placeholder="Password" />
         </div>
+        <div
+          v-if="this.accountIndex==0"
+          class="pic-input mt-4 d-flex flex-column align-items-start"
+        >
+          <p>Användarbild:</p>
+          <input class="form-control no-margin width-100" type="file" placeholder="Bild" />
+        </div>
         <div v-if="this.accountIndex==0" class="mt-4 d-flex justify-content-center">
           <select class="form-control" id="education" name="education">
             <option value="education">Utbildning</option>
