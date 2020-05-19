@@ -19,6 +19,8 @@
     "vue": "^2.6.11",
     "vue-bootstrap4-table": "^1.1.11",
     "vue-cal": "^3.2.3",
+    "vue-excel-xlsx": "^1.0.11",
+    "vue-json-excel": "^0.2.98",
     "vue-router": "^3.1.6",
     "vuex": "^3.1.3"
   },
