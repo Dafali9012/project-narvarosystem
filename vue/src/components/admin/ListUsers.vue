@@ -43,6 +43,7 @@
 
         <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config" @on-select-row="getInfo($event)">
           </vue-bootstrap4-table>
+          <button v-on:click="deleteUSer">DELETE => {{selectedName}}</button>
         
       </div>
     </div>
@@ -59,9 +60,7 @@ export default {
    data: function() {
 
         return {
-
-          
-            
+          selectedName: "",
             columns: [
            {
               label: "Förnamn",
@@ -118,22 +117,23 @@ export default {
      
      rows:{
       get(){        
+          return this.$store.state.AllUser;
+        }
+      },
+      getUsers(){
         return this.$store.state.AllUser;
-      }
-     
       } 
     },
-
     methods: {
     getInfo($event){
-
-        console.log($event.selected_item.name)
-       
-        
-      }
-      
-    
-   }
+      this.selectedName = $event.selected_item.name;
+    },
+    deleteUSer: async function(){
+      let userToDelete = this.getUsers.find( u => u.name === this.selectedName);
+      let result = await fetch("http://localhost:8080/user/"+userToDelete.userID ,{method: 'DELETE'})
+      console.log(result)
+    }
+  }
    
   
 

@@ -39,16 +39,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/course").permitAll()
 */
-
-        http.csrf().disable();
-        http.authorizeRequests()
+        http
+                .cors()
+                .and()
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("**/admin/**").authenticated()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/user").permitAll()
                 .antMatchers(HttpMethod.GET,"/user").permitAll()
                 .antMatchers(HttpMethod.GET,"/login/**").permitAll()
                 .anyRequest().permitAll()
-
                 .and()
                 .formLogin()
                 .and()
@@ -61,35 +62,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .exceptionHandling()
                         .accessDeniedPage("/403");
     }
-
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .cors().and()
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers(HttpMethod.GET,"/user").permitAll()
-//                .antMatchers(HttpMethod.GET,"/rest/user").permitAll()
-//                .antMatchers(HttpMethod.POST,"/user").permitAll()
-//                .antMatchers("/user/**").authenticated()
-//                .antMatchers("user/secured/all").hasRole("ADMIN")
-//                .antMatchers("/api/").authenticated()
-//                .antMatchers(HttpMethod.DELETE,"/rest/user").authenticated()
-//                .antMatchers(HttpMethod.GET,"/login").permitAll()
-//                .antMatchers(HttpMethod.POST,"/login").permitAll()
-//                .antMatchers("/").permitAll()
-//                .and()
-//                .formLogin()
-//                .and()
-//                .logout()
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("http://localhost:8081")
-//                        .invalidateHttpSession(true)        // set invalidation state when logout
-//                        .deleteCookies("JSESSIONID")
-//                        .and()
-//                        .exceptionHandling()
-//                        .accessDeniedPage("/403");
-//    }
-
 }

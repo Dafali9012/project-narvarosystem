@@ -76,7 +76,13 @@ export default new Vuex.Store({
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllUsers", json);
-    }
+    },
+    // deletUser: async function({ commit }, id) {
+    //   let url = "http://localhost:8080/user";
+    //   const result = await fetch(url);
+    //   const json = await result.json();
+    //   commit("setAllUsers", json);
+    // }
   },
   modules: {
   }

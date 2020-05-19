@@ -11,6 +11,7 @@
         </div>
 
         <div class="mt-4 d-flex justify-content-center">
+<<<<<<< HEAD
           <select class="form-control" id="edu-leader">
             <option value="9">Utbildningsledare</option>
           </select>
@@ -25,6 +26,11 @@
             id="edu-desc"
           />
         </div>
+=======
+          <textarea class="form-control width-84" type="text" rows="6" placeholder="Beskrivning" />
+        </div>
+            
+>>>>>>> 4a96867b32df4778dd27ca11a350dcb415bfa678
         <div class="button-create mt-4 d-flex justify-content-end">
           <button v-on:click="createEducation" type="button" class="btn btn-primary">Skapa</button>
         </div>
