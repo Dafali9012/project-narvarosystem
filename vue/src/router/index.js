@@ -7,6 +7,7 @@ import store from '@/store'
 import Admin from '@/views/Admin.vue'
 
 
+
 //import About from '@/views/About.vue'
 import User from '@/views/User.vue'
 import Teacher from '@/views/Teacher.vue'
@@ -28,32 +29,32 @@ import TRapport from "../components/teacher/TeacherRapport.vue"
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/',
-    name: 'Navbar',
-    component: Navbar
-  },  
-  {
-    path: '/admin',
-      name: 'Admin',
-      component: Admin,
-      
-  },
-  {
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/',
+      name: 'Navbar',
+      component: Navbar
+    },  
+    {
+      path: '/admin',
+        name: 'Admin',
+        component: Admin,
+       
+    },
+    {
       path: '/user',
       name: 'User',
       component: User,
-      meta:{ requiresAuth: true }
+      meta:{ authUser: true }
     },  
     {
       path: '/user/edit',
       name: 'UEdit',
-      component: UEdit
+      component: UEdit,
     },
     {
       path: '/user/classes',
@@ -69,7 +70,7 @@ const routes = [
     {
       path: '/teacher',
       name: 'Teacher',
-      component: Teacher
+      component: Teacher,
     },
     {
       path: '/teacher/edit',
@@ -110,20 +111,35 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requiresAuth)){
+  if(to.matched.some(record => record.meta.authUser)){
 
     if(store.state.logged){
-      console.log("you are logged")
-      next()
+      
+      if(store.state.loggedInUser.roles[0].role == "ADMIN"){
+        router.push('/admin')
+      } else {
+        next();
+      }
+     
+      if(store.state.loggedInUser.roles[0].role == "TEACHER"){
+        router.push('/teacher')
+      } else {
+        next();
+      }
+
+      if(store.state.loggedInUser.roles[0].role == "STUDENT"){
+        router.push('/user')
+      } else {
+        next();
+      }
     }
     
     else{
-      router.replace('/login')
+      router.push('/login')
     }
 
   } else {
     next();
   }
 });
-
 export default router

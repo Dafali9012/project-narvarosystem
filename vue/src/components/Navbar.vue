@@ -12,7 +12,13 @@
       <router-link to="/">
         <p class="no-margin unselectable text-cream ml-5">PIM</p>
       </router-link>
-      <router-link to="/user">
+      <router-link v-if="userLogged && userRole == 'STUDENT'" to="/user">
+        <p class="no-margin unselectable text-cream ml-5">Profil</p>
+      </router-link>
+      <router-link v-if="userLogged && userRole == 'ADMIN'" to="/admin">
+        <p class="no-margin unselectable text-cream ml-5">Profil</p>
+      </router-link>
+      <router-link v-if="userLogged && userRole == 'TEACHER'" to="/teacher">
         <p class="no-margin unselectable text-cream ml-5">Profil</p>
       </router-link>
       <div v-if="this.$store.state.loggedInUser.userID"  >
@@ -38,5 +44,13 @@ export default {
     logout() {
       this.$store.dispatch('logout')}
     },
+    computed:{
+      userRole(){
+        return this.$store.state.loggedInUser.roles[0].role
+      },
+       userLogged(){
+        return this.$store.state.logged
+      }
+    }
 }
 </script>
