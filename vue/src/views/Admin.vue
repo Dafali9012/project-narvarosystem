@@ -9,7 +9,7 @@
       <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
-            src="https://cdn2.iconfinder.com/data/icons/toolbar-signs-4/512/admin_add_user_edit_delete-512.png"
+            src="https://png.pngtree.com/png-clipart/20190629/original/pngtree-vector-administration-icon-png-image_4090499.jpg"
             class="avatar rounded-circle"
           />
           <h5 class="unselectable">Du är inloggad som Admin</h5>
