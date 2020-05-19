@@ -41,7 +41,7 @@
             </div>  
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
-              <router-link class="ml-3 unselectable menu-link" to="/teacher/rapport">Rapport</router-link>
+              <router-link class="ml-3 unselectable menu-link" to="/teacher/report">Rapport</router-link>
             </div>           
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','comments']" class="align-self-center" />
