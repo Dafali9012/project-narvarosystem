@@ -23,7 +23,7 @@ import TClasses from "../components/teacher/TeacherClasses.vue"
 import TCourse from "../components/teacher/TeacherCourses.vue"
 import TEdit from "../components/teacher/TeacherEdit.vue"
 import TPresence from "../components/teacher/TeacherPresence.vue"
-import TRapport from "../components/teacher/TeacherRapport.vue"
+import TRapport from "../components/teacher/TeacherReport.vue"
 
 
 Vue.use(VueRouter)
@@ -93,7 +93,7 @@ const routes = [
       component: TPresence
     }, 
     {
-      path: '/teacher/rapport',
+      path: '/teacher/report',
       name: 'TRapport',
       component: TRapport
     }, 
