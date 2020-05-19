@@ -17,23 +17,23 @@
                 <form>
                   <div class="form-group">
                     <label for="inputname">Namn</label>
-                    <input type="text" class="form-control" v-model="inputTitle" @input="inputT" id="inputname" placeholder="Namn">
+                    <input type="text" class="form-control" v-model="inputTitle"  id="inputname" placeholder="Namn">
                   </div>
                   <div class="form-group">
                     <label for="inputstart">Start</label>
-                    <input type="text" class="form-control" v-model="inputStart" @input="inputS" id="inputstart" placeholder="Start">
+                    <input type="text" class="form-control" v-model="inputStart"  id="inputstart" placeholder="Start">
                   </div>
                   <div class="form-group">
                     <label for="inputend">Slut</label>
-                    <input type="text" class="form-control" v-model="inputEnd" @input="inputE" id="inputend" placeholder="Slut">
+                    <input type="text" class="form-control" v-model="inputEnd" id="inputend" placeholder="Slut">
                   </div>
                   <div class="form-group">
                     <label for="inputcontent">Beskrivning</label>
-                    <input type="text" class="form-control" v-model="inputContent" @input="inputCon" id="inputcontent" placeholder="Beskrivning">
+                    <input type="text" class="form-control" v-model="inputContent"  id="inputcontent" placeholder="Beskrivning">
                   </div>
                   <div class="form-group">
                     <label for="inputcourse">Kurs</label>
-                    <input type="text" class="form-control"  v-model="inputCourse" @input="inputC" id="inputcourse" placeholder="Kurs">
+                    <input type="text" class="form-control"  v-model="inputCourse" id="inputcourse" placeholder="Kurs">
                   </div>
                 </form>
                 <a class="btn btn-primary" @click="events.push({start: Istart,
@@ -105,23 +105,6 @@ export default {
       
       }, methods:{
        
-       inputS: function(){
-       return this.Istart;      
-    } , 
-    inputT: function(){
-       return this.Ititle;      
-    } , 
-    inputE: function(){
-       return this.Iend;      
-    } , 
-    inputC: function(){
-       return this.IIcourse;      
-    } , 
-    inputCon: function(){
-       return this.Icontent;      
-    } , 
-           
-        
       },
        computed: {
          inputTitle:{
