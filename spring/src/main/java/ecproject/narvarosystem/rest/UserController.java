@@ -25,6 +25,7 @@ public class UserController {
     public List<User> users(){
         return (List<User>) this.userRepository.findAll();
     }
+
     @GetMapping("{id}")
     public Iterable<User> userById(@PathVariable int id){
         return this.userRepository.findAllById(Collections.singleton(id));
