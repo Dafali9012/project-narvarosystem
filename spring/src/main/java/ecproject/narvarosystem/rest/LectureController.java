@@ -24,4 +24,9 @@ public class LectureController {
     public List<Lecture> lectures() {
         return (List<Lecture>) this.lectureRepository.findAll();
     }
+
+    @GetMapping("/user/{id}")
+    public List<Lecture> getLecturesByUserId(@PathVariable int id) {
+        return lectureRepository.findAllByUserID(id);
+    }
 }
