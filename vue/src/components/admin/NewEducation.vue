@@ -12,10 +12,7 @@
         <div class="mt-4 d-flex justify-content-center">
           <textarea class="form-control width-84" type="text" rows="6" placeholder="Beskrivning" />
         </div>
-        <div class="mt-4 d-flex unselectable">
-          <label for="from" style="margin-left:9%">Från:</label>
-          <label for="to" style="margin-left:39%">Till:</label>
-        </div>        
+            
         <div class="button-create mt-4 d-flex justify-content-end">
           <button v-on:click="createEducation" type="button" class="btn btn-primary">Skapa</button>
         </div>
