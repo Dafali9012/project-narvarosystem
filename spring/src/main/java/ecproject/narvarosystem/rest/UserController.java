@@ -25,19 +25,22 @@ public class UserController {
     public List<User> users(){
         return (List<User>) this.userRepository.findAll();
     }
+
     @GetMapping("{id}")
     public Iterable<User> userById(@PathVariable int id){
-        return this.userRepository.findAllById(Collections.singleton(id));
+        return userRepository.findAllById(Collections.singleton(id));
     }
+
+
+    @DeleteMapping("{id}")
+    public void deleteUser(@PathVariable int id) {
+        userRepository.deleteById(id);
+    }
+
     @PostMapping
     public User addUser(@RequestBody User user) {
         user.setPassword(myUserDetailsService.getEncoder().encode(user.getPassword()));
         return userRepository.save(user);
-    }
-
-    @GetMapping("/all")
-    public String hello() {
-        return "Hello Youtube";
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
