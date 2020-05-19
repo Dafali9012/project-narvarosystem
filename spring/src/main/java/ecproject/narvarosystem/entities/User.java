@@ -5,13 +5,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
+    private int UserID;
+
     @Column(name = "FirstName")
     private String name;
 
@@ -30,27 +33,38 @@ public class User {
     @Column(name = "Email")
     private String email;
 
-
     @Column(name = "Password")
     private String password;
 
 
-    @Column(name = "RoleId")
-    private int roleId;
+    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
+    private Set<Role> roles;
 
     public User() {}
-
     public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
-    public long getUserId() {
-        return userId;
+    public User(User user) {
+        this.name = user.getName();
+        this.lastName = user.getLastName();
+        this.phone = user.getPhone();
+        this.sin = user.getSin();
+        this.address = user.getAddress();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.roles = user.getRoles();
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int userID) {
+        this.UserID = userID;
     }
 
     public String getName() {
@@ -110,13 +124,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public int getRoleId() {
-        return roleId;
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
 
