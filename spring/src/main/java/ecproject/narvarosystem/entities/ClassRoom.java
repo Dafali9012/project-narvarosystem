@@ -20,6 +20,10 @@ public class ClassRoom {
 
     public ClassRoom(){}
 
+    public ClassRoom(int edID){
+        this.edID = edID;
+    }
+
     public long getClassID() {
         return ClassID;
     }
