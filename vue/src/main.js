@@ -10,10 +10,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import VueExcelXlsx from "vue-excel-xlsx";
-    
- 
-    Vue.use(VueExcelXlsx);
 
 
 import {
