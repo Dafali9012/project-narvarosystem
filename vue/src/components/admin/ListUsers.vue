@@ -40,31 +40,91 @@
             />
           </div>
         </div>
-        <div class="bg-white container-fluid">
-          <div class="row">
-            <div class="col-2 d-flex">
-              <p>Förnamn</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-2 d-flex">
-              <p>Efternamn</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-2 d-flex">
-              <p>E-post</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-2 d-flex">
-              <p>Telefon</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-2 d-flex">
-              <p>Roll</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-          </div>
-        </div>
+
+        <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config">
+          </vue-bootstrap4-table>
+        
       </div>
     </div>
   </div>
 </template>
+<script>
+
+import VueBootstrap4Table from 'vue-bootstrap4-table';
+
+export default {
+  components: {       
+    VueBootstrap4Table    
+  },
+   data: function() {
+
+        return {
+            
+            columns: [
+           {
+              label: "Förnamn",
+              name: "name",              
+              sort: true,
+              
+            },
+            {
+              label: "Efternamn",
+              name: "lastName",              
+              sort: true,
+              
+            },
+            {
+              label: "Telefon",
+              name: "phone",              
+              sort: false,
+              
+            },           
+            {
+              label: "Adress",
+              name: "address",              
+              sort: true,              
+            },
+            {
+              label: "E-post",
+              name: "email",              
+              sort: true,              
+            }
+           
+          ],
+            config: {
+                checkbox_rows: true,
+                rows_selectable: true,
+                pagination: false,
+                pagination_info: false,
+                show_refresh_button:  false,
+                    show_reset_button:  false,
+                global_search:  {                        
+                        placeholder: "Sök",
+                        visibility: true, 
+                                            
+                    },
+                card_title: "Utbildning"
+
+            }
+    }
+           
+  },
+  async created() {
+    await this.$store.dispatch("getAllusers")
+
+  },
+   computed: {
+     rows:{
+      get(){        
+        return this.$store.state.AllUser;
+      }
+    },
+   }
+  
+
+ 
+
+
+  
+};
+</script>
