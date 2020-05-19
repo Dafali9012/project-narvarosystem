@@ -13,78 +13,39 @@ export default {
    data: function() {
 
         return {
-            rows: [
-                ],
+            
             columns: [
-            {
-              label: "id",
-              name: "id",
-              filter: {
-                type: "simple",
-                placeholder: "id"
-              },
+           {
+              label: "Klass",
+              name: "classID",              
               sort: true,
-              uniqueId: true
+              
             },
             {
-              label: "First Name",
-              name: "name.first_name",
-              filter: {
-                type: "select",
-                placeholder: "Enter first name",
-                mode: "multi",
-                options:[
-                  {
-                    "name" : "Irwin",
-                    "value" : "Irwin"
-                  },
-                  {
-                    "name" : "Don",
-                    "value" : "Don"
-                  },
-                  {
-                    "name" : "Lolita Paris",
-                    "value" : "Lolita"
-                  }
-                ]
-              },
+              label: "Namn",
+              name: "name",              
               sort: true,
-              // slot_name: "my_duplicate_id_column"
+              
             },
             {
-              label: "Last Name",
-              name: "name.last_name",
-              filter: {
-                type: "simple",
-                placeholder: "Enter last name",
-                case_sensitive: true
-              },
+              label: "Startdatum",
+              name: "startDate",              
               sort: true,
+              
             },
             {
-              label: "Email",
-              name: "email",
-              filter: {
-                type: "simple",
-                placeholder: "Enter email"
-              },
+              label: "Slutdatum",
+              name: "endDate",              
               sort: true,
-              row_text_alignment: "text-left",
-              column_text_alignment: "text-left",
+              
             },
             {
-              label: "City",
-              name: "address.city",
-              sort: true
+              label: "Utbildning",
+              name: "edID",              
+              sort: true,
+              
             },
-            {
-              label: "Country",
-              name: "address.country",
-              filter: {
-                type: "simple",
-                placeholder: "Enter country"
-              },
-            },
+           
           ],
             config: {
                 checkbox_rows: true,
@@ -94,20 +55,30 @@ export default {
                 show_refresh_button:  false,
                     show_reset_button:  false,
                 global_search:  {                        
-                        visibility:  false                        
+                        placeholder: "Sök",
+                        visibility: true, 
+                                            
                     },
                 card_title: "Klasser"
+
             }
     }
            
   },
   async created() {
-    await this.$store.dispatch("getAllClasses");
-  },
+    await this.$store.dispatch("getAllClasses")
 
-   mounted() {
-         //
+  },
+   computed: {
+     rows:{
+      get(){        
+        return this.$store.state.AllClass;
+      }
+    },
    }
+  
+
+ 
 
 
   

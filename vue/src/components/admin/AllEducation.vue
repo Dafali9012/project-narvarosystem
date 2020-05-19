@@ -13,78 +13,32 @@ export default {
    data: function() {
 
         return {
-            rows: [
-                ],
+            
             columns: [
-            {
-              label: "id",
-              name: "id",
-              filter: {
-                type: "simple",
-                placeholder: "id"
-              },
+           {
+              label: "Utbildning",
+              name: "name",              
               sort: true,
-              uniqueId: true
+              
             },
             {
-              label: "First Name",
-              name: "name.first_name",
-              filter: {
-                type: "select",
-                placeholder: "Enter first name",
-                mode: "multi",
-                options:[
-                  {
-                    "name" : "Irwin",
-                    "value" : "Irwin"
-                  },
-                  {
-                    "name" : "Don",
-                    "value" : "Don"
-                  },
-                  {
-                    "name" : "Lolita Paris",
-                    "value" : "Lolita"
-                  }
-                ]
-              },
+              label: "Poäng",
+              name: "point",              
               sort: true,
-              // slot_name: "my_duplicate_id_column"
+              
             },
             {
-              label: "Last Name",
-              name: "name.last_name",
-              filter: {
-                type: "simple",
-                placeholder: "Enter last name",
-                case_sensitive: true
-              },
-              sort: true,
-            },
+              label: "Beskrivning",
+              name: "description",              
+              sort: false,
+              
+            },           
             {
-              label: "Email",
-              name: "email",
-              filter: {
-                type: "simple",
-                placeholder: "Enter email"
-              },
-              sort: true,
-              row_text_alignment: "text-left",
-              column_text_alignment: "text-left",
+              label: "Lärare",
+              name: "leaderId",              
+              sort: true,              
             },
-            {
-              label: "City",
-              name: "address.city",
-              sort: true
-            },
-            {
-              label: "Country",
-              name: "address.country",
-              filter: {
-                type: "simple",
-                placeholder: "Enter country"
-              },
-            },
+           
           ],
             config: {
                 checkbox_rows: true,
@@ -94,20 +48,30 @@ export default {
                 show_refresh_button:  false,
                     show_reset_button:  false,
                 global_search:  {                        
-                        visibility:  false                        
+                        placeholder: "Sök",
+                        visibility: true, 
+                                            
                     },
-                card_title: "Klasser"
+                card_title: "Utbildning"
+
             }
     }
            
   },
   async created() {
-    await this.$store.dispatch("getAllClasses");
-  },
+    await this.$store.dispatch("getAllEducations")
 
-   mounted() {
-         //
+  },
+   computed: {
+     rows:{
+      get(){        
+        return this.$store.state.AllEducation;
+      }
+    },
    }
+  
+
+ 
 
 
   
