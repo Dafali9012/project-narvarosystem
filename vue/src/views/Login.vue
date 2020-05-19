@@ -82,11 +82,11 @@ export default {
         body: credentials,
       });
 
-      if (response.url.includes("error")) {
+      if (response.status == 500) {
         window.confirm("Inloggningen misslyckades");
       } else {
         this.$store.dispatch("updateLoggedUser");
-        this.$router.push("/");
+        // this.$router.push("/");
         console.log(this.$store.state.loggedInUser);
       }
     },

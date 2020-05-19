@@ -43,14 +43,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("**/admin/**").authenticated()
-                .antMatchers(HttpMethod.GET,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/user").permitAll()
                 .antMatchers(HttpMethod.GET,"/user").permitAll()
+                .antMatchers(HttpMethod.GET,"/login/**").permitAll()
                 .anyRequest().permitAll()
 
                 .and()
-                .formLogin().permitAll()
+                .formLogin()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

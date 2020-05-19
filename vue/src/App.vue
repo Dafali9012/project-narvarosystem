@@ -10,7 +10,10 @@ import Navbar from "./components/Navbar.vue";
 
 export default {
   name: "app",
-  components: { Navbar }
+  components: { Navbar },
+  created(){
+    this.$store.dispatch("updateLoggedUser");
+  }
 };
 </script>
 

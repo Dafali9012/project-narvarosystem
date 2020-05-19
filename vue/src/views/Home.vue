@@ -18,6 +18,7 @@ export default {
   methods:{
     logU: function(){
       console.log(this.$store.state.loggedInUser)
+      console.log(this.$store.state.logged)
     }
   }
  }
