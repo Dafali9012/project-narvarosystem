@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config">
+        <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config" @on-select-row="getInfo($event)">
           </vue-bootstrap4-table>
         
       </div>
@@ -59,6 +59,8 @@ export default {
    data: function() {
 
         return {
+
+          
             
             columns: [
            {
@@ -103,23 +105,36 @@ export default {
                         visibility: true, 
                                             
                     },
-                card_title: "Utbildning"
+                card_title: "Alla användare"
 
             }
     }
            
   },
   async created() {
-    await this.$store.dispatch("getAllusers")
-
+    await this.$store.dispatch("getAllusers")   
   },
    computed: {
+     
      rows:{
       get(){        
         return this.$store.state.AllUser;
       }
+     
+      } 
     },
+
+    methods: {
+    getInfo($event){
+
+        console.log($event.selected_item.name)
+       
+        
+      }
+      
+    
    }
+   
   
 
  
