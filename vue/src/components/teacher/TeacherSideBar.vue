@@ -25,23 +25,23 @@
           <div class="mt-5">
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','cog']" class="align-self-center ml-1" />
-              <router-link class="ml-3 unselectable menu-link" to="/teacher/edit">Redigera information</router-link>
+              <router-link class="ml-3 unselectable menu-link" to="/teacher/:id/edit">Redigera information</router-link>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','graduation-cap']" class="align-self-center" />
-              <router-link class="ml-3 unselectable menu-link" to="/teacher/classes">Mina klasser</router-link>
+              <router-link class="ml-3 unselectable menu-link" to="/teacher/:id/classes">Mina klasser</router-link>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','book-open']" class="align-self-center" />
-              <router-link class="ml-3 unselectable menu-link" to="/teacher/course">Mina kurser</router-link>
+              <router-link class="ml-3 unselectable menu-link" to="/teacher/:id/course">Mina kurser</router-link>
             </div>
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','calendar-alt']" class="align-self-center" />
-              <router-link class="ml-3 unselectable menu-link" to="/teacher/presence">Närvaro/frånvaro</router-link>
+              <router-link class="ml-3 unselectable menu-link" to="/teacher/:id/presence">Närvaro/frånvaro</router-link>
             </div>  
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
-              <router-link class="ml-3 unselectable menu-link" to="/teacher/report">Rapport</router-link>
+              <router-link class="ml-3 unselectable menu-link" to="/teacher/:id/report">Rapport</router-link>
             </div>           
             <div class="option d-flex align-self-center">
               <font-awesome-icon :icon="['fas','comments']" class="align-self-center" />

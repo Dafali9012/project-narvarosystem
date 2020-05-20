@@ -52,18 +52,18 @@ const routes = [
       meta:{ authUser: true }
     },  
     {
-      path: '/user/edit',
+      path: '/user/:id/edit',
       name: 'UEdit',
       component: UEdit,
     },
     {
-      path: '/user/classes',
+      path: '/user/:id/classes',
       name: 'UClasses',
       component: UClasses
 
     },
     {
-      path: '/user/scheme',
+      path: '/user/:id/scheme',
       name: 'UScheme',
       component: UScheme
     }, 
@@ -73,27 +73,27 @@ const routes = [
       component: Teacher,
     },
     {
-      path: '/teacher/edit',
+      path: '/teacher/:id/edit',
       name: 'TEdit',
       component: TEdit
     },
     {
-      path: '/teacher/classes',
+      path: '/teacher/:id/classes',
       name: 'TClasses',
       component: TClasses
     },
     {
-      path: '/teacher/course',
+      path: '/teacher/:id/course',
       name: 'TCourse',
       component: TCourse
     }, 
     {
-      path: '/teacher/presence',
+      path: '/teacher/:id/presence',
       name: 'TPresence',
       component: TPresence
     }, 
     {
-      path: '/teacher/report',
+      path: '/teacher/:id/report',
       name: 'TRapport',
       component: TRapport
     }, 
@@ -122,13 +122,13 @@ router.beforeEach((to, from, next) => {
       }
      
       if(store.state.loggedInUser.roles[0].role == "TEACHER"){
-        router.push('/teacher')
+        router.push('/teacher/')
       } else {
         next();
       }
 
       if(store.state.loggedInUser.roles[0].role == "STUDENT"){
-        router.push('/user')
+        router.push('/user/')
       } else {
         next();
       }
