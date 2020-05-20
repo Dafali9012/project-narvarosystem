@@ -76,9 +76,7 @@
                 />
               </div>
             </form>
-            <a
-              class="button button-primary"
-              @click="
+            <button v-on:click="
                 events.push({
                   start: Istart,
                   end: Iend,
@@ -87,9 +85,7 @@
                   course: Icontent,
                   class: 'lec',
                 })
-              "
-              >Skapa</a
-            >
+              " type="submit" class="button button-primary"> <span> Skapa </span> </button>
           </div>
         </div>
       </div>
