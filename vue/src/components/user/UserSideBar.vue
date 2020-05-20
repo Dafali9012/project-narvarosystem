@@ -27,9 +27,9 @@
           </p>
         </div>
         <div class="col-6">
-          <p class="text-right">Daniel</p>
-          <p class="text-right">Falk</p>
-          <p class="text-right">daniel@ec.se</p>
+          <p class="text-right">{{user.name}}</p>
+          <p class="text-right">{{user.lastname}}k</p>
+          <p class="text-right">{{user.email}}</p>
           <p class="text-right">Java19</p>
           <p class="text-right">Java</p>
         </div>
@@ -61,7 +61,7 @@
 export default {
   data() {
     return {
-      user: []
+      user: this.$store.state.loggedInUser
     };
   },
 

@@ -22,8 +22,7 @@ export default {
   components: {
     UserSideBar
   },
-  mounted() {
-    console.log(this.$store.state.loggedInUser.userID);
+  mounted() {    
     this.$store.dispatch("getMyCourse", this.$store.state.loggedInUser.userID);
   }
 };

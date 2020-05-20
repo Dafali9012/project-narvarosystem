@@ -68,7 +68,7 @@ const routes = [{
     component: UScheme
   },
   {
-    path: '/teacher/:id',
+    path: '/teacher/',
     name: 'Teacher',
     component: Teacher,
   },
@@ -83,12 +83,12 @@ const routes = [{
     component: TClasses
   },
   {
-    path: '/teacher/:id/course',
+    path: '/teacher/course',
     name: 'TCourse',
     component: TCourse
   },
   {
-    path: '/teacher/:id/presence',
+    path: '/teacher/presence',
     name: 'TPresence',
     component: TPresence
   },
