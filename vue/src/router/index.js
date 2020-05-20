@@ -11,7 +11,7 @@ import Admin from '@/views/Admin.vue'
 //import About from '@/views/About.vue'
 import User from '@/views/User.vue'
 import Teacher from '@/views/Teacher.vue'
-import Login from '@/views/Login.vue'
+import fuckyou from '@/views/Logins.vue'
 
 import Navbar from "../components/Navbar.vue";
 
@@ -42,8 +42,7 @@ const routes = [
     {
       path: '/admin',
         name: 'Admin',
-        component: Admin,
-       
+        component: Admin       
     },
     {
       path: '/user/:id',
@@ -54,7 +53,7 @@ const routes = [
     {
       path: '/user/:id/edit',
       name: 'UEdit',
-      component: UEdit,
+      component: UEdit
     },
     {
       path: '/user/:id/classes',
@@ -98,9 +97,9 @@ const routes = [
       component: TRapport
     }, 
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
+      path: '/fuckyou',
+      name: 'fuckyou',
+      component: fuckyou
     }
   ]
 

@@ -60,7 +60,7 @@
 </template>
 
 <script>
-export default {
+/*export default {
   data() {
     return {
       name: "",
@@ -91,7 +91,7 @@ export default {
       }
     },
   },
-};
+};*/
 </script>
 
 <style scoped>

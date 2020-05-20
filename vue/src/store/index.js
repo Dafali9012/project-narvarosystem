@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     contentIndex: 0,
+    user: [],
     loggedInUser: {},
     AllClass:[],
     AllEducation:[],
@@ -58,6 +59,9 @@ export default new Vuex.Store({
     },
     setClassByED(state, value) {
       state.ClassByED = value;
+    },
+    setUser(state, value) {
+      state.User = value;
     },
   },
   actions: {
@@ -127,6 +131,12 @@ export default new Vuex.Store({
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setClassByED", json);
+    },
+    getUser: async function({ commit }, id){
+      let url = "http://localhost:8080/user";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setUser", json);
     },
     
     // deletUser: async function({ commit }, id) {
