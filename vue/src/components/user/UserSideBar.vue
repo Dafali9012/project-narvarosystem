@@ -10,16 +10,26 @@
 
       <div class="row mt-2 mb-2">
         <div class="col-6">
-          <p class="text-left"><strong>Förnamn:</strong></p>
-          <p class="text-left"><strong>Efternamn:</strong></p>
-          <p class="text-left"><strong>E-post:</strong></p>
-          <p class="text-left"><strong>Klass:</strong></p>
-          <p class="text-left"><strong>Utbildning:</strong></p>
+          <p class="text-left">
+            <strong>Förnamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Efternamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>E-post:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Klass:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Utbildning:</strong>
+          </p>
         </div>
         <div class="col-6">
-          <p class="text-right">Daniel</p>
-          <p class="text-right">Falk</p>
-          <p class="text-right">daniel@ec.se</p>
+          <p class="text-right">{{user.name}}</p>
+          <p class="text-right">{{user.lastName}}</p>
+          <p class="text-right">{{user.email}}</p>
           <p class="text-right">Java19</p>
           <p class="text-right">Java</p>
         </div>
@@ -65,17 +75,10 @@
 <script>
 export default {
   data() {
-      return {
-        user: []
-      };
-    },
-
-    async created() {
-      //let userres = await this.$store.dispatch('getUser', this.$route.params.id)   
-      let clas = await this.$store.dispatch('getMyCourseAsTeacher', this.$route.params.id);   
-      //this.user.push(userres)
-     console.log(clas)
-    }    
-}
-
+    return {
+      user: this.$store.state.loggedInUser
+    };
+  },
+  
+};
 </script>

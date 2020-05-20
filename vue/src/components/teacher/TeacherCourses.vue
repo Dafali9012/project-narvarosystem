@@ -25,59 +25,37 @@ export default {
   },
    data: function() {
         return {
-            rows: [{
-                    "namn" : "Java 101",
-                    "poäng" : "50",
-                    "startdatum": "2020-09-01",
-                    "slutdatum" : "2020-10-30",
-                    "klass" : "Java19",
-                    "utbildning" : "Java"
-                },
-                {
-                  "namn" : "Databas hantering",
-                    "poäng" : "100",
-                    "startdatum": "2020-11-01",
-                    "slutdatum" : "2020-12-30",
-                    "klass" : "Java19",
-                    "utbildning" : "Java"
-                   
-                },
-                {
-                  "namn" : "Projektledning",
-                    "poäng" : "50",
-                    "startdatum": "2020-01-01",
-                    "slutdatum" : "2020-01-30",
-                    "klass" : "Java20",
-                    "utbildning" : "Java"
-                    
-                }],
+           
             columns: [{
-                    label: "Namn",
-                    name: "namn",                  
-                    
-                },
-                {
-                    label: "Poäng",
-                    name: "poäng",                    
-                    
-                },
-                {
-                    label: "Startdatum",
-                    name: "startdatum",
-                   
-                },
-                {
-                    label: "Slutdatum",
-                    name: "slutdatum",                 
-                },
-                {
-                    label: "Klass",
-                    name: "klass",                 
-                },
-                {
-                    label: "Utbildning",
-                    name: "utbildning",                 
-                }
+              label: "Kurs",
+              name: "name",              
+              sort: true,
+              
+            },
+            {
+              label: "Poäng",
+              name: "point",              
+              sort: true,
+              
+            },
+            {
+              label: "Beskrivning",
+              name: "description",              
+              sort: false,
+              
+            },
+            {
+              label: "Startdatum",
+              name: "startDate",              
+              sort: true,
+              
+            },
+            {
+              label: "Slutdatum",
+              name: "endDate",              
+              sort: true,
+              
+            },            
                 
                 ],
             config: {
@@ -94,5 +72,13 @@ export default {
             }
         }
     },
+    computed: {
+    rows: {
+      get() {
+        return this.$store.state.MyCourseAsTeacher
+      }
+    }
+  }
+
 };
 </script>

@@ -17,6 +17,10 @@ import TeacherSideBar from "@/components/teacher/TeacherSideBar.vue";
 export default {
   components: {
     TeacherSideBar
+  },
+  mounted() {    
+    this.$store.dispatch("getMyCourseAsTeacher", this.$store.state.loggedInUser.userID);
+    this.$store.dispatch("getMyClassAsTeacher", this.$store.state.loggedInUser.userID);
   }
 };
 </script>
