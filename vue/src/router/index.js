@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
-import store from '@/store'
+//import store from '@/store'
 
 
 import Admin from '@/views/Admin.vue'
@@ -46,7 +46,7 @@ const routes = [
        
     },
     {
-      path: '/user',
+      path: '/user/:id',
       name: 'User',
       component: User,
       meta:{ authUser: true }
@@ -68,7 +68,7 @@ const routes = [
       component: UScheme
     }, 
     {
-      path: '/teacher',
+      path: '/teacher/:id',
       name: 'Teacher',
       component: Teacher,
     },
@@ -110,7 +110,7 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
   if(to.matched.some(record => record.meta.authUser)){
 
     if(store.state.logged){
@@ -141,5 +141,5 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-});
+});*/
 export default router
