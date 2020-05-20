@@ -15,9 +15,9 @@
               <p class="text-left"><strong>E-post:</strong></p>             
             </div>  
             <div class="col-6">
-              <p class="text-right">Daniel</p>
-              <p class="text-right">Falk</p>
-              <p class="text-right">daniel@ec.se</p>              
+              <p class="text-right">{{user.name}}</p>
+              <p class="text-right">{{user.lastName}}</p>
+              <p class="text-right">{{user.email}}</p>             
             </div>
           </div> 
           
@@ -51,3 +51,13 @@
         </div>
       </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      user: this.$store.state.loggedInUser
+    };
+  },
+  
+};
+</script>
