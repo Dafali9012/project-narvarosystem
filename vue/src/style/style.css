@@ -125,12 +125,18 @@ select {
     margin-left: 1vw;
 }
 .menu-link {
-    color: rgba#fff;
     text-decoration: none;
+    color: #fff;
 }
-
 .menu-link:visited {
     color: #fff;
+}
+.menu-link:hover { 
+    color: rgb(165, 165, 165);
+    text-decoration: none; 
+}
+a:focus { 
+    text-decoration: none; 
 }
 .button-primary {
     width: 150px;
@@ -180,6 +186,15 @@ select {
 
 .results-window {
     width: 70%;
+}
+
+.presenceLabel{
+    width: 100%;
+    text-align: left;
+    margin-left: 15px;
+}
+.calendar{
+    padding-left: 100px;
 }
 
 /* extra */

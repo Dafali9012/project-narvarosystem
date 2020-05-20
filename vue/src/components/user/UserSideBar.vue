@@ -39,19 +39,34 @@
       <div class="mt-5">
         <div class="option d-flex align-self-center">
           <font-awesome-icon :icon="['fas', 'cog']" class="align-self-center" />
-          <router-link class="ml-3 unselectable menu-link" to="/user/edit">Redigera information</router-link>
+          <router-link class="ml-3 menu-link" to="/user/:id/edit"
+            >Redigera information</router-link
+          >
         </div>
         <div class="option d-flex align-self-center">
-          <font-awesome-icon :icon="['fas', 'book-open']" class="align-self-center" />
-          <router-link class="ml-3 unselectable menu-link" to="/user/classes">Mina kurser</router-link>
+          <font-awesome-icon
+            :icon="['fas', 'book-open']"
+            class="align-self-center"
+          />
+          <router-link class="ml-3 menu-link" to="/user/:id/classes"
+            >Mina kurser</router-link
+          >
         </div>
         <div class="option d-flex align-self-center">
-          <font-awesome-icon :icon="['fas', 'calendar-alt']" class="align-self-center ml-1" />
-          <router-link class="ml-3 unselectable menu-link" to="/user/scheme">Schema</router-link>
+          <font-awesome-icon
+            :icon="['fas', 'calendar-alt']"
+            class="align-self-center ml-1"
+          />
+          <router-link class="ml-3 menu-link" to="/user/:id/scheme"
+            >Schema</router-link
+          >
         </div>
         <div class="option d-flex align-self-center">
-          <font-awesome-icon :icon="['fas', 'comments']" class="align-self-center" />
-          <p class="ml-3 unselectable menu-link">PIM</p>
+          <font-awesome-icon
+            :icon="['fas', 'comments']"
+            class="align-self-center"
+          />
+          <p class="ml-3 menu-link">PIM</p>
         </div>
       </div>
     </div>
