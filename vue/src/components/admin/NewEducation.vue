@@ -56,7 +56,7 @@ export default {
         }
       });
     },
-    setSelectedPeron(){
+    setSelectedPerson(){
      this.ecPersonal.forEach( user => {
        if(user.name == this.selectedPersonName){
          console.log(user.userID)
@@ -65,7 +65,7 @@ export default {
      })
     },
     async createEducation() {
-      this.setSelectedPeron()
+      this.setSelectedPerson()
       let newEducation = {
         name: document.getElementById("edu-name").value,
         point: parseFloat(document.getElementById("edu-points").value),
