@@ -38,7 +38,14 @@ export default {
           label: "Slutdatum",
           name: "endDate",
           sort: true
-        }
+        },
+        {
+              label: "Poäng",
+              name: "point",              
+              sort: true,
+              
+        },
+        
       ],
       config: {
         checkbox_rows: false,

@@ -64,9 +64,6 @@ export default {
       user: this.$store.state.loggedInUser
     };
   },
-
-  mounted() {
-    console.log(this.$store.state.MyCourse);
-  }
+  
 };
 </script>
