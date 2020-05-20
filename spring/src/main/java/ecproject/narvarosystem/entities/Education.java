@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long edId;
+    private long edID;
 
     @Column(name = "Name")
     private String name;
@@ -31,12 +31,12 @@ public class Education {
         this.description = description;
     }
 
-    public long getEdId() {
-        return edId;
+    public long getEdID() {
+        return edID;
     }
 
-    public void setEdId(long edId) {
-        this.edId = edId;
+    public void setEdID(long edID) {
+        this.edID = edID;
     }
 
     public String getName() {

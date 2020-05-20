@@ -49,7 +49,7 @@ export default {
         startDate:"",
         endDate:"",
         point:"",
-        edId:"",
+        edID:"",
         teacherId:"",
       }
     }
@@ -88,8 +88,8 @@ export default {
     },
     setSelectedEducation(){
       this.allEducation.forEach(education => {
-       if(education.name == this.course.edId){
-        this.course.edId = education.edId
+       if(education.name == this.course.edID){
+        this.course.edID = education.edID
       }
      })
     },

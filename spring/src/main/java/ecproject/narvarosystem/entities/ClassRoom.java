@@ -15,8 +15,10 @@ public class ClassRoom {
     private Date startDate;
     @Column(name = "EndDate")
     private Date endDate;
-    @Column(name = "EdId")
+    @Column(name = "EdID")
     private int edID;
+    @Column(name ="TeacherID")
+    private int  teacherID;
 
     public ClassRoom(){}
 
@@ -62,5 +64,13 @@ public class ClassRoom {
 
     public void setEdID(int edID) {
         this.edID = edID;
+    }
+
+    public int getTeacherID() {
+        return teacherID;
+    }
+
+    public void setTeacherID(int teacherID) {
+        this.teacherID = teacherID;
     }
 }
