@@ -16,14 +16,13 @@
                 <input
                   type="text"
                   class="form-control w-100"
-                  placeholder="Förnamn"
-                />
+                  :placeholder= "user.name"/>
               </div>
               <div class="form-group col-6">
                 <input
                   type="text"
                   class="form-control w-100"
-                  placeholder="Efternamn"
+                  :placeholder= "user.lastName"
                 />
               </div>
             </div>
@@ -33,14 +32,14 @@
                 <input
                   type="email"
                   class="form-control w-100"
-                  placeholder="E-post"
+                  :placeholder="user.email"
                 />
               </div>
               <div class="form-group col-6">
                 <input
                   type="text"
                   class="form-control w-100"
-                  placeholder="Telefonnummer"
+                  :placeholder="user.phone"
                 />
               </div>
             </div>
@@ -50,7 +49,7 @@
                 <input
                   type="text"
                   class="form-control w-100"
-                  placeholder="Personnummer"
+                  :placeholder="user.sin"
                   disabled
                 />
               </div>
@@ -58,7 +57,7 @@
                 <input
                   type="text"
                   class="form-control w-100"
-                  placeholder="Adress"
+                  :placeholder="user.address"
                 />
               </div>
             </div>
@@ -87,6 +86,11 @@ import UserSideBar from "@/components/user/UserSideBar.vue";
 export default {
   components: {
     UserSideBar,
+  },
+   data() {
+    return {
+      user: this.$store.state.loggedInUser
+    };
   },
   /*,methods: {
     updateRecord: function(index, id){
