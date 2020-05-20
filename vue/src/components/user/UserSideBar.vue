@@ -10,11 +10,21 @@
 
       <div class="row mt-2 mb-2">
         <div class="col-6">
-          <p class="text-left"><strong>Förnamn:</strong></p>
-          <p class="text-left"><strong>Efternamn:</strong></p>
-          <p class="text-left"><strong>E-post:</strong></p>
-          <p class="text-left"><strong>Klass:</strong></p>
-          <p class="text-left"><strong>Utbildning:</strong></p>
+          <p class="text-left">
+            <strong>Förnamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Efternamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>E-post:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Klass:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Utbildning:</strong>
+          </p>
         </div>
         <div class="col-6">
           <p class="text-right">Daniel</p>
@@ -29,33 +39,18 @@
       <div class="mt-5">
         <div class="option d-flex align-self-center">
           <font-awesome-icon :icon="['fas', 'cog']" class="align-self-center" />
-          <router-link class="ml-3 unselectable menu-link" to="/user/:id/edit"
-            >Redigera information</router-link
-          >
+          <router-link class="ml-3 unselectable menu-link" to="/user/:id/edit">Redigera information</router-link>
         </div>
         <div class="option d-flex align-self-center">
-          <font-awesome-icon
-            :icon="['fas', 'book-open']"
-            class="align-self-center"
-          />
-          <router-link class="ml-3 unselectable menu-link" to="/user/:id/classes"
-            >Mina kurser</router-link
-          >
+          <font-awesome-icon :icon="['fas', 'book-open']" class="align-self-center" />
+          <router-link class="ml-3 unselectable menu-link" to="/user/:id/classes">Mina kurser</router-link>
         </div>
         <div class="option d-flex align-self-center">
-          <font-awesome-icon
-            :icon="['fas', 'calendar-alt']"
-            class="align-self-center ml-1"
-          />
-          <router-link class="ml-3 unselectable menu-link" to="/user/:id/scheme"
-            >Schema</router-link
-          >
+          <font-awesome-icon :icon="['fas', 'calendar-alt']" class="align-self-center ml-1" />
+          <router-link class="ml-3 unselectable menu-link" to="/user/:id/scheme">Schema</router-link>
         </div>
         <div class="option d-flex align-self-center">
-          <font-awesome-icon
-            :icon="['fas', 'comments']"
-            class="align-self-center"
-          />
+          <font-awesome-icon :icon="['fas', 'comments']" class="align-self-center" />
           <p class="ml-3 unselectable menu-link">PIM</p>
         </div>
       </div>
@@ -65,17 +60,15 @@
 <script>
 export default {
   data() {
-      return {
-        user: []
-      };
-    },
+    return {
+      user: []
+    };
+  },
 
-    async created() {
-      //let userres = await this.$store.dispatch('getUser', this.$route.params.id)   
-      let clas = await this.$store.dispatch('getMyCourseAsTeacher', this.$route.params.id);   
-      //this.user.push(userres)
-     console.log(clas)
-    }    
-}
-
+  async created() {
+    //let userres = await this.$store.dispatch('getUser', this.$route.params.id)
+    //let clas = await this.$store.dispatch('getMyCourseAsTeacher', this.$route.params.id);
+    //this.user.push(userres)
+  }
+};
 </script>
