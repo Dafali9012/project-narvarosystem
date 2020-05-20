@@ -61,7 +61,7 @@ export default new Vuex.Store({
       state.ClassByED = value;
     },
     setUser(state, value) {
-      state.User = value;
+      state.user = value;
     },
   },
   actions: {
@@ -109,31 +109,31 @@ export default new Vuex.Store({
       commit("setMyClassAsTeacher", json);
     },
     getMyCourseAsTeacher: async function({ commit }, id){
-      let url = "http://localhost:8080/course/teacher";
+      let url = "http://localhost:8080/course/teacher/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setMyCourseAsTeacher", json);
     },
     getMyCourse: async function({ commit }, id){
-      let url = "http://localhost:8080/course/user";
+      let url = "http://localhost:8080/course/user/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setMyCourse", json);
     },
     getMyLecture: async function({ commit }, id){
-      let url = "http://localhost:8080/lecture/user";
+      let url = "http://localhost:8080/lecture/user/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setMyLecture", json);
     },
     getClassByED: async function({ commit }, id){
-      let url = "http://localhost:8080/classroom/edu";
+      let url = "http://localhost:8080/classroom/edu/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setClassByED", json);
     },
     getUser: async function({ commit }, id){
-      let url = "http://localhost:8080/user";
+      let url = "http://localhost:8080/user/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setUser", json);

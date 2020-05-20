@@ -62,3 +62,20 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+      return {
+        user: []
+      };
+    },
+
+    async created() {
+      //let userres = await this.$store.dispatch('getUser', this.$route.params.id)   
+      let clas = await this.$store.dispatch('getMyCourseAsTeacher', this.$route.params.id);   
+      //this.user.push(userres)
+     console.log(clas)
+    }    
+}
+
+</script>
