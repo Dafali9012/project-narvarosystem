@@ -39,26 +39,98 @@
           </div>
         </div>
         <div class="bg-white container-fluid">
-          <div class="row">
-            <div class="col-3 d-flex">
-              <p>Lektion</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-2 d-flex">
-              <p>Datum</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-2 d-flex">
-              <p>Status</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-            <div class="col-3 d-flex">
-              <p>Kurs</p>
-              <font-awesome-icon :icon="['fas','sort']" class="align-self-center ml-3" />
-            </div>
-          </div>
+          
+            <vue-bootstrap4-table ref="table"
+            :rows="rows"
+            :columns="columns"
+            :config="config"
+          ></vue-bootstrap4-table>
+
+          
+          
         </div>
+        <download-excel
+	class   = "btn btn-primary"
+	:data   = "rows"
+	:fields = "json_fields"
+	name    = "filename.xls">
+
+	Export
+
+</download-excel>
+        
       </div>
+      
     </div>
   </div>
 </template>
+
+<script>
+
+import VueBootstrap4Table from "vue-bootstrap4-table";
+import downloadExcel from 'vue-json-excel'
+
+export default {
+  components: {
+    downloadExcel,
+    VueBootstrap4Table
+  },
+  data: function() {
+    return {
+      json_fields: {
+            'Namn': 'namn',
+            'Kursnamn': 'course',
+            'Närvaro': 'närvaro'
+            
+        },
+      
+      rows: [
+        {
+          namn: "David Glane",
+          course: "Databas hantering",         
+          närvaro: "95%",
+         
+        },
+        {
+           namn: "Daniel ",
+          course: "Databas hantering",         
+          närvaro: "55%",
+        },
+        {
+           namn: "Hang",
+          course: "Databas hantering",         
+          närvaro: "65%",
+        },
+      ],
+      columns: [
+        {
+          label: "Namn",
+          name: "namn",
+        },
+        {
+          label: "KursNamn",
+          name: "course",
+        },
+        
+        {
+          label: "Närvaro",
+          name: "närvaro",
+        },
+        
+      ],
+      config: {
+        checkbox_rows: false,
+        rows_selectable: false,
+        pagination: false,
+        pagination_info: false,
+        show_refresh_button: false,
+        show_reset_button: false,
+        global_search: {
+          visibility: false,
+        },
+        card_title: "Mina Kurser",
+      },
+    };
+  },
+};
+</script>

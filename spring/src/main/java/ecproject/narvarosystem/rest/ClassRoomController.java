@@ -25,9 +25,14 @@ public class ClassRoomController {
         return (List<ClassRoom>) this.classRoomRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Iterable<ClassRoom> getClassroomsById(@PathVariable long id) {
         return classRoomRepository.findAllById(Collections.singleton(id));
+    }
+
+    @GetMapping("/my/{id}")
+    public Iterable<ClassRoom> getClassroomsByUserId(@PathVariable int id) {
+        return classRoomRepository.findAllByUserId(id);
     }
 
     @GetMapping("/edu/{id}")

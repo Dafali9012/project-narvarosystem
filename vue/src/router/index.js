@@ -42,8 +42,7 @@ const routes = [
     {
       path: '/admin',
         name: 'Admin',
-        component: Admin,
-       
+        component: Admin       
     },
     {
       path: '/user',
@@ -54,10 +53,10 @@ const routes = [
     {
       path: '/user/edit',
       name: 'UEdit',
-      component: UEdit,
+      component: UEdit
     },
     {
-      path: '/user/classes',
+      path: '/user/:id/classes',
       name: 'UClasses',
       component: UClasses
 
@@ -68,7 +67,7 @@ const routes = [
       component: UScheme
     }, 
     {
-      path: '/teacher',
+      path: '/teacher/:id',
       name: 'Teacher',
       component: Teacher,
     },
@@ -83,12 +82,12 @@ const routes = [
       component: TClasses
     },
     {
-      path: '/teacher/course',
+      path: '/teacher/:id/course',
       name: 'TCourse',
       component: TCourse
     }, 
     {
-      path: '/teacher/presence',
+      path: '/teacher/:id/presence',
       name: 'TPresence',
       component: TPresence
     }, 
@@ -99,7 +98,7 @@ const routes = [
     }, 
     {
       path: '/login',
-      name: 'Login',
+      name: 'login',
       component: Login
     }
   ]
@@ -122,13 +121,13 @@ router.beforeEach((to, from, next) => {
       }
      
       if(store.state.loggedInUser.roles[0].role == "TEACHER"){
-        router.push('/teacher')
+        router.push('/teacher/')
       } else {
         next();
       }
 
       if(store.state.loggedInUser.roles[0].role == "STUDENT"){
-        router.push('/user')
+        router.push('/user/')
       } else {
         next();
       }

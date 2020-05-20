@@ -17,23 +17,23 @@
                 <form>
                   <div class="form-group">
                     <label for="inputname">Namn</label>
-                    <input type="text" class="form-control" v-model="inputTitle"  id="inputname" placeholder="Namn">
+                    <input type="text" class="form-control" v-model="Ititle"  id="inputname" placeholder="Namn">
                   </div>
                   <div class="form-group">
                     <label for="inputstart">Start</label>
-                    <input type="text" class="form-control" v-model="inputStart"  id="inputstart" placeholder="Start">
+                    <input type="text" class="form-control" v-model="Istart"  id="inputstart" placeholder="Start">
                   </div>
                   <div class="form-group">
                     <label for="inputend">Slut</label>
-                    <input type="text" class="form-control" v-model="inputEnd" id="inputend" placeholder="Slut">
+                    <input type="text" class="form-control" v-model="Iend" id="inputend" placeholder="Slut">
                   </div>
                   <div class="form-group">
                     <label for="inputcontent">Beskrivning</label>
-                    <input type="text" class="form-control" v-model="inputContent"  id="inputcontent" placeholder="Beskrivning">
+                    <input type="text" class="form-control" v-model="Icontent"  id="inputcontent" placeholder="Beskrivning">
                   </div>
                   <div class="form-group">
                     <label for="inputcourse">Kurs</label>
-                    <input type="text" class="form-control"  v-model="inputCourse" id="inputcourse" placeholder="Kurs">
+                    <input type="text" class="form-control"  v-model="Icourse" id="inputcourse" placeholder="Kurs">
                   </div>
                 </form>
                 <a class="btn btn-primary" @click="events.push({start: Istart,
@@ -106,51 +106,7 @@ export default {
       }, methods:{
        
       },
-       computed: {
-         inputTitle:{
-          get(){        
-            return this.Ititle;
-          },
-          set(value){        
-            this.Ititle = value;        
-          }
-        },
-        inputStart:{
-          get(){        
-            return this.Istart;
-          },
-          set(value){        
-            this.Istart = value;        
-          }
-        },
-        inputEnd:{
-          get(){        
-            return this.Iend;
-          },
-          set(value){        
-            this.Iend = value;        
-          }
-        },
-        inputCourse:{
-          get(){        
-            return this.Icourse;
-          },
-          set(value){        
-            this.Icourse = value;        
-          }
-        },
-        inputContent:{
-          get(){        
-            return this.Icontent;
-          },
-          set(value){        
-            this.Icontent = value;        
-          }
-        },
-       }
-      
-
-    
+       
 }
 </script>
 <style>

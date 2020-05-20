@@ -22,7 +22,7 @@ public class StudentController {
         return (List<Student>) this.studentRepository.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Iterable<Student> studentById(@PathVariable long id){
         return this.studentRepository.findAllById(Collections.singleton(id));
     }

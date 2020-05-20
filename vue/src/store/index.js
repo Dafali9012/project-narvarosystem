@@ -7,11 +7,18 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     contentIndex: 0,
+    user: [],
     loggedInUser: {},
     AllClass:[],
     AllEducation:[],
     AllCourse:[],
     AllUser:[],
+    MyClassAsTeacher: [],
+    MyCourseAsTeacher: [],
+    MyCourse:   [], 
+    MyLecture: [],
+    ClassByED:[],
+
     logged: false
 
   },
@@ -37,7 +44,25 @@ export default new Vuex.Store({
     },
     setAllUsers(state, value) {
       state.AllUser = value;
-    }
+    },
+    setMyClassAsTeacher(state, value) {
+      state.MyClassAsTeacher = value;
+    },
+    setMyCourseAsTeacher(state, value) {
+      state.MyCourseAsTeacher = value;
+    },
+    setMyCourse(state, value) {
+      state.MyCourse = value;
+    },    
+    setMyLecture(state, value) {
+      state.MyLecture = value;
+    },
+    setClassByED(state, value) {
+      state.ClassByED = value;
+    },
+    setUser(state, value) {
+      state.user = value;
+    },
   },
   actions: {
     async updateLoggedUser({ commit }) {
@@ -77,6 +102,43 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setAllUsers", json);
     },
+    getMyClassAsTeacher: async function({ commit }, id){
+      let url = "http://localhost:8080/classroom/my/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyClassAsTeacher", json);
+    },
+    getMyCourseAsTeacher: async function({ commit }, id){
+      let url = "http://localhost:8080/course/teacher/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyCourseAsTeacher", json);
+    },
+    getMyCourse: async function({ commit }, id){
+      let url = "http://localhost:8080/course/user/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyCourse", json);
+    },
+    getMyLecture: async function({ commit }, id){
+      let url = "http://localhost:8080/lecture/user/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyLecture", json);
+    },
+    getClassByED: async function({ commit }, id){
+      let url = "http://localhost:8080/classroom/edu/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setClassByED", json);
+    },
+    getUser: async function({ commit }, id){
+      let url = "http://localhost:8080/user/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setUser", json);
+    },
+    
     // deletUser: async function({ commit }, id) {
     //   let url = "http://localhost:8080/user";
     //   const result = await fetch(url);

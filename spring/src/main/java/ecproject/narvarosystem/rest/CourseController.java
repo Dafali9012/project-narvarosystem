@@ -24,12 +24,15 @@ public class CourseController {
         return (List<Course>) this.courseRepository.findAll();
     }
 
-    /*
+
     @GetMapping("{id}")
     public Iterable<Course> courseByID(@PathVariable long id){
         return this.courseRepository.findAllById(Collections.singleton(id));
     }
-    */
+    @GetMapping("teacher/{id}")
+    public Iterable<Course> getByTeacherID(@PathVariable int id){
+        return this.courseRepository.findAllByTeacherId(id);
+    }
 
   @GetMapping("/user/{id}")
     public Iterable<Course> courseByUserID(@PathVariable int id) {
