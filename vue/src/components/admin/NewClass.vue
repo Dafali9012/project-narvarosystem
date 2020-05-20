@@ -27,7 +27,7 @@
           <input class="form-control" type="date" id="to" />
         </div>
         <div class="button-create mt-4 d-flex justify-content-end">
-          <button v-on:click="createClass" type="button" class="btn btn-primary">Skapa</button>
+          <button type="button" class="btn btn-primary">Skapa</button>
         </div>
       </form>
     </div>
@@ -50,9 +50,6 @@ export default {
     } 
   },
   methods: {
-    createClass() {
-      console.log("skapa klass");
-    },
     getPersonal(){
       this.getUsers.forEach(user  => {
         if(user.roles[0].roleID == 4 || user.roles[0].roleID == 3){
@@ -63,7 +60,7 @@ export default {
   },
 
   async created(){
-    await this.$store.dispatch("getAllusers")
+    // await this.$store.dispatch("getAllusers")
     this.getPersonal()
   }
 };

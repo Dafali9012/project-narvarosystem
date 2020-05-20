@@ -102,13 +102,20 @@ export default {
     ListUsers,
     Report
   },
+  computed:{
+
+  },
   methods: {
     helloWorld() {
       console.log("hello world!");
     },
     changeContent(newContentIndex) {
       this.$store.commit("changeContentIndex", newContentIndex);
-    }
+    },
+  },
+ async created(){
+    await this.$store.dispatch("getAllusers")
+    await this.$store.dispatch("getAllEducations")
   }
 };
 </script>

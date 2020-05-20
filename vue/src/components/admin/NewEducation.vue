@@ -11,8 +11,9 @@
         </div>
 
         <div class="mt-4 d-flex justify-content-center">
-          <select class="form-control" id="edu-leader">
-            <option value="9">Utbildningsledare</option>
+          <select class="form-control" id="edu-leader" v-model="selectedPersonName">
+            <option value="">Utbildningsledare</option>
+            <option v-for="ecPers in ecPersonal" :key="ecPers.id">{{ecPers.name}}</option>
           </select>
         </div>
 
@@ -35,15 +36,43 @@
 
 <script>
 export default {
+  data(){
+    return{
+      ecPersonal:[],
+      selectedPersonName:"",
+      selectedEcPersonalID: 0
+    }
+  },
+  computed:{
+  getEcPersonal(){
+      return this.$store.state.AllUser
+    }
+  },
   methods: {
+    setEcPersonal(){
+      this.getEcPersonal.forEach(user  => {
+        if(user.roles[0].roleID == 4){
+          this.ecPersonal.push(user)
+        }
+      });
+    },
+    setSelectedPeron(){
+     this.ecPersonal.forEach( user => {
+       if(user.name == this.selectedPersonName){
+         console.log(user.userID)
+         this.selectedEcPersonalID = user.userID
+      }
+     })
+    },
     async createEducation() {
+      this.setSelectedPeron()
       let newEducation = {
         name: document.getElementById("edu-name").value,
         point: parseFloat(document.getElementById("edu-points").value),
-        leaderId: parseInt(document.getElementById("edu-leader").value),
+        leaderId: this.selectedEcPersonalID,
         description: document.getElementById("edu-desc").value
       };
-
+      console.log(newEducation)
       let response = await fetch("http://localhost:8080/education", {
         method: "post",
         headers: { "Content-Type": "application/json" },
@@ -52,6 +81,9 @@ export default {
       let result = await response.json();
       console.log(result);
     }
+  },
+  created(){
+    this.setEcPersonal()
   }
 };
 </script>
