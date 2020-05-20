@@ -44,21 +44,21 @@
 
       <form @submit.prevent="createAccount()">
         <div class="mt-5 d-flex justify-content-center">
-          <input v-model="name" class="form-control" type="text" placeholder="Firstname" />
-          <input v-model="lastName" class="form-control" type="text" placeholder="Lastname" />
+          <input v-model="name" class="form-control" type="text" placeholder="Förnamn" />
+          <input v-model="lastName" class="form-control" type="text" placeholder="Efternamn" />
         </div>
         <div class="mt-4 d-flex justify-content-center">
-          <input v-model="phone" class="form-control" type="text" placeholder="Phone" />
+          <input v-model="phone" class="form-control" type="text" placeholder="Telefon" />
           <input v-model="email" class="form-control" type="text" placeholder="Email" />
          
         </div>
         <div class="mt-4 d-flex justify-content-center">
-          <input v-model="sin" class="form-control" type="text" placeholder="SIN" />
-          <input v-model="address" class="form-control" type="text" placeholder="Adress" />
+          <input v-model="sin" class="form-control" type="text" placeholder="Personnummer" />
+          <input v-model="address" class="form-control" type="text" placeholder="Address" />
         </div>
          <div class="mt-4 d-flex justify-content-center">
           
-          <input v-model="password" class="form-control" type="password" placeholder="Password" />
+          <input v-model="password" class="form-control" type="password" placeholder="Lösenord" />
         </div>
         <div
           v-if="this.accountIndex==0"
