@@ -20,7 +20,10 @@ import UserSideBar from "@/components/user/UserSideBar.vue";
 
 export default {
   components: {
-    UserSideBar,
+    UserSideBar
   },
+  mounted() {    
+    this.$store.dispatch("getMyCourse", this.$store.state.loggedInUser.userID);
+  }
 };
 </script>

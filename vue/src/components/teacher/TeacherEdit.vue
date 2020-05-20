@@ -9,42 +9,63 @@
          </div> 
 
          <div class="editform mt-5 col-12">
-         
-          
-           <form>
+          <form>
             <div class="form-row">
-              <div class="form-group col-6">      
-                <input type="text" class="form-control w-100" placeholder="Förnamn">
+              <div class="form-group col-6">
+                <input
+                  type="text"
+                  class="form-control w-100"
+                  :placeholder= "user.name"/>
               </div>
-              <div class="form-group col-6">              
-                <input type="text" class="form-control w-100"  placeholder="Efternamn">
+              <div class="form-group col-6">
+                <input
+                  type="text"
+                  class="form-control w-100"
+                  :placeholder= "user.lastName"
+                />
               </div>
             </div>
 
             <div class="form-row">
-              <div class="form-group col-6">      
-                <input type="email" class="form-control w-100" placeholder="E-post">
+              <div class="form-group col-6">
+                <input
+                  type="email"
+                  class="form-control w-100"
+                  :placeholder="user.email"
+                />
               </div>
-              <div class="form-group col-6">              
-                <input type="text" class="form-control w-100"  placeholder="Telefonnummer">
+              <div class="form-group col-6">
+                <input
+                  type="text"
+                  class="form-control w-100"
+                  :placeholder="user.phone"
+                />
               </div>
             </div>
-
 
             <div class="form-row">
-              <div class="form-group col-6">      
-                <input type="text" class="form-control w-100" placeholder="Personnummer" disabled>
+              <div class="form-group col-6">
+                <input
+                  type="text"
+                  class="form-control w-100"
+                  :placeholder="user.sin"
+                  disabled
+                />
               </div>
-              <div class="form-group col-6">              
-                <input type="text" class="form-control w-100"  placeholder="Adress">
+              <div class="form-group col-6">
+                <input
+                  type="text"
+                  class="form-control w-100"
+                  :placeholder="user.address"
+                />
               </div>
             </div>
-            
-              <div class="float-right">
-                <button class="btn btn-primary">Redigera</button>
-              </div>
 
-
+            <div class="float-right">
+              <button class="button button-primary">
+                <span> Redigera </span>
+              </button>
+            </div>
           </form>
         </div>
 
@@ -64,6 +85,11 @@ import TeacherSideBar from "@/components/teacher/TeacherSideBar.vue";
 export default {
   components: {     
     TeacherSideBar    
-  }
+  },
+  data() {
+    return {
+      user: this.$store.state.loggedInUser
+    };
+  },
 };
 </script>

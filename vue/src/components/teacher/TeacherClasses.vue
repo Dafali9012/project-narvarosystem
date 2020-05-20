@@ -25,43 +25,38 @@ export default {
   },
    data: function() {
         return {
-            rows: [{
-                    "klass" : "Java19",
-                    "utbildning" : "Java",
-                    "ansvarig" : "David Glane"                    
-                },
-                {
-                 "klass" : "Java20",
-                    "utbildning" : "Java",
-                    "ansvarig" : "David Glane"                   
-                },
-                {
-                  "klass" : "Mvt19",
-                    "utbildning" : "Mjukvarutestare",
-                    "ansvarig" : "Annika Ros"
-                    
-                },
-                {
-                  "klass" : "Mvt20",
-                    "utbildning" : "Mjukvarutestare",
-                    "ansvarig" : "Annika Ros"
-                    
-                }
-                ],
-            columns: [{
-                    label: "Klass",
-                    name: "klass",                  
-                    
-                },                
-                {
-                    label: "Utbildning",
-                    name: "Utbildning",                 
-                },
-
-                {
-                    label: "Ansvarig",
-                    name: "ansvarig",                 
-                },
+            
+            columns: [
+             {
+              label: "Klass",
+              name: "classID",              
+              sort: true,
+              
+            },
+            {
+              label: "Namn",
+              name: "name",              
+              sort: true,
+              
+            },
+            {
+              label: "Startdatum",
+              name: "startDate",              
+              sort: true,
+              
+            },
+            {
+              label: "Slutdatum",
+              name: "endDate",              
+              sort: true,
+              
+            },
+            {
+              label: "Utbildning",
+              name: "edID",              
+              sort: true,
+              
+            },
                 ],
             config: {
                 checkbox_rows: true,
@@ -77,5 +72,13 @@ export default {
             }
         }
     },
+    computed: {
+    rows: {
+      get() {
+        return this.$store.state.MyClassAsTeacher;
+      }
+    }
+  }
+
 };
 </script>

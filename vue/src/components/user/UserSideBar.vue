@@ -10,16 +10,26 @@
 
       <div class="row mt-2 mb-2">
         <div class="col-6">
-          <p class="text-left"><strong>Förnamn:</strong></p>
-          <p class="text-left"><strong>Efternamn:</strong></p>
-          <p class="text-left"><strong>E-post:</strong></p>
-          <p class="text-left"><strong>Klass:</strong></p>
-          <p class="text-left"><strong>Utbildning:</strong></p>
+          <p class="text-left">
+            <strong>Förnamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Efternamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>E-post:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Klass:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Utbildning:</strong>
+          </p>
         </div>
         <div class="col-6">
-          <p class="text-right">Daniel</p>
-          <p class="text-right">Falk</p>
-          <p class="text-right">daniel@ec.se</p>
+          <p class="text-right">{{user.name}}</p>
+          <p class="text-right">{{user.lastName}}</p>
+          <p class="text-right">{{user.email}}</p>
           <p class="text-right">Java19</p>
           <p class="text-right">Java</p>
         </div>
@@ -29,7 +39,7 @@
       <div class="mt-5">
         <div class="option d-flex align-self-center">
           <font-awesome-icon :icon="['fas', 'cog']" class="align-self-center" />
-          <router-link class="ml-3 unselectable menu-link" to="/user/:id/edit"
+          <router-link class="ml-3 menu-link" to="/user/:id/edit"
             >Redigera information</router-link
           >
         </div>
@@ -38,7 +48,7 @@
             :icon="['fas', 'book-open']"
             class="align-self-center"
           />
-          <router-link class="ml-3 unselectable menu-link" to="/user/:id/classes"
+          <router-link class="ml-3 menu-link" to="/user/:id/classes"
             >Mina kurser</router-link
           >
         </div>
@@ -47,7 +57,7 @@
             :icon="['fas', 'calendar-alt']"
             class="align-self-center ml-1"
           />
-          <router-link class="ml-3 unselectable menu-link" to="/user/:id/scheme"
+          <router-link class="ml-3 menu-link" to="/user/:id/scheme"
             >Schema</router-link
           >
         </div>
@@ -56,7 +66,7 @@
             :icon="['fas', 'comments']"
             class="align-self-center"
           />
-          <p class="ml-3 unselectable menu-link">PIM</p>
+          <p class="ml-3 menu-link">PIM</p>
         </div>
       </div>
     </div>
@@ -65,17 +75,10 @@
 <script>
 export default {
   data() {
-      return {
-        user: []
-      };
-    },
-
-    async created() {
-      //let userres = await this.$store.dispatch('getUser', this.$route.params.id)   
-      let clas = await this.$store.dispatch('getMyCourseAsTeacher', this.$route.params.id);   
-      //this.user.push(userres)
-     console.log(clas)
-    }    
-}
-
+    return {
+      user: this.$store.state.loggedInUser
+    };
+  },
+  
+};
 </script>

@@ -9,8 +9,8 @@
       <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
-            src="https://png.pngtree.com/png-clipart/20190629/original/pngtree-vector-administration-icon-png-image_4090499.jpg"
-            class="avatar rounded-circle"
+            src="https://image.flaticon.com/icons/svg/2206/2206314.svg"
+            class="avatar"
           />
           <h5 class="unselectable">Du är inloggad som Admin</h5>
           <div class="sidebar-line rounded" />
