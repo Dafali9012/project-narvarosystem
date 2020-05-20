@@ -17,11 +17,11 @@
           <input class="form-control" type="date" id="to" v-model="course.endDate"/>
         </div>
         <div class="mt-4 d-flex justify-content-center">
-          <select class="form-control width-42" id="teacher" name="teacher" v-model="course.edId">
+          <select class="form-control width-42" id="teacher" name="teacher" v-model="course.edID">
             <option value="">Utbildning</option>
             <option v-for="education in allEducation" :key="education.edID">{{education.name}}</option>
           </select>
-          <select class="form-control width-42" id="teacher" name="teacher" v-model="course.teacherId">
+          <select class="form-control width-42" id="teacher" name="teacher" v-model="course.teacherID">
             <option value="">Lärare</option>
             <option v-for="teacher in allTeachers" :key="teacher.userID">{{teacher.name}}</option>
           </select>
@@ -50,7 +50,7 @@ export default {
         endDate:"",
         point:"",
         edID:"",
-        teacherId:"",
+        teacherID:"",
       }
     }
   },
@@ -81,8 +81,8 @@ export default {
     },
     setSelectedTeacher(){
       this.allTeachers.forEach( user => {
-       if(user.name == this.course.teacherId){
-        this.course.teacherId = user.userID
+       if(user.name == this.course.teacherID){
+        this.course.teacherID = user.userID
       }
      })
     },

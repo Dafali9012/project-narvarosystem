@@ -23,10 +23,10 @@ public class Course {
     private double point;
 
     @Column(name = "EdID")
-    private int edId;
+    private int edID;
 
     @Column(name = "Teacher")
-    private int teacherId;
+    private int teacherID;
 
     @Column(name = "Description")
     private String description;
@@ -81,19 +81,19 @@ public class Course {
         this.point = point;
     }
 
-    public int getEdId() {
-        return edId;
+    public int getEdID() {
+        return edID;
     }
 
-    public void setEdId(int edId) {
-        this.edId = edId;
+    public void setEdID(int edID) {
+        this.edID = edID;
     }
 
-    public int getTeacherId() {
-        return teacherId;
+    public int getTeacherID() {
+        return teacherID;
     }
 
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
+    public void setTeacherID(int teacherID) {
+        this.teacherID = teacherID;
     }
 }

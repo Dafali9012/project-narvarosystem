@@ -31,7 +31,6 @@
           <button v-on:click="addClass" type="button" class="btn btn-primary">Skapa</button>
         </div>
       </form>
-      <button v-on:click="cons">Click</button>
     </div>
   </div>
 </template>
@@ -85,9 +84,6 @@ export default {
         this.classroom.edID = education.edID
       }
      })
-    },
-    cons(){
-      console.log(this.classroom)
     },
  async addClass(){
       this.setSelectedTeacher()
