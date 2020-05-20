@@ -28,80 +28,81 @@ import TRapport from "../components/teacher/TeacherReport.vue"
 
 Vue.use(VueRouter)
 
-const routes = [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/',
-      name: 'Navbar',
-      component: Navbar
-    },  
-    {
-      path: '/admin',
-        name: 'Admin',
-        component: Admin       
-    },
-    {
-      path: '/user',
-      name: 'User',
-      component: User,
-      meta:{ authUser: true }
-    },  
-    {
-      path: '/user/edit',
-      name: 'UEdit',
-      component: UEdit
-    },
-    {
-      path: '/user/:id/classes',
-      name: 'UClasses',
-      component: UClasses
-
-    },
-    {
-      path: '/user/scheme',
-      name: 'UScheme',
-      component: UScheme
-    }, 
-    {
-      path: '/teacher/:id',
-      name: 'Teacher',
-      component: Teacher,
-    },
-    {
-      path: '/teacher/edit',
-      name: 'TEdit',
-      component: TEdit
-    },
-    {
-      path: '/teacher/classes',
-      name: 'TClasses',
-      component: TClasses
-    },
-    {
-      path: '/teacher/:id/course',
-      name: 'TCourse',
-      component: TCourse
-    }, 
-    {
-      path: '/teacher/:id/presence',
-      name: 'TPresence',
-      component: TPresence
-    }, 
-    {
-      path: '/teacher/report',
-      name: 'TRapport',
-      component: TRapport
-    }, 
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
+const routes = [{
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/',
+    name: 'Navbar',
+    component: Navbar
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: User,
+    meta: {
+      authUser: true
     }
-  ]
+  },
+  {
+    path: '/user/edit',
+    name: 'UEdit',
+    component: UEdit
+  },
+  {
+    path: '/user/classes',
+    name: 'UClasses',
+    component: UClasses
+
+  },
+  {
+    path: '/user/scheme',
+    name: 'UScheme',
+    component: UScheme
+  },
+  {
+    path: '/teacher/:id',
+    name: 'Teacher',
+    component: Teacher,
+  },
+  {
+    path: '/teacher/edit',
+    name: 'TEdit',
+    component: TEdit
+  },
+  {
+    path: '/teacher/classes',
+    name: 'TClasses',
+    component: TClasses
+  },
+  {
+    path: '/teacher/:id/course',
+    name: 'TCourse',
+    component: TCourse
+  },
+  {
+    path: '/teacher/:id/presence',
+    name: 'TPresence',
+    component: TPresence
+  },
+  {
+    path: '/teacher/report',
+    name: 'TRapport',
+    component: TRapport
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  }
+]
 
 const router = new VueRouter({
   mode: 'history',
@@ -110,30 +111,28 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.authUser)){
+  if (to.matched.some(record => record.meta.authUser)) {
 
-    if(store.state.logged){
-      
-      if(store.state.loggedInUser.roles[0].role == "ADMIN"){
+    if (store.state.logged) {
+
+      if (store.state.loggedInUser.roles[0].role == "ADMIN") {
         router.push('/admin')
       } else {
         next();
       }
-     
-      if(store.state.loggedInUser.roles[0].role == "TEACHER"){
+
+      if (store.state.loggedInUser.roles[0].role == "TEACHER") {
         router.push('/teacher/')
       } else {
         next();
       }
 
-      if(store.state.loggedInUser.roles[0].role == "STUDENT"){
+      if (store.state.loggedInUser.roles[0].role == "STUDENT") {
         router.push('/user/')
       } else {
         next();
       }
-    }
-    
-    else{
+    } else {
       router.push('/login')
     }
 
