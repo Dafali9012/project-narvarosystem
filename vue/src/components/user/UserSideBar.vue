@@ -28,7 +28,7 @@
         </div>
         <div class="col-6">
           <p class="text-right">{{user.name}}</p>
-          <p class="text-right">{{user.lastname}}k</p>
+          <p class="text-right">{{user.lastName}}</p>
           <p class="text-right">{{user.email}}</p>
           <p class="text-right">Java19</p>
           <p class="text-right">Java</p>
