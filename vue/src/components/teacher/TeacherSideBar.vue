@@ -2,8 +2,8 @@
     <div class="user-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
-            src="https://www.fivestardestination.com/wp-content/uploads/2019/03/Just-white-square-300x300.png"
-            class="avatar rounded-circle"
+            src="https://image.flaticon.com/icons/svg/538/538899.svg"
+            class="avatar"
           />
           <h5 class="unselectable">Du är inloggad som Lärare</h5>
           <div class="line rounded" />
