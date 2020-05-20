@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
-//import store from '@/store'
+import store from '@/store'
 
 
 import Admin from '@/views/Admin.vue'
@@ -11,7 +11,7 @@ import Admin from '@/views/Admin.vue'
 //import About from '@/views/About.vue'
 import User from '@/views/User.vue'
 import Teacher from '@/views/Teacher.vue'
-import fuckyou from '@/views/Logins.vue'
+import Login from '@/views/Login.vue'
 
 import Navbar from "../components/Navbar.vue";
 
@@ -45,13 +45,13 @@ const routes = [
         component: Admin       
     },
     {
-      path: '/user/:id',
+      path: '/user',
       name: 'User',
       component: User,
       meta:{ authUser: true }
     },  
     {
-      path: '/user/:id/edit',
+      path: '/user/edit',
       name: 'UEdit',
       component: UEdit
     },
@@ -62,7 +62,7 @@ const routes = [
 
     },
     {
-      path: '/user/:id/scheme',
+      path: '/user/scheme',
       name: 'UScheme',
       component: UScheme
     }, 
@@ -72,12 +72,12 @@ const routes = [
       component: Teacher,
     },
     {
-      path: '/teacher/:id/edit',
+      path: '/teacher/edit',
       name: 'TEdit',
       component: TEdit
     },
     {
-      path: '/teacher/:id/classes',
+      path: '/teacher/classes',
       name: 'TClasses',
       component: TClasses
     },
@@ -92,14 +92,14 @@ const routes = [
       component: TPresence
     }, 
     {
-      path: '/teacher/:id/report',
+      path: '/teacher/report',
       name: 'TRapport',
       component: TRapport
     }, 
     {
-      path: '/fuckyou',
-      name: 'fuckyou',
-      component: fuckyou
+      path: '/login',
+      name: 'login',
+      component: Login
     }
   ]
 
@@ -109,7 +109,7 @@ const router = new VueRouter({
   routes
 })
 
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   if(to.matched.some(record => record.meta.authUser)){
 
     if(store.state.logged){
@@ -140,5 +140,5 @@ const router = new VueRouter({
   } else {
     next();
   }
-});*/
+});
 export default router
