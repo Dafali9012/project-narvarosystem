@@ -27,7 +27,7 @@
           <textarea class="form-control width-84" type="text" rows="3" placeholder="Beskrivning" />
         </div>
         <div class="button-create mt-4 d-flex justify-content-end">
-          <button v-on:click="createCourse" type="button" class="btn btn-primary">Skapa</button>
+          <button v-on:click="createCourse" type="button" class="button button-primary"> <span> Skapa </span> </button>
         </div>
       </form>
     </div>
