@@ -2,17 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
 
-
 import Admin from '@/views/Admin.vue'
-
-
 
 //import About from '@/views/About.vue'
 import User from '@/views/User.vue'
 import Teacher from '@/views/Teacher.vue'
 import Login from '@/views/Login.vue'
-
-import Navbar from "../components/Navbar.vue";
 
 import UClasses from "../components/user/UserClasses.vue"
 import UEdit from "../components/user/UserEdit.vue"
@@ -31,11 +26,6 @@ const routes = [{
     path: '/',
     name: 'Login',
     component: Login
-  },
-  {
-    path: '/',
-    name: 'Navbar',
-    component: Navbar
   },
   {
     path: '/admin',
@@ -116,22 +106,23 @@ router.beforeEach((to, from, next) => {
       }
 
       if (store.state.loggedInUser.roles[0].role == "TEACHER") {
-        router.push('/teacher/')
+        router.push('/teacher')
       } else {
         next();
       }
 
       if (store.state.loggedInUser.roles[0].role == "STUDENT") {
-        router.push('/user/')
+        router.push('/user')
       } else {
         next();
       }
     } else {
-      router.push('/login')
+      router.push('/')
     }
 
   } else {
     next();
   }
 });
+
 export default router

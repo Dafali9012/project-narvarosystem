@@ -165,9 +165,10 @@ h2 {
   opacity: 1;
   right: 0;
 }
-
+/*
 @media screen and (max-width: 500px) {
   .wrapper1 {
   }
 }
+*/
 </style>

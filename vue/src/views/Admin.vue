@@ -8,10 +8,7 @@
     <div class="content row mt-3">
       <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
-          <img
-            src="https://image.flaticon.com/icons/svg/2206/2206314.svg"
-            class="avatar"
-          />
+          <img src="https://image.flaticon.com/icons/svg/2206/2206314.svg" class="avatar" />
           <h5 class="unselectable">Du är inloggad som Admin</h5>
           <div class="sidebar-line rounded" />
           <div class="mt-5">
@@ -93,7 +90,6 @@ import Report from "@/components/admin/Report.vue";
 
 export default {
   components: {
-    //Navbar,
     NewAccount,
     NewEducation,
     NewCourse,
@@ -102,20 +98,18 @@ export default {
     ListUsers,
     Report
   },
-  computed:{
-
-  },
+  computed: {},
   methods: {
     helloWorld() {
       console.log("hello world!");
     },
     changeContent(newContentIndex) {
       this.$store.commit("changeContentIndex", newContentIndex);
-    },
+    }
   },
- async created(){
-    await this.$store.dispatch("getAllusers")
-    await this.$store.dispatch("getAllEducations")
+  async created() {
+    await this.$store.dispatch("getAllusers");
+    await this.$store.dispatch("getAllEducations");
   }
 };
 </script>
