@@ -13,8 +13,6 @@ import User from '@/views/User.vue'
 import Teacher from '@/views/Teacher.vue'
 import Login from '@/views/Login.vue'
 
-import Navbar from "../components/Navbar.vue";
-
 import UClasses from "../components/user/UserClasses.vue"
 import UEdit from "../components/user/UserEdit.vue"
 import UScheme from "../components/user/UserScheme.vue"
@@ -30,6 +28,7 @@ Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
+<<<<<<< Updated upstream
     name: 'Home',
     component: Home
   },
@@ -38,6 +37,11 @@ const routes = [{
     name: 'Navbar',
     component: Navbar
   },
+=======
+    name: 'Login',
+    component: Login
+  },  
+>>>>>>> Stashed changes
   {
     path: '/admin',
     name: 'Admin',
