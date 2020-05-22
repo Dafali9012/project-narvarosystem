@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
 import store from '@/store'
 
 
@@ -8,7 +7,6 @@ import Admin from '@/views/Admin.vue'
 
 
 
-//import About from '@/views/About.vue'
 import User from '@/views/User.vue'
 import Teacher from '@/views/Teacher.vue'
 import Login from '@/views/Login.vue'
@@ -28,20 +26,9 @@ Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
-<<<<<<< Updated upstream
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/',
-    name: 'Navbar',
-    component: Navbar
-  },
-=======
     name: 'Login',
     component: Login
-  },  
->>>>>>> Stashed changes
+  },
   {
     path: '/admin',
     name: 'Admin',
@@ -100,12 +87,8 @@ const routes = [{
     path: '/teacher/report',
     name: 'TRapport',
     component: TRapport
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
   }
+ 
 ]
 
 const router = new VueRouter({
