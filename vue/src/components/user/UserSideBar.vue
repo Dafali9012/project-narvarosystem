@@ -39,7 +39,7 @@
       <div class="mt-5">
         <div class="option d-flex align-self-center">
           <font-awesome-icon :icon="['fas', 'cog']" class="align-self-center" />
-          <router-link class="ml-3 menu-link" to="/user/:id/edit"
+          <router-link class="ml-3 menu-link" to="/user/edit"
             >Redigera information</router-link
           >
         </div>
@@ -48,7 +48,7 @@
             :icon="['fas', 'book-open']"
             class="align-self-center"
           />
-          <router-link class="ml-3 menu-link" to="/user/:id/classes"
+          <router-link class="ml-3 menu-link" to="/user/classes"
             >Mina kurser</router-link
           >
         </div>
@@ -57,7 +57,7 @@
             :icon="['fas', 'calendar-alt']"
             class="align-self-center ml-1"
           />
-          <router-link class="ml-3 menu-link" to="/user/:id/scheme"
+          <router-link class="ml-3 menu-link" to="/user/scheme"
             >Schema</router-link
           >
         </div>
