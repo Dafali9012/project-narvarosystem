@@ -1,23 +1,22 @@
 package ecproject.narvarosystem.entities;
 
+
 import javax.persistence.*;
 
+
 @Entity
-@Table(name ="role")
-public class Role {
+@Table(name ="city")
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-
     @Column(name = "name")
     private String name;
 
 
+    public City(){}
 
-    public Role(){};
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 

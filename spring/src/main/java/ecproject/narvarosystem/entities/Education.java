@@ -7,36 +7,28 @@ import javax.persistence.*;
 public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long edID;
+    private int id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Point")
-    private int point;
+    @Column(name = "manager_id")
+    private int manager_id;
 
-    @Column(name = "Leader")
-    private int leaderId;
-
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "city_id")
+    private int city_id;
 
     public Education(){}
 
-    public String getDescription() {
-        return description;
+    public int getId() {
+        return id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getEdID() {
-        return edID;
-    }
-
-    public void setEdID(long edID) {
-        this.edID = edID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -47,19 +39,27 @@ public class Education {
         this.name = name;
     }
 
-    public int getPoint() {
-        return point;
+    public int getManager_id() {
+        return manager_id;
     }
 
-    public void setPoint(int point) {
-        this.point = point;
+    public void setManager_id(int manager_id) {
+        this.manager_id = manager_id;
     }
 
-    public int getLeaderId() {
-        return leaderId;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLeaderId(int leaderId) {
-        this.leaderId = leaderId;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(int city_id) {
+        this.city_id = city_id;
     }
 }

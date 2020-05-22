@@ -13,98 +13,77 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int UserID;
+    private int id;
 
-    @Column(name = "FirstName")
-    private String name;
+    @Column(name = "first_name")
+    private String first_name;
 
-    @Column(name = "LastName")
-    private String lastName;
+    @Column(name = "last_name")
+    private String last_name;
 
-    @Column(name = "Phone")
-    private String phone;
+    @Column(name = "phone_number")
+    private String phone_number;
 
-    @Column(name = "SIN")
-    private String sin;
+    @Column(name = "ssn")
+    private String ssn;
 
-    @Column(name = "Address")
-    private String address;
 
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "Password")
+    @Column(name = "password")
     private String password;
 
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    /*@OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
-    private Set<Role> roles;
+    private Set<Role> roles;*/
 
     public User() {}
-    public User(String name, String password) {
-        this.name = name;
+    public User(String first_name, String password) {
+        this.first_name = first_name;
         this.password = password;
     }
 
-    public User(User user) {
-        this.name = user.getName();
-        this.lastName = user.getLastName();
-        this.phone = user.getPhone();
-        this.sin = user.getSin();
-        this.address = user.getAddress();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.roles = user.getRoles();
+
+    public int getId() {
+        return id;
     }
 
-
-    public int getUserID() {
-        return UserID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUserID(int userID) {
-        this.UserID = userID;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public String getName() {
-        return name;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getPhone_number() {
+        return phone_number;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getSsn() {
+        return ssn;
     }
 
-    public String getSin() {
-        return sin;
-    }
-
-    public void setSin(String sin) {
-        this.sin = sin;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
     }
 
     public String getEmail() {
@@ -115,22 +94,12 @@ public class User {
         this.email = email;
     }
 
-    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
-    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 }
 

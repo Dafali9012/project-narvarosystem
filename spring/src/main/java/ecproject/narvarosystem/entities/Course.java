@@ -8,45 +8,37 @@ import java.util.Date;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long CourseID;
+    private int id;
 
-    @Column(name = "CourseName")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "StartDate")
-    private Date startDate;
+    @Column(name = "date_start")
+    private Date date_start;
 
-    @Column(name = "EndDate")
-    private Date endDate;
+    @Column(name = "date_end")
+    private Date date_end;
 
-    @Column(name = "Point")
-    private double point;
+    @Column(name = "points")
+    private double points;
 
-    @Column(name = "EdID")
-    private int edID;
-
-    @Column(name = "Teacher")
-    private int teacherID;
-
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
-    public String getDescription() {
-        return description;
-    }
+    @Column(name = "education_id")
+    private int education_id;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @Column(name = "teacher_id")
+    private int teacher_id;
 
     public Course(){}
 
-    public long getCourseID() {
-        return CourseID;
+    public int getId() {
+        return id;
     }
 
-    public void setCourseID(long courseID) {
-        CourseID = courseID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -57,43 +49,51 @@ public class Course {
         this.name = name;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getDate_start() {
+        return date_start;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setDate_start(Date date_start) {
+        this.date_start = date_start;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getDate_end() {
+        return date_end;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setDate_end(Date date_end) {
+        this.date_end = date_end;
     }
 
-    public double getPoint() {
-        return point;
+    public double getPoints() {
+        return points;
     }
 
-    public void setPoint(double point) {
-        this.point = point;
+    public void setPoints(double points) {
+        this.points = points;
     }
 
-    public int getEdID() {
-        return edID;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEdID(int edID) {
-        this.edID = edID;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getTeacherID() {
-        return teacherID;
+    public int getEducation_id() {
+        return education_id;
     }
 
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
+    public void setEducation_id(int education_id) {
+        this.education_id = education_id;
+    }
+
+    public int getTeacher_id() {
+        return teacher_id;
+    }
+
+    public void setTeacher_id(int teacher_id) {
+        this.teacher_id = teacher_id;
     }
 }

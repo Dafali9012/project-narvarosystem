@@ -1,76 +1,32 @@
 package ecproject.narvarosystem.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+
 
 @Entity
-@Table(name ="class")
+@Table(name ="classroom")
 public class ClassRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ClassID;
-    @Column(name = "Name")
-    private String name;
-    @Column(name = "StartDate")
-    private Date startDate;
-    @Column(name = "EndDate")
-    private Date endDate;
-    @Column(name = "EdID")
-    private int edID;
-    @Column(name ="TeacherID")
-    private int  teacherID;
+    private int id;
+    @Column(name = "class_id")
+    private int class_id;
 
     public ClassRoom(){}
 
-    public ClassRoom(int edID){
-        this.edID = edID;
+    public int getId() {
+        return id;
     }
 
-    public long getClassID() {
-        return ClassID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setClassID(long classID) {
-        ClassID = classID;
+    public int getClass_id() {
+        return class_id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getEdID() {
-        return edID;
-    }
-
-    public void setEdID(int edID) {
-        this.edID = edID;
-    }
-
-    public int getTeacherID() {
-        return teacherID;
-    }
-
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
+    public void setClass_id(int class_id) {
+        this.class_id = class_id;
     }
 }

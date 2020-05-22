@@ -5,50 +5,40 @@ import javax.persistence.*;
 @Entity
 @Table(name = "attendance")
 public class Attendance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long attendanceID;
 
-    @Column(name = "Status")
-    private String status;
 
-    @Column(name = "StudentID")
-    private int studentId;
+    @Column(name = "present")
+    private Boolean present;
 
-    @Column(name = "LectureID")
-    private int lectureID;
+    @Column(name = "lecture_id")
+    private int lecture_id;
+
+    @Column(name = "student_id")
+    private int student_id;
 
     public Attendance(){}
 
-    public long getAttendanceID() {
-        return attendanceID;
+    public Boolean getPresent() {
+        return present;
     }
 
-    public void setAttendanceID(long attendanceID) {
-        this.attendanceID = attendanceID;
+    public void setPresent(Boolean present) {
+        this.present = present;
     }
 
-    public String getStatus() {
-        return status;
+    public int getLecture_id() {
+        return lecture_id;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setLecture_id(int lecture_id) {
+        this.lecture_id = lecture_id;
     }
 
-    public int getStudentId() {
-        return studentId;
+    public int getStudent_id() {
+        return student_id;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    public int getLectureID() {
-        return lectureID;
-    }
-
-    public void setLectureID(int lectureID) {
-        this.lectureID = lectureID;
+    public void setStudent_id(int student_id) {
+        this.student_id = student_id;
     }
 }

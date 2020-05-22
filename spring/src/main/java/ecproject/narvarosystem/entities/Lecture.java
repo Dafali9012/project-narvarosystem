@@ -8,22 +8,22 @@ import java.util.Date;
 public class Lecture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long lectureID;
+    private int id;
 
-    @Column(name = "Date")
+    @Column(name = "date")
     private Date date;
 
-    @Column(name = "CourseID")
-    private int courseId;
+    @Column(name = "course_id")
+    private int course_id;
 
     public Lecture(){}
 
-    public long getLectureID() {
-        return lectureID;
+    public int getId() {
+        return id;
     }
 
-    public void setLectureID(long lectureID) {
-        this.lectureID = lectureID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -34,11 +34,11 @@ public class Lecture {
         this.date = date;
     }
 
-    public int getCourseId() {
-        return courseId;
+    public int getCourse_id() {
+        return course_id;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setCourse_id(int course_id) {
+        this.course_id = course_id;
     }
 }
