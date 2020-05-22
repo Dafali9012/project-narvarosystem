@@ -76,6 +76,7 @@
         <Overview v-if="this.$store.state.contentIndex==4" />
         <ListUsers v-if="this.$store.state.contentIndex==5" />
         <Report v-if="this.$store.state.contentIndex==6" />
+        <pim v-if="this.$store.state.contentIndex==7"/>
       </div>
     </div>
   </div>
@@ -90,6 +91,7 @@ import NewClass from "@/components/admin/NewClass.vue";
 import Overview from "@/components/admin/Overview.vue";
 import ListUsers from "@/components/admin/ListUsers.vue";
 import Report from "@/components/admin/Report.vue";
+import Pim from '../components/PimMessage.vue'
 
 export default {
   components: {
@@ -100,7 +102,8 @@ export default {
     NewClass,
     Overview,
     ListUsers,
-    Report
+    Report,
+    Pim
   },
   computed:{
 

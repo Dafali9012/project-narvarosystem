@@ -24,6 +24,7 @@ import TCourse from "../components/teacher/TeacherCourses.vue"
 import TEdit from "../components/teacher/TeacherEdit.vue"
 import TPresence from "../components/teacher/TeacherPresence.vue"
 import TRapport from "../components/teacher/TeacherReport.vue"
+import Pim from '../views/Pim.vue'
 
 
 Vue.use(VueRouter)
@@ -32,6 +33,11 @@ const routes = [{
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/pim',
+    name: 'Pim',
+    component: Pim
   },
   {
     path: '/',

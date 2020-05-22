@@ -18,7 +18,7 @@ export default new Vuex.Store({
     MyCourse:   [], 
     MyLecture: [],
     ClassByED:[],
-
+    Messages:[],
     logged: false
 
   },
@@ -63,6 +63,9 @@ export default new Vuex.Store({
     setUser(state, value) {
       state.user = value;
     },
+    setMessage(state , value){
+      state.Messages = value;
+    }
   },
   actions: {
     async updateLoggedUser({ commit }) {
@@ -137,6 +140,12 @@ export default new Vuex.Store({
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setUser", json);
+    },
+    getMessage: async function({ commit }){
+      let url = "http://localhost:8080/message";
+      const result = await fetch(url);
+      const json = await result.json();
+      commit("setMessage", json);
     },
     
     // deletUser: async function({ commit }, id) {
