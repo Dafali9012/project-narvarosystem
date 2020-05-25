@@ -19,7 +19,7 @@ public class SecurityController {
 
     @GetMapping("/login/name")
     public Optional<User> user(Principal principal) {
-        Optional<User> u = userRepository.findByName(principal.getName());
+        Optional<User> u = userRepository.findByFirstName(principal.getName());
         System.out.println(u);
         return u;
     }

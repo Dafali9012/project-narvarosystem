@@ -10,8 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ClassRoomRepository extends CrudRepository<ClassRoom, Long> {
-    ClassRoom findByName(String name);
-    List<ClassRoom> findAllByName(String name);
     List<ClassRoom> findAll();
 
     @Query(value = "SELECT * FROM class GROUP BY :edId",

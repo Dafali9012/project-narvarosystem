@@ -11,9 +11,11 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 //    User findByName(String name);
-    List<User> findAllByName(String name);
+    @Query(value="SELECT * FROM user WHERE first_name = :firstName", nativeQuery=true)
+    List<User> findAllByFirstName(String firstName);
     List<User> findAll();
-    Optional<User> findByName(String name);
+    @Query(value="SELECT TOP 1 * FROM user WHERE first_name = :firstName", nativeQuery=true)
+    Optional<User> findByFirstName(String firstName);
 /*
     @Query("SELECT ")
     List<User> findAllByRoleID(int roleId);

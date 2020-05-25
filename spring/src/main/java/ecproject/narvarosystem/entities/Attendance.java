@@ -1,10 +1,12 @@
 package ecproject.narvarosystem.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
+@IdClass(Attendance.class)
 @Table(name = "attendance")
-public class Attendance {
+public class Attendance implements Serializable {
 
     @Column(name = "present")
     private Boolean present;

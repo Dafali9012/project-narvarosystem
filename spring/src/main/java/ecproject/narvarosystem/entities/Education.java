@@ -18,8 +18,13 @@ public class Education {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "manager_id")
+    private int manager_id;
+
+    /*
     @OneToMany(mappedBy = "ec_personnel")
     private Set<ECpersonnel> eCpersonnels;
+    */
 
     @Column(name = "description")
     private String description;
@@ -29,9 +34,11 @@ public class Education {
             cascade = CascadeType.ALL)
     private Set<City> cities;
 
+    /*
     public Set<ECpersonnel> geteCpersonnels() {
         return eCpersonnels;
     }
+    */
 
     public int getId() {
         return id;

@@ -1,13 +1,11 @@
 package ecproject.narvarosystem.entities;
 
-
-
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "consult")
-public class Consult {
+public class Consult implements Serializable {
 
     public Consult(){}
 

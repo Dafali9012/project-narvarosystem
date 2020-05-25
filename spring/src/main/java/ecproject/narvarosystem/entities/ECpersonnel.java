@@ -2,10 +2,11 @@ package ecproject.narvarosystem.entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ec_personnel")
-public class ECpersonnel {
+public class ECpersonnel implements Serializable {
 
     public ECpersonnel(){}
 
