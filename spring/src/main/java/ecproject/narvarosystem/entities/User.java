@@ -57,7 +57,7 @@ public class User {
     }*/
 
 
-    public User() {}
+    //public User() {}
 
     public User(User user) {
         this.first_name = user.getFirst_name();
