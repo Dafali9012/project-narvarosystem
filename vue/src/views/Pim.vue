@@ -1,43 +1,48 @@
 <template>
     <div class="mt-5">
-        <div class="mt-6 d-flex justify-content-center">
-          <select class="form-control width-42" id="user" name="User" v-model="receiverUser">
-            <option  value="" disabled selected>User</option>
-            <option v-for="user in allUsers" :key="user.userID">{{user.name}}</option>
-          </select>
-        </div>
-        <button v-on:click="cons" class="mt-5" >Click</button>
-        <div class="mt-4 d-flex justify-content-center">
-          <input
-            class="form-control width-84"
-            type="text"
-            rows="1"
-            placeholder="Subject"
-            id="edu-desc"
-            v-model="message.subject"
-          />
-        </div>
-        <div class="mt-4 d-flex justify-content-center">
-          <textarea
-            class="form-control width-84"
-            type="text"
-            rows="6"
-            placeholder="Message"
-            id="edu-desc"
-            v-model="message.message"
-          />
-        </div>
-        <div class="container d-flex justify-content-end">
-            <button v-on:click="send">send</button>            
-        </div>
-        <div class="container">
-            <div class="row">
-                <ul>
-                    <li v-for="message in userReceivedMessages" :key="message.id">{{message.message}}</li>
-                    <li v-for="message in userReceivedMessages" :key="message.id">{{message.subject}}</li>
-                </ul>
-            </div>
-        </div>
+      <div class="row">
+          <div class="col">
+                <div class="mt-6 d-flex justify-content-center">
+                    <select class="form-control width-42" id="user" name="User" v-model="receiverUser">
+                        <option  value="" disabled selected>User</option>
+                        <option v-for="user in allUsers" :key="user.userID">{{user.name}}</option>
+                    </select>
+                </div>
+                <button v-on:click="cons" class="mt-5" >Click</button>
+                <div class="mt-4 d-flex justify-content-center">
+                <input
+                    class="form-control width-84"
+                    type="text"
+                    rows="1"
+                    placeholder="Subject"
+                    id="edu-desc"
+                    v-model="message.subject"
+                />
+                </div>
+                <div class="mt-4 d-flex justify-content-center">
+                <textarea
+                    class="form-control width-84"
+                    type="text"
+                    rows="6"
+                    placeholder="Message"
+                    id="edu-desc"
+                    v-model="message.message"
+                />
+                </div>
+                <div class="container d-flex justify-content-end">
+                    <button v-on:click="send">send</button>            
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <ul>
+                            <li v-for="message in userReceivedMessages" :key="message.id">{{message.message}}</li>
+                            <li v-for="message in userReceivedMessages" :key="message.id">{{message.subject}}</li>
+                        </ul>
+                    </div>
+                </div>
+          </div>
+          <div class="col"></div>
+      </div>
     </div>
 </template>
 

@@ -119,6 +119,8 @@ export default {
  async created(){
     await this.$store.dispatch("getAllusers")
     await this.$store.dispatch("getAllEducations")
+    await this.$store.dispatch('getMessage')
+    await this.$store.dispatch("getAllusers")
   }
 };
 </script>
