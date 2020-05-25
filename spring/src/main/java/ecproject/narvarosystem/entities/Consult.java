@@ -7,7 +7,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = 'consult')
+@Table(name = "consult")
 public class Consult {
 
     @OneToOne(optional = false)
