@@ -7,8 +7,7 @@ import javax.persistence.*;
 public class Student {
 
 
-    @Column(name = "user_id")
-    private int user_id;
+
 
     @Column(name = "class_id")
     private int class_id;
@@ -16,15 +15,18 @@ public class Student {
     @Column(name = "picture")
     private String picture;
 
-    public Student() { }
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
-    public int getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
+
 
     public int getClass_id() {
         return class_id;

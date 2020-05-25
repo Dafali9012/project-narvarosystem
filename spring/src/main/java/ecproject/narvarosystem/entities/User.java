@@ -38,6 +38,11 @@ public class User {
 
 
 
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private Student student;
+
     @OneToOne(mappedBy = "user")
     @JsonIgnore
     private ECpersonnel eCpersonnel;
@@ -113,6 +118,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public Consult getConsult() {
         return consult;
@@ -128,14 +140,14 @@ public class User {
     public void seteCpersonnel(ECpersonnel eCpersonnel) {
         this.eCpersonnel = eCpersonnel;
     }
-
-    public Role getRole() {
-        return role;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setStudent(Student student) {
+        this.student = student;
     }
+
 }
 
 
