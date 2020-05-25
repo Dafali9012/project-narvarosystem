@@ -1,6 +1,9 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "education")
@@ -18,10 +21,12 @@ public class Education {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "city_id")
-    private int city_id;
 
-    public Education(){}
+    @JsonIgnore
+    @OneToMany(mappedBy = "education",
+            cascade = CascadeType.ALL)
+    private Set<City> cities;
+
 
     public int getId() {
         return id;
@@ -55,11 +60,8 @@ public class Education {
         this.description = description;
     }
 
-    public int getCity_id() {
-        return city_id;
-    }
+    public void setBookings(Set<City> cities) {
+        this.cities = cities;
 
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
     }
 }

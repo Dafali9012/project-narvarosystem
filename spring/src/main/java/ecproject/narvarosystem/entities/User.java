@@ -1,6 +1,8 @@
 package ecproject.narvarosystem.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -29,6 +31,21 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private Consult consult;
+
+
+
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private Student student;
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private ECpersonnel eCpersonnel;
 
 
     /*@OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
@@ -101,7 +118,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
     public Role getRole() {
         return role;
     }
@@ -109,6 +125,29 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    public Consult getConsult() {
+        return consult;
+    }
+
+    public void setConsult(Consult consult) {
+        this.consult = consult;
+    }
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
+    }
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
 }
 
 
