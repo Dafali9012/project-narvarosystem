@@ -12,6 +12,8 @@ import javax.persistence.Table;
 @Table(name = "consult")
 public class Consult {
 
+    public Consult(){}
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

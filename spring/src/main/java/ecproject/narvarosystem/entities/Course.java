@@ -6,6 +6,9 @@ import java.util.Date;
 @Entity
 @Table(name = "course")
 public class Course {
+
+    public Course(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,8 +33,6 @@ public class Course {
 
     @Column(name = "teacher_id")
     private int teacher_id;
-
-    public Course(){}
 
     public int getId() {
         return id;

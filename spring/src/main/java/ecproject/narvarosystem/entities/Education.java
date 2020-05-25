@@ -8,6 +8,9 @@ import java.util.Set;
 @Entity
 @Table(name = "education")
 public class Education {
+
+    public Education(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

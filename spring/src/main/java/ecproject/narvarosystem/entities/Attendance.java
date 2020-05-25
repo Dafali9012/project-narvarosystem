@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "attendance")
 public class Attendance {
 
+    public Attendance(){}
+
     @Column(name = "present")
     private Boolean present;
 
@@ -14,9 +16,6 @@ public class Attendance {
 
     @Column(name = "student_id")
     private int student_id;
-
-
-    public Attendance(){}
 
     public Boolean getPresent() {
         return present;

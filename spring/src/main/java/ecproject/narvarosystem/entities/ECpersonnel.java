@@ -7,6 +7,9 @@ import javax.persistence.*;
 @Table(name = "ec_personnel")
 public class ECpersonnel {
 
+
+    public ECpersonnel(){}
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
