@@ -17,20 +17,22 @@ public class Education {
 
     @Column(name = "name")
     private String name;
+    @Column(name = "description")
+    private String description;
+
+    @OneToMany(mappedBy = "class")
+    private Set<Class> classes;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
     private ECpersonnel eCpersonnel;
 
-    @OneToMany(mappedBy = "class")
-    private Set<Class> classes;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
+    private City city;
 
-    @Column(name = "description")
-    private String description;
-
-    @OneToMany(mappedBy = "education",
-            cascade = CascadeType.ALL)
-    private Set<City> cities;
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<Course> courses;
 
     public int getId() {
         return id;
@@ -72,11 +74,19 @@ public class Education {
         this.description = description;
     }
 
-    public Set<City> getCities() {
-        return cities;
+    public Set<Course> getCourses() {
+        return courses;
     }
 
-    public void setCities(Set<City> cities) {
-        this.cities = cities;
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }

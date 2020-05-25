@@ -2,6 +2,7 @@ package ecproject.narvarosystem.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -28,11 +29,16 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "education_id")
-    private int education_id;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "education_id", referencedColumnName = "id", nullable = false)
+    private Education education;
 
-    @Column(name = "teacher_id")
-    private int teacher_id;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "teacher_id", referencedColumnName = "user_id", nullable = false)
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
+    private Set<Lecture> lectures;
 
     public int getId() {
         return id;
@@ -82,19 +88,27 @@ public class Course {
         this.description = description;
     }
 
-    public int getEducation_id() {
-        return education_id;
+    public Education getEducation() {
+        return education;
     }
 
-    public void setEducation_id(int education_id) {
-        this.education_id = education_id;
+    public void setEducation(Education education) {
+        this.education = education;
     }
 
-    public int getTeacher_id() {
-        return teacher_id;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setTeacher_id(int teacher_id) {
-        this.teacher_id = teacher_id;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Set<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(Set<Lecture> lectures) {
+        this.lectures = lectures;
     }
 }

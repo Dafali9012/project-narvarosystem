@@ -2,6 +2,7 @@ package ecproject.narvarosystem.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "lecture")
@@ -16,8 +17,12 @@ public class Lecture {
     @Column(name = "date")
     private Date date;
 
-    @Column(name = "course_id")
-    private int course_id;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
+    private Course course;
+
+    @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
+    private Set<Attendance> attendances;
 
     public int getId() {
         return id;
@@ -35,11 +40,18 @@ public class Lecture {
         this.date = date;
     }
 
-    public int getCourse_id() {
-        return course_id;
+    public Course getCourse() {
+        return course;    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
+    public Set<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(Set<Attendance> attendances) {
+        this.attendances = attendances;
     }
 }
