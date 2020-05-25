@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Student")
-public class Student implements Serializable {
+public class Student {
 
     public Student(){}
 

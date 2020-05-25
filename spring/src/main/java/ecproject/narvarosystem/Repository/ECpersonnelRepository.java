@@ -1,4 +1,4 @@
 package ecproject.narvarosystem.Repository;
 
-public class ECpersonnelRepository {
+public interface ECpersonnelRepository {
 }

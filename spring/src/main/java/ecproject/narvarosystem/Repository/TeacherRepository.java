@@ -1,4 +1,4 @@
 package ecproject.narvarosystem.Repository;
 
-public class TeacherRepository {
+public interface TeacherRepository {
 }
