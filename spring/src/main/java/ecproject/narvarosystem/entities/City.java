@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Entity
 @Table(name ="city")
 public class City {
+
+    public City(){}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,6 +34,10 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Education getEducation() {
+        return education;
     }
 
     public void setEducation(Education education) {

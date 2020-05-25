@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
+    public User(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,7 +26,6 @@ public class User {
 
     @Column(name = "ssn")
     private String ssn;
-
 
     @Column(name = "email")
     private String email;
@@ -131,7 +132,7 @@ public class User {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRoles(Role roles) {
         this.role = role;
     }
 

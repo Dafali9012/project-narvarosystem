@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "attendance")
 public class Attendance {
 
-
     @Column(name = "present")
     private Boolean present;
 

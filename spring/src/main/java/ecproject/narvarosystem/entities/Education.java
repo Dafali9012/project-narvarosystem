@@ -8,6 +8,9 @@ import java.util.Set;
 @Entity
 @Table(name = "education")
 public class Education {
+
+    public Education(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,18 +18,20 @@ public class Education {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "manager_id")
-    private int manager_id;
+    @OneToMany(mappedBy = "ec_personnel")
+    private Set<ECpersonnel> eCpersonnels;
 
     @Column(name = "description")
     private String description;
-
 
     @JsonIgnore
     @OneToMany(mappedBy = "education",
             cascade = CascadeType.ALL)
     private Set<City> cities;
 
+    public Set<ECpersonnel> geteCpersonnels() {
+        return eCpersonnels;
+    }
 
     public int getId() {
         return id;
@@ -44,14 +49,6 @@ public class Education {
         this.name = name;
     }
 
-    public int getManager_id() {
-        return manager_id;
-    }
-
-    public void setManager_id(int manager_id) {
-        this.manager_id = manager_id;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -60,8 +57,11 @@ public class Education {
         this.description = description;
     }
 
-    public void setBookings(Set<City> cities) {
-        this.cities = cities;
+    public Set<City> getCities() {
+        return cities;
+    }
 
+    public void setCities(Set<City> cities) {
+        this.cities = cities;
     }
 }

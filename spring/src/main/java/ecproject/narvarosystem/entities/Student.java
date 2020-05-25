@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "Student")
 public class Student {
 
+    public Student(){}
+
     @Column(name = "class_id")
     private int class_id;
 
@@ -24,7 +26,6 @@ public class Student {
     public void setUser(User user) {
         this.user = user;
     }
-
 
     public int getClass_id() {
         return class_id;

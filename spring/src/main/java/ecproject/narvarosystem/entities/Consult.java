@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Table(name = "consult")
 public class Consult {
 
+    public Consult(){}
+
     @Id
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")

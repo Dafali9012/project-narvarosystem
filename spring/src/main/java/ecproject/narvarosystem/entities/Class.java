@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Entity
 @Table(name ="class")
 public class Class {
+
+    public Class(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -16,7 +19,7 @@ public class Class {
     @Column(name ="manager_id")
     private int manager_id;
 
-    public Class(){}
+
 
     public long getId() {
         return id;

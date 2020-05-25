@@ -8,6 +8,10 @@ import java.util.Set;
 @Entity
 @Table(name ="role")
 public class Role {
+
+    public Role(){}
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -17,7 +21,7 @@ public class Role {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private Set<User> users;
 
 
@@ -41,8 +45,8 @@ public class Role {
             return users;
         }
 
-        public void setUsers(Set<User> users) {
+    public void setUsers(Set<User> users) {
             this.users = users;
-    }
+        }
 
 }
