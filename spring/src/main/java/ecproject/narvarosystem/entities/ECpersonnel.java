@@ -8,9 +8,9 @@ import java.util.Set;
 @Table(name = "ec_personnel")
 public class ECpersonnel {
 
-
     public ECpersonnel(){}
 
+    @Id
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

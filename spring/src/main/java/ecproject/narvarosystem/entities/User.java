@@ -57,9 +57,21 @@ public class User {
     }*/
 
 
+    public User() {}
+
+    public User(User user) {
+        this.first_name = user.getFirst_name();
+        this.last_name = user.getLast_name();
+        this.phone_number = user.getPhone_number();
+        this.ssn = user.getSsn();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.role = user.getRole();
+    }
+
     @ManyToOne(optional = false)
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
-    private Role roles;
+    private Role role;
 
     public int getId() {
         return id;
@@ -116,12 +128,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Role getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
     public void setRoles(Role roles) {
-        this.roles = roles;
+        this.role = role;
     }
 
     public Consult getConsult() {

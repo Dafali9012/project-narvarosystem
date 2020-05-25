@@ -14,6 +14,7 @@ public class Student {
     @Column(name = "picture")
     private String picture;
 
+    @Id
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
