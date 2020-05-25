@@ -44,7 +44,7 @@ public class User {
     @OneToOne(mappedBy = "user")
     @JsonIgnore
     private ECpersonnel eCpersonnel;
-    
+
     @ManyToOne(optional = false)
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
