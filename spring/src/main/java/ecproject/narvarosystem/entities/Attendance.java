@@ -16,6 +16,8 @@ public class Attendance {
     @Column(name = "student_id")
     private int student_id;
 
+
+
     public Attendance(){}
 
     public Boolean getPresent() {

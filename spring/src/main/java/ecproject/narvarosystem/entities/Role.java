@@ -1,6 +1,9 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name ="role")
@@ -13,9 +16,10 @@ public class Role {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "role")
+    private Set<User> users;
 
-
-    public Role(){};
 
     public int getId() {
         return id;
@@ -32,4 +36,13 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Set<User> getUsers() {
+            return users;
+        }
+
+        public void setUsers(Set<User> users) {
+            this.users = users;
+    }
+
 }

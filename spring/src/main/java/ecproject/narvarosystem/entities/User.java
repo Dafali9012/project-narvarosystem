@@ -1,11 +1,7 @@
 package ecproject.narvarosystem.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -39,12 +35,16 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
     private Set<Role> roles;*/
 
-    public User() {}
+    /*public User() {}
     public User(String first_name, String password) {
         this.first_name = first_name;
         this.password = password;
-    }
+    }*/
 
+
+    @ManyToOne(optional = false)
+    @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
+    private Role role;
 
     public int getId() {
         return id;
@@ -100,6 +100,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
 
