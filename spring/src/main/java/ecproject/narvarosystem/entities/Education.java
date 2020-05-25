@@ -15,8 +15,10 @@ public class Education {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "manager_id")
-    private int manager_id;
+    @OneToMany(mappedBy = "ec_personnel")
+    private Set<ECpersonnel> eCpersonnels;
+
+
 
     @Column(name = "description")
     private String description;
@@ -26,6 +28,14 @@ public class Education {
     @OneToMany(mappedBy = "education",
             cascade = CascadeType.ALL)
     private Set<City> cities;
+
+    public Set<ECpersonnel> geteCpersonnels() {
+        return eCpersonnels;
+    }
+
+    public void seteCpersonnels(Set<ECpersonnel> eCpersonnels) {
+        this.eCpersonnels = eCpersonnels;
+    }
 
 
     public int getId() {
@@ -42,14 +52,6 @@ public class Education {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getManager_id() {
-        return manager_id;
-    }
-
-    public void setManager_id(int manager_id) {
-        this.manager_id = manager_id;
     }
 
     public String getDescription() {

@@ -37,8 +37,6 @@ public class User {
     private Consult consult;
 
 
-
-
     @OneToOne(mappedBy = "user")
     @JsonIgnore
     private Student student;
@@ -61,7 +59,7 @@ public class User {
 
     @ManyToOne(optional = false)
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
-    private Role role;
+    private Role roles;
 
     public int getId() {
         return id;
@@ -118,12 +116,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Role getRole() {
-        return role;
+    public Role getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Role roles) {
+        this.roles = roles;
     }
 
     public Consult getConsult() {

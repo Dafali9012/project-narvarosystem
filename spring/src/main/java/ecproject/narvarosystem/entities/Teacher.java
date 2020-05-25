@@ -5,6 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = 'teacher')
+@Table(name = "teacher")
 public class Teacher {
 }
