@@ -14,12 +14,14 @@ public class Class {
     private int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "education_id")
-    private int education_id;
-    @Column(name ="manager_id")
-    private int manager_id;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "education_id", referencedColumnName = "id", nullable = false)
+    private Education education;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false)
+    private ECpersonnel eCpersonnel;
 
     public long getId() {
         return id;
@@ -37,19 +39,19 @@ public class Class {
         this.name = name;
     }
 
-    public int getEducation_id() {
-        return education_id;
+    public Education getEducation() {
+        return education;
     }
 
-    public void setEducation_id(int education_id) {
-        this.education_id = education_id;
+    public void setEducation(Education education) {
+        this.education = education;
     }
 
-    public int getManager_id() {
-        return manager_id;
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
     }
 
-    public void setManager_id(int manager_id) {
-        this.manager_id = manager_id;
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
     }
 }

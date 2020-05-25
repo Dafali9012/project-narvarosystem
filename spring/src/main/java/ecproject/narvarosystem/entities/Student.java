@@ -8,7 +8,6 @@ public class Student {
 
     public Student(){}
 
-
     @Column(name = "class_id")
     private int class_id;
 

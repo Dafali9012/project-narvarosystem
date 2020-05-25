@@ -2,6 +2,7 @@ package ecproject.narvarosystem.entities;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "ec_personnel")
@@ -14,9 +15,12 @@ public class ECpersonnel {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "manager_id", nullable = false)
-    private Education education;
+    @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
+    private Set<Education> educations;
+
+    @OneToMany(mappedBy = "class", cascade = CascadeType.ALL)
+    private Set<Class> classes;
+
 
     public User getUser() {
         return user;
@@ -25,11 +29,20 @@ public class ECpersonnel {
     public void setUser(User user) {
         this.user = user;
     }
-    public Education getEducation() {
-        return education;
+
+    public Set<Education> getEducations() {
+        return educations;
     }
 
-    public void setEducation(Education education) {
-        this.education = education;
+    public void setEducations(Set<Education> educations) {
+        this.educations = educations;
+    }
+
+    public Set<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
     }
 }

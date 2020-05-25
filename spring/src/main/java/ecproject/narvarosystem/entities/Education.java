@@ -18,20 +18,19 @@ public class Education {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "ec_personnel")
-    private Set<ECpersonnel> eCpersonnels;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
+    private ECpersonnel eCpersonnel;
+
+    @OneToMany(mappedBy = "class")
+    private Set<Class> classes;
 
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "education",
             cascade = CascadeType.ALL)
     private Set<City> cities;
-
-    public Set<ECpersonnel> geteCpersonnels() {
-        return eCpersonnels;
-    }
 
     public int getId() {
         return id;
@@ -47,6 +46,22 @@ public class Education {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
+    }
+
+    public Set<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
     }
 
     public String getDescription() {
