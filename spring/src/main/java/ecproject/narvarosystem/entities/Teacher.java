@@ -12,6 +12,10 @@ public class Teacher implements Serializable {
     public Teacher(){}
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private Consult consult;

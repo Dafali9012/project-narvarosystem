@@ -14,6 +14,9 @@ public class ECpersonnel implements Serializable {
     public ECpersonnel(){}
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

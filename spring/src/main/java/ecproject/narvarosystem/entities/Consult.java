@@ -1,8 +1,11 @@
 package ecproject.narvarosystem.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "consult")
@@ -11,8 +14,12 @@ public class Consult implements Serializable {
     public Consult(){}
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @MapsId("user_id")
     private User user;
 
     @OneToOne(mappedBy = "consult")
