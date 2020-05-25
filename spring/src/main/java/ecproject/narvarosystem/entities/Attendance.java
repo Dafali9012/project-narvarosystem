@@ -8,18 +8,20 @@ import java.io.Serializable;
 @Table(name = "attendance")
 public class Attendance implements Serializable {
 
+    public Attendance(){}
+
     @Column(name = "present")
     private Boolean present;
 
     @Id
-    @Column(name = "lecture_id")
-    private int lecture_id;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "lecture_id", referencedColumnName = "id", nullable = false)
+    private Lecture lecture;
 
     @Id
-    @Column(name = "student_id")
-    private int student_id;
-
-    public Attendance(){}
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
+    private Student student;
 
     public Boolean getPresent() {
         return present;
@@ -29,19 +31,20 @@ public class Attendance implements Serializable {
         this.present = present;
     }
 
-    public int getLecture_id() {
-        return lecture_id;
+    public Lecture getLecture() {
+        return lecture;
     }
 
-    public void setLecture_id(int lecture_id) {
-        this.lecture_id = lecture_id;
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setStudent(Student student) {
+        this.student = student;
     }
+
 }

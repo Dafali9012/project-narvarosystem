@@ -29,16 +29,19 @@ public class Education {
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "education",
-            cascade = CascadeType.ALL)
-    private Set<City> cities;
+    @OneToMany(mappedBy = "class")
+    private Set<Class> classes;
 
-    /*
-    public Set<ECpersonnel> geteCpersonnels() {
-        return eCpersonnels;
-    }
-    */
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
+    private ECpersonnel eCpersonnel;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
+    private City city;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<Course> courses;
 
     public int getId() {
         return id;
@@ -56,6 +59,22 @@ public class Education {
         this.name = name;
     }
 
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
+    }
+
+    public Set<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -64,11 +83,19 @@ public class Education {
         this.description = description;
     }
 
-    public Set<City> getCities() {
-        return cities;
+    public Set<Course> getCourses() {
+        return courses;
     }
 
-    public void setCities(Set<City> cities) {
-        this.cities = cities;
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }

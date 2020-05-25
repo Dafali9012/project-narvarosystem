@@ -3,6 +3,7 @@ package ecproject.narvarosystem.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "teacher")
@@ -12,14 +13,39 @@ public class Teacher implements Serializable {
 
     @Id
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    private Consult consult;
 
-    public User getUser() {
-        return user;
+    @Id
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    private ECpersonnel eCpersonnel;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<Course> courses;
+
+
+    public Consult getConsult() {
+        return consult;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setConsult(Consult consult) {
+        this.consult = consult;
+    }
+
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

@@ -42,7 +42,10 @@ public class User {
     @OneToOne(mappedBy = "user")
     @JsonIgnore
     private ECpersonnel eCpersonnel;
-
+    
+    @ManyToOne(optional = false)
+    @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
+    private Role role;
 
     /*@OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
@@ -55,7 +58,7 @@ public class User {
     }*/
 
 
-    public User() {}
+    //public User() {}
 
     public User(User user) {
         this.first_name = user.getFirst_name();
@@ -67,9 +70,7 @@ public class User {
         this.role = user.getRole();
     }
 
-    @ManyToOne(optional = false)
-    @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
-    private Role role;
+
 
     public int getId() {
         return id;
