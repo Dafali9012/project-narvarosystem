@@ -29,18 +29,18 @@ public class Education {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "class")
+    @OneToMany(mappedBy = "education")
     private Set<Class> classes;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", insertable = false, updatable = false)
     private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
     private City city;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "education")
     private Set<Course> courses;
 
     public int getId() {

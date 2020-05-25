@@ -1,27 +1,28 @@
 package ecproject.narvarosystem.entities;
-
 import javax.persistence.*;
-
-import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
 public class Student {
 
     public Student(){}
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     @Column(name = "picture")
     private String picture;
 
-    @Id
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
-    private Class classes;
+    private Class eclasses;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<Attendance> attendances;
@@ -43,13 +44,6 @@ public class Student {
         this.picture = picture;
     }
 
-    public Class getClasses() {
-        return classes;
-    }
-
-    public void setClasses(Class classes) {
-        this.classes = classes;
-    }
 
     public Set<Attendance> getAttendances() {
         return attendances;
@@ -57,5 +51,13 @@ public class Student {
 
     public void setAttendances(Set<Attendance> attendances) {
         this.attendances = attendances;
+    }
+
+    public Class getEclasses() {
+        return eclasses;
+    }
+
+    public void setEclasses(Class eclasses) {
+        this.eclasses = eclasses;
     }
 }

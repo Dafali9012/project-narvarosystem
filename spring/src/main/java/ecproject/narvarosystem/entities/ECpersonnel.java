@@ -18,15 +18,13 @@ public class ECpersonnel implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
-    private Set<Education> educations;
+    /*@OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
+    private Set<Education> educations;*/
 
-    @OneToMany(mappedBy = "class", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "eCpersonnel", cascade = CascadeType.ALL)
     private Set<Class> classes;
 
-    @OneToOne(mappedBy = "ec_personnel")
-    @JsonIgnore
-    private Teacher teacher;
+
 
 
     public User getUser() {
@@ -37,13 +35,7 @@ public class ECpersonnel implements Serializable {
         this.user = user;
     }
 
-    public Set<Education> getEducations() {
-        return educations;
-    }
 
-    public void setEducations(Set<Education> educations) {
-        this.educations = educations;
-    }
 
     public Set<Class> getClasses() {
         return classes;
@@ -53,11 +45,5 @@ public class ECpersonnel implements Serializable {
         this.classes = classes;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
+   
 }

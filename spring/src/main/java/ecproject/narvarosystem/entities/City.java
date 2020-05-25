@@ -17,7 +17,7 @@ public class City {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     private Set<Education> educations;
 
 

@@ -11,6 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "first_name")
@@ -35,7 +36,7 @@ public class User {
     @JsonIgnore
     private Consult consult;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private Student student;
 

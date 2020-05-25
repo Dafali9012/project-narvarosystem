@@ -25,7 +25,7 @@ public class Class {
     @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
     private ECpersonnel eCpersonnel;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)
     private Set<Student> students;
 
     public long getId() {

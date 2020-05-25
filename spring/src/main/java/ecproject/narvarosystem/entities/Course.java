@@ -37,7 +37,7 @@ public class Course {
     @JoinColumn(name = "teacher_id", referencedColumnName = "user_id", nullable = false)
     private Teacher teacher;
 
-    @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private Set<Lecture> lectures;
 
     public int getId() {
