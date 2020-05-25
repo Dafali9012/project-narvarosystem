@@ -17,8 +17,8 @@ public class Student {
 
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User user;
+    @MapsId("user_id")
+    public User user;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
