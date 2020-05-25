@@ -6,15 +6,13 @@ import javax.persistence.*;
 @Table(name = "Student")
 public class Student {
 
-
-
-
     @Column(name = "class_id")
     private int class_id;
 
     @Column(name = "picture")
     private String picture;
 
+    @Id
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

@@ -36,9 +36,6 @@ public class User {
     @JsonIgnore
     private Consult consult;
 
-
-
-
     @OneToOne(mappedBy = "user")
     @JsonIgnore
     private Student student;
@@ -58,6 +55,18 @@ public class User {
         this.password = password;
     }*/
 
+
+    public User() {}
+
+    public User(User user) {
+        this.first_name = user.getFirst_name();
+        this.last_name = user.getLast_name();
+        this.phone_number = user.getPhone_number();
+        this.ssn = user.getSsn();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.role = user.getRole();
+    }
 
     @ManyToOne(optional = false)
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)

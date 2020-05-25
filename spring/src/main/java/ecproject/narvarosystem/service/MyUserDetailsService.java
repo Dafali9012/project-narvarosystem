@@ -1,3 +1,4 @@
+
 package ecproject.narvarosystem.service;
 
 import ecproject.narvarosystem.Repository.UserRepository;
@@ -29,6 +30,7 @@ public class MyUserDetailsService implements UserDetailsService {
         return optionalUsers
                 .map(CustomUserDetails::new).get();
         }
+
 //        User user = userRepository.findByName(name);
 //        if (user == null) {
 //            throw new UsernameNotFoundException("User not found by name: " + name);

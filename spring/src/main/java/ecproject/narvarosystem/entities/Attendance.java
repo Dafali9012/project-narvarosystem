@@ -10,13 +10,13 @@ public class Attendance {
     @Column(name = "present")
     private Boolean present;
 
+    @Id
     @Column(name = "lecture_id")
     private int lecture_id;
 
+    @Id
     @Column(name = "student_id")
     private int student_id;
-
-
 
     public Attendance(){}
 
