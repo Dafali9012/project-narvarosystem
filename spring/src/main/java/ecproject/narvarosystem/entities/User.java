@@ -25,7 +25,6 @@ public class User {
     @Column(name = "ssn")
     private String ssn;
 
-
     @Column(name = "email")
     private String email;
 
@@ -35,7 +34,6 @@ public class User {
     @OneToOne(mappedBy = "user")
     @JsonIgnore
     private Consult consult;
-
 
     @OneToOne(mappedBy = "user")
     @JsonIgnore

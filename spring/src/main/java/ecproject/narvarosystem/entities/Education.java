@@ -18,11 +18,8 @@ public class Education {
     @OneToMany(mappedBy = "ec_personnel")
     private Set<ECpersonnel> eCpersonnels;
 
-
-
     @Column(name = "description")
     private String description;
-
 
     @JsonIgnore
     @OneToMany(mappedBy = "education",
@@ -32,11 +29,6 @@ public class Education {
     public Set<ECpersonnel> geteCpersonnels() {
         return eCpersonnels;
     }
-
-    public void seteCpersonnels(Set<ECpersonnel> eCpersonnels) {
-        this.eCpersonnels = eCpersonnels;
-    }
-
 
     public int getId() {
         return id;
@@ -62,8 +54,11 @@ public class Education {
         this.description = description;
     }
 
-    public void setBookings(Set<City> cities) {
-        this.cities = cities;
+    public Set<City> getCities() {
+        return cities;
+    }
 
+    public void setCities(Set<City> cities) {
+        this.cities = cities;
     }
 }
