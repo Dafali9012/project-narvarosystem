@@ -10,11 +10,13 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "name")
     private String name;
 
-
-    public City(){}
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
+    private Education education;
 
     public long getId() {
         return id;
@@ -31,4 +33,9 @@ public class City {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setEducation(Education education) {
+        this.education = education;
+    }
+
 }
