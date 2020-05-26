@@ -2,6 +2,8 @@ package ecproject.narvarosystem.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @IdClass(Attendance.class)
@@ -10,18 +12,21 @@ public class Attendance implements Serializable {
 
     public Attendance(){}
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "present")
     private Boolean present;
 
-    @Id
+
     @ManyToOne(optional = false)
-    @JoinColumn(name = "lecture_id", referencedColumnName = "id", nullable = false)
+    @MapsId("lecture_id")
     private Lecture lecture;
 
-    @Id
+
     @ManyToOne(optional = false)
-    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
+    @MapsId("student_id")
     private Student student;
 
     public Boolean getPresent() {
@@ -30,6 +35,15 @@ public class Attendance implements Serializable {
 
     public void setPresent(Boolean present) {
         this.present = present;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Lecture getLecture() {
@@ -47,5 +61,6 @@ public class Attendance implements Serializable {
     public void setStudent(Student student) {
         this.student = student;
     }
-
 }
+
+
