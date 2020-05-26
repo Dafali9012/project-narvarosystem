@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
+    public User(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -32,17 +34,17 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    /*@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "userconsult", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Consult consult;*/
+    private Consult consult;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "userstudent", cascade = CascadeType.ALL)
     @JsonIgnore
     private Student student;
 
-    /*@OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "userec")
     @JsonIgnore
-    private ECpersonnel eCpersonnel;*/
+    private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
@@ -70,8 +72,6 @@ public class User {
         this.password = user.getPassword();
         this.role = user.getRole();
     }
-
-
 
     public int getId() {
         return id;
@@ -128,28 +128,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Role getRole() {
-        return role;
-    }
 
-    public void setRoles(Role roles) {
-        this.role = role;
-    }
-
-    /*public Consult getConsult() {
+    public Consult getConsult() {
         return consult;
     }
 
     public void setConsult(Consult consult) {
         this.consult = consult;
-    }*/
-    /*public ECpersonnel geteCpersonnel() {
-        return eCpersonnel;
     }
 
-    public void seteCpersonnel(ECpersonnel eCpersonnel) {
-        this.eCpersonnel = eCpersonnel;
-    }*/
     public Student getStudent() {
         return student;
     }
@@ -158,6 +145,21 @@ public class User {
         this.student = student;
     }
 
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
 
 

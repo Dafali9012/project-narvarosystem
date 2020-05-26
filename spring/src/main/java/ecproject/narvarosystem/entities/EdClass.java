@@ -12,6 +12,7 @@ public class EdClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
@@ -22,49 +23,11 @@ public class EdClass {
     private Education education;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
-    private ECpersonnel eCpersonnel;
+    @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false)
+    private ECpersonnel eCpersonnelclass;
 
     @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)
     private Set<Student> students;
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Education getEducation() {
-        return education;
-    }
-
-    public void setEducation(Education education) {
-        this.education = education;
-    }
-
-    public ECpersonnel geteCpersonnel() {
-        return eCpersonnel;
-    }
-
-    public void seteCpersonnel(ECpersonnel eCpersonnel) {
-        this.eCpersonnel = eCpersonnel;
-    }
-
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
 }

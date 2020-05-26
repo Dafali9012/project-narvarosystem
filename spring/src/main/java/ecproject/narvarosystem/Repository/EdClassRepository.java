@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EdClassRepository extends CrudRepository<EdClass, Long> {
+public interface EdClassRepository extends CrudRepository<EdClass, Integer> {
     List<EdClass> findAll();
 
     /*

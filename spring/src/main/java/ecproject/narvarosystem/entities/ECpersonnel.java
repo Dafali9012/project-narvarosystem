@@ -1,6 +1,8 @@
 package ecproject.narvarosystem.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -13,33 +15,35 @@ public class ECpersonnel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int user_id;
+    @Column(name = "id")
+    private int id;
 
 
     @OneToOne(optional = false)
-    @MapsId("user_id")
-    private User user;
-
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User userec;
 
    
-    @OneToMany(mappedBy = "eCpersonnel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "eCpersonnelclass", cascade = CascadeType.ALL)
     private Set<EdClass> edClasses;
 
+    @OneToMany(mappedBy = "eCpersonnelEd", cascade = CascadeType.ALL)
+    private Set<Education> educations;
 
-    public int getUser_id() {
-        return user_id;
+    public int getId() {
+        return id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserec() {
+        return userec;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserec(User userec) {
+        this.userec = userec;
     }
 
     public Set<EdClass> getEdClasses() {
@@ -48,5 +52,13 @@ public class ECpersonnel implements Serializable {
 
     public void setEdClasses(Set<EdClass> edClasses) {
         this.edClasses = edClasses;
+    }
+
+    public Set<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(Set<Education> educations) {
+        this.educations = educations;
     }
 }

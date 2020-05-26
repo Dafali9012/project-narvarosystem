@@ -11,16 +11,16 @@ public class Education {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
     private String name;
 
 
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
-    private ECpersonnel eCpersonnel;
+    @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false)
+    private ECpersonnel eCpersonnelEd;
 
 
     @Column(name = "description")
@@ -53,20 +53,12 @@ public class Education {
         this.name = name;
     }
 
-    public ECpersonnel geteCpersonnel() {
-        return eCpersonnel;
+    public ECpersonnel geteCpersonnelEd() {
+        return eCpersonnelEd;
     }
 
-    public void seteCpersonnel(ECpersonnel eCpersonnel) {
-        this.eCpersonnel = eCpersonnel;
-    }
-
-    public Set<EdClass> getEdClasses() {
-        return edClasses;
-    }
-
-    public void setEdClasses(Set<EdClass> edClasses) {
-        this.edClasses = edClasses;
+    public void seteCpersonnelEd(ECpersonnel eCpersonnelEd) {
+        this.eCpersonnelEd = eCpersonnelEd;
     }
 
     public String getDescription() {
@@ -77,12 +69,12 @@ public class Education {
         this.description = description;
     }
 
-    public Set<Course> getCourses() {
-        return courses;
+    public Set<EdClass> getEdClasses() {
+        return edClasses;
     }
 
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
+    public void setEdClasses(Set<EdClass> edClasses) {
+        this.edClasses = edClasses;
     }
 
     public City getCity() {
@@ -91,5 +83,13 @@ public class Education {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

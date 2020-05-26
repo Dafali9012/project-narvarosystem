@@ -12,6 +12,7 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
@@ -34,7 +35,7 @@ public class Course {
     private Education education;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "teacher_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id", nullable = false)
     private Teacher teacher;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)

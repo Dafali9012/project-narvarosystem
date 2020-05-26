@@ -14,6 +14,7 @@ public class Attendance implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "present")
@@ -21,12 +22,12 @@ public class Attendance implements Serializable {
 
 
     @ManyToOne(optional = false)
-    @MapsId("lecture_id")
+    @JoinColumn(name = "lecture_id", referencedColumnName = "id", nullable = false)
     private Lecture lecture;
 
 
     @ManyToOne(optional = false)
-    @MapsId("student_id")
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
     private Student student;
 
     public Boolean getPresent() {
