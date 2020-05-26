@@ -6,9 +6,9 @@ import java.util.Set;
 
 @Entity
 @Table(name ="class")
-public class Class {
+public class EdClass {
 
-    public Class(){}
+    public EdClass(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

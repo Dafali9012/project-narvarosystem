@@ -22,7 +22,7 @@ public class Student {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
-    private Class eclasses;
+    private EdClass eclasses;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<Attendance> attendances;
@@ -53,11 +53,11 @@ public class Student {
         this.attendances = attendances;
     }
 
-    public Class getEclasses() {
+    public EdClass getEclasses() {
         return eclasses;
     }
 
-    public void setEclasses(Class eclasses) {
+    public void setEclasses(EdClass eclasses) {
         this.eclasses = eclasses;
     }
 }

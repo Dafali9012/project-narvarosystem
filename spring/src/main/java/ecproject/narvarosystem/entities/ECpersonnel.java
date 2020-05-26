@@ -1,8 +1,6 @@
 package ecproject.narvarosystem.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -25,7 +23,7 @@ public class ECpersonnel implements Serializable {
     private Set<Education> educations;
 
     @OneToMany(mappedBy = "eCpersonnel", cascade = CascadeType.ALL)
-    private Set<Class> classes;
+    private Set<EdClass> edClasses;
 
 
     public User getUser() {
@@ -37,12 +35,12 @@ public class ECpersonnel implements Serializable {
     }
 
 
-    public Set<Class> getClasses() {
-        return classes;
+    public Set<EdClass> getEdClasses() {
+        return edClasses;
     }
 
-    public void setClasses(Set<Class> classes) {
-        this.classes = classes;
+    public void setEdClasses(Set<EdClass> edClasses) {
+        this.edClasses = edClasses;
     }
 
 

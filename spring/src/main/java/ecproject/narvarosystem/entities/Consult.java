@@ -9,14 +9,13 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "consult")
-public class Consult implements Serializable {
+public class Consult {
 
     public Consult(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
 
     @OneToOne(optional = false)
     @MapsId("user_id")
