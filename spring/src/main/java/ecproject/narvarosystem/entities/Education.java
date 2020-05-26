@@ -1,7 +1,5 @@
 package ecproject.narvarosystem.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -18,23 +16,19 @@ public class Education {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "manager_id")
-    private int manager_id;
 
-    /*
-    @OneToMany(mappedBy = "ec_personnel")
-    private Set<ECpersonnel> eCpersonnels;
-    */
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
+    private ECpersonnel eCpersonnel;
+
 
     @Column(name = "description")
     private String description;
 
     @OneToMany(mappedBy = "education")
-    private Set<Class> classes;
+    private Set<EdClass> edClasses;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", insertable = false, updatable = false)
-    private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
@@ -67,12 +61,12 @@ public class Education {
         this.eCpersonnel = eCpersonnel;
     }
 
-    public Set<Class> getClasses() {
-        return classes;
+    public Set<EdClass> getEdClasses() {
+        return edClasses;
     }
 
-    public void setClasses(Set<Class> classes) {
-        this.classes = classes;
+    public void setEdClasses(Set<EdClass> edClasses) {
+        this.edClasses = edClasses;
     }
 
     public String getDescription() {

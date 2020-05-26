@@ -32,17 +32,17 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    /*@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Consult consult;
+    private Consult consult;*/
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private Student student;
 
-    @OneToOne(mappedBy = "user")
+    /*@OneToOne(mappedBy = "user")
     @JsonIgnore
-    private ECpersonnel eCpersonnel;
+    private ECpersonnel eCpersonnel;*/
 
     @ManyToOne(optional = false)
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
@@ -136,20 +136,20 @@ public class User {
         this.role = role;
     }
 
-    public Consult getConsult() {
+    /*public Consult getConsult() {
         return consult;
     }
 
     public void setConsult(Consult consult) {
         this.consult = consult;
-    }
-    public ECpersonnel geteCpersonnel() {
+    }*/
+    /*public ECpersonnel geteCpersonnel() {
         return eCpersonnel;
     }
 
     public void seteCpersonnel(ECpersonnel eCpersonnel) {
         this.eCpersonnel = eCpersonnel;
-    }
+    }*/
     public Student getStudent() {
         return student;
     }
