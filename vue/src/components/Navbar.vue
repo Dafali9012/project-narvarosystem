@@ -13,9 +13,9 @@
         <p class="no-margin unselectable text-cream ml-5">PIM</p>
       </router-link>
       <div>
-        <router-link to="/logout">
+        <a href="http://localhost:8080/logout">
           <p class="no-margin unselectable text-cream ml-5">Logga ut</p>
-        </router-link>
+        </a>
       </div>
     </div>
   </div>

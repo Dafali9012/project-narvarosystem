@@ -64,11 +64,11 @@ export default {
         body: credentials
       });
 
-      if (response.status == 500) {
+      if (response.url.includes("error")) {
         window.confirm("Inloggningen misslyckades");
       } else {
         this.$store.dispatch("updateLoggedUser");
-        this.$router.push("/admin");
+        this.$router.push("/overview");
       }
     }
   }

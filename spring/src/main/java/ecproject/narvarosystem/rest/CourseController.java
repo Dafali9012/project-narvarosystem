@@ -24,7 +24,7 @@ public class CourseController {
         return (List<Course>) this.courseRepository.findAll();
     }
 
-
+    /*
     @GetMapping("{id}")
     public Iterable<Course> courseByID(@PathVariable long id){
         return this.courseRepository.findAllById(Collections.singleton(id));
@@ -38,4 +38,6 @@ public class CourseController {
     public Iterable<Course> courseByUserID(@PathVariable int id) {
       return this.courseRepository.findAllByUserId(id);
   }
+
+     */
 }

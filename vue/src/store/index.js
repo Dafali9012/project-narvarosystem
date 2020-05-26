@@ -35,6 +35,7 @@ export default new Vuex.Store({
     },
     setAllClasses(state, value) {
       state.AllClass = value;
+      console.log(state.AllClass)
     },
     setAllEducations(state, value) {
       state.AllEducation = value;
@@ -83,7 +84,7 @@ export default new Vuex.Store({
     getAllClasses: async function ({
       commit
     }) {
-      let url = "http://localhost:8080/classroom";
+      let url = "http://localhost:8080/classrooms";
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllClasses", json);
