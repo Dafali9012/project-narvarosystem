@@ -17,28 +17,30 @@ public class Consult {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToOne(optional = false)
+
+
+    /*@OneToOne(optional = false)
     @MapsId("user_id")
-    private User user;
+    private User user;*/
 
-    @OneToOne(mappedBy = "consult")
+    /*@OneToOne(mappedBy = "consult")
     @JsonIgnore
-    private Teacher teacher;
+    private Teacher teacher;*/
 
-    public User getUser() {
+    /*public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
+    }*/
 
-    public Teacher getTeacher() {
+    /*public Teacher getTeacher() {
         return teacher;
     }
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
-    }
+    }*/
 }
 

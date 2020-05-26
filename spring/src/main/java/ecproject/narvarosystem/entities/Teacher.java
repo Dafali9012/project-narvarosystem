@@ -13,25 +13,25 @@ public class Teacher implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int user_id;
 
 
-    @OneToOne(optional = false)
+    /*@OneToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
-    private Consult consult;
+    private Consult consult;*/
 
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private Set<Course> courses;
 
 
-    public Consult getConsult() {
+    /*public Consult getConsult() {
         return consult;
     }
 
     public void setConsult(Consult consult) {
         this.consult = consult;
-    }
+    }*/
 
 
     public Set<Course> getCourses() {
