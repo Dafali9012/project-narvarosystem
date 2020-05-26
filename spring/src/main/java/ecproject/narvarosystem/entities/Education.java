@@ -22,12 +22,14 @@ public class Education {
     @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false)
     private ECpersonnel eCpersonnelEd;
 
-
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "education")
-    private Set<EdClass> edClasses;
+    /*@OneToMany(mappedBy = "educationclass")
+    private Set<EdClass> edClasses;*/
+
+    @Column(name = "manager_id", insertable = false, updatable = false)
+    private Integer manager_id;
 
 
     @ManyToOne(optional = false)
@@ -41,55 +43,21 @@ public class Education {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ECpersonnel geteCpersonnelEd() {
         return eCpersonnelEd;
     }
 
-    public void seteCpersonnelEd(ECpersonnel eCpersonnelEd) {
-        this.eCpersonnelEd = eCpersonnelEd;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    public Set<EdClass> getEdClasses() {
-        return edClasses;
-    }
-
-    public void setEdClasses(Set<EdClass> edClasses) {
-        this.edClasses = edClasses;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
 
     public Set<Course> getCourses() {
         return courses;
-    }
-
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
     }
 }

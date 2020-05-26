@@ -24,11 +24,11 @@ public class ECpersonnel implements Serializable {
     private User userec;
 
    
-    @OneToMany(mappedBy = "eCpersonnelclass", cascade = CascadeType.ALL)
-    private Set<EdClass> edClasses;
+    /*@OneToMany(mappedBy = "eCpersonnelclass", cascade = CascadeType.ALL)
+    private Set<EdClass> edClasses;*/
 
-    @OneToMany(mappedBy = "eCpersonnelEd", cascade = CascadeType.ALL)
-    private Set<Education> educations;
+    /*@OneToMany(mappedBy = "eCpersonnelEd", cascade = CascadeType.ALL)
+    private Set<Education> educations;*/
 
     public int getId() {
         return id;
@@ -42,23 +42,6 @@ public class ECpersonnel implements Serializable {
         return userec;
     }
 
-    public void setUserec(User userec) {
-        this.userec = userec;
-    }
 
-    public Set<EdClass> getEdClasses() {
-        return edClasses;
-    }
 
-    public void setEdClasses(Set<EdClass> edClasses) {
-        this.edClasses = edClasses;
-    }
-
-    public Set<Education> getEducations() {
-        return educations;
-    }
-
-    public void setEducations(Set<Education> educations) {
-        this.educations = educations;
-    }
 }
