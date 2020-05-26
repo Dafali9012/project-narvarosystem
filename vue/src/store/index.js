@@ -19,10 +19,14 @@ export default new Vuex.Store({
     MyLecture: [],
     ClassByED:[],
     Messages:[],
+    messageToDelete:{},
     logged: false
 
   },
   mutations: {
+    setMessageToDelete(state , value){
+      state.messageToDelete = value;
+    },
     isLogged(state , value){
       state.logged = value;
     },
