@@ -18,13 +18,12 @@ public class Education {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "manager_id")
-    private int manager_id;
 
-    /*
-    @OneToMany(mappedBy = "ec_personnel")
-    private Set<ECpersonnel> eCpersonnels;
-    */
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
+    private ECpersonnel eCpersonnel;
+
 
     @Column(name = "description")
     private String description;
@@ -32,9 +31,6 @@ public class Education {
     @OneToMany(mappedBy = "education")
     private Set<Class> classes;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", insertable = false, updatable = false)
-    private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)

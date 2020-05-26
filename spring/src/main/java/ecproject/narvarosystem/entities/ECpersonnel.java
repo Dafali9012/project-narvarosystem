@@ -18,16 +18,14 @@ public class ECpersonnel implements Serializable {
     private int id;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @MapsId("user_id")
     private User user;
 
-    /*@OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
-    private Set<Education> educations;*/
+    @OneToMany(mappedBy = "eCpersonnel", cascade = CascadeType.ALL)
+    private Set<Education> educations;
 
     @OneToMany(mappedBy = "eCpersonnel", cascade = CascadeType.ALL)
     private Set<Class> classes;
-
-
 
 
     public User getUser() {
@@ -39,7 +37,6 @@ public class ECpersonnel implements Serializable {
     }
 
 
-
     public Set<Class> getClasses() {
         return classes;
     }
@@ -48,5 +45,12 @@ public class ECpersonnel implements Serializable {
         this.classes = classes;
     }
 
-   
+
+    public Set<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(Set<Education> educations) {
+        this.educations = educations;
+    }
 }

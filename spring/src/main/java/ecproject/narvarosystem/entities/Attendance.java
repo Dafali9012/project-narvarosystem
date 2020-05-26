@@ -10,7 +10,7 @@ public class Attendance implements Serializable {
 
     public Attendance(){}
 
-    
+
     @Column(name = "present")
     private Boolean present;
 
