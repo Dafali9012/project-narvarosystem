@@ -1,9 +1,6 @@
 package ecproject.narvarosystem.rest;
 
 
-public class ClassController {
-
-
 import ecproject.narvarosystem.Repository.EdClassRepository;
 import ecproject.narvarosystem.entities.EdClass;
 import org.springframework.beans.factory.annotation.Autowired;

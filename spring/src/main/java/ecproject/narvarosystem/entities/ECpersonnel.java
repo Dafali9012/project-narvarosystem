@@ -26,20 +26,27 @@ public class ECpersonnel implements Serializable {
     private Set<EdClass> edClasses;
 
 
+    public int getUser_id() {
+        return user_id;
+    }
 
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Set<EdClass> getEdClasses() {
         return edClasses;
     }
 
-
-
-
-    public Set<Education> getEducations() {
-        return educations;
-    }
-
-    public void setEducations(Set<Education> educations) {
-        this.educations = educations;
+    public void setEdClasses(Set<EdClass> edClasses) {
+        this.edClasses = edClasses;
     }
 }
