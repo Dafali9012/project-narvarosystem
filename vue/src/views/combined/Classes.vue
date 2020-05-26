@@ -69,8 +69,8 @@ export default {
       }
     };
   },
-  async created() {
-    await this.$store.dispatch("getAllClasses");
+  created() {
+    this.$store.dispatch("getAllClasses");
   },
   computed: {
     rows: {

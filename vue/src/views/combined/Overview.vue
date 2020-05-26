@@ -60,9 +60,9 @@ export default {
       console.log("hello world!");
     }
   },
-  async created() {
-    await this.$store.dispatch("getAllusers");
-    await this.$store.dispatch("getAllEducations");
+  created() {
+    this.$store.dispatch("getAllusers");
+    this.$store.dispatch("getAllEducations");
   }
 };
 </script>

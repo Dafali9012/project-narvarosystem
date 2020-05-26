@@ -1,8 +1,6 @@
 package ecproject.narvarosystem.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -59,7 +57,7 @@ public class User {
     }*/
 
 
-    //public User() {}
+    public User() {}
 
     public User(User user) {
         this.first_name = user.getFirst_name();
@@ -70,8 +68,6 @@ public class User {
         this.password = user.getPassword();
         this.role = user.getRole();
     }
-
-
 
     public int getId() {
         return id;

@@ -12,7 +12,7 @@ export default {
   name: "app",
   components: { Navbar },
   created() {
-    this.$store.dispatch("updateLoggedUser");
+    //this.$store.dispatch("updateLoggedUser");
   }
 };
 </script>

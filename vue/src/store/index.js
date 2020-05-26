@@ -84,10 +84,11 @@ export default new Vuex.Store({
     getAllClasses: async function ({
       commit
     }) {
-      let url = "http://localhost:8080/classrooms";
-      const result = await fetch(url);
-      const json = await result.json();
-      commit("setAllClasses", json);
+      let url = 'http://localhost:8080/classes';
+      const response = await fetch(url);
+      console.log(response.clone().text)
+      const result = await response.json();
+      commit("setAllClasses", result);
     },
     getAllEducations: async function ({
       commit
