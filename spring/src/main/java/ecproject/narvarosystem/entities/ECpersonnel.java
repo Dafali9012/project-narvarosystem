@@ -25,9 +25,11 @@ public class ECpersonnel implements Serializable {
 
    
     @OneToMany(mappedBy = "eCpersonnelclass", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<EdClass> edClasses;
 
     @OneToMany(mappedBy = "eCpersonnelEd", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Education> educations;
 
     public int getId() {

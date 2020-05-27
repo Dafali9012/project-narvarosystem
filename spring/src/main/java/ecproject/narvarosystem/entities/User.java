@@ -52,10 +52,6 @@ public class User {
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
 
-    /*@OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
-    private Set<Role> roles;*/
-
     /*public User() {}
     public User(String first_name, String password) {
         this.first_name = first_name;
@@ -139,7 +135,6 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-
 
     public Student getStudent() {
         return student;

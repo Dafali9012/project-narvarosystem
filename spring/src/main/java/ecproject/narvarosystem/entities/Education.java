@@ -1,5 +1,7 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,27 +19,25 @@ public class Education {
     @Column(name = "name")
     private String name;
 
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false)
-    private ECpersonnel eCpersonnelEd;
-
     @Column(name = "description")
     private String description;
 
-    /*@OneToMany(mappedBy = "educationclass")
-    private Set<EdClass> edClasses;*/
-
-    @Column(name = "manager_id", insertable = false, updatable = false)
-    private Integer manager_id;
-
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
-    private City city;
+    @JoinColumn(name = "manager_id", nullable = false)
+    private ECpersonnel eCpersonnelEd;
+
+    @OneToMany(mappedBy = "educationclass")
+    @JsonIgnore
+    private Set<EdClass> edClasses;
 
     @OneToMany(mappedBy = "education")
+    @JsonIgnore
     private Set<Course> courses;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
+
 
     public int getId() {
         return id;
@@ -70,4 +70,30 @@ public class Education {
     public void setCity(City city) {
         this.city = city;
     }
+
+    public ECpersonnel geteCpersonnelEd() {
+        return eCpersonnelEd;
+    }
+
+    public void seteCpersonnelEd(ECpersonnel eCpersonnelEd) {
+        this.eCpersonnelEd = eCpersonnelEd;
+    }
+
+    public Set<EdClass> getEdClasses() {
+        return edClasses;
+    }
+
+    public void setEdClasses(Set<EdClass> edClasses) {
+        this.edClasses = edClasses;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+
 }
