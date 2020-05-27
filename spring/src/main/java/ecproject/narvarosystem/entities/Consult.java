@@ -19,10 +19,10 @@ public class Consult {
     private int id;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User userconsult;
 
-    @OneToOne(mappedBy = "consult")
+    @OneToOne(mappedBy = "consult", cascade = CascadeType.ALL)
     @JsonIgnore
     private Teacher teacher;
 

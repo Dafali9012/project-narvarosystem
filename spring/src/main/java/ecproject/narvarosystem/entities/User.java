@@ -49,7 +49,7 @@ public class User {
     private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
-    @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn (name = "role_id", nullable = false)
     private Role role;
 
     /*public User() {}

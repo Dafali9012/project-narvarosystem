@@ -21,7 +21,7 @@ public class Lecture {
     private Date date;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
