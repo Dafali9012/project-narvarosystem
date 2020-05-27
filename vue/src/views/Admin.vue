@@ -6,7 +6,7 @@
     </div>
     -->
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
             src="https://image.flaticon.com/icons/svg/2206/2206314.svg"
@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-      <div class="col-9 d-flex">
+      <div class="col-sm-9 d-flex">
         <NewAccount v-if="this.$store.state.contentIndex==0" />
         <NewEducation v-if="this.$store.state.contentIndex==1" />
         <NewCourse v-if="this.$store.state.contentIndex==2" />
@@ -76,6 +76,7 @@
         <Overview v-if="this.$store.state.contentIndex==4" />
         <ListUsers v-if="this.$store.state.contentIndex==5" />
         <Report v-if="this.$store.state.contentIndex==6" />
+        <pim v-if="this.$store.state.contentIndex==7"/>
       </div>
     </div>
   </div>
@@ -90,6 +91,7 @@ import NewClass from "@/components/admin/NewClass.vue";
 import Overview from "@/components/admin/Overview.vue";
 import ListUsers from "@/components/admin/ListUsers.vue";
 import Report from "@/components/admin/Report.vue";
+import Pim from '../components/PimMessage.vue'
 
 export default {
   components: {
@@ -100,7 +102,8 @@ export default {
     NewClass,
     Overview,
     ListUsers,
-    Report
+    Report,
+    Pim
   },
   computed:{
 
@@ -116,6 +119,16 @@ export default {
  async created(){
     await this.$store.dispatch("getAllusers")
     await this.$store.dispatch("getAllEducations")
+    await this.$store.dispatch('getMessage')
+    await this.$store.dispatch("getAllusers")
   }
 };
 </script>
+
+<style scoped>
+@media screen and (max-width: 500px) {
+  .content {
+    
+  }
+}
+</style>

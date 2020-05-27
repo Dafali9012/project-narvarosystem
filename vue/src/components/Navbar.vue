@@ -9,7 +9,7 @@
       <router-link to="/">
         <p class="no-margin unselectable text-cream ml-5">Hem</p>
       </router-link>
-      <router-link to="/">
+      <router-link to="/pim">
         <p class="no-margin unselectable text-cream ml-5">PIM</p>
       </router-link>
       <router-link v-if="userLogged && userRole == 'STUDENT'" to="/user">
@@ -54,3 +54,11 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+@media screen and (max-width: 500px) {
+  .navbar {
+  
+  }
+}
+</style>
