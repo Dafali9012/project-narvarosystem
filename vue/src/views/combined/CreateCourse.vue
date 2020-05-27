@@ -7,91 +7,62 @@
       <div class="col-9 d-flex">
         <div class="root d-flex justify-content-center">
           <div class="main d-flex flex-column">
-            <h2 class="align-self-start">Skapa nytt konto</h2>
+            <h2 class="align-self-start">Skapa ny kurs</h2>
             <div class="content-line rounded" />
-
-            <div
-              v-if="this.accountIndex==0"
-              class="unselectable mt-5 d-flex justify-content-center"
-            >
-              <div
-                class="button-account border border-bottom-0 border-dark d-flex align-items-center justify-content-center"
-              >
-                <font-awesome-icon :icon="['fas','user-graduate']" class="align-self-center mr-3" />
-                <p class="no-margin">Skapa nytt studentkonto</p>
-              </div>
-              <div
-                v-on:click="changeAccountType(1)"
-                class="button-account border border-gray d-flex align-items-center justify-content-center menu-link"
-              >
-                <font-awesome-icon
-                  :icon="['fas','chalkboard-teacher']"
-                  class="align-self-center text-muted mr-3"
-                />
-                <p class="no-margin text-muted">Skapa nytt EC konto</p>
-              </div>
-            </div>
-
-            <div v-else class="unselectable mt-5 d-flex justify-content-center">
-              <div
-                v-on:click="changeAccountType(0)"
-                class="button-account border border-gray d-flex align-items-center justify-content-center menu-link"
-              >
-                <font-awesome-icon
-                  :icon="['fas','user-graduate']"
-                  class="align-self-center text-muted mr-3"
-                />
-                <p class="no-margin text-muted">Skapa nytt studentkonto</p>
-              </div>
-              <div
-                class="button-account border border-bottom-0 border-dark d-flex align-items-center justify-content-center"
-              >
-                <font-awesome-icon
-                  :icon="['fas','chalkboard-teacher']"
-                  class="align-self-center mr-3"
-                />
-                <p class="no-margin">Skapa nytt EC konto</p>
-              </div>
-            </div>
-
-            <form @submit.prevent="createAccount()">
+            <form>
               <div class="mt-5 d-flex justify-content-center">
-                <input v-model="name" class="form-control" type="text" placeholder="Förnamn" />
-                <input v-model="lastName" class="form-control" type="text" placeholder="Efternamn" />
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Kursnamn"
+                  v-model="course.name"
+                />
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="Poäng"
+                  v-model="course.point"
+                />
+              </div>
+              <div class="mt-4 d-flex unselectable">
+                <label for="from" style="margin-left:9%">Från:</label>
+                <label for="to" style="margin-left:39%">Till:</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <input class="form-control" type="date" id="from" v-model="course.startDate" />
+                <input class="form-control" type="date" id="to" v-model="course.endDate" />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input v-model="phone" class="form-control" type="text" placeholder="Telefon" />
-                <input v-model="email" class="form-control" type="text" placeholder="Email" />
-              </div>
-              <div class="mt-4 d-flex justify-content-center">
-                <input v-model="sin" class="form-control" type="text" placeholder="Personnummer" />
-                <input v-model="address" class="form-control" type="text" placeholder="Address" />
+                <select
+                  class="form-control width-42"
+                  id="teacher"
+                  name="teacher"
+                  v-model="course.edID"
+                >
+                  <option value>Utbildning</option>
+                  <option v-for="education in allEducation" :key="education.edID">{{education.name}}</option>
+                </select>
+                <select
+                  class="form-control width-42"
+                  id="teacher"
+                  name="teacher"
+                  v-model="course.teacherID"
+                >
+                  <option value>Lärare</option>
+                  <option v-for="teacher in allTeachers" :key="teacher.userID">{{teacher.name}}</option>
+                </select>
               </div>
               <div class="mt-4 d-flex justify-content-center">
                 <input
-                  v-model="password"
-                  class="form-control"
-                  type="password"
-                  placeholder="Lösenord"
+                  class="form-control width-84"
+                  type="text"
+                  rows="3"
+                  placeholder="Beskrivning"
+                  v-model="course.description"
                 />
               </div>
-              <div
-                v-if="this.accountIndex==0"
-                class="pic-input mt-4 d-flex flex-column align-items-start"
-              >
-                <p>Användarbild:</p>
-                <input class="form-control no-margin width-100" type="file" placeholder="Bild" />
-              </div>
-              <div v-if="this.accountIndex==0" class="mt-4 d-flex justify-content-center">
-                <select class="form-control" id="education" name="education">
-                  <option value="education">Utbildning</option>
-                </select>
-                <select class="form-control" id="class" name="class">
-                  <option value="class">Klass</option>
-                </select>
-              </div>
               <div class="button-create mt-4 d-flex justify-content-end">
-                <button v-on:click="createAccount" type="submit" class="button button-primary">
+                <button v-on:click="createCourse" type="button" class="button button-primary">
                   <span>Skapa</span>
                 </button>
               </div>
@@ -109,75 +80,72 @@ import CombinedSidebar from "@/components/CombinedSidebar.vue";
 export default {
   data() {
     return {
-      accountIndex: 0,
-      name: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      sin: "",
-      address: "",
-      password: ""
+      allTeachers: [],
+      allEducation: [],
+      course: {
+        name: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+        point: "",
+        edID: "",
+        teacherID: ""
+      }
     };
   },
   components: {
     CombinedSidebar
   },
-  methods: {
-    changeAccountType(value) {
-      this.accountIndex = value;
+  computed: {
+    getAllTeachers() {
+      return this.$store.state.AllUser;
     },
-    createAccount: async function() {
-      if (this.accountIndex == 0) {
-        var newUser = {
-          name: this.name,
-          lastName: this.lastName,
-          email: this.email,
-          phone: this.phone,
-          sin: this.sin,
-          address: this.address,
-          password: this.password,
-          roles: [
-            {
-              role: "STUDENT",
-              roleID: 2
-            }
-          ]
-        };
-        console.log("skapa student account");
-        const url = "http://localhost:8080/user";
-        await fetch(url, {
-          method: "POST",
-          body: JSON.stringify(newUser),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        });
-      } else if (this.accountIndex == 1) {
-        newUser = {
-          name: this.name,
-          lastName: this.lastName,
-          email: this.email,
-          phone: this.phone,
-          sin: this.sin,
-          address: this.address,
-          password: this.password,
-          roles: [
-            {
-              role: "TEACHER",
-              roleID: 3
-            }
-          ]
-        };
-        const url = "http://localhost:8080/user";
-        await fetch(url, {
-          method: "POST",
-          body: JSON.stringify(newUser),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        });
-        console.log("skapa ec account");
-      }
+    getAllEducation() {
+      return this.$store.state.AllEducation;
+    }
+  },
+  created() {
+    this.setAllTeachers();
+    this.setEducation();
+  },
+  methods: {
+    setEducation() {
+      this.getAllEducation.forEach(education => {
+        this.allEducation.push(education);
+      });
+    },
+    setAllTeachers() {
+      this.getAllTeachers.forEach(user => {
+        if (user.roles[0].roleID == 3) {
+          this.allTeachers.push(user);
+        }
+      });
+    },
+    setSelectedTeacher() {
+      this.allTeachers.forEach(user => {
+        if (user.name == this.course.teacherID) {
+          this.course.teacherID = user.userID;
+        }
+      });
+    },
+    setSelectedEducation() {
+      this.allEducation.forEach(education => {
+        if (education.name == this.course.edID) {
+          this.course.edID = education.edID;
+        }
+      });
+    },
+    async createCourse() {
+      this.setSelectedTeacher();
+      this.setSelectedEducation();
+      console.log(this.course);
+      let response = await fetch("http://localhost:8080/course", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.course)
+      });
+      let result = await response.json();
+      console.log(result);
     }
   }
 };

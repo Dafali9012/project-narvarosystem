@@ -84,7 +84,7 @@ export default new Vuex.Store({
     getAllClasses: async function ({
       commit
     }) {
-      let url = 'http://localhost:8080/classes';
+      let url = 'http://localhost:8080/class';
       const response = await fetch(url);
       console.log(response.clone().text)
       const result = await response.json();
@@ -106,7 +106,7 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setAllCourses", json);
     },
-    getAllusers: async function ({
+    getAllUsers: async function ({
       commit
     }) {
       let url = "http://localhost:8080/user";

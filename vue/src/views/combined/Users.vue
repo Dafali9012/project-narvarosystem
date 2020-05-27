@@ -53,7 +53,7 @@
                 :config="config"
                 @on-select-row="getInfo($event)"
               ></vue-bootstrap4-table>
-              <button class="button button-primary" v-on:click="deleteUSer">
+              <button class="button button-primary">
                 <span>DELETE</span>
                 {{selectedName}}
               </button>
@@ -80,7 +80,7 @@ export default {
       columns: [
         {
           label: "Förnamn",
-          name: "name",
+          name: "first_name",
           sort: true
         },
         {
@@ -92,11 +92,6 @@ export default {
           label: "Telefon",
           name: "phone",
           sort: false
-        },
-        {
-          label: "Adress",
-          name: "address",
-          sort: true
         },
         {
           label: "E-post",
