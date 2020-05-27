@@ -1,5 +1,7 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -31,6 +33,7 @@ public class EdClass {
     private ECpersonnel eCpersonnelclass;
 
     @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Student> students;
 
     public int getId() {
@@ -47,5 +50,37 @@ public class EdClass {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getManager_id() {
+        return manager_id;
+    }
+
+    public void setManager_id(Integer manager_id) {
+        this.manager_id = manager_id;
+    }
+
+    public Education getEducationclass() {
+        return educationclass;
+    }
+
+    public void setEducationclass(Education educationclass) {
+        this.educationclass = educationclass;
+    }
+
+    public ECpersonnel geteCpersonnelclass() {
+        return eCpersonnelclass;
+    }
+
+    public void seteCpersonnelclass(ECpersonnel eCpersonnelclass) {
+        this.eCpersonnelclass = eCpersonnelclass;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 }
