@@ -1,5 +1,17 @@
 <template>
   <div class="container-fluid mt-2">
+    <div v-if="replyMode" class="container-fluid p-5 shadow">
+      <div class="input-group input-group-lg p-2">
+        <div class="input-group-prepend"><h5 class="text-center py-2 alert alert-primary">Till:{{message.senderID}}</h5></div>
+      </div>
+      <div class="input-group input-group-lg p-2">
+        <div class="input-group-prepend"><h5 class="text-center py-2 alert alert-primary">Ämne: Re:{{message.subject}}</h5></div>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend"></div>
+        <textarea v-model="messageReply" class="form-control alert alert-primary" aria-label="With textarea"></textarea>
+      </div>
+    </div>
     <fieldset disabled>
       <div class>
         <h5
@@ -21,9 +33,18 @@
       </div>
     </fieldset>
     <div class="container-fluid d-flex justify-content-end">
-      <button class="shadow button button-primary" v-on:click="back">Gå tillbacka</button>
+      <button class="shadow button button-primary" v-on:click="back">Gå tillbaka</button>
       <button class="shadow button button-primary" v-on:click="deleteMessage">Ta bort</button>
-      <button v-if="getUser.name != message.senderID " class="shadow button button-primary">Svara</button>
+      <button
+        v-on:click="reply_mode"
+        v-if="getUser.name != message.senderID && !replyMode"
+        class="shadow button button-primary"
+      >Svara</button>
+      <button
+        v-if="replyMode"
+        v-on:click="reply"
+        class="shadow button button-primary"
+      >Skicka</button>
     </div>
   </div>
 </template>
@@ -32,10 +53,44 @@
 export default {
   data() {
     return {
-      message: {}
+      message: {},
+      replyMode: false,
+      messageReply:""
     };
   },
   methods: {
+   async reply(){
+      this.getSender.forEach(user => {
+        if (this.message.senderID == user.name) {
+          this.message.senderID = user.userID;
+        }
+      });
+      
+      let reply_message = {
+        date: new Date(),
+        message:this.messageReply,
+        receiverID: this.message.senderID,
+        senderID: this.message.receiverID,
+        subject: this.message.subject
+      }
+   
+      let response = await fetch("http://localhost:8080/message", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reply_message)
+      });
+      let result = await response.json();
+      console.log('result',result);
+      this.reply_mode();
+      this.setMessage();
+    },
+    reply_mode(){
+      if(this.replyMode){
+        this.replyMode = false
+      }else{
+        this.replyMode = true
+      }
+    },
     back() {
       this.$router.push("/admin");
     },
