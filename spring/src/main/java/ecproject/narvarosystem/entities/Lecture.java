@@ -1,5 +1,7 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -12,6 +14,7 @@ public class Lecture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "date")
@@ -22,6 +25,7 @@ public class Lecture {
     private Course course;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Attendance> attendances;
 
     public int getId() {
@@ -41,7 +45,8 @@ public class Lecture {
     }
 
     public Course getCourse() {
-        return course;    }
+        return course;
+    }
 
     public void setCourse(Course course) {
         this.course = course;

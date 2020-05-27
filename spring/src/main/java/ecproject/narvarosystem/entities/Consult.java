@@ -15,32 +15,39 @@ public class Consult {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User userconsult;
 
-
-    /*@OneToOne(optional = false)
-    @MapsId("user_id")
-    private User user;*/
-
-    /*@OneToOne(mappedBy = "consult")
+    @OneToOne(mappedBy = "consult")
     @JsonIgnore
-    private Teacher teacher;*/
+    private Teacher teacher;
 
-    /*public User getUser() {
-        return user;
+    public int getId() {
+        return id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }*/
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    /*public Teacher getTeacher() {
+    public void setUserconsult(User userconsult) {
+        this.userconsult = userconsult;
+    }
+
+    public User getUserconsult() {
+        return userconsult;
+    }
+
+    public Teacher getTeacher() {
         return teacher;
     }
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
-    }*/
+    }
 }
 

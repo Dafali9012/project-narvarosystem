@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AttendanceRepository extends CrudRepository<Attendance, Long> {
+public interface AttendanceRepository extends CrudRepository<Attendance, Integer> {
     List<Attendance> findAll();
 }

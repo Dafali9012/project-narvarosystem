@@ -1,4 +1,6 @@
 package ecproject.narvarosystem.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,30 +12,30 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "picture")
     private String picture;
 
-
     @OneToOne(optional = false)
-    @MapsId("user_id")
-    public User user;
+    @JoinColumn(name = "user_id", nullable=false)
+    private User userstudent;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
     private EdClass eclasses;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Attendance> attendances;
 
-
-    public User getUser() {
-        return user;
+    public int getId() {
+        return id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPicture() {
@@ -44,13 +46,12 @@ public class Student {
         this.picture = picture;
     }
 
-
-    public Set<Attendance> getAttendances() {
-        return attendances;
+    public void setUserstudent(User userstudent) {
+        this.userstudent = userstudent;
     }
 
-    public void setAttendances(Set<Attendance> attendances) {
-        this.attendances = attendances;
+    public User getUserstudent() {
+        return userstudent;
     }
 
     public EdClass getEclasses() {
@@ -59,5 +60,13 @@ public class Student {
 
     public void setEclasses(EdClass eclasses) {
         this.eclasses = eclasses;
+    }
+
+    public Set<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(Set<Attendance> attendances) {
+        this.attendances = attendances;
     }
 }

@@ -1,5 +1,7 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,31 +13,31 @@ public class Education {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
     private String name;
 
-
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
-    private ECpersonnel eCpersonnel;
-
-
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "education")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", nullable = false)
+    private ECpersonnel eCpersonnelEd;
+
+    @OneToMany(mappedBy = "educationclass")
+    @JsonIgnore
     private Set<EdClass> edClasses;
 
+    @OneToMany(mappedBy = "education")
+    @JsonIgnore
+    private Set<Course> courses;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    @OneToMany(mappedBy = "education")
-    private Set<Course> courses;
 
     public int getId() {
         return id;
@@ -53,12 +55,28 @@ public class Education {
         this.name = name;
     }
 
-    public ECpersonnel geteCpersonnel() {
-        return eCpersonnel;
+    public String getDescription() {
+        return description;
     }
 
-    public void seteCpersonnel(ECpersonnel eCpersonnel) {
-        this.eCpersonnel = eCpersonnel;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public ECpersonnel geteCpersonnelEd() {
+        return eCpersonnelEd;
+    }
+
+    public void seteCpersonnelEd(ECpersonnel eCpersonnelEd) {
+        this.eCpersonnelEd = eCpersonnelEd;
     }
 
     public Set<EdClass> getEdClasses() {
@@ -69,14 +87,6 @@ public class Education {
         this.edClasses = edClasses;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Set<Course> getCourses() {
         return courses;
     }
@@ -85,11 +95,5 @@ public class Education {
         this.courses = courses;
     }
 
-    public City getCity() {
-        return city;
-    }
 
-    public void setCity(City city) {
-        this.city = city;
-    }
 }

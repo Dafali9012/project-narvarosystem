@@ -1,6 +1,9 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -12,23 +15,28 @@ public class EdClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "education_id", referencedColumnName = "id", nullable = false)
-    private Education education;
+    @Column(name = "manager_id")
+    private Integer manager_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "user_id", nullable = false)
-    private ECpersonnel eCpersonnel;
+    @JoinColumn(name = "education_id", referencedColumnName = "id")
+    private Education educationclass;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private ECpersonnel eCpersonnelclass;
 
     @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Student> students;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -44,20 +52,28 @@ public class EdClass {
         this.name = name;
     }
 
-    public Education getEducation() {
-        return education;
+    public Integer getManager_id() {
+        return manager_id;
     }
 
-    public void setEducation(Education education) {
-        this.education = education;
+    public void setManager_id(Integer manager_id) {
+        this.manager_id = manager_id;
     }
 
-    public ECpersonnel geteCpersonnel() {
-        return eCpersonnel;
+    public Education getEducationclass() {
+        return educationclass;
     }
 
-    public void seteCpersonnel(ECpersonnel eCpersonnel) {
-        this.eCpersonnel = eCpersonnel;
+    public void setEducationclass(Education educationclass) {
+        this.educationclass = educationclass;
+    }
+
+    public ECpersonnel geteCpersonnelclass() {
+        return eCpersonnelclass;
+    }
+
+    public void seteCpersonnelclass(ECpersonnel eCpersonnelclass) {
+        this.eCpersonnelclass = eCpersonnelclass;
     }
 
     public Set<Student> getStudents() {

@@ -1,11 +1,15 @@
 package ecproject.narvarosystem.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
+
+    public User(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,25 +34,21 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    /*@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "userconsult", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Consult consult;*/
+    private Consult consult;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "userstudent", cascade = CascadeType.ALL)
     @JsonIgnore
     private Student student;
 
-    /*@OneToOne(mappedBy = "user")
-    @JsonIgnore
-    private ECpersonnel eCpersonnel;*/
+   @OneToOne(mappedBy = "userec", cascade = CascadeType.ALL)
+   @JsonIgnore
+    private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
     @JoinColumn (name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
-
-    /*@OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "UserID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
-    private Set<Role> roles;*/
 
     /*public User() {}
     public User(String first_name, String password) {
@@ -117,35 +117,23 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
-
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
+
     public Role getRole() {
         return role;
     }
 
-    public void setRoles(Role roles) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    /*public Consult getConsult() {
-        return consult;
-    }
-
-    public void setConsult(Consult consult) {
-        this.consult = consult;
-    }*/
-    /*public ECpersonnel geteCpersonnel() {
-        return eCpersonnel;
-    }
-
-    public void seteCpersonnel(ECpersonnel eCpersonnel) {
-        this.eCpersonnel = eCpersonnel;
-    }*/
     public Student getStudent() {
         return student;
     }
@@ -154,6 +142,21 @@ public class User {
         this.student = student;
     }
 
+    public Consult getConsult() {
+        return consult;
+    }
+
+    public void setConsult(Consult consult) {
+        this.consult = consult;
+    }
+
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
+    }
 }
 
 
