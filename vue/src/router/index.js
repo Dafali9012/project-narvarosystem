@@ -13,6 +13,7 @@ import CreateAccount from '@/views/combined/CreateAccount.vue'
 import CreateEducation from '@/views/combined/CreateEducation.vue'
 import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
+import Admin from '@/views/combined/CreateCourse.vue'
 
 
 Vue.use(VueRouter)
@@ -21,6 +22,11 @@ const routes = [{
     path: '/',
     name: 'Login',
     component: Login
+},
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
   },
   {
     path: '/overview',

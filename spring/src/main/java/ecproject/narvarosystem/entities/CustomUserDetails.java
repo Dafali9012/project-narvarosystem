@@ -1,4 +1,4 @@
-package ecproject.narvarosystem.entities;
+/*package ecproject.narvarosystem.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +24,7 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return super.getFirst_name();
+        return super.getName();
     }
 
     @Override
@@ -47,3 +47,4 @@ public class CustomUserDetails extends User implements UserDetails {
         return true;
     }
 }
+*/
