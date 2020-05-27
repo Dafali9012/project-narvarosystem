@@ -1,17 +1,12 @@
 package ecproject.narvarosystem.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
-
-    public User(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,7 +54,7 @@ public class User {
     }*/
 
 
-    //public User() {}
+    public User() {}
 
     public User(User user) {
         this.first_name = user.getFirst_name();

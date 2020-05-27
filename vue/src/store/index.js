@@ -35,6 +35,7 @@ export default new Vuex.Store({
     },
     setAllClasses(state, value) {
       state.AllClass = value;
+      console.log(state.AllClass)
     },
     setAllEducations(state, value) {
       state.AllEducation = value;
@@ -83,10 +84,11 @@ export default new Vuex.Store({
     getAllClasses: async function ({
       commit
     }) {
-      let url = "http://localhost:8080/classroom";
-      const result = await fetch(url);
-      const json = await result.json();
-      commit("setAllClasses", json);
+      let url = 'http://localhost:8080/class';
+      const response = await fetch(url);
+      console.log(response.clone().text)
+      const result = await response.json();
+      commit("setAllClasses", result);
     },
     getAllEducations: async function ({
       commit
@@ -104,7 +106,7 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setAllCourses", json);
     },
-    getAllusers: async function ({
+    getAllUsers: async function ({
       commit
     }) {
       let url = "http://localhost:8080/user";
