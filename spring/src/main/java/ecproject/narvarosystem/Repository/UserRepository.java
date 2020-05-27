@@ -15,4 +15,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findAll();
     @Query(value="SELECT TOP 1 * FROM user WHERE first_name = :firstName", nativeQuery=true)
     Optional<User> findByFirstName(String firstName);
+
+    @Query(value="SELECT * FROM user WHERE role_id = :id", nativeQuery=true)
+    List<User> findAllByRoleId(int id);
 }
