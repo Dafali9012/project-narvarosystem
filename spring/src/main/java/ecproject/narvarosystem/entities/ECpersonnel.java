@@ -37,4 +37,12 @@ public class ECpersonnel implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void setUserec(User userec) {
+        this.userec = userec;
+    }
+
+    public User getUserec() {
+        return userec;
+    }
 }

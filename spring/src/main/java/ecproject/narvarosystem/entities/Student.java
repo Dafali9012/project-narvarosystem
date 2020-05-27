@@ -16,8 +16,8 @@ public class Student {
     @Column(name = "picture")
     private String picture;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable=false, insertable=false, updatable=false)
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable=false)
     private User userstudent;
 
     @ManyToOne(optional = false)
@@ -41,5 +41,13 @@ public class Student {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public void setUserstudent(User userstudent) {
+        this.userstudent = userstudent;
+    }
+
+    public User getUserstudent() {
+        return userstudent;
     }
 }

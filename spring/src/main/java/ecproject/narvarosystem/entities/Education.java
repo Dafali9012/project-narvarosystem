@@ -62,4 +62,12 @@ public class Education {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 }

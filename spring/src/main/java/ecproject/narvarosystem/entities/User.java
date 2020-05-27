@@ -41,10 +41,11 @@ public class User {
     private Consult consult;
 
     @OneToOne(mappedBy = "userstudent", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Student student;
 
-   @OneToOne(mappedBy = "userec")
-
+   @OneToOne(mappedBy = "userec", cascade = CascadeType.ALL)
+   @JsonIgnore
     private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
@@ -137,6 +138,31 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Consult getConsult() {
+        return consult;
+    }
+
+    public void setConsult(Consult consult) {
+        this.consult = consult;
+    }
+
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
     }
 }
 

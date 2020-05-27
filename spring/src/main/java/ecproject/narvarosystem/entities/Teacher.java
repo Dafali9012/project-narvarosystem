@@ -33,4 +33,12 @@ public class Teacher implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void setConsult(Consult consult) {
+        this.consult = consult;
+    }
+
+    public Consult getConsult() {
+        return consult;
+    }
 }
