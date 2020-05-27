@@ -12,7 +12,7 @@
 
         <div class="mt-4 d-flex justify-content-center">
           <select class="form-control" id="edu-leader" v-model="selectedPersonName">
-            <option value="">Utbildningsledare</option>
+            <option value="" disabled selected>Utbildningsledare</option>
             <option v-for="ecPers in ecPersonal" :key="ecPers.id">{{ecPers.name}}</option>
           </select>
         </div>
@@ -20,6 +20,7 @@
         <div class="mt-4 d-flex justify-content-center">
           <textarea
             class="form-control width-84"
+            style="resize: none;"
             type="text"
             rows="6"
             placeholder="Beskrivning"

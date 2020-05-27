@@ -3,7 +3,7 @@
     <div class="content row mt-3">
       <TeacherSideBar />
 
-      <div class="main calendar col-9 mt-5">
+      <div class="main calendar col-lg-9 mt-5">
         <div class="row ml-5">
           <div class="col-6">
             <VueCal
@@ -21,10 +21,10 @@
             ></VueCal>
           </div>
           <div class="col-6">
-            <h1 class="d-flex text-align-left">Saker</h1>
+            <h1 class="d-flex text-align-left"> Lägg till</h1>
             <form>
               <div class="form-group">
-                <label class="presenceLabel" for="inputname">Namn</label>
+                <label class="presenceLabel" for="inputname"></label>
                 <input
                   type="text"
                   class="form-control"
@@ -34,7 +34,7 @@
                 />
               </div>
               <div class="form-group">
-                <label class="presenceLabel" for="inputstart">Start</label>
+                <label class="presenceLabel" for="inputstart"></label>
                 <input
                   type="text"
                   class="form-control"
@@ -44,7 +44,7 @@
                 />
               </div>
               <div class="form-group">
-                <label class="presenceLabel" for="inputend">Slut</label>
+                <label class="presenceLabel" for="inputend"></label>
                 <input
                   type="text"
                   class="form-control"
@@ -55,7 +55,7 @@
               </div>
               <div class="form-group">
                 <label class="presenceLabel" for="inputcontent"
-                  >Beskrivning</label
+                  ></label
                 >
                 <input
                   type="text"
@@ -66,7 +66,7 @@
                 />
               </div>
               <div class="form-group">
-                <label class="presenceLabel" for="inputcourse">Kurs</label>
+                <label class="presenceLabel" for="inputcourse"></label>
                 <input
                   type="text"
                   class="form-control"
@@ -75,8 +75,7 @@
                   placeholder="Kurs"
                 />
               </div>
-            </form>
-            <button v-on:click="
+              <button v-on:click="
                 events.push({
                   start: Istart,
                   end: Iend,
@@ -86,6 +85,7 @@
                   class: 'lec',
                 })
               " type="submit" class="button button-primary"> <span> Skapa </span> </button>
+            </form>
           </div>
         </div>
       </div>

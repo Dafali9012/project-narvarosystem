@@ -6,7 +6,7 @@
     </div>
     -->
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <div class="d-flex flex-column align-items-center text-white">
           <img
             src="https://image.flaticon.com/icons/svg/2206/2206314.svg"
@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-      <div class="col-9 d-flex">
+      <div class="col-sm-9 d-flex">
         <NewAccount v-if="this.$store.state.contentIndex==0" />
         <NewEducation v-if="this.$store.state.contentIndex==1" />
         <NewCourse v-if="this.$store.state.contentIndex==2" />
@@ -124,3 +124,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+@media screen and (max-width: 500px) {
+  .content {
+    
+  }
+}
+</style>

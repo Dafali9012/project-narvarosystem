@@ -3,7 +3,7 @@
     <div class="content row mt-3">
       <TeacherSideBar />
 
-      <div class="main col-9">
+      <div class="main col-sm-9 col-lg-12">
         <h1>Välkommen</h1>
       </div>
     </div>
