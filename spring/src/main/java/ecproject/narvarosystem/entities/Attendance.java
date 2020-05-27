@@ -45,6 +45,22 @@ public class Attendance implements Serializable {
     public void setPresent(Boolean present) {
         this.present = present;
     }
+
+    public Lecture getLecture() {
+        return lecture;
+    }
+
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }
 
 

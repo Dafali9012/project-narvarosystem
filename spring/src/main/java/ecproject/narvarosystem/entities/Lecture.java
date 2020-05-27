@@ -1,5 +1,7 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -23,6 +25,7 @@ public class Lecture {
     private Course course;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Attendance> attendances;
 
     public int getId() {
@@ -39,5 +42,21 @@ public class Lecture {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Set<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(Set<Attendance> attendances) {
+        this.attendances = attendances;
     }
 }

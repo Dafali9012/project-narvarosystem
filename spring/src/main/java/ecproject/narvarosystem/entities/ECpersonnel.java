@@ -20,7 +20,7 @@ public class ECpersonnel implements Serializable {
 
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User userec;
 
    
@@ -46,5 +46,21 @@ public class ECpersonnel implements Serializable {
 
     public User getUserec() {
         return userec;
+    }
+
+    public Set<EdClass> getEdClasses() {
+        return edClasses;
+    }
+
+    public void setEdClasses(Set<EdClass> edClasses) {
+        this.edClasses = edClasses;
+    }
+
+    public Set<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(Set<Education> educations) {
+        this.educations = educations;
     }
 }
