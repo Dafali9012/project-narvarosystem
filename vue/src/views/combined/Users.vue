@@ -85,12 +85,12 @@ export default {
         },
         {
           label: "Efternamn",
-          name: "lastName",
+          name: "last_name",
           sort: true
         },
         {
           label: "Telefon",
-          name: "phone",
+          name: "phone_number",
           sort: false
         },
         {

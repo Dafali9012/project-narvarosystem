@@ -23,7 +23,7 @@ public class Student {
     private User userstudent;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "class_id",  nullable = false)
     private EdClass eclasses;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)

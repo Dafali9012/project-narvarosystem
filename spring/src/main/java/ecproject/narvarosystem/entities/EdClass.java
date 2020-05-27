@@ -25,11 +25,11 @@ public class EdClass {
     private Integer manager_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "education_id", referencedColumnName = "id")
+    @JoinColumn(name = "education_id",nullable=false)
     private Education educationclass;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "manager_id", insertable = false, updatable = false)
     private ECpersonnel eCpersonnelclass;
 
     @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)

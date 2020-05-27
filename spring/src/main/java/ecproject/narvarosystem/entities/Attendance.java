@@ -22,12 +22,12 @@ public class Attendance implements Serializable {
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "lecture_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "lecture_id",nullable = false)
     private Lecture lecture;
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "student_id",  nullable = false)
     private Student student;
 
     public int getId() {

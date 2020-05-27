@@ -20,7 +20,7 @@ public class Teacher implements Serializable {
 
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "consult_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "consult_id", nullable = false)
     private Consult consult;
 
 

@@ -26,11 +26,11 @@ public class Education {
     @JoinColumn(name = "manager_id", nullable = false)
     private ECpersonnel eCpersonnelEd;
 
-    @OneToMany(mappedBy = "educationclass")
+    @OneToMany(mappedBy = "educationclass", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<EdClass> edClasses;
 
-    @OneToMany(mappedBy = "education")
+    @OneToMany(mappedBy = "education", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Course> courses;
 
