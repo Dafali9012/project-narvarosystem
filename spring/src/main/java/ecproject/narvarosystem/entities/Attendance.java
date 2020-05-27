@@ -30,15 +30,6 @@ public class Attendance implements Serializable {
     @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
     private Student student;
 
-    public Boolean getPresent() {
-        return present;
-    }
-
-    public void setPresent(Boolean present) {
-        this.present = present;
-    }
-
-
     public int getId() {
         return id;
     }
@@ -47,20 +38,12 @@ public class Attendance implements Serializable {
         this.id = id;
     }
 
-    public Lecture getLecture() {
-        return lecture;
+    public Boolean getPresent() {
+        return present;
     }
 
-    public void setLecture(Lecture lecture) {
-        this.lecture = lecture;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setPresent(Boolean present) {
+        this.present = present;
     }
 }
 

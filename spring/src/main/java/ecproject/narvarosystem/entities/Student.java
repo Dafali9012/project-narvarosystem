@@ -16,9 +16,9 @@ public class Student {
     @Column(name = "picture")
     private String picture;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    public User userstudent;
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable=false, insertable=false, updatable=false)
+    private User userstudent;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
@@ -26,7 +26,6 @@ public class Student {
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<Attendance> attendances;
-
 
     public int getId() {
         return id;
@@ -42,29 +41,5 @@ public class Student {
 
     public void setPicture(String picture) {
         this.picture = picture;
-    }
-
-    public User getUserstudent() {
-        return userstudent;
-    }
-
-    public void setUserstudent(User userstudent) {
-        this.userstudent = userstudent;
-    }
-
-    public EdClass getEclasses() {
-        return eclasses;
-    }
-
-    public void setEclasses(EdClass eclasses) {
-        this.eclasses = eclasses;
-    }
-
-    public Set<Attendance> getAttendances() {
-        return attendances;
-    }
-
-    public void setAttendances(Set<Attendance> attendances) {
-        this.attendances = attendances;
     }
 }

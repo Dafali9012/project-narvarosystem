@@ -33,21 +33,5 @@ public class Consult {
     public void setId(int id) {
         this.id = id;
     }
-
-    public User getUserconsult() {
-        return userconsult;
-    }
-
-    public void setUserconsult(User userconsult) {
-        this.userconsult = userconsult;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
 }
 

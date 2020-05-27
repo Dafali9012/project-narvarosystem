@@ -40,19 +40,4 @@ public class Lecture {
     public void setDate(Date date) {
         this.date = date;
     }
-
-    public Course getCourse() {
-        return course;    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public Set<Attendance> getAttendances() {
-        return attendances;
-    }
-
-    public void setAttendances(Set<Attendance> attendances) {
-        this.attendances = attendances;
-    }
 }

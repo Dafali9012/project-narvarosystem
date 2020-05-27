@@ -1,6 +1,7 @@
 package ecproject.narvarosystem.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -25,9 +26,9 @@ public class EdClass {
     @JoinColumn(name = "education_id", referencedColumnName = "id")
     private Education educationclass;
 
-    /*@ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", referencedColumnName = "id")
-    private ECpersonnel eCpersonnelclass;*/
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private ECpersonnel eCpersonnelclass;
 
     @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)
     private Set<Student> students;
@@ -46,22 +47,5 @@ public class EdClass {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Education getEducationclass() {
-        return educationclass;
-    }
-
-
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public Integer getManager_id() {
-        return manager_id;
-    }
-
-    public void setManager_id(Integer manager_id) {
-        this.manager_id = manager_id;
     }
 }

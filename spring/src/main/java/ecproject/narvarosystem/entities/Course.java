@@ -88,28 +88,4 @@ public class Course {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Education getEducation() {
-        return education;
-    }
-
-    public void setEducation(Education education) {
-        this.education = education;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public Set<Lecture> getLectures() {
-        return lectures;
-    }
-
-    public void setLectures(Set<Lecture> lectures) {
-        this.lectures = lectures;
-    }
 }

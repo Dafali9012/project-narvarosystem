@@ -33,20 +33,4 @@ public class Teacher implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-
-    public Consult getConsult() {
-        return consult;
-    }
-
-    public void setConsult(Consult consult) {
-        this.consult = consult;
-    }
-
-    public Set<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
-    }
 }

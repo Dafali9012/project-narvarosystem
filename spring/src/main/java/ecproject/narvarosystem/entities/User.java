@@ -2,8 +2,10 @@ package ecproject.narvarosystem.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -39,11 +41,10 @@ public class User {
     private Consult consult;
 
     @OneToOne(mappedBy = "userstudent", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Student student;
 
-    @OneToOne(mappedBy = "userec")
-    @JsonIgnore
+   @OneToOne(mappedBy = "userec")
+
     private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
@@ -121,36 +122,13 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
-
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Consult getConsult() {
-        return consult;
-    }
-
-    public void setConsult(Consult consult) {
-        this.consult = consult;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public ECpersonnel geteCpersonnel() {
-        return eCpersonnel;
-    }
-
-    public void seteCpersonnel(ECpersonnel eCpersonnel) {
-        this.eCpersonnel = eCpersonnel;
     }
 
     public Role getRole() {

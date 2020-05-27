@@ -20,10 +20,9 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private Set<User> users;
-
 
     public int getId() {
         return id;
@@ -41,12 +40,5 @@ public class Role {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-            return users;
-        }
-
-    public void setUsers(Set<User> users) {
-            this.users = users;
-        }
 
 }
