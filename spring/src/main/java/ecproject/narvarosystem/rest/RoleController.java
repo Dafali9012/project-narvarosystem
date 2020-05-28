@@ -15,8 +15,6 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
-
-
     @GetMapping()
     public List<Role> roles(){
         return (List<Role>) this.roleRepository.findAll();
