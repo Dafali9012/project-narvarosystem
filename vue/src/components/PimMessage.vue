@@ -1,127 +1,5 @@
 <template>
-<body class="container-fluid p-0">
-  <div class="row p-0" style="height: 60vh; ">
-    <div class="col-3 d-flex align-items-center">
-      <div class="list-group" id="list-tab" role="tablist">
-        <a
-          class="list-group-item list-group-item-action active"
-          style="width: 200px; border-radius: 15px;"
-          id="list-home-list"
-          data-toggle="list"
-          href="#list-home"
-          role="tab"
-          aria-controls="home"
-        >
-        <font-awesome-icon
-                :icon="['fas', 'paper-plane']"
-                class="align-self-center mr-2 fa-lg"
-                id="icon"
-              />Nytt meddelande</a>
-        <a
-          v-on:click="cons"
-          class="list-group-item list-group-item-action mt-2"
-          style="width: 135px; border-radius: 15px;"
-          id="list-profile-list"
-          data-toggle="list"
-          href="#list-profile"
-          role="tab"
-          aria-controls="profile"
-        ><font-awesome-icon
-                :icon="['fas', 'inbox']"
-                class="align-self-center mr-1 fa-md"
-                id="icon"
-              />Inkorg</a>
-        <a
-          v-on:click="consSent"
-          class="list-group-item list-group-item-action mt-2"
-          style="width: 135px; border-radius: 15px;"
-          id="list-messages-list"
-          data-toggle="list"
-          href="#list-messages"
-          role="tab"
-          aria-controls="messages"
-        ><font-awesome-icon
-                :icon="['fas', 'share-square']"
-                class="align-self-center mr-1 fa-md"
-                id="icon"
-              />Skickat</a>
-      </div>
-    </div>
-    <div class="col-9 d-flex align-items-end" style="">
-      <div class="tab-content" id="nav-tabContent" style="width: 60%; margin-bottom: 5vh;">
-        <div
-          class="tab-pane fade show active"
-          id="list-home"
-          role="tabpanel"
-          aria-labelledby="list-home-list"
-        >
-          <form action class="send-form">
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Vem vill du skriva till?</label>
-              <select required class="form-control" style="min-width: 100%; margin-left:0;" id="exampleFormControlSelect1" v-model="receiverUser">
-                <option value="" disabled selected>Mottagare</option>
-                <option v-for="user in allUsers" :key="user.userID">{{user.name}}</option>
-              </select>
-              
-              <label for="exampleFormControlInput1"></label>
-              <input
-                type="text"
-                class="form-control"
-                style="min-width: 100%; margin-left:0;"
-                id="exampleFormControlInput1"
-                placeholder="Ämne"
-                v-model="message.subject"
-              />
-            </div>
-            <div class="form-group text d-flex ">
-              <label for="exampleFormControlTextarea1"></label>
-              <textarea 
-                style="resize: none; width: 100%;"
-                maxlength="500"
-                class="form-control"
-                id="exampleFormControlTextarea1"
-                rows="5"
-                placeholder="Skriv något ..."
-                v-model="message.message"
-              ></textarea>
-            </div>
-            <div class="d-flex justify-content-center">
-              <button type="button" class="button button-primary" v-on:click="send"> <span> Skicka </span> </button>
-            </div>
-          </form>
-        </div>
-        <div
-          class="tab-pane fade"
-          style="margin-bottom: 10vh; width: 100%;"
-          id="list-profile"
-          role="tabpanel"
-          aria-labelledby="list-profile-list"
-        >
-          <vue-bootstrap4-table
-            :rows="rows"
-            :columns="columns"
-            :config="config"
-            @on-select-row="getInfo($event)"
-          ></vue-bootstrap4-table>
-        </div>
-        <div
-          class="tab-pane fade"
-          style="margin-bottom: 10vh"
-          id="list-messages"
-          role="tabpanel"
-          aria-labelledby="list-messages-list"
-        >
-          <vueTable
-            :rows="rowsSent"
-            :columns="columnsSent"
-            :config="configSent"
-            @on-select-row="getInfo($event)"
-          />
-        </div>
-      </div>
-    </div>
-    
-  <!-- <div class="root d-flex flex-column container-fluid">
+  <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
       <div class="admin-sidebar col-3">
         <CombinedSidebar />
@@ -233,7 +111,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script>
@@ -464,7 +342,7 @@ tr .overflow-hidden {
   background: blue !important;
   text-overflow: ellipsis !important;
 }
-#nav-tabContent{
+#nav-tabContent {
   /*margin-top: 20vh;*/
 }
 </style>
