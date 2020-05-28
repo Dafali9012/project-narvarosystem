@@ -3,10 +3,7 @@ package ecproject.narvarosystem.rest;
 import ecproject.narvarosystem.Repository.StudentRepository;
 import ecproject.narvarosystem.entities.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,11 +16,34 @@ public class StudentController {
 
     @GetMapping
     public List<Student> students(){
-        return (List<Student>) this.studentRepository.findAll();
+        return this.studentRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Iterable<Student> studentById(@PathVariable long id){
-        return this.studentRepository.findAllById(Collections.singleton(id));
+    public List<Student> studentById(@PathVariable int id){
+        return studentRepository.findAllById(Collections.singleton(id));
+    }
+
+    @GetMapping("/class/{id}")
+    public List<Student> studentByClassId(@PathVariable int id) {
+        return studentRepository.findByClassId(id);
+    }
+
+    @PostMapping
+    public Student addStudent(@RequestBody Student student) {
+        return studentRepository.save(student);
+    }
+
+    @PutMapping("/{id}")
+    public Student updateStudent(@PathVariable int id, @RequestBody Student student) {
+        Student updatedStudent = studentRepository.findAllById(Collections.singleton(id)).get(0);
+        if(student.getPicture()!=null)updatedStudent.setPicture(student.getPicture());
+        // klass!
+        return studentRepository.save(updatedStudent);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable int id) {
+        studentRepository.deleteById(id);
     }
 }

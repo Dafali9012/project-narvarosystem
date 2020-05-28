@@ -7,7 +7,7 @@ import java.util.Date;
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long messageID;
+    private long message_id;
 
     @Column(name = "message")
     private String message;
@@ -18,20 +18,20 @@ public class Message {
     @Column(name = "date")
     private Date date;
 
-    @Column(name ="receiverID")
-    private int receiverID;
+    @Column(name ="receiver_id")
+    private int receiver_id;
 
-    @Column(name ="senderID")
-    private int senderID;
+    @Column(name ="sender_id")
+    private int sender_id;
 
     public Message(){};
 
-    public long getMessageID() {
-        return messageID;
+    public long getMessage_id() {
+        return message_id;
     }
 
-    public void setMessageID(long messageID) {
-        this.messageID = messageID;
+    public void setMessage_id(long message_id) {
+        this.message_id = message_id;
     }
 
     public String getMessage() {
@@ -58,19 +58,19 @@ public class Message {
         this.date = date;
     }
 
-    public int getReceiverID() {
-        return receiverID;
+    public int getReceiver_id() {
+        return receiver_id;
     }
 
-    public void setReceiverID(int receiverID) {
-        this.receiverID = receiverID;
+    public void setReceiver_id(int receiver_id) {
+        this.receiver_id = receiver_id;
     }
 
-    public int getSenderID() {
-        return senderID;
+    public int getSender_id() {
+        return sender_id;
     }
 
-    public void setSenderID(int senderID) {
-        this.senderID = senderID;
+    public void setSender_id(int sender_id) {
+        this.sender_id = sender_id;
     }
 }

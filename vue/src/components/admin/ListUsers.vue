@@ -64,27 +64,20 @@ export default {
             columns: [
            {
               label: "Förnamn",
-              name: "name",              
+              name: "first_name",              
               sort: true,
               
             },
             {
               label: "Efternamn",
-              name: "lastName",              
-              sort: true,
-              
+              name: "last_name",              
+              sort: true,              
             },
             {
               label: "Telefon",
-              name: "phone",              
-              sort: false,
-              
-            },           
-            {
-              label: "Adress",
-              name: "address",              
-              sort: true,              
-            },
+              name: "phone_number",              
+              sort: false,              
+            }, 
             {
               label: "E-post",
               name: "email",              

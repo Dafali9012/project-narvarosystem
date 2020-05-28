@@ -1,54 +1,91 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "attendance")
-public class Attendance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long attendanceID;
-
-    @Column(name = "Status")
-    private String status;
-
-    @Column(name = "StudentID")
-    private int studentId;
-
-    @Column(name = "LectureID")
-    private int lectureID;
+public class Attendance implements Serializable {
 
     public Attendance(){}
 
-    public long getAttendanceID() {
-        return attendanceID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "present")
+    private Boolean present;
+
+    @Column(name = "lecture_id")
+    private Integer lecture_id;
+
+    @Column(name = "student_id")
+    private Integer student_id;
+
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "lecture_id",nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
+    private Lecture lecture;
+
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "student_id",  nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
+    private Student student;
+
+    public int getId() {
+        return id;
     }
 
-    public void setAttendanceID(long attendanceID) {
-        this.attendanceID = attendanceID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public Boolean getPresent() {
+        return present;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPresent(Boolean present) {
+        this.present = present;
     }
 
-    public int getStudentId() {
-        return studentId;
+    public Lecture getLecture() {
+        return lecture;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
     }
 
-    public int getLectureID() {
-        return lectureID;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setLectureID(int lectureID) {
-        this.lectureID = lectureID;
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Integer getLecture_id() {
+        return lecture_id;
+    }
+
+    public void setLecture_id(Integer lecture_id) {
+        this.lecture_id = lecture_id;
+    }
+
+    public Integer getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(Integer student_id) {
+        this.student_id = student_id;
     }
 }
+
+

@@ -11,21 +11,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/education")
 public class EducationController {
+
     @Autowired
-    private EducationRepository educationRepository;
+    EducationRepository educationRepository;
+
+
+    @GetMapping()
+    public List<Education> educations() {
+        return educationRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public List<Education> educationsById(@PathVariable int id) {
+        return educationRepository.findAllById(Collections.singleton(id));
+    }
 
     @PostMapping
     public Education addEducation(@RequestBody Education education) {
         return educationRepository.save(education);
     }
 
-    @GetMapping()
-    public List<Education> educations() {
-        return (List<Education>) this.educationRepository.findAll();
+    @DeleteMapping("/{id}")
+    public void  deleteEducation(@PathVariable int id){
+        educationRepository.deleteById(id);
     }
 
-    @GetMapping("{id}")
-    public Iterable<Education> educationsById(@PathVariable long id) {
-        return this.educationRepository.findAllById(Collections.singleton(id));
-    }
+
+
 }
