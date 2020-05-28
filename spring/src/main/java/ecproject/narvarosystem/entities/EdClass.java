@@ -38,7 +38,7 @@ public class EdClass {
     private ECpersonnel classManager;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "ClassOfStudent", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fuck", cascade = CascadeType.ALL)
     private Set<Student> students;
 
     public int getId() {

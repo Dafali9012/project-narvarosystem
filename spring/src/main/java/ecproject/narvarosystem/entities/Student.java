@@ -1,4 +1,6 @@
 package ecproject.narvarosystem.entities;
+
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -28,7 +30,7 @@ public class Student {
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id",  nullable = false, insertable = false, updatable = false)
     @JsonIgnore
-    private EdClass ClassOfStudent;
+    private EdClass fuck;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -59,16 +61,6 @@ public class Student {
     }
 
 
-
-    public EdClass getClassOfStudent() {
-        return ClassOfStudent;
-    }
-
-    public void setClassOfStudent(EdClass classOfStudent) {
-        ClassOfStudent = classOfStudent;
-    }
-
-    
     public Set<Attendance> getAttendances() {
         return attendances;
     }
@@ -83,5 +75,13 @@ public class Student {
 
     public void setClassid(Integer classid) {
         this.classid = classid;
+    }
+
+    public EdClass getFuck() {
+        return fuck;
+    }
+
+    public void setFuck(EdClass fuck) {
+        this.fuck = fuck;
     }
 }
