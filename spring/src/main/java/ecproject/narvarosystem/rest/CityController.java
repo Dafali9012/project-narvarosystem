@@ -16,12 +16,12 @@ public class CityController {
 
     @GetMapping
     public List<City> cities(){
-        return (List<City>) cityRepository.findAll();
+        return cityRepository.findAll();
     }
 
     @GetMapping("/{id}")
     public List<City> cityById(@PathVariable int id){
-        return (List<City>) cityRepository.findAllById(Collections.singleton(id));
+        return cityRepository.findAllById(Collections.singleton(id));
     }
 
     @PostMapping

@@ -23,7 +23,7 @@ public class EducationController {
 
     @GetMapping("/{id}")
     public List<Education> educationsById(@PathVariable int id) {
-        return (List<Education>) educationRepository.findAllById(Collections.singleton(id));
+        return educationRepository.findAllById(Collections.singleton(id));
     }
 
     @PostMapping

@@ -26,7 +26,12 @@ public class CourseController {
 
     @GetMapping("/{id}")
     public List<Course> courseById(@PathVariable int id){
-        return (List<Course>) courseRepository.findAllById(Collections.singleton(id));
+        return courseRepository.findAllById(Collections.singleton(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCourse(@PathVariable int id){
+        courseRepository.deleteById(id);
     }
 
     /*

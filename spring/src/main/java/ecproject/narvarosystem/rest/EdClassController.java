@@ -27,7 +27,7 @@ public class EdClassController {
 
     @GetMapping
     public List<EdClass> edclasById(@PathVariable int id){
-        return (List<EdClass>) eDClassRepository.findAllById(Collections.singleton(id));
+        return eDClassRepository.findAllById(Collections.singleton(id));
     }
 
     @DeleteMapping("/{id]")

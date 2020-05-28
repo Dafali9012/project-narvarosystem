@@ -3,10 +3,9 @@ package ecproject.narvarosystem.rest;
 import ecproject.narvarosystem.Repository.AttendanceRepository;
 import ecproject.narvarosystem.entities.Attendance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -14,9 +13,20 @@ import java.util.List;
 public class AttendanceController {
     @Autowired
     private AttendanceRepository attendanceRepository;
+
     @GetMapping
-    public List<Attendance> classRooms(){
-        return (List<Attendance>) this.attendanceRepository.findAll();
+    public List<Attendance> attendances(){
+        return attendanceRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public List<Attendance> attendanceById(@PathVariable int id){
+        return attendanceRepository.findAllById(Collections.singleton(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteAttendance(@PathVariable int id){
+        attendanceRepository.deleteById(id);
     }
 
 }

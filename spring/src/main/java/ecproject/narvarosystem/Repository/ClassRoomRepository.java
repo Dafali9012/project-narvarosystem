@@ -1,13 +1,13 @@
 package ecproject.narvarosystem.Repository;
 
 import ecproject.narvarosystem.entities.ClassRoom;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ClassRoomRepository extends CrudRepository<ClassRoom, Long> {
+public interface ClassRoomRepository extends JpaRepository<ClassRoom, Long> {
     List<ClassRoom> findAll();
     /*
     @Query(value = "SELECT * FROM class GROUP BY :edId",
