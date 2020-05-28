@@ -25,7 +25,7 @@ public class EdClassController {
         return this.eDClassRepository.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/{id]")
     public List<EdClass> edclasById(@PathVariable int id){
         return eDClassRepository.findAllById(Collections.singleton(id));
     }
