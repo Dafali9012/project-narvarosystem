@@ -31,7 +31,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "role_id", insertable = false, updatable = false)
+    @Column(name = "role_id")
     private Integer role_id;
 
     @OneToOne(mappedBy = "userconsult", cascade = CascadeType.ALL)
@@ -47,8 +47,8 @@ public class User {
     private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
-    @JoinColumn (name = "role_id", nullable = false)
     @JsonIgnore
+    @JoinColumn (name = "role_id", nullable = false, insertable = false, updatable = false)
     private Role role;
 
     /*public User() {}
