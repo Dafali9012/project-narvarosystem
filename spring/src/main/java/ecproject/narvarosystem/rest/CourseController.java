@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/course")
 public class CourseController {
     @Autowired
-    private CourseRepository courseRepository;
+    CourseRepository courseRepository;
 
     @PostMapping
     public Course addCourse(@RequestBody Course course) {
@@ -21,7 +21,17 @@ public class CourseController {
 
     @GetMapping
     public List<Course> courses(){
-        return (List<Course>) this.courseRepository.findAll();
+        return courseRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public List<Course> courseById(@PathVariable int id){
+        return courseRepository.findAllById(Collections.singleton(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCourse(@PathVariable int id){
+        courseRepository.deleteById(id);
     }
 
     /*

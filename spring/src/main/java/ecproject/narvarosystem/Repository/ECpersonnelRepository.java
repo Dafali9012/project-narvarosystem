@@ -1,10 +1,14 @@
 package ecproject.narvarosystem.Repository;
 
+
 import ecproject.narvarosystem.entities.ECpersonnel;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
-public interface ECpersonnelRepository extends CrudRepository<ECpersonnel, Integer> {
-        List<ECpersonnel> findAll();
-        }
+
+@Repository
+public interface ECpersonnelRepository extends JpaRepository<ECpersonnel, Integer> {
+
+
+}

@@ -13,7 +13,10 @@ import CreateAccount from '@/views/combined/CreateAccount.vue'
 import CreateEducation from '@/views/combined/CreateEducation.vue'
 import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
+
 import Admin from '@/views/combined/CreateCourse.vue'
+import Calendar from '@/views/combined/Calendar.vue'
+
 
 
 Vue.use(VueRouter)
@@ -67,6 +70,11 @@ const routes = [{
     path: '/create-course',
     name: 'CreateCourse',
     component: CreateCourse
+  },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: Calendar
   },
   {
     path: '/combined',
