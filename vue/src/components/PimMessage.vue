@@ -1,116 +1,129 @@
 <template>
-<body class="container-fluid p-0">
-  <div class="row p-0">
-    <div class="col-9">
-      <div class="tab-content" id="nav-tabContent">
-        <div
-          class="tab-pane fade show active"
-          id="list-home"
-          role="tabpanel"
-          aria-labelledby="list-home-list"
-        >
-          <form action class="send-form">
-            <div class="form-group d-flex justify-content-center">
-              <label for="exampleFormControlInput1"></label>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleFormControlInput1"
-                placeholder="Ämne"
-                v-model="message.subject"
-              />
-
-              <label for="exampleFormControlSelect1"></label>
-              <select class="form-control" id="exampleFormControlSelect1" v-model="receiverUser">
-                <option>Mottagare</option>
-                <option v-for="user in allUsers" :key="user.userID">{{user.name}}</option>
-              </select>
-            </div>
-            <div class="form-group text d-flex justify-content-end">
-              <label for="exampleFormControlTextarea1"></label>
-              <textarea
-                class="form-control"
-                id="exampleFormControlTextarea1"
-                rows="3"
-                placeholder="Innehållstext"
-                v-model="message.message"
-              ></textarea>
-            </div>
-            <div class="d-flex justify-content-center">
-              <button type="button" class="btn btn-primary" v-on:click="send">Skicka</button>
-            </div>
-          </form>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="list-profile"
-          role="tabpanel"
-          aria-labelledby="list-profile-list"
-        >
-          <vue-bootstrap4-table
-            :rows="rows"
-            :columns="columns"
-            :config="config"
-            @on-select-row="getInfo($event)"
-          ></vue-bootstrap4-table>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="list-messages"
-          role="tabpanel"
-          aria-labelledby="list-messages-list"
-        >
-          <vueTable
-            :rows="rowsSent"
-            :columns="columnsSent"
-            :config="configSent"
-            @on-select-row="getInfo($event)"
-          />
-        </div>
+  <div class="root d-flex flex-column container-fluid">
+    <div class="content row mt-3">
+      <div class="admin-sidebar col-3">
+        <CombinedSidebar />
       </div>
-    </div>
-    <div class="col-3 justify-content-end">
-      <div class="list-group" id="list-tab" role="tablist">
-        <a
-          class="list-group-item list-group-item-action active"
-          id="list-home-list"
-          data-toggle="list"
-          href="#list-home"
-          role="tab"
-          aria-controls="home"
-        >Skicka</a>
-        <a
-          v-on:click="cons"
-          class="list-group-item list-group-item-action"
-          id="list-profile-list"
-          data-toggle="list"
-          href="#list-profile"
-          role="tab"
-          aria-controls="profile"
-        >Mottagna</a>
-        <a
-          v-on:click="consSent"
-          class="list-group-item list-group-item-action"
-          id="list-messages-list"
-          data-toggle="list"
-          href="#list-messages"
-          role="tab"
-          aria-controls="messages"
-        >Skickade</a>
+      <div class="col-9">
+        <div class="row">
+          <div class="col-9">
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="list-home"
+                role="tabpanel"
+                aria-labelledby="list-home-list"
+              >
+                <form action class="send-form">
+                  <div class="form-group d-flex justify-content-center">
+                    <label for="exampleFormControlInput1"></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Ämne"
+                      v-model="message.subject"
+                    />
+
+                    <label for="exampleFormControlSelect1"></label>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      v-model="receiverUser"
+                    >
+                      <option>Mottagare</option>
+                      <option v-for="user in allUsers" :key="user.user_id">{{user.first_name}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group text d-flex justify-content-end">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <textarea
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      placeholder="Innehållstext"
+                      v-model="message.message"
+                    ></textarea>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary" v-on:click="send">Skicka</button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-profile"
+                role="tabpanel"
+                aria-labelledby="list-profile-list"
+              >
+                <vue-bootstrap4-table
+                  :rows="rows"
+                  :columns="columns"
+                  :config="config"
+                  @on-select-row="getInfo($event)"
+                ></vue-bootstrap4-table>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-messages"
+                role="tabpanel"
+                aria-labelledby="list-messages-list"
+              >
+                <vueTable
+                  :rows="rowsSent"
+                  :columns="columnsSent"
+                  :config="configSent"
+                  @on-select-row="getInfo($event)"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-3 justify-content-end">
+            <div class="list-group" id="list-tab" role="tablist">
+              <a
+                class="list-group-item list-group-item-action active"
+                id="list-home-list"
+                data-toggle="list"
+                href="#list-home"
+                role="tab"
+                aria-controls="home"
+              >Skicka</a>
+              <a
+                v-on:click="cons"
+                class="list-group-item list-group-item-action"
+                id="list-profile-list"
+                data-toggle="list"
+                href="#list-profile"
+                role="tab"
+                aria-controls="profile"
+              >Mottagna</a>
+              <a
+                v-on:click="consSent"
+                class="list-group-item list-group-item-action"
+                id="list-messages-list"
+                data-toggle="list"
+                href="#list-messages"
+                role="tab"
+                aria-controls="messages"
+              >Skickade</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</body>
 </template>
 
 <script>
+import CombinedSidebar from "@/components/CombinedSidebar.vue";
 import VueBootstrap4Table from "vue-bootstrap4-table";
 import vueTable from "vue-bootstrap4-table";
 
 export default {
   components: {
     VueBootstrap4Table,
-    vueTable
+    vueTable,
+    CombinedSidebar
   },
   name: "Pim",
   data() {
@@ -128,7 +141,7 @@ export default {
         },
         {
           label: "Till",
-          name: "receiverID",
+          name: "receiver_id",
           sort: true
         },
         {
@@ -150,7 +163,7 @@ export default {
         },
         {
           label: "Från",
-          name: "senderID",
+          name: "sender_id",
           sort: true
         },
         {
@@ -189,8 +202,8 @@ export default {
       loggedUser: {},
       receiverUser: {},
       message: {
-        senderID: "",
-        receiverID: "",
+        sender_id: "",
+        receiver_id: "",
         subject: "",
         message: "",
         date: ""
@@ -241,7 +254,7 @@ export default {
 
     setReceiver() {
       this.allUsers.forEach(user => {
-        if (user.name == this.receiverUser) {
+        if (user.first_name == this.receiverUser) {
           this.receiverUser = user;
         }
       });
@@ -249,10 +262,10 @@ export default {
 
     setReceivedMassage() {
       this.getReceivedMessages.forEach(message => {
-        if (message.receiverID == this.loggedUser.userID) {
+        if (message.receiver_id == this.loggedUser.id) {
           this.allUsers.forEach(user => {
-            if (message.senderID == user.userID) {
-              message.senderID = user.name;
+            if (message.sender_id == user.id) {
+              message.sender_id = user.first_name;
             }
           });
           if (message.message.length >= 8) {
@@ -266,10 +279,10 @@ export default {
     },
     setSentMessages() {
       this.getReceivedMessages.forEach(message => {
-        if (message.senderID == this.loggedUser.userID) {
+        if (message.sender_id == this.loggedUser.id) {
           this.allUsers.forEach(user => {
-            if (message.receiverID == user.userID) {
-              message.receiverID = user.name;
+            if (message.receiver_id == user.id) {
+              message.receiver_id = user.first_name;
             }
           });
           if (message.message.length >= 8) {
@@ -283,8 +296,8 @@ export default {
     },
     async send() {
       this.setReceiver();
-      this.message.senderID = this.loggedUser.userID;
-      this.message.receiverID = this.receiverUser.userID;
+      this.message.sender_id = this.loggedUser.id;
+      this.message.receiver_id = this.receiverUser.id;
       let today = new Date();
       this.message.date = today;
       let response = await fetch("http://localhost:8080/message", {
@@ -313,7 +326,7 @@ export default {
       this.$store.dispatch("getMessage");
       let selectedMessage = $event.selected_item;
       this.getReceivedMessages.forEach(message => {
-        if (message.messageID == selectedMessage.messageID) {
+        if (message.message_id == selectedMessage.message_id) {
           this.$store.dispatch("getMessage");
           this.$store.commit("setMessageToDelete", message);
         }

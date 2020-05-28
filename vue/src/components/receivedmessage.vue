@@ -2,7 +2,7 @@
   <div class="container-fluid mt-2">
     <div v-if="replyMode" class="container-fluid p-5 shadow">
       <div class="input-group input-group-lg p-2">
-        <div class="input-group-prepend"><h5 class="text-center py-2 alert alert-primary">Till:{{message.senderID}}</h5></div>
+        <div class="input-group-prepend"><h5 class="text-center py-2 alert alert-primary">Till:{{message.sender_id}}</h5></div>
       </div>
       <div class="input-group input-group-lg p-2">
         <div class="input-group-prepend"><h5 class="text-center py-2 alert alert-primary">Ämne: Re:{{message.subject}}</h5></div>
@@ -16,7 +16,7 @@
       <div class>
         <h5
           class="text-secondary text-left rounded border bg-white shadow p-2 m-3"
-        >Från: {{message.senderID}}</h5>
+        >Från: {{message.sender_id}}</h5>
         <h5
           class="text-secondary text-left rounded border bg-white shadow p-2 m-3"
         >Datum: {{message.date}}</h5>
@@ -37,7 +37,7 @@
       <button class="shadow button button-primary" v-on:click="deleteMessage">Ta bort</button>
       <button
         v-on:click="reply_mode"
-        v-if="getUser.name != message.senderID && !replyMode"
+        v-if="getUser.first_name != message.sender_id && !replyMode"
         class="shadow button button-primary"
       >Svara</button>
       <button
@@ -61,16 +61,16 @@ export default {
   methods: {
    async reply(){
       this.getSender.forEach(user => {
-        if (this.message.senderID == user.name) {
-          this.message.senderID = user.userID;
+        if (this.message.sender_id == user.first_name) {
+          this.message.sender_id = user.id;
         }
       });
       
       let reply_message = {
         date: new Date(),
         message:this.messageReply,
-        receiverID: this.message.senderID,
-        senderID: this.message.receiverID,
+        receiver_id: this.message.sender_id,
+        sender_id: this.message.receiver_id,
         subject: this.message.subject
       }
    
@@ -97,14 +97,14 @@ export default {
     setMessage() {
       this.message = this.getMessage;
       this.getSender.forEach(user => {
-        if (this.message.senderID == user.userID) {
-          this.message.senderID = user.name;
+        if (this.message.sender_id == user.id) {
+          this.message.sender_id = user.first_name;
         }
       });
     },
     deleteMessage: async function() {
       let result = await fetch(
-        "http://localhost:8080/message/" + this.message.messageID,
+        "http://localhost:8080/message/" + this.message.message_id,
         { method: "DELETE" }
       );
       if (result.status == 200) {

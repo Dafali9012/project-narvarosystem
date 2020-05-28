@@ -20,8 +20,6 @@ export default new Vuex.Store({
     ClassByED:[],
     Messages:[],
     messageToDelete:{},
-    ClassByED: [],
-
     logged: false
 
   },
@@ -71,6 +69,7 @@ export default new Vuex.Store({
     setUser(state, value) {
       state.user = value;
     },
+
     setMessage(state , value){
       state.Messages = value;
     }
@@ -116,14 +115,14 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setAllCourses", json);
     },
-    getAllUsers: async function ({
-      commit
-    }) {
+
+    getAllUsers: async function ({commit}) {
       let url = "http://localhost:8080/user";
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllUsers", json);
     },
+
     getMyClassAsTeacher: async function ({
       commit
     }, id) {
@@ -172,6 +171,7 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setUser", json);
     },
+
     getMessage: async function({ commit }){
       let url = "http://localhost:8080/message";
       const result = await fetch(url);

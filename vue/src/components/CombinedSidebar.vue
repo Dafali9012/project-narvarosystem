@@ -32,7 +32,7 @@
         <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Rapport</p>
       </router-link>
-      <router-link to="/overview" class="option d-flex align-self-center">
+      <router-link to="/pimmessage" class="option d-flex align-self-center">
         <font-awesome-icon :icon="['fas','comments']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">PIM</p>
       </router-link>

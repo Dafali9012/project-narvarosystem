@@ -13,16 +13,17 @@ import CreateAccount from '@/views/combined/CreateAccount.vue'
 import CreateEducation from '@/views/combined/CreateEducation.vue'
 import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
+import PimMessage from '../components/PimMessage.vue'
 
 import Admin from '@/views/combined/CreateCourse.vue'
 import Calendar from '@/views/combined/Calendar.vue'
 
-import TClasses from "../components/teacher/TeacherClasses.vue"
-import TCourse from "../components/teacher/TeacherCourses.vue"
-import TEdit from "../components/teacher/TeacherEdit.vue"
-import TPresence from "../components/teacher/TeacherPresence.vue"
-import TRapport from "../components/teacher/TeacherReport.vue"
-import Pim from '../views/Pim.vue'
+// import TClasses from "../components/teacher/TeacherClasses.vue"
+// import TCourse from "../components/teacher/TeacherCourses.vue"
+// import TEdit from "../components/teacher/TeacherEdit.vue"
+// import TPresence from "../components/teacher/TeacherPresence.vue"
+// import TRapport from "../components/teacher/TeacherReport.vue"
+// import Pim from '../views/Pim.vue'
 import receivedmessage from '../components/receivedmessage.vue'
 
 
@@ -42,6 +43,16 @@ const routes = [{
     path: '/overview',
     name: 'Overview',
     component: Overview
+  },
+  {
+    path: '/pimmessage',
+    name: 'PimMessage',
+    component: PimMessage
+  },
+  {
+    path: '/message',
+    name: 'Message',
+    component: receivedmessage
   },
   {
     path: '/classes',
