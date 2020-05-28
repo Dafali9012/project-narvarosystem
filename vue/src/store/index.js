@@ -13,6 +13,8 @@ export default new Vuex.Store({
     AllEducation: [],
     AllCourse: [],
     AllUser: [],
+    ecPersonnel: [],
+    cities: [],
     MyClassAsTeacher: [],
     MyCourseAsTeacher: [],
     MyCourse: [],
@@ -64,6 +66,12 @@ export default new Vuex.Store({
     setUser(state, value) {
       state.user = value;
     },
+    setEcPersonnel(state, value) {
+      state.ecPersonnel = value;
+    },
+    setCities(state, value) {
+      state.cities = value;
+    }
   },
   actions: {
     async updateLoggedUser({
@@ -162,6 +170,21 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setUser", json);
     },
+    async getEcPersonnel({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/personnel")
+      let result = await response.json()
+      commit("setEcPersonnel", result)
+    },
+
+    async getCities({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/city")
+      let result = await response.json()
+      commit("setCities", result)
+    }
 
     // deletUser: async function({ commit }, id) {
     //   let url = "http://localhost:8080/user";
