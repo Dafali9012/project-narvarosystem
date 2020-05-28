@@ -21,19 +21,24 @@ public class EdClass {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "manager_id", insertable = false, updatable = false)
+    @Column(name = "manager_id")
     private Integer manager_id;
 
+    @Column(name = "education_id")
+    private Integer education_id;
+
     @ManyToOne(optional = false)
-    @JoinColumn(name = "education_id",nullable=false)
+    @JoinColumn(name = "education_id",nullable=false, insertable = false, updatable = false)
+    @JsonIgnore
     private Education educationOfClass;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", nullable=false)
+    @JoinColumn(name = "manager_id", nullable=false, insertable = false, updatable = false)
+    @JsonIgnore
     private ECpersonnel classManager;
 
-    @OneToMany(mappedBy = "ClassOfStudent", cascade = CascadeType.ALL)
     @JsonIgnore
+    @OneToMany(mappedBy = "ClassOfStudent", cascade = CascadeType.ALL)
     private Set<Student> students;
 
     public int getId() {
@@ -82,5 +87,13 @@ public class EdClass {
 
     public void setStudents(Set<Student> students) {
         this.students = students;
+    }
+
+    public Integer getEducation_id() {
+        return education_id;
+    }
+
+    public void setEducation_id(Integer education_id) {
+        this.education_id = education_id;
     }
 }

@@ -1,12 +1,13 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@IdClass(Attendance.class)
 @Table(name = "attendance")
 public class Attendance implements Serializable {
 
@@ -20,14 +21,22 @@ public class Attendance implements Serializable {
     @Column(name = "present")
     private Boolean present;
 
+    @Column(name = "lecture_id")
+    private Integer lectureid;
+
+    @Column(name = "student_id")
+    private Integer studentid;
+
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "lecture_id",nullable = false)
+    @JoinColumn(name = "lecture_id",nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private Lecture lecture;
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "student_id",  nullable = false)
+    @JoinColumn(name = "student_id",  nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private Student student;
 
     public int getId() {
@@ -60,6 +69,22 @@ public class Attendance implements Serializable {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public Integer getLectureid() {
+        return lectureid;
+    }
+
+    public void setLectureid(Integer lectureid) {
+        this.lectureid = lectureid;
+    }
+
+    public Integer getStudentid() {
+        return studentid;
+    }
+
+    public void setStudentid(Integer studentid) {
+        this.studentid = studentid;
     }
 }
 

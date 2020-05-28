@@ -20,8 +20,12 @@ public class Lecture {
     @Column(name = "date")
     private Date date;
 
+    @Column(name = "course_id")
+    private Integer courseid;
+
     @ManyToOne(optional = false)
-    @JoinColumn(name = "course_id", nullable = false)
+    @JsonIgnore
+    @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
     private Course course;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
@@ -58,5 +62,13 @@ public class Lecture {
 
     public void setAttendances(Set<Attendance> attendances) {
         this.attendances = attendances;
+    }
+
+    public Integer getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(Integer courseid) {
+        this.courseid = courseid;
     }
 }

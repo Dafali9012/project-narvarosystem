@@ -33,12 +33,20 @@ public class Course {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "education_id")
+    private Integer educationid;
+
+    @Column(name = "teacher_id")
+    private Integer teacherid;
+
     @ManyToOne(optional = false)
-    @JoinColumn(name = "education_id", nullable = false)
+    @JsonIgnore
+    @JoinColumn(name = "education_id", nullable = false, insertable = false, updatable = false)
     private Education education;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "teacher_id", nullable = false)
+    @JsonIgnore
+    @JoinColumn(name = "teacher_id", nullable = false, insertable = false, updatable = false)
     private Teacher teacher;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
@@ -115,5 +123,21 @@ public class Course {
 
     public void setLectures(Set<Lecture> lectures) {
         this.lectures = lectures;
+    }
+
+    public Integer getEducationid() {
+        return educationid;
+    }
+
+    public void setEducationid(Integer educationid) {
+        this.educationid = educationid;
+    }
+
+    public Integer getTeacherid() {
+        return teacherid;
+    }
+
+    public void setTeacherid(Integer teacherid) {
+        this.teacherid = teacherid;
     }
 }

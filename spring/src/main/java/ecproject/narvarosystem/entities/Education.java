@@ -22,8 +22,15 @@ public class Education {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "manager_id")
+    private Integer managerid;
+
+    @Column(name = "city_id")
+    private Integer cityid;
+
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", nullable = false)
+    @JoinColumn(name = "manager_id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private ECpersonnel educationManager;
 
     @OneToMany(mappedBy = "educationOfClass", cascade = CascadeType.ALL)
@@ -35,7 +42,8 @@ public class Education {
     private Set<Course> courses;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "city_id", nullable = false)
+    @JoinColumn(name = "city_id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private City city;
 
 
@@ -95,4 +103,19 @@ public class Education {
     }
 
 
+    public Integer getManagerid() {
+        return managerid;
+    }
+
+    public void setManagerid(Integer managerid) {
+        this.managerid = managerid;
+    }
+
+    public Integer getCityid() {
+        return cityid;
+    }
+
+    public void setCityid(Integer cityid) {
+        this.cityid = cityid;
+    }
 }

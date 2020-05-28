@@ -18,12 +18,16 @@ public class Student {
     @Column(name = "picture")
     private String picture;
 
+    @Column(name = "class_id")
+    private Integer classid;
+
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", nullable=false)
     private User userstudent;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "class_id",  nullable = false)
+    @JoinColumn(name = "class_id",  nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private EdClass ClassOfStudent;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
@@ -54,6 +58,8 @@ public class Student {
         return userstudent;
     }
 
+
+
     public EdClass getClassOfStudent() {
         return ClassOfStudent;
     }
@@ -62,11 +68,20 @@ public class Student {
         ClassOfStudent = classOfStudent;
     }
 
+    
     public Set<Attendance> getAttendances() {
         return attendances;
     }
 
     public void setAttendances(Set<Attendance> attendances) {
         this.attendances = attendances;
+    }
+
+    public Integer getClassid() {
+        return classid;
+    }
+
+    public void setClassid(Integer classid) {
+        this.classid = classid;
     }
 }
