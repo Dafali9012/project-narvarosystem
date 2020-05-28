@@ -22,10 +22,10 @@ public class Attendance implements Serializable {
     private Boolean present;
 
     @Column(name = "lecture_id")
-    private Integer lectureid;
+    private Integer lecture_id;
 
     @Column(name = "student_id")
-    private Integer studentid;
+    private Integer student_id;
 
 
     @ManyToOne(optional = false)
@@ -71,20 +71,20 @@ public class Attendance implements Serializable {
         this.student = student;
     }
 
-    public Integer getLectureid() {
-        return lectureid;
+    public Integer getLecture_id() {
+        return lecture_id;
     }
 
-    public void setLectureid(Integer lectureid) {
-        this.lectureid = lectureid;
+    public void setLecture_id(Integer lecture_id) {
+        this.lecture_id = lecture_id;
     }
 
-    public Integer getStudentid() {
-        return studentid;
+    public Integer getStudent_id() {
+        return student_id;
     }
 
-    public void setStudentid(Integer studentid) {
-        this.studentid = studentid;
+    public void setStudent_id(Integer student_id) {
+        this.student_id = student_id;
     }
 }
 

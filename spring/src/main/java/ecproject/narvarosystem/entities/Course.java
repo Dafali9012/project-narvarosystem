@@ -34,10 +34,10 @@ public class Course {
     private String description;
 
     @Column(name = "education_id")
-    private Integer educationid;
+    private Integer education_id;
 
     @Column(name = "teacher_id")
-    private Integer teacherid;
+    private Integer teacher_id;
 
     @ManyToOne(optional = false)
     @JsonIgnore
@@ -125,19 +125,19 @@ public class Course {
         this.lectures = lectures;
     }
 
-    public Integer getEducationid() {
-        return educationid;
+    public Integer getEducation_id() {
+        return education_id;
     }
 
-    public void setEducationid(Integer educationid) {
-        this.educationid = educationid;
+    public void setEducation_id(Integer education_id) {
+        this.education_id = education_id;
     }
 
-    public Integer getTeacherid() {
-        return teacherid;
+    public Integer getTeacher_id() {
+        return teacher_id;
     }
 
-    public void setTeacherid(Integer teacherid) {
-        this.teacherid = teacherid;
+    public void setTeacher_id(Integer teacher_id) {
+        this.teacher_id = teacher_id;
     }
 }

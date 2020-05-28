@@ -23,10 +23,10 @@ public class Education {
     private String description;
 
     @Column(name = "manager_id")
-    private Integer managerid;
+    private Integer manager_id;
 
     @Column(name = "city_id")
-    private Integer cityid;
+    private Integer city_id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "manager_id", nullable = false, insertable = false, updatable = false)
@@ -103,19 +103,19 @@ public class Education {
     }
 
 
-    public Integer getManagerid() {
-        return managerid;
+    public Integer getManager_id() {
+        return manager_id;
     }
 
-    public void setManagerid(Integer managerid) {
-        this.managerid = managerid;
+    public void setManager_id(Integer manager_id) {
+        this.manager_id = manager_id;
     }
 
-    public Integer getCityid() {
-        return cityid;
+    public Integer getCity_id() {
+        return city_id;
     }
 
-    public void setCityid(Integer cityid) {
-        this.cityid = cityid;
+    public void setCity_id(Integer city_id) {
+        this.city_id = city_id;
     }
 }

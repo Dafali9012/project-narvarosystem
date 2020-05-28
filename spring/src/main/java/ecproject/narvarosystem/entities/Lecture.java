@@ -21,7 +21,7 @@ public class Lecture {
     private Date date;
 
     @Column(name = "course_id")
-    private Integer courseid;
+    private Integer course_id;
 
     @ManyToOne(optional = false)
     @JsonIgnore
@@ -64,11 +64,11 @@ public class Lecture {
         this.attendances = attendances;
     }
 
-    public Integer getCourseid() {
-        return courseid;
+    public Integer getCourse_id() {
+        return course_id;
     }
 
-    public void setCourseid(Integer courseid) {
-        this.courseid = courseid;
+    public void setCourse_id(Integer course_id) {
+        this.course_id = course_id;
     }
 }
