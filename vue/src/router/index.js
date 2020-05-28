@@ -1,23 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
 import store from '@/store'
 
+import Combined from '@/views/combined/Combined.vue'
 
-import Admin from '@/views/Admin.vue'
-
-
-
-//import About from '@/views/About.vue'
-import User from '@/views/User.vue'
-import Teacher from '@/views/Teacher.vue'
 import Login from '@/views/Login.vue'
+import Overview from '@/views/combined/Overview.vue'
+import Classes from '@/views/combined/Classes.vue'
+import Users from '@/views/combined/Users.vue'
+import Courses from '@/views/combined/Courses.vue'
+import CreateAccount from '@/views/combined/CreateAccount.vue'
+import CreateEducation from '@/views/combined/CreateEducation.vue'
+import CreateClass from '@/views/combined/CreateClass.vue'
+import CreateCourse from '@/views/combined/CreateCourse.vue'
 
-import Navbar from "../components/Navbar.vue";
-
-import UClasses from "../components/user/UserClasses.vue"
-import UEdit from "../components/user/UserEdit.vue"
-import UScheme from "../components/user/UserScheme.vue"
+import Admin from '@/views/combined/CreateCourse.vue'
+import Calendar from '@/views/combined/Calendar.vue'
 
 import TClasses from "../components/teacher/TeacherClasses.vue"
 import TCourse from "../components/teacher/TeacherCourses.vue"
@@ -31,89 +29,66 @@ import receivedmessage from '../components/receivedmessage.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-  path: '/',
-  name: 'Home',
-  component: Home
+    path: '/',
+    name: 'Login',
+    component: Login
 },
-{
-  path: '/message',
-  name: 'receivedmessage',
-  component: receivedmessage
-},
-{
-  path: '/pim',
-  name: 'Pim',
-  component: Pim
-},
-{
-  path: '/',
-  name: 'Navbar',
-  component: Navbar
-},
-{
-  path: '/admin',
-  name: 'Admin',
-  component: Admin
-},
-{
-  path: '/user',
-  name: 'User',
-  component: User,
-  meta: {
-    authUser: true
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
+  },
+  {
+    path: '/overview',
+    name: 'Overview',
+    component: Overview
+  },
+  {
+    path: '/classes',
+    name: 'Classes',
+    component: Classes
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: Users
+  },
+  {
+    path: '/courses',
+    name: 'Courses',
+    component: Courses
+  },
+  {
+    path: '/create-account',
+    name: 'CreateAccount',
+    component: CreateAccount
+  },
+  {
+    path: '/create-class',
+    name: 'CreateClass',
+    component: CreateClass
+  },
+  {
+    path: '/create-education',
+    name: 'CreateEducation',
+    component: CreateEducation
+  },
+  {
+    path: '/create-course',
+    name: 'CreateCourse',
+    component: CreateCourse
+  },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: Calendar
+  },
+  {
+    path: '/combined',
+    name: 'Combined',
+    component: Combined
   }
-},
-{
-  path: '/user/edit',
-  name: 'UEdit',
-  component: UEdit
-},
-{
-  path: '/user/classes',
-  name: 'UClasses',
-  component: UClasses
 
-},
-{
-  path: '/user/scheme',
-  name: 'UScheme',
-  component: UScheme
-},
-{
-  path: '/teacher/',
-  name: 'Teacher',
-  component: Teacher,
-},
-{
-  path: '/teacher/edit',
-  name: 'TEdit',
-  component: TEdit
-},
-{
-  path: '/teacher/classes',
-  name: 'TClasses',
-  component: TClasses
-},
-{
-  path: '/teacher/course',
-  name: 'TCourse',
-  component: TCourse
-},
-{
-  path: '/teacher/presence',
-  name: 'TPresence',
-  component: TPresence
-},
-{
-  path: '/teacher/report',
-  name: 'TRapport',
-  component: TRapport
-},
-{
-  path: '/login',
-  name: 'login',
-  component: Login
-}
 ]
 
 const router = new VueRouter({
@@ -134,22 +109,23 @@ router.beforeEach((to, from, next) => {
       }
 
       if (store.state.loggedInUser.roles[0].role == "TEACHER") {
-        router.push('/teacher/')
+        router.push('/teacher')
       } else {
         next();
       }
 
       if (store.state.loggedInUser.roles[0].role == "STUDENT") {
-        router.push('/user/')
+        router.push('/user')
       } else {
         next();
       }
     } else {
-      router.push('/login')
+      router.push('/')
     }
 
   } else {
     next();
   }
 });
+
 export default router

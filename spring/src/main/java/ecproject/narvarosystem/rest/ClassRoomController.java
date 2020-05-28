@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/classroom")
+@RequestMapping("/classrooms")
 public class ClassRoomController {
     @Autowired
     private ClassRoomRepository classRoomRepository;
@@ -22,10 +22,10 @@ public class ClassRoomController {
 
     @GetMapping
     public List<ClassRoom> classRooms(){
-        return (List<ClassRoom>) this.classRoomRepository.findAll();
+        return this.classRoomRepository.findAll();
     }
-
-    @GetMapping("{id}")
+    /*
+    @GetMapping("/{id}")
     public Iterable<ClassRoom> getClassroomsById(@PathVariable long id) {
         return classRoomRepository.findAllById(Collections.singleton(id));
     }
@@ -39,4 +39,5 @@ public class ClassRoomController {
     public Iterable<ClassRoom> getClassroomsByEducationId(@PathVariable long id) {
         return classRoomRepository.findAllByEducationId(id);
     }
+    */
 }

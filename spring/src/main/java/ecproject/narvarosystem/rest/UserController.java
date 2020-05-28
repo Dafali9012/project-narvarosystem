@@ -26,13 +26,17 @@ public class UserController {
         return (List<User>) this.userRepository.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Iterable<User> userById(@PathVariable int id){
         return userRepository.findAllById(Collections.singleton(id));
     }
 
+    @GetMapping("/role/{id}")
+    public Iterable<User> userByRoleId(@PathVariable int id){
+        return userRepository.findAllByRoleId(id);
+    }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
     }
@@ -41,6 +45,19 @@ public class UserController {
     public User addUser(@RequestBody User user) {
         user.setPassword(myUserDetailsService.getEncoder().encode(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable int id,@RequestBody User user) {
+        User updatedUser = userRepository.findAllById(Collections.singleton(id)).get(0);
+        if(user.getFirst_name()!=null)updatedUser.setFirst_name(user.getFirst_name());
+        if(user.getLast_name()!=null)updatedUser.setLast_name(user.getLast_name());
+        if(user.getPhone_number()!=null)updatedUser.setPhone_number(user.getPhone_number());
+        if(user.getSsn()!=null)updatedUser.setSsn(user.getSsn());
+        if(user.getEmail()!=null)updatedUser.setEmail(user.getEmail());
+        if(user.getPassword()!=null)updatedUser.setPassword(user.getPassword());
+        if(user.getRole()!=null)updatedUser.setRole(user.getRole());
+        return userRepository.save(updatedUser);
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")

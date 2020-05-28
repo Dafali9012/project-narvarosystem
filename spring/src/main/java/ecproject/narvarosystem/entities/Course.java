@@ -1,52 +1,56 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
 public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long CourseID;
-
-    @Column(name = "CourseName")
-    private String name;
-
-    @Column(name = "StartDate")
-    private Date startDate;
-
-    @Column(name = "EndDate")
-    private Date endDate;
-
-    @Column(name = "Point")
-    private double point;
-
-    @Column(name = "EdID")
-    private int edID;
-
-    @Column(name = "Teacher")
-    private int teacherID;
-
-    @Column(name = "Description")
-    private String description;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Course(){}
 
-    public long getCourseID() {
-        return CourseID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "date_start")
+    private Date date_start;
+
+    @Column(name = "date_end")
+    private Date date_end;
+
+    @Column(name = "points")
+    private double points;
+
+    @Column(name = "description")
+    private String description;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "education_id", nullable = false)
+    private Education education;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Lecture> lectures;
+
+    public int getId() {
+        return id;
     }
 
-    public void setCourseID(long courseID) {
-        CourseID = courseID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -57,43 +61,59 @@ public class Course {
         this.name = name;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getDate_start() {
+        return date_start;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setDate_start(Date date_start) {
+        this.date_start = date_start;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getDate_end() {
+        return date_end;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setDate_end(Date date_end) {
+        this.date_end = date_end;
     }
 
-    public double getPoint() {
-        return point;
+    public double getPoints() {
+        return points;
     }
 
-    public void setPoint(double point) {
-        this.point = point;
+    public void setPoints(double points) {
+        this.points = points;
     }
 
-    public int getEdID() {
-        return edID;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEdID(int edID) {
-        this.edID = edID;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getTeacherID() {
-        return teacherID;
+    public Education getEducation() {
+        return education;
     }
 
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
+    public void setEducation(Education education) {
+        this.education = education;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Set<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(Set<Lecture> lectures) {
+        this.lectures = lectures;
     }
 }

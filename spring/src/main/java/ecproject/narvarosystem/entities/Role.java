@@ -1,55 +1,51 @@
 package ecproject.narvarosystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name ="role")
 public class Role {
+
+    public Role(){}
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "RoleID")
-    private int RoleID;
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "name")
+    private String name;
 
-//    @Column(name = "Setting1")
-//    private int setting1;
-//
-//    @Column(name = "Setting2")
-//    private int setting2;
 
-    public Role(){};
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<User> users;
 
-    public long getRoleID() {
-        return RoleID;
+    public int getId() {
+        return id;
     }
 
-    public void setRoleID(int roleID) {
-        RoleID = roleID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 
-//    public int getSetting1() {
-//        return setting1;
-//    }
-//
-//    public void setSetting1(int setting1) {
-//        this.setting1 = setting1;
-//    }
-//
-//    public int getSetting2() {
-//        return setting2;
-//    }
-//
-//    public void setSetting2(int setting2) {
-//        this.setting2 = setting2;
-//    }
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

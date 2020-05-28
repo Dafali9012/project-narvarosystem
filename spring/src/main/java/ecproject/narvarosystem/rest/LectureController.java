@@ -6,14 +6,16 @@ import ecproject.narvarosystem.entities.Lecture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/lecture")
 
 public class LectureController {
     @Autowired
-    private LectureRepository lectureRepository;
+    LectureRepository lectureRepository;
 
     @PostMapping
     public Lecture addLecture(@RequestBody Lecture lecture) {
@@ -22,11 +24,18 @@ public class LectureController {
 
     @GetMapping
     public List<Lecture> lectures() {
-        return (List<Lecture>) this.lectureRepository.findAll();
+        return lectureRepository.findAll();
     }
 
-    @GetMapping("/user/{id}")
-    public List<Lecture> getLecturesByUserId(@PathVariable int id) {
-        return lectureRepository.findAllByUserID(id);
+    @GetMapping("/{id}")
+    public List<Lecture> LecturesById(@PathVariable int id) {
+       return lectureRepository.findAllById(Collections.singleton(id));
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteLecture(@PathVariable int id){
+        lectureRepository.deleteById(id);
+    }
+
+
 }

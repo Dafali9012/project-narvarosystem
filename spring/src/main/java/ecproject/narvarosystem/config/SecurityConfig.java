@@ -29,29 +29,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-/*
         http
                 .cors()
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/").authenticated()
-                .antMatchers("/auth/**").permitAll()
-                .antMatchers("/course").permitAll()
-*/
-        http
-                .cors()
-                .and()
-                .csrf().disable()
-                .authorizeRequests()
+                //.antMatchers("/**").permitAll()
                 .antMatchers("**/admin/**").authenticated()
-                .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/user").permitAll()
                 .antMatchers(HttpMethod.GET,"/user").permitAll()
                 .antMatchers(HttpMethod.GET,"/course").permitAll()
                 .antMatchers(HttpMethod.POST,"/message").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/message").permitAll()
                 .antMatchers(HttpMethod.GET,"/login/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

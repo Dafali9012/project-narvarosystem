@@ -8,10 +8,7 @@
     <div class="content row mt-3">
       <div class="admin-sidebar col-3">
         <div class="d-flex flex-column align-items-center text-white">
-          <img
-            src="https://image.flaticon.com/icons/svg/2206/2206314.svg"
-            class="avatar"
-          />
+          <img src="https://image.flaticon.com/icons/svg/2206/2206314.svg" class="avatar" />
           <h5 class="unselectable">Du är inloggad som Admin</h5>
           <div class="sidebar-line rounded" />
           <div class="mt-5">
@@ -95,7 +92,6 @@ import Pim from '../components/PimMessage.vue'
 
 export default {
   components: {
-    //Navbar,
     NewAccount,
     NewEducation,
     NewCourse,
@@ -105,16 +101,14 @@ export default {
     Report,
     Pim
   },
-  computed:{
-
-  },
+  computed: {},
   methods: {
     helloWorld() {
       console.log("hello world!");
     },
     changeContent(newContentIndex) {
       this.$store.commit("changeContentIndex", newContentIndex);
-    },
+    }
   },
  async created(){
     await this.$store.dispatch("getAllusers")

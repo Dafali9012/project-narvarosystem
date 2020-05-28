@@ -5,45 +5,43 @@
         <div class="d-flex justify-content-between bg-primary">
           <div class="d-flex align-items-center">
             <p class="no-margin ml-3 text-cream unselectable my-2">Utbildningar</p>
-          </div></div>
-           <AllEducation></AllEducation>
+          </div>
+        </div>
+        <AllEducation></AllEducation>
       </div>
-      <br>
+      <br />
 
       <div class="d-flex flex-column">
         <div class="d-flex justify-content-between bg-primary">
           <div class="d-flex align-items-center">
             <p class="no-margin ml-3 text-cream unselectable my-2">Klasser</p>
-          </div></div>
-           <AllClass></AllClass>
+          </div>
+        </div>
+        <AllClass></AllClass>
       </div>
-      
-<br>
+
+      <br />
       <div class="d-flex flex-column">
         <div class="d-flex justify-content-between bg-primary">
           <div class="d-flex align-items-center">
             <p class="no-margin ml-3 text-cream unselectable my-2">Kurser</p>
-          </div></div>
-           <AllCourse></AllCourse>
-      
+          </div>
+        </div>
+        <AllCourse></AllCourse>
       </div>
     </div>
   </div>
 </template>
 <script>
-
-
 import AllClass from "@/components/admin/AllClass.vue";
 import AllEducation from "@/components/admin/AllEducation.vue";
 import AllCourse from "@/components/admin/AllCourse.vue";
 
 export default {
-  components: {       
-    
+  components: {
     AllClass,
     AllEducation,
-    AllCourse,   
+    AllCourse
   }
-  
 };
 </script>

@@ -7,18 +7,8 @@
           <h2>Välkommen</h2>
           <form @submit.prevent="springLogin" class="inputs">
             <div>
-              <input
-                v-model="name"
-                class="inputField"
-                type="name"
-                name="name"
-                placeholder="Namn"
-              />
-              <font-awesome-icon
-                :icon="['fas', 'user']"
-                class="fa-lg"
-                id="icon"
-              />
+              <input v-model="email" class="inputField" type="email" name="email" placeholder="Email" />
+              <font-awesome-icon :icon="['fas', 'user']" class="fa-lg" id="icon" />
             </div>
             <div>
               <input
@@ -28,27 +18,19 @@
                 name="password"
                 placeholder="Lösenord"
               />
-              <font-awesome-icon
-                :icon="['fas', 'key']"
-                class="fa-lg"
-                id="icon"
-              />
+              <font-awesome-icon :icon="['fas', 'key']" class="fa-lg" id="icon" />
             </div>
             <div class="d-flex mt-5 align-items-center justify-content-around">
               <div class="d-flex flex-column">
                 <div class="d-flex justify-content-center">
                   <input type="checkbox" id="remember" name="remember" />
-                  <label for="remember"> Kom ihåg mig </label>
+                  <label for="remember">Kom ihåg mig</label>
                 </div>
                 <span class="extras">
                   <a class="redirect ml-2" href="/reset">Glömt lösenord?</a>
                 </span>
               </div>
-              <button
-                type="submit"
-                class="btn btn-info border"
-                id="submitButton"
-              >
+              <button type="submit" class="btn btn-info border" id="submitButton">
                 <span>Logga in</span>
               </button>
             </div>
@@ -63,15 +45,15 @@
 export default {
   data() {
     return {
-      name: "",
-      password: "",
+      email: "",
+      password: ""
     };
   },
   methods: {
-    springLogin: async function() {
+   async springLogin() {
       const credentials =
         "username=" +
-        encodeURIComponent(this.name) +
+        encodeURIComponent(this.email) +
         "&password=" +
         encodeURIComponent(this.password);
 
@@ -79,18 +61,20 @@ export default {
         method: "POST",
         redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: credentials,
+        body: credentials
       });
 
       if (response.status == 500) {
         window.confirm("Inloggningen misslyckades");
       } else {
-        this.$store.dispatch("updateLoggedUser");
-        // this.$router.push("/");
-        console.log(this.$store.state.loggedInUser);
+       await this.$store.dispatch("updateLoggedUser");
+        console.log(this.$store.state.loggedInUser)
+
+
+      //  this.$router.push("/overview");
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -184,9 +168,10 @@ h2 {
   opacity: 1;
   right: 0;
 }
-
+/*
 @media screen and (max-width: 500px) {
   .wrapper1 {
   }
 }
+*/
 </style>

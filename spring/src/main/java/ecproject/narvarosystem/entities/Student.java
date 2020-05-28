@@ -1,53 +1,72 @@
 package ecproject.narvarosystem.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
 public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long studentId;
 
-    @Column(name ="UserID")
-    private int userId;
-
-    @Column(name ="ClassId")
-    private int classId;
-
-    @Column(name ="Picture")
-    private String pictureUrl;
     public Student(){}
 
-    public long getStudentId() {
-        return studentId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "picture")
+    private String picture;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable=false)
+    private User userstudent;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "class_id",  nullable = false)
+    private EdClass eclasses;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Attendance> attendances;
+
+    public int getId() {
+        return id;
     }
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
-    public int getClassId() {
-        return classId;
+    public void setUserstudent(User userstudent) {
+        this.userstudent = userstudent;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public User getUserstudent() {
+        return userstudent;
     }
 
-    public String getPictureUrl() {
-        return pictureUrl;
+    public EdClass getEclasses() {
+        return eclasses;
     }
 
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
+    public void setEclasses(EdClass eclasses) {
+        this.eclasses = eclasses;
+    }
+
+    public Set<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(Set<Attendance> attendances) {
+        this.attendances = attendances;
     }
 }
