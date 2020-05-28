@@ -24,9 +24,9 @@ public class Education {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "manager_id", nullable = false)
-    private ECpersonnel eCpersonnelEd;
+    private ECpersonnel educationManager;
 
-    @OneToMany(mappedBy = "educationclass", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "educationOfClass", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<EdClass> edClasses;
 
@@ -66,17 +66,16 @@ public class Education {
     public City getCity() {
         return city;
     }
-
     public void setCity(City city) {
         this.city = city;
     }
 
-    public ECpersonnel geteCpersonnelEd() {
-        return eCpersonnelEd;
+    public ECpersonnel getEducationManager() {
+        return educationManager;
     }
 
-    public void seteCpersonnelEd(ECpersonnel eCpersonnelEd) {
-        this.eCpersonnelEd = eCpersonnelEd;
+    public void setEducationManager(ECpersonnel educationManager) {
+        this.educationManager = educationManager;
     }
 
     public Set<EdClass> getEdClasses() {

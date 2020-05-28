@@ -24,7 +24,7 @@ public class Student {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id",  nullable = false)
-    private EdClass eclasses;
+    private EdClass ClassOfStudent;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -54,12 +54,12 @@ public class Student {
         return userstudent;
     }
 
-    public EdClass getEclasses() {
-        return eclasses;
+    public EdClass getClassOfStudent() {
+        return ClassOfStudent;
     }
 
-    public void setEclasses(EdClass eclasses) {
-        this.eclasses = eclasses;
+    public void setClassOfStudent(EdClass classOfStudent) {
+        ClassOfStudent = classOfStudent;
     }
 
     public Set<Attendance> getAttendances() {

@@ -21,18 +21,18 @@ public class EdClass {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "manager_id")
+    @Column(name = "manager_id", insertable = false, updatable = false)
     private Integer manager_id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "education_id",nullable=false)
-    private Education educationclass;
+    private Education educationOfClass;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", insertable = false, updatable = false)
-    private ECpersonnel eCpersonnelclass;
+    @JoinColumn(name = "manager_id", nullable=false)
+    private ECpersonnel classManager;
 
-    @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ClassOfStudent", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Student> students;
 
@@ -60,20 +60,20 @@ public class EdClass {
         this.manager_id = manager_id;
     }
 
-    public Education getEducationclass() {
-        return educationclass;
+    public Education getEducationOfClass() {
+        return educationOfClass;
     }
 
-    public void setEducationclass(Education educationclass) {
-        this.educationclass = educationclass;
+    public void setEducationOfClass(Education educationOfClass) {
+        this.educationOfClass = educationOfClass;
     }
 
-    public ECpersonnel geteCpersonnelclass() {
-        return eCpersonnelclass;
+    public ECpersonnel getClassManager() {
+        return classManager;
     }
 
-    public void seteCpersonnelclass(ECpersonnel eCpersonnelclass) {
-        this.eCpersonnelclass = eCpersonnelclass;
+    public void setClassManager(ECpersonnel classManager) {
+        this.classManager = classManager;
     }
 
     public Set<Student> getStudents() {
