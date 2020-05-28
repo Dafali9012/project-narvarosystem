@@ -14,7 +14,9 @@ export default {
   async created() {
     await this.$store.dispatch("getMessage");
     await this.$store.dispatch("getAllUsers");
-  }
+    await this.$store.dispatch("updateLoggedUser")
+  },
+
 };
 </script>
 
