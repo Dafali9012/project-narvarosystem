@@ -24,16 +24,21 @@ public class EdClass {
     @Column(name = "manager_id")
     private Integer manager_id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "education_id",nullable=false)
-    private Education educationclass;
+    @Column(name = "education_id")
+    private Integer education_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", insertable = false, updatable = false)
-    private ECpersonnel eCpersonnelclass;
-
-    @OneToMany(mappedBy = "eclasses", cascade = CascadeType.ALL)
+    @JoinColumn(name = "education_id",nullable=false, insertable = false, updatable = false)
     @JsonIgnore
+    private Education educationOfClass;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", nullable=false, insertable = false, updatable = false)
+    @JsonIgnore
+    private ECpersonnel classManager;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "fuck", cascade = CascadeType.ALL)
     private Set<Student> students;
 
     public int getId() {
@@ -60,20 +65,20 @@ public class EdClass {
         this.manager_id = manager_id;
     }
 
-    public Education getEducationclass() {
-        return educationclass;
+    public Education getEducationOfClass() {
+        return educationOfClass;
     }
 
-    public void setEducationclass(Education educationclass) {
-        this.educationclass = educationclass;
+    public void setEducationOfClass(Education educationOfClass) {
+        this.educationOfClass = educationOfClass;
     }
 
-    public ECpersonnel geteCpersonnelclass() {
-        return eCpersonnelclass;
+    public ECpersonnel getClassManager() {
+        return classManager;
     }
 
-    public void seteCpersonnelclass(ECpersonnel eCpersonnelclass) {
-        this.eCpersonnelclass = eCpersonnelclass;
+    public void setClassManager(ECpersonnel classManager) {
+        this.classManager = classManager;
     }
 
     public Set<Student> getStudents() {
@@ -82,5 +87,13 @@ public class EdClass {
 
     public void setStudents(Set<Student> students) {
         this.students = students;
+    }
+
+    public Integer getEducation_id() {
+        return education_id;
+    }
+
+    public void setEducation_id(Integer education_id) {
+        this.education_id = education_id;
     }
 }

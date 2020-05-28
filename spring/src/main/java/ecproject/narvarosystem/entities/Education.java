@@ -22,11 +22,18 @@ public class Education {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "manager_id", nullable = false)
-    private ECpersonnel eCpersonnelEd;
+    @Column(name = "manager_id")
+    private Integer manager_id;
 
-    @OneToMany(mappedBy = "educationclass", cascade = CascadeType.ALL)
+    @Column(name = "city_id")
+    private Integer city_id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "manager_id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
+    private ECpersonnel educationManager;
+
+    @OneToMany(mappedBy = "educationOfClass", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<EdClass> edClasses;
 
@@ -35,7 +42,8 @@ public class Education {
     private Set<Course> courses;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "city_id", nullable = false)
+    @JoinColumn(name = "city_id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private City city;
 
 
@@ -66,17 +74,16 @@ public class Education {
     public City getCity() {
         return city;
     }
-
     public void setCity(City city) {
         this.city = city;
     }
 
-    public ECpersonnel geteCpersonnelEd() {
-        return eCpersonnelEd;
+    public ECpersonnel getEducationManager() {
+        return educationManager;
     }
 
-    public void seteCpersonnelEd(ECpersonnel eCpersonnelEd) {
-        this.eCpersonnelEd = eCpersonnelEd;
+    public void setEducationManager(ECpersonnel educationManager) {
+        this.educationManager = educationManager;
     }
 
     public Set<EdClass> getEdClasses() {
@@ -96,4 +103,19 @@ public class Education {
     }
 
 
+    public Integer getManager_id() {
+        return manager_id;
+    }
+
+    public void setManager_id(Integer manager_id) {
+        this.manager_id = manager_id;
+    }
+
+    public Integer getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(Integer city_id) {
+        this.city_id = city_id;
+    }
 }
