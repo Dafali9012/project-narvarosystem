@@ -21,7 +21,7 @@ public class Student {
     private String picture;
 
     @Column(name = "class_id")
-    private Integer classid;
+    private Integer class_id;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", nullable=false)
@@ -69,13 +69,15 @@ public class Student {
         this.attendances = attendances;
     }
 
-    public Integer getClassid() {
-        return classid;
+    public Integer getClass_id() {
+        return class_id;
     }
 
-    public void setClassid(Integer classid) {
-        this.classid = classid;
+    public void setClass_id(Integer class_id) {
+        this.class_id = class_id;
     }
+
+
 
     public EdClass getFuck() {
         return fuck;
