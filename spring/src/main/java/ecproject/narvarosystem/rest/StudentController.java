@@ -47,4 +47,16 @@ public class StudentController {
         studentRepository.deleteById(id);
     }
 
+    @GetMapping("/education/{id}")
+    public List<Student> educationStudent(@PathVariable int id) {
+
+        return studentRepository.findByEducation_id(id);
+    }
+
+    @GetMapping("/course/{id}")
+    public List<Student> courseStudent(@PathVariable int id) {
+
+        return studentRepository.findByCourse_id(id);
+    }
+
 }

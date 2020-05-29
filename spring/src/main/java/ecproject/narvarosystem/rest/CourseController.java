@@ -44,4 +44,9 @@ public class CourseController {
         return courseRepository.findAllByStudent_id(id);
     }
 
+    @GetMapping("/education/{id}")
+    public List<Course> educationCourse(@PathVariable int id){
+        return courseRepository.findAllByEducation_id(id);
+    }
+
 }
