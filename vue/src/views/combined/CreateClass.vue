@@ -1,7 +1,7 @@
 <template>
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
       </div>
       <div class="col-9 d-flex">

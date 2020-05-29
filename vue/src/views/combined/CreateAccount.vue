@@ -1,10 +1,10 @@
 <template>
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
       </div>
-      <div class="col-9 d-flex">
+      <div class="col-sm-9 d-flex">
         <div class="root d-flex justify-content-center">
           <div class="main d-flex flex-column">
             <h2 class="align-self-start">Skapa nytt konto</h2>
