@@ -35,25 +35,16 @@ public class EdClassController {
         eDClassRepository.deleteById(id);
     }
 
-
-
-
-
-    /*
-    @GetMapping("/{id}")
-    public Iterable<ClassRoom> getClassroomsById(@PathVariable long id) {
-        return classRoomRepository.findAllById(Collections.singleton(id));
+    @GetMapping("/manager/{id}")
+    public List<EdClass> managerEdClass(@PathVariable int id){
+        return eDClassRepository.findAllByManager_id(id);
     }
 
-    @GetMapping("/my/{id}")
-    public Iterable<Class> getClassroomsByUserId(@PathVariable int id) {
-        return classRoomRepository.findAllByUserId(id);
+    @GetMapping("/education/{id}")
+    public List<EdClass> educationEdClass(@PathVariable int id){
+        return eDClassRepository.findAllByEducation_id(id);
     }
 
-    @GetMapping("/edu/{id}")
-    public Iterable<Class> getClassroomsByEducationId(@PathVariable long id) {
-        return classRoomRepository.findAllByEducationId(id);
-    }
-    */
+
 
 }

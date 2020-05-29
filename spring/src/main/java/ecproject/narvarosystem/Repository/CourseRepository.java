@@ -2,18 +2,21 @@ package ecproject.narvarosystem.Repository;
 
 import ecproject.narvarosystem.entities.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 
 import java.util.List;
 
 public interface CourseRepository extends JpaRepository<Course, Integer> {
     List<Course> findAll();
-    /*
-    @Query(value = "SELECT * FROM course co INNER JOIN class cl ON co.EdID = cl.EdID INNER JOIN student st ON st.classID = cl.classID INNER JOIN user us ON us.userID = st.userID WHERE us.userID = :id", nativeQuery= true)
-    List<Course> findAllByUserId(int id);
 
-    @Query(value = "SELECT * FROM course WHERE Teacher = :id", nativeQuery= true)
-    List<Course> findAllByTeacherId(int id);
+    @Query(value = "SELECT * FROM course WHERE teacher_id = :id", nativeQuery= true)
+    List<Course> findAllByTeacher_id(int id);
 
-     */
+    @Query(value = "SELECT * FROM course cr INNER JOIN class cl ON cl.education_id = cr.education_id INNER JOIN student st ON st.class_id=cl.id WHERE st.id = :id" , nativeQuery = true)
+    List<Course> findAllByStudent_id(int id);
+
+
+
+
 }

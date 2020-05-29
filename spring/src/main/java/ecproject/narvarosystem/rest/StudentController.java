@@ -46,4 +46,5 @@ public class StudentController {
     public void deleteStudent(@PathVariable int id) {
         studentRepository.deleteById(id);
     }
+
 }

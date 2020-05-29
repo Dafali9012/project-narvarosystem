@@ -1,23 +1,21 @@
 package ecproject.narvarosystem.Repository;
 
-import ecproject.narvarosystem.entities.EdClass;
 
+import ecproject.narvarosystem.entities.EdClass;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 
 
 @Repository
 public interface EdClassRepository extends JpaRepository<EdClass, Integer> {
 
 
-    /*
-    @Query(value = "SELECT * FROM class GROUP BY :edId",
-            nativeQuery = true)
-    List<Class> findAllByEducationId(long edId);
+    @Query(value = "SELECT * FROM class WHERE manager_id = :id", nativeQuery= true)
+    List<EdClass> findAllByManager_id(int id);
 
-
-    @Query( value = " SELECT  * FROM class cl INNER JOIN course co ON co.EdID = cl.edID WHERE co.Teacher = :id GROUP BY cl.classID", nativeQuery= true)
-    List<Class> findAllByUserId(int id);
-     */
+    @Query(value = "SELECT * FROM class WHERE education_id = :id", nativeQuery= true)
+    List<EdClass> findAllByEducation_id(int id);
 }

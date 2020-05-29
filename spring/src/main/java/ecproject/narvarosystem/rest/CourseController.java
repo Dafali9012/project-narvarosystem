@@ -34,20 +34,14 @@ public class CourseController {
         courseRepository.deleteById(id);
     }
 
-    /*
-    @GetMapping("{id}")
-    public Iterable<Course> courseByID(@PathVariable long id){
-        return this.courseRepository.findAllById(Collections.singleton(id));
-    }
-    @GetMapping("teacher/{id}")
-    public Iterable<Course> getByTeacherID(@PathVariable int id){
-        return this.courseRepository.findAllByTeacherId(id);
+    @GetMapping("/teacher/{id}")
+    public List<Course> teacherCourse(@PathVariable int id){
+        return courseRepository.findAllByTeacher_id(id);
     }
 
-  @GetMapping("/user/{id}")
-    public Iterable<Course> courseByUserID(@PathVariable int id) {
-      return this.courseRepository.findAllByUserId(id);
-  }
+    @GetMapping("/student/{id}")
+    public List<Course> studentCourse(@PathVariable int id){
+        return courseRepository.findAllByStudent_id(id);
+    }
 
-     */
 }
