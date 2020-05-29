@@ -364,6 +364,10 @@ export default {
 </script>
 
 <style scoped>
+.list-group-item.active{
+  background-color: rgba(67, 105, 148, 0.849);
+  border: none;
+}
 tr .overflow-hidden {
   background: blue !important;
   text-overflow: ellipsis !important;
