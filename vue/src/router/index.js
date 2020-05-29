@@ -14,6 +14,7 @@ import CreateEducation from '@/views/combined/CreateEducation.vue'
 import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
 import PimMessage from '../components/PimMessage.vue'
+import EditInformation from '@/views/combined/EditInformation.vue'
 
 import Admin from '@/views/combined/CreateCourse.vue'
 import Calendar from '@/views/combined/Calendar.vue'
@@ -105,6 +106,11 @@ const routes = [{
     path: '/combined',
     name: 'Combined',
     component: Combined
+  },
+  {
+    path: '/edit-information',
+    name: 'EditInformation',
+    component: EditInformation
   }
 
 ]
