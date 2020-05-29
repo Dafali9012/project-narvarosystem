@@ -1,11 +1,11 @@
 <template>
 <div class="root d-flex flex-column container-fluid">
   <div class="content row mt-3">
-    <div class="admin-sidebar col-3">
+    <div class="admin-sidebar col-sm-3">
       <CombinedSidebar />
     </div>
-      <div class="p-0" style="height: 60vh; ">
-        <div class="col-9 d-flex align-items-center">
+      <div class="row col-sm-9 p-0 mt-5" style="height: 60vh; ">
+        <div class="col-sm-3 d-flex align-items-center ml-5">
           <div class="list-group" id="list-tab" role="tablist">
             <a
               class="list-group-item list-group-item-action active"
@@ -56,8 +56,8 @@
             </a>
           </div>
         </div>
-        <div class="col-12 d-flex align-items-end" style>
-          <div class="tab-content" id="nav-tabContent" style="width: 60%; margin-bottom: 5vh;">
+        <div class="col-sm-6 d-flex align-items-end ml-3" style>
+          <div class="tab-content" id="nav-tabContent" style="width: 100%; margin-bottom: 5vh;">
             <div
               class="tab-pane fade show active"
               id="list-home"
