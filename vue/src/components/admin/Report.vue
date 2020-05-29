@@ -17,6 +17,7 @@
               :key="education.id"
               :value="education"
               @click="selectedEducation = education"
+              v-on:click="getStudentEducation"
             >{{education.name}}</option>
           </select>
           <select class="form-control mb-2 width-84" id="course">
@@ -26,6 +27,7 @@
               :key="course.id"
               :value="course"
               @click="selectedCourse = course"
+              v-on:click="setRaport"
             >{{course.name}}</option>
           </select>
           <select class="form-control mb-4 width-84" id="class">
@@ -35,7 +37,7 @@
               :key="c.id"
               :value="c"
               @click="selectedClass = c"
-              v-on:click="setRaport"
+            
             >{{c.name}}</option>
           </select>
           <label class="align-self-start ml-4" for="from">Från:</label>
@@ -113,6 +115,7 @@ export default {
   },
   data: function() {
     return {
+        testArr:[],
       raport_utbildning: true,
       raport_kurs: false,
       selectedEducation: {},
@@ -142,11 +145,15 @@ export default {
       columns_kurs: [
         {
           label: "Förnamn",
-          name: "first_name"
+          name: "userstudent.first_name"
         },
         {
           label: "Efternamn",
-          name: "last_name"
+          name: "userstudent.last_name"
+        },
+                {
+          label: "Name",
+          name: "name"
         }
       ],
       config: {
@@ -165,13 +172,17 @@ export default {
   },
   methods: {
     setRaport() {
-      this.raport_1 = false;
-      this.raport_2 = true;
+      this.raport_utbildning = false;
+      this.raport_kurs = true;
+      this.getCoursesByID()
     },
     log() {
-      console.log('Courses',this.getCourses);
-      console.log('Education',this.getEducations);
-      console.log('CLasses',this.getClasses);
+      // console.log('Courses',this.getCourses);
+      // console.log('Education',this.getEducations);
+      // console.log('CLasses',this.getClasses);
+      console.log(this.listOfAttendance)
+      console.log(this.selectedEducation)
+
     },
     setCourses() {
       this.getCourses.forEach(course => {
@@ -210,10 +221,15 @@ export default {
     },
     async getCoursesByID() {
       let result = await fetch(
-        "http://localhost:8080/student/class/" + this.selectedClass.id
+        "http://localhost:8080/student/course/" + this.selectedCourse.id
       );
       let respons = await result.json();
-      console.log(respons);
+      this.listOfAttendance.length = 0;
+      respons.forEach(element =>{
+        if(element){
+          this.listOfAttendance.push(element)
+        }
+      })
     },
     async getStudentEducation() {
       let result = await fetch(
@@ -226,15 +242,30 @@ export default {
           this.listOfAttendance.push(element);
         }
       });
-      console.log(respons);
-    }
+    },
+  async test(){
+       let result = await fetch("http://localhost:8080/course/508");
+       let respons = await result.json();
+       respons.forEach(e =>{
+         if(e){
+           this.testArr.push(e)
+         }
+       })
+       
+    } 
+
   },
   computed: {
     rows: {
       get() {
-        return this.listOfAttendance;
-      }
+        return this.listOfAttendance
+      },
     },
+    // rows2: {
+    //   get(){
+    //     return this.testArr
+    //   }
+    // },
     getCourses() {
       return this.$store.state.AllCourse;
     },
