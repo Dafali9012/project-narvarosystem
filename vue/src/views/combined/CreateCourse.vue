@@ -23,7 +23,8 @@
                 <input class="form-control" type="date" id="to" />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <select class="form-control width-42" id="teacher" name="teacher">
+                <select class="form-control width-42" id="education" name="education">
+                  <option value disabled selected>Utbildning</option>
                   <option
                     :value="education.id"
                     v-for="education in getEducations"
@@ -31,11 +32,12 @@
                   >{{education.name}}</option>
                 </select>
                 <select class="form-control width-42" id="teacher" name="teacher">
+                  <option value disabled selected>Lärare</option>
                   <option
                     :value="teacher.id"
                     v-for="teacher in getTeachers"
                     :key="teacher.id"
-                  >Lärare</option>
+                  >{{teacher.name}}</option>
                 </select>
               </div>
               <div class="mt-4 d-flex justify-content-center">
