@@ -20,8 +20,12 @@ public class Teacher implements Serializable {
 
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "consult_id", nullable = false)
+    @JoinColumn(name = "consult_id", nullable = true)
     private Consult consult;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "ec_id", nullable = true)
+    private ECpersonnel eCpersonnel;
 
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
@@ -51,5 +55,13 @@ public class Teacher implements Serializable {
 
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
+    }
+
+    public ECpersonnel geteCpersonnel() {
+        return eCpersonnel;
+    }
+
+    public void seteCpersonnel(ECpersonnel eCpersonnel) {
+        this.eCpersonnel = eCpersonnel;
     }
 }

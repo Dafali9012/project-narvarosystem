@@ -37,5 +37,15 @@ public class LectureController {
         lectureRepository.deleteById(id);
     }
 
+    @GetMapping("/teacher/{id}")
+    public List<Lecture> teacherLecture(@PathVariable int id){
+        return lectureRepository.findAllByTeacher_id(id);
+    }
+
+    @GetMapping("/student/{id}")
+    public List<Lecture> studentLecture(@PathVariable int id){
+        return lectureRepository.findAllByStudent_id(id);
+    }
+
 
 }

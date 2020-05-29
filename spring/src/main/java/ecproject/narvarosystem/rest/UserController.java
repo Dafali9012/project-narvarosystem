@@ -56,7 +56,7 @@ public class UserController {
         if(user.getSsn()!=null)updatedUser.setSsn(user.getSsn());
         if(user.getEmail()!=null)updatedUser.setEmail(user.getEmail());
         if(user.getPassword()!=null)updatedUser.setPassword(user.getPassword());
-        if(user.getRole()!=null)updatedUser.setRole(user.getRole());
+        if(user.getRole_id()!=null)updatedUser.setRole_id(user.getRole_id());
         return userRepository.save(updatedUser);
     }
 

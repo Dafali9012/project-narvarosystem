@@ -13,21 +13,24 @@ export default new Vuex.Store({
     AllEducation: [],
     AllCourse: [],
     AllUser: [],
+    ecPersonnel: [],
+    teachers: [],
+    cities: [],
     MyClassAsTeacher: [],
     MyCourseAsTeacher: [],
     MyCourse: [],
     MyLecture: [],
-    ClassByED:[],
-    Messages:[],
-    messageToDelete:{},
+    ClassByED: [],
+    Messages: [],
+    messageToDelete: {},
     logged: false
 
   },
   mutations: {
-    setMessageToDelete(state , value){
+    setMessageToDelete(state, value) {
       state.messageToDelete = value;
     },
-   
+
     isLogged(state, value) {
       state.logged = value;
     },
@@ -69,7 +72,16 @@ export default new Vuex.Store({
     setUser(state, value) {
       state.user = value;
     },
-    setMessage(state , value){
+    setEcPersonnel(state, value) {
+      state.ecPersonnel = value;
+    },
+    setTeachers(state, value) {
+      state.teachers = value
+    },
+    setCities(state, value) {
+      state.cities = value;
+    },
+    setMessage(state, value) {
       state.Messages = value;
     }
   },
@@ -81,13 +93,12 @@ export default new Vuex.Store({
 
       if (response.status == 500) {
         commit('isLogged', false)
-      }
-      else {
+      } else {
         let result = await response.json()
         commit('changeLoggedUser', result)
 
         commit('isLogged', true)
-        if(result.role_id == 1 ){
+        if (result.role_id == 1) {
           router.push("/admin")
         }
       }
@@ -173,13 +184,36 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setUser", json);
     },
-    getMessage: async function({ commit }){
+    async getEcPersonnel({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/personnel")
+      let result = await response.json()
+      commit("setEcPersonnel", result)
+    },
+    async getTeachers({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/teacher")
+      let result = await response.json()
+      commit("setTeachers", result)
+    },
+
+    async getCities({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/city")
+      let result = await response.json()
+      commit("setCities", result)
+    },
+    getMessage: async function ({
+      commit
+    }) {
       let url = "http://localhost:8080/message";
       const result = await fetch(url);
       const json = await result.json();
       commit("setMessage", json);
-    },
-    
+    }
 
     // deletUser: async function({ commit }, id) {
     //   let url = "http://localhost:8080/user";

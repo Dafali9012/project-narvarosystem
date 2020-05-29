@@ -34,13 +34,15 @@ const routes = [{
     path: '/',
     name: 'Login',
     component: Login
-   
-},
+
+  },
   {
     path: '/admin',
     name: 'Admin',
     component: Admin,
-    meta: { authUser: true }
+    meta: {
+      authUser: true
+    }
   },
   {
     path: '/home',
@@ -126,9 +128,9 @@ router.beforeEach((to, from, next) => {
 
     if (store.state.logged) {
       router.push('/overview')
-      
+
       // if (store.state.loggedInUser.role_id == 1) {
-      
+
       // } else {
       //   next();
       // }

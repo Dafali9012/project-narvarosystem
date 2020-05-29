@@ -19,4 +19,6 @@ public interface EducationRepository extends JpaRepository<Education, Integer> {
     @Query(value = "SELECT * FROM education WHERE city_id = :id", nativeQuery= true)
     List<Education> findAllByCAndCity_id(int id);
 
+
+
 }
