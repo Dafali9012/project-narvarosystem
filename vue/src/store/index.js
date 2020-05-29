@@ -14,6 +14,7 @@ export default new Vuex.Store({
     AllCourse: [],
     AllUser: [],
     ecPersonnel: [],
+    teachers: [],
     cities: [],
     MyClassAsTeacher: [],
     MyCourseAsTeacher: [],
@@ -73,6 +74,9 @@ export default new Vuex.Store({
     },
     setEcPersonnel(state, value) {
       state.ecPersonnel = value;
+    },
+    setTeachers(state, value) {
+      state.teachers = value
     },
     setCities(state, value) {
       state.cities = value;
@@ -186,6 +190,13 @@ export default new Vuex.Store({
       let response = await fetch("http://localhost:8080/personnel")
       let result = await response.json()
       commit("setEcPersonnel", result)
+    },
+    async getTeachers({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/teacher")
+      let result = await response.json()
+      commit("setTeachers", result)
     },
 
     async getCities({

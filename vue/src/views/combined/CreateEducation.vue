@@ -77,7 +77,7 @@ export default {
         name: document.getElementById("edu-name").value,
         description: document.getElementById("edu-desc").value,
         manager_id: document.getElementById("edu-manager").value,
-        city_id: ""
+        city_id: document.getElementById("edu-city").value
       };
 
       let response = await fetch("http://localhost/8080/education", {
@@ -87,9 +87,7 @@ export default {
       });
 
       let result = await response.json();
-      if (result) {
-        console.log("Yay");
-      }
+      console.log(result);
     }
   }
 };
