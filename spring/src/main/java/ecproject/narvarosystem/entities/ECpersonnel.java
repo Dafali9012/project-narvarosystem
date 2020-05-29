@@ -23,6 +23,10 @@ public class ECpersonnel implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User userec;
 
+    @OneToOne(mappedBy = "eCpersonnel", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Teacher teacher;
+
    
     @OneToMany(mappedBy = "classManager", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -62,5 +66,13 @@ public class ECpersonnel implements Serializable {
 
     public void setEducations(Set<Education> educations) {
         this.educations = educations;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }
