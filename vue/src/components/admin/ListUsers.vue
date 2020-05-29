@@ -43,7 +43,7 @@
 
         <vue-bootstrap4-table :rows="rows" :columns="columns" :config="config" @on-select-row="getInfo($event)">
           </vue-bootstrap4-table>
-          <button class="button button-primary" v-on:click="deleteUSer"> <span> DELETE </span> {{selectedName}}</button>
+          <button class="button button-primary" v-on:click="deleteUSer"> <span> Ta bort </span> {{selectedName}}</button>
         
       </div>
     </div>

@@ -11,7 +11,6 @@ import router from './router'
 import store from './store'
 
 
-
 import {
   library
 } from '@fortawesome/fontawesome-svg-core'
@@ -32,13 +31,17 @@ import {
   faCog,
   faSort,
   faKey,
-  faUser
+  faUser,
+  faInbox,
+  faShareSquare,
+  faPaperPlane
 } from '@fortawesome/free-solid-svg-icons'
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle, faCog, faCalendarAlt, faKey, faUser, faSort)
+  faShareSquare
+library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle, faCog, faCalendarAlt, faKey, faUser, faSort, faInbox, faShareSquare, faPaperPlane)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

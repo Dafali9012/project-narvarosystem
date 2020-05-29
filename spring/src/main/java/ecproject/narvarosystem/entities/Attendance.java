@@ -86,6 +86,8 @@ public class Attendance implements Serializable {
     public void setStudent_id(Integer student_id) {
         this.student_id = student_id;
     }
+
+
 }
 
 

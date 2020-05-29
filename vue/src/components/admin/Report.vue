@@ -50,12 +50,12 @@
           
         </div>
         <download-excel
-	class   = "btn btn-primary"
+	class   = "button button-primary"
 	:data   = "rows"
 	:fields = "json_fields"
 	name    = "filename.xls">
 
-	Export
+	<span> Exportera </span>
 
 </download-excel>
         

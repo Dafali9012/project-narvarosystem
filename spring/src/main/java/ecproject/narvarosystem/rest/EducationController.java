@@ -16,7 +16,7 @@ public class EducationController {
     EducationRepository educationRepository;
 
 
-    @GetMapping()
+    @GetMapping
     public List<Education> educations() {
         return educationRepository.findAll();
     }
@@ -34,6 +34,16 @@ public class EducationController {
     @DeleteMapping("/{id}")
     public void  deleteEducation(@PathVariable int id){
         educationRepository.deleteById(id);
+    }
+
+    @GetMapping("/manager/{id}")
+    public List<Education> managerEducation(@PathVariable int id){
+        return educationRepository.findAllByManager_id(id);
+    }
+
+    @GetMapping("/city/{id}")
+    public List<Education> cityEducation(@PathVariable int id){
+        return educationRepository.findAllByCAndCity_id(id);
     }
 
 

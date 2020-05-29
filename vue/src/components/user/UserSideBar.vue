@@ -1,5 +1,5 @@
 <template>
-  <div class="user-sidebar col-3">
+  <div class="user-sidebar col-sm-3">
     <div class="d-flex flex-column align-items-center text-white">
       <img
         src="https://image.flaticon.com/icons/png/512/67/67902.png"

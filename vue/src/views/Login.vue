@@ -7,7 +7,7 @@
           <h2>Välkommen</h2>
           <form @submit.prevent="springLogin" class="inputs">
             <div>
-              <input v-model="name" class="inputField" type="name" name="name" placeholder="Namn" />
+              <input v-model="email" class="inputField" type="email" name="email" placeholder="Email" />
               <font-awesome-icon :icon="['fas', 'user']" class="fa-lg" id="icon" />
             </div>
             <div>
@@ -45,15 +45,15 @@
 export default {
   data() {
     return {
-      name: "",
+      email: "",
       password: ""
     };
   },
   methods: {
-    springLogin: async function() {
+   async springLogin() {
       const credentials =
         "username=" +
-        encodeURIComponent(this.name) +
+        encodeURIComponent(this.email) +
         "&password=" +
         encodeURIComponent(this.password);
 
@@ -63,14 +63,15 @@ export default {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: credentials
       });
-
-      if (response.url.includes("error")) {
+      console.log(response)
+      if (response.status == 500) {
         window.confirm("Inloggningen misslyckades");
       } else {
-        this.$store.dispatch("updateLoggedUser");
-        this.$router.push("/overview");
+       await this.$store.dispatch("updateLoggedUser");
+        console.log(this.$store.state.loggedInUser)
       }
-    }
+    },
+
   }
 };
 </script>

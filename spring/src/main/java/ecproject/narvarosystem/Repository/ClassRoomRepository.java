@@ -1,7 +1,9 @@
 package ecproject.narvarosystem.Repository;
 
+import ecproject.narvarosystem.entities.Attendance;
 import ecproject.narvarosystem.entities.ClassRoom;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +21,7 @@ public interface ClassRoomRepository extends JpaRepository<ClassRoom, Long> {
     List<ClassRoom> findAllByUserId(int id);
 
      */
+
+
+
 }

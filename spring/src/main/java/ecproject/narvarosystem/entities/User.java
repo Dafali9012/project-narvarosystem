@@ -51,11 +51,10 @@ public class User {
     @JoinColumn (name = "role_id", nullable = false, insertable = false, updatable = false)
     private Role role;
 
-    /*public User() {}
-    public User(String first_name, String password) {
-        this.first_name = first_name;
-        this.password = password;
-    }*/
+    public User(String email, String password) {
+        this.email = email;
+        this. password = password;
+    }
 
 
     public User() {}
