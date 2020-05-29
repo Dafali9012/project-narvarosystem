@@ -69,7 +69,6 @@ export default new Vuex.Store({
     setUser(state, value) {
       state.user = value;
     },
-
     setMessage(state , value){
       state.Messages = value;
     }
@@ -83,11 +82,14 @@ export default new Vuex.Store({
       if (response.status == 500) {
         commit('isLogged', false)
       }
-      if (response.status == 200) {
+      else {
         let result = await response.json()
         commit('changeLoggedUser', result)
+
         commit('isLogged', true)
-        router.push("/admin");
+        if(result.role_id == 1 ){
+          router.push("/admin")
+        }
       }
     },
     getAllClasses: async function ({
@@ -115,14 +117,14 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setAllCourses", json);
     },
-
-    getAllUsers: async function ({commit}) {
+    getAllUsers: async function ({
+      commit
+    }) {
       let url = "http://localhost:8080/user";
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllUsers", json);
     },
-
     getMyClassAsTeacher: async function ({
       commit
     }, id) {
@@ -171,7 +173,6 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setUser", json);
     },
-
     getMessage: async function({ commit }){
       let url = "http://localhost:8080/message";
       const result = await fetch(url);

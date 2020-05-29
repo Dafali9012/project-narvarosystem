@@ -14,7 +14,7 @@
                 </div>
               </div>
               <AllEducation></AllEducation>
-            </div>
+            </div> 
             <br />
 
             <div class="d-flex flex-column">
@@ -64,5 +64,6 @@ export default {
     this.$store.dispatch("getAllusers");
     this.$store.dispatch("getAllEducations");
   }
+
 };
 </script>

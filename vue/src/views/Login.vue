@@ -63,15 +63,12 @@ export default {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: credentials
       });
-
+      console.log(response)
       if (response.status == 500) {
         window.confirm("Inloggningen misslyckades");
       } else {
        await this.$store.dispatch("updateLoggedUser");
         console.log(this.$store.state.loggedInUser)
-
-
-      //  this.$router.push("/overview");
       }
     },
 
