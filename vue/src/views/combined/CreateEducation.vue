@@ -17,6 +17,7 @@
 
               <div class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="edu-manager">
+                  <option value disabled selected>Utbildningsledare</option>
                   <option
                     v-for="ecPers in getPersonnel"
                     :key="ecPers.id"
@@ -26,6 +27,7 @@
 
               <div class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="edu-city">
+                  <option value disabled selected>Utbildningsort</option>
                   <option v-for="city in getCities" :key="city.id">{{city.name}}</option>
                 </select>
               </div>
@@ -33,9 +35,10 @@
               <div class="mt-4 d-flex justify-content-center">
                 <textarea
                   class="form-control width-84"
+                  style="resize: none;"
                   type="text"
                   rows="6"
-                  placeholder="Beskrivning"
+                  placeholder="Beskrivning ..."
                   id="edu-desc"
                 />
               </div>

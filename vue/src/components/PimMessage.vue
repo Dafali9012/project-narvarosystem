@@ -67,8 +67,7 @@
               <form action class="send-form">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Vem vill du skriva till?</label>
-                  <select
-                    required
+                  <select required
                     class="form-control"
                     style="min-width: 100%; margin-left:0;"
                     id="exampleFormControlSelect1"
