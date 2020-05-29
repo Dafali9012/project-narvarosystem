@@ -28,7 +28,7 @@
         <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Lista över användare</p>
       </router-link>
-      <router-link to="/overview" class="option d-flex align-self-center">
+      <router-link to="/report" class="option d-flex align-self-center">
         <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Rapport</p>
       </router-link>

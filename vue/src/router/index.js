@@ -18,6 +18,8 @@ import EditInformation from '@/views/combined/EditInformation.vue'
 
 import Admin from '@/views/combined/CreateCourse.vue'
 import Calendar from '@/views/combined/Calendar.vue'
+import Report from '../components/admin/Report.vue'
+
 
 // import TClasses from "../components/teacher/TeacherClasses.vue"
 // import TCourse from "../components/teacher/TeacherCourses.vue"
@@ -43,6 +45,11 @@ const routes = [{
     meta: {
       authUser: true
     }
+  },
+  {
+    path: '/report',
+    name: 'Report',
+    component: Report,
   },
   {
     path: '/home',
