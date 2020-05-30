@@ -28,7 +28,6 @@ public class ECpersonnel implements Serializable {
     @OneToOne(mappedBy = "eCpersonnel", cascade = CascadeType.ALL)
     @JsonIgnore
     private Teacher teacher;
-
    
     @OneToMany(mappedBy = "classManager", cascade = CascadeType.ALL)
     @JsonIgnore
