@@ -18,6 +18,7 @@
               <div class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="edu-manager">
                   <option
+                    :value="ecPers.id"
                     v-for="ecPers in getPersonnel"
                     :key="ecPers.id"
                   >{{ecPers.userec.first_name}}</option>
@@ -26,7 +27,7 @@
 
               <div class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="edu-city">
-                  <option v-for="city in getCities" :key="city.id">{{city.name}}</option>
+                  <option :value="city.id" v-for="city in getCities" :key="city.id">{{city.name}}</option>
                 </select>
               </div>
 
@@ -80,7 +81,7 @@ export default {
         city_id: document.getElementById("edu-city").value
       };
 
-      let response = await fetch("http://localhost/8080/education", {
+      let response = await fetch("http://localhost:8080/education", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newEducation)

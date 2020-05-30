@@ -16,6 +16,7 @@ export default new Vuex.Store({
     ecPersonnel: [],
     teachers: [],
     cities: [],
+    roles: [],
     MyClassAsTeacher: [],
     MyCourseAsTeacher: [],
     MyCourse: [],
@@ -43,7 +44,6 @@ export default new Vuex.Store({
     },
     setAllClasses(state, value) {
       state.AllClass = value;
-      console.log(state.AllClass)
     },
     setAllEducations(state, value) {
       state.AllEducation = value;
@@ -81,6 +81,9 @@ export default new Vuex.Store({
     setCities(state, value) {
       state.cities = value;
     },
+    setRoles(state, value) {
+      state.roles = value
+    },
     setMessage(state, value) {
       state.Messages = value;
     }
@@ -108,7 +111,6 @@ export default new Vuex.Store({
     }) {
       let url = 'http://localhost:8080/class';
       const response = await fetch(url);
-      console.log(response.clone().text)
       const result = await response.json();
       commit("setAllClasses", result);
     },
@@ -205,6 +207,13 @@ export default new Vuex.Store({
       let response = await fetch("http://localhost:8080/city")
       let result = await response.json()
       commit("setCities", result)
+    },
+    async getRoles({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/role")
+      let result = await response.json()
+      commit("setRoles", result)
     },
     getMessage: async function ({
       commit
