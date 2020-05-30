@@ -25,7 +25,7 @@ public class EducationController {
     public List<Education> educationsById(@PathVariable int id) {
         return educationRepository.findAllById(Collections.singleton(id));
     }
-    
+
     @PostMapping
     public Education addEducation(@RequestBody Education education) {
         return educationRepository.save(education);

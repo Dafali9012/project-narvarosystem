@@ -11,8 +11,8 @@
             <div class="content-line rounded" />
             <form @submit.prevent="createCourse">
               <div class="mt-5 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Kursnamn" />
-                <input class="form-control" type="number" placeholder="Poäng" />
+                <input class="form-control" type="text" placeholder="Kursnamn" id="course-name" />
+                <input class="form-control" type="number" placeholder="Poäng" id="course-points" />
               </div>
               <div class="mt-4 d-flex unselectable">
                 <label for="from" style="margin-left:9%">Från:</label>
@@ -23,7 +23,7 @@
                 <input class="form-control" type="date" id="to" />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <select class="form-control width-42" id="teacher" name="teacher">
+                <select class="form-control width-42" id="education" name="education">
                   <option
                     :value="education.id"
                     v-for="education in getEducations"
@@ -35,11 +35,16 @@
                     :value="teacher.id"
                     v-for="teacher in getTeachers"
                     :key="teacher.id"
-                  >Lärare</option>
+                  >{{teacher.consult.userconsult.first_name}} {{teacher.consult.userconsult.last_name}}</option>
                 </select>
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input class="form-control width-84" type="text" rows="3" placeholder="Beskrivning" />
+                <textarea
+                  class="form-control width-84"
+                  rows="3"
+                  placeholder="Beskrivning"
+                  id="course-desc"
+                />
               </div>
               <div class="button-create mt-4 d-flex justify-content-end">
                 <button type="submit" class="button button-primary">
@@ -67,7 +72,7 @@ export default {
   },
   computed: {
     getTeachers() {
-      return this.$store.state.Teachers;
+      return this.$store.state.teachers;
     },
     getEducations() {
       return this.$store.state.AllEducation;
@@ -75,8 +80,25 @@ export default {
   },
 
   methods: {
-    createCourse() {
-      console.log("skapa kurs");
+    async createCourse() {
+      let newCourse = {
+        name: document.getElementById("course-name").value,
+        teacher_id: document.getElementById("teacher").value,
+        education_id: document.getElementById("education").value,
+        date_start: document.getElementById("from").value,
+        date_end: document.getElementById("to").value,
+        points: document.getElementById("course-points").value,
+        description: document.getElementById("course-desc").value
+      };
+
+      let response = await fetch("http://localhost:8080/course", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newCourse)
+      });
+
+      let result = await response.json();
+      console.log("POST:" + result);
     }
   }
 };
