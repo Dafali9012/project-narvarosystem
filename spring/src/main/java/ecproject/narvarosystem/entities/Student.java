@@ -13,7 +13,7 @@ public class Student {
     public Student(){}
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -23,8 +23,11 @@ public class Student {
     @Column(name = "class_id")
     private Integer class_id;
 
+    @JoinColumn(name = "user_id", nullable = false)
+    private int user_id;
+
     @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable=false)
+    @JoinColumn(name = "user_id", nullable=false,insertable = false, updatable =  false)
     private User userstudent;
 
     @ManyToOne(optional = false)
@@ -78,12 +81,19 @@ public class Student {
     }
 
 
-
     public EdClass getFuck() {
         return fuck;
     }
 
     public void setFuck(EdClass fuck) {
         this.fuck = fuck;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }
