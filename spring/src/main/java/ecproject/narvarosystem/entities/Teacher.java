@@ -18,6 +18,11 @@ public class Teacher implements Serializable {
     @Column(name = "id")
     private int id;
 
+    /*@JoinColumn(name = "consult_id", nullable = false)
+    private int consult_id;
+
+    @JoinColumn(name = "ec_id", nullable = false)
+    private int ec_id;*/
 
     @OneToOne(optional = false)
     @JoinColumn(name = "consult_id", nullable = true)
@@ -64,4 +69,6 @@ public class Teacher implements Serializable {
     public void seteCpersonnel(ECpersonnel eCpersonnel) {
         this.eCpersonnel = eCpersonnel;
     }
+
+
 }

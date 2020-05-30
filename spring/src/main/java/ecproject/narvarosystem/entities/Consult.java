@@ -18,8 +18,11 @@ public class Consult {
     @Column(name = "id")
     private int id;
 
-    @OneToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
+    private int user_id;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable =  false)
     private User userconsult;
 
     @OneToOne(mappedBy = "consult", cascade = CascadeType.ALL)
@@ -48,6 +51,14 @@ public class Consult {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }
 
