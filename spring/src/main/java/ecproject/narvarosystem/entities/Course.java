@@ -39,7 +39,6 @@ public class Course {
     private Integer education_id;
 
 
-    @NotFound(action= NotFoundAction.IGNORE)
     @Column(name = "teacher_id")
     private Integer teacher_id;
 
