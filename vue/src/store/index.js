@@ -139,7 +139,7 @@ export default new Vuex.Store({
     getMyLectureTeacher: async function ({
       commit
     }, id) {
-      let url = "http://localhost:8080/lecture/teacher/";
+      let url = "http://localhost:8080/lecture/teacher/my/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setMyLectureTeacher", json);
