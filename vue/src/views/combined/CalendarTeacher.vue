@@ -113,7 +113,7 @@ export default {
   },
   data: function() {
     return {
-     /* events: [
+     /*events: [
         {
           start: "2020-05-15",
           end: "2020-05-15",
@@ -137,13 +137,20 @@ export default {
         }
       ]*/
     };    
+  },mounted() {    
+    this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
   },
   computed:{
      events: {
        get(){
-         return this.$store.state.MyLectureTeacher;
+         
+
+          return 'start ' + this.$store.state.MyLectureTeacher.date + 'end' + this.$store.state.MyLectureTeacher.date + 'title' + this.$store.state.MyLectureTeacher.date.id
        }
-     },
-  }
+     }
+  },
+ 
+   
+
 };
 </script>
