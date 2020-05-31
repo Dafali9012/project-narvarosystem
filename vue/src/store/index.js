@@ -16,26 +16,22 @@ export default new Vuex.Store({
     ecPersonnel: [],
     teachers: [],
     cities: [],
-    roles: [],
-    MyClassAsTeacher: [],
-    MyCourseAsTeacher: [],
-    MyCourse: [],
-    MyLecture: [],
+    roles: [],  
     ClassByED: [],
     Messages: [],
     messageToDelete: {},
-    logged: false
+    logged: false,
+    MyLectureStudent: [],
+    MyLectureTeacher: []
 
   },
   mutations: {
     setMessageToDelete(state, value) {
       state.messageToDelete = value;
     },
-
     isLogged(state, value) {
       state.logged = value;
     },
-
     changeLoggedUser(state, value) {
       state.loggedInUser = value
     },
@@ -53,19 +49,7 @@ export default new Vuex.Store({
     },
     setAllUsers(state, value) {
       state.AllUser = value;
-    },
-    setMyClassAsTeacher(state, value) {
-      state.MyClassAsTeacher = value;
-    },
-    setMyCourseAsTeacher(state, value) {
-      state.MyCourseAsTeacher = value;
-    },
-    setMyCourse(state, value) {
-      state.MyCourse = value;
-    },
-    setMyLecture(state, value) {
-      state.MyLecture = value;
-    },
+    }, 
     setClassByED(state, value) {
       state.ClassByED = value;
     },
@@ -86,6 +70,12 @@ export default new Vuex.Store({
     },
     setMessage(state, value) {
       state.Messages = value;
+    },
+    setMyLectureStudent(state, value){
+      state.MyLectureStudent = value;
+    },
+    setMyLectureTeacher(state, value){
+      state.MyLectureTeacher = value;
     }
   },
   actions: {
@@ -137,38 +127,22 @@ export default new Vuex.Store({
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllUsers", json);
-    },
-    getMyClassAsTeacher: async function ({
+    },    
+    getMyLectureStudent: async function ({
       commit
     }, id) {
-      let url = "http://localhost:8080/classroom/my/";
+      let url = "http://localhost:8080/lecture/student/";
       const result = await fetch(url + id);
       const json = await result.json();
-      commit("setMyClassAsTeacher", json);
+      commit("setMyLectureStudent", json);
     },
-    getMyCourseAsTeacher: async function ({
+    getMyLectureTeacher: async function ({
       commit
     }, id) {
-      let url = "http://localhost:8080/course/teacher/";
+      let url = "http://localhost:8080/lecture/teacher/";
       const result = await fetch(url + id);
       const json = await result.json();
-      commit("setMyCourseAsTeacher", json);
-    },
-    getMyCourse: async function ({
-      commit
-    }, id) {
-      let url = "http://localhost:8080/course/user/";
-      const result = await fetch(url + id);
-      const json = await result.json();
-      commit("setMyCourse", json);
-    },
-    getMyLecture: async function ({
-      commit
-    }, id) {
-      let url = "http://localhost:8080/lecture/user/";
-      const result = await fetch(url + id);
-      const json = await result.json();
-      commit("setMyLecture", json);
+      commit("setMyLectureTeacher", json);
     },
     getClassByED: async function ({
       commit
@@ -200,7 +174,6 @@ export default new Vuex.Store({
       let result = await response.json()
       commit("setTeachers", result)
     },
-
     async getCities({
       commit
     }) {
@@ -223,7 +196,6 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setMessage", json);
     }
-
     // deletUser: async function({ commit }, id) {
     //   let url = "http://localhost:8080/user";
     //   const result = await fetch(url);

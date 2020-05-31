@@ -16,13 +16,13 @@ public class Teacher implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
-    @JoinColumn(name = "consult_id", nullable = true)
+    /*@JoinColumn(name = "consult_id", nullable = true)
     private Integer consult_id;
 
     @JoinColumn(name = "ec_id", nullable = true)
-    private Integer ec_id;
+    private Integer ec_id;*/
 
     @OneToOne(optional = false)
     @JoinColumn(name = "consult_id", nullable = true, insertable = false, updatable = false)
@@ -37,12 +37,11 @@ public class Teacher implements Serializable {
     @JsonIgnore
     private Set<Course> courses;
 
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -70,7 +69,7 @@ public class Teacher implements Serializable {
         this.eCpersonnel = eCpersonnel;
     }
 
-    public Integer getConsult_id() {
+    /*public Integer getConsult_id() {
         return consult_id;
     }
 
@@ -84,5 +83,5 @@ public class Teacher implements Serializable {
 
     public void setEc_id(Integer ec_id) {
         this.ec_id = ec_id;
-    }
+    }*/
 }

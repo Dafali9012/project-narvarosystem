@@ -16,7 +16,9 @@ import CreateCourse from '@/views/combined/CreateCourse.vue'
 import PimMessage from '../components/PimMessage.vue'
 
 import Admin from '@/views/combined/CreateCourse.vue'
-import Calendar from '@/views/combined/Calendar.vue'
+import CalendarStudent from '@/views/combined/CalendarStudent.vue'
+import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
+import CreateRole from '@/views/combined/CreateRole.vue'
 
 // import TClasses from "../components/teacher/TeacherClasses.vue"
 // import TCourse from "../components/teacher/TeacherCourses.vue"
@@ -88,6 +90,7 @@ const routes = [{
     name: 'CreateClass',
     component: CreateClass
   },
+
   {
     path: '/create-education',
     name: 'CreateEducation',
@@ -99,9 +102,19 @@ const routes = [{
     component: CreateCourse
   },
   {
-    path: '/calendar',
-    name: 'Calendar',
-    component: Calendar
+    path: '/create-role',
+    name: 'CreateRole',
+    component: CreateRole
+  },
+  {
+    path: '/calendar/student',
+    name: 'CalendarStudent',
+    component: CalendarStudent
+  },
+  {
+    path: '/calendar/teacher',
+    name: 'CalendarTeacher',
+    component: CalendarTeacher
   },
   {
     path: '/combined',

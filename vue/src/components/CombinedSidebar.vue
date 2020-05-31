@@ -36,6 +36,18 @@
         <font-awesome-icon :icon="['fas','comments']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">PIM</p>
       </router-link>
+      <router-link to="/calendar/student" class="option d-flex align-self-center">
+        <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
+        <p class="ml-3 unselectable menu-link no-margin">Kalendar Elev</p>
+      </router-link>
+      <router-link to="/calendar/teacher" class="option d-flex align-self-center">
+        <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
+        <p class="ml-3 unselectable menu-link no-margin">Kalendar Lärare</p>
+      </router-link>
+      <router-link to="/create-role" class="option d-flex align-self-center">
+        <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
+        <p class="ml-3 unselectable menu-link no-margin">Skapa Roll</p>
+      </router-link>
     </div>
   </div>
 </template>

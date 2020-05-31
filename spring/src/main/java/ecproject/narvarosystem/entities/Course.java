@@ -36,8 +36,8 @@ public class Course {
     @Column(name = "education_id")
     private Integer education_id;
 
-    @Column(name = "teacher_id")
-    private Integer teacher_id;
+    /*@Column(name = "teacher_id")
+    private Integer teacher_id;*/
 
     @ManyToOne(optional = false)
     @JsonIgnore
@@ -46,7 +46,7 @@ public class Course {
 
     @ManyToOne(optional = false)
     @JsonIgnore
-    @JoinColumn(name = "teacher_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "teacher_id", nullable = true, insertable = false, updatable = false)
     private Teacher teacher;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
@@ -133,11 +133,11 @@ public class Course {
         this.education_id = education_id;
     }
 
-    public Integer getTeacher_id() {
+    /*public Integer getTeacher_id() {
         return teacher_id;
     }
 
     public void setTeacher_id(Integer teacher_id) {
         this.teacher_id = teacher_id;
-    }
+    }*/
 }
