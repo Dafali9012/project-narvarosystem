@@ -17,7 +17,7 @@
               :key="education.id"
               :value="education"
               @click="selectedEducation = education"
-              v-on:click="getStudentEducation"
+              v-on:click="showEducationRapport"
             >{{education.name}}</option>
           </select>
           <select class="form-control mb-2 width-84" id="course">
@@ -27,7 +27,7 @@
               :key="course.id"
               :value="course"
               @click="selectedCourse = course"
-              v-on:click="setRaport"
+              v-on:click="showCourseRapport"
             >{{course.name}}</option>
           </select>
           <select class="form-control mb-4 width-84" id="class">
@@ -98,7 +98,6 @@
         </download-excel>
       </div>
     </div>
-    <button v-on:click="log">Click</button>
   </div>
 </template>
 
@@ -113,9 +112,9 @@ export default {
   },
   data: function() {
     return {
-      testArr: [],
       raport_utbildning: true,
       raport_kurs: false,
+      raport_class: false,
       selectedEducation: {},
       selectedClass: {},
       selectedCourse: {},
@@ -137,33 +136,26 @@ export default {
         {
           label: "Efternamn",
           name: "userstudent.last_name"
-        }
+        },
       ],
+
       // COLUMN KURS
       columns_kurs: [
         {
           label: "Förnamn",
-          name: "userstudent.first_name"
+          name: "student.userstudent.first_name"
         },
         {
           label: "Efternamn",
-          name: "userstudent.last_name"
-        },
-        {
-          label: "Kursnamn",
-          name: "name"
-        },
-        {
-          label:"Lecture"
-          
+          name: "student.userstudent.last_name"
         },
         {
           label:"Datum",
-          name:"attendance_date"
+          name:"lecture.date"
         },
         {
           label:"Present",
-          name:"attendance.present"
+          name:"present"
         }
 
       ],
@@ -182,18 +174,25 @@ export default {
     };
   },
   methods: {
-    setRaport() {
+    showCourseRapport() {
       this.raport_utbildning = false;
+      this.raport_class = false;
       this.raport_kurs = true;
       this.getCoursesByID();
     },
-    log() {
-      // console.log('Courses',this.getCourses);
-      // console.log('Education',this.getEducations);
-      // console.log('CLasses',this.getClasses);
-      // console.log(this.educations);
-      // console.log(this.$store.state.AllEducation);
+    showEducationRapport() {
+      this.raport_utbildning = true;
+      this.raport_class = false;
+      this.raport_kurs = false;
+      this.getStudentEducation()
+      
     },
+    showClassRapport() {
+      this.raport_utbildning = false;
+      this.raport_class = true;
+      this.raport_kurs = false;
+    },
+
     setCourses() {
       this.getCourses.forEach(course => {
         if (course) {
@@ -209,11 +208,8 @@ export default {
       });
     },
     setEducations() {
-      console.log("run setEducations")
         this.getEducations.forEach(education => {
-          console.log("in forEach setEducations")
           if(education){
-          console.log('education is ',education)
             this.educations.push(education)
           }
         })
@@ -223,17 +219,16 @@ export default {
         "http://localhost:8080/student/class/" + this.selectedClass.id
       );
       let respons = await result.json();
+      this.listOfAttendance.length = 0;
       respons.forEach(respons => {
         if (respons) {
           this.listOfAttendance.push(respons.userstudent);
         }
       });
-      console.log(respons);
-      console.log("list of attendace ", this.listOfAttendance);
     },
     async getCoursesByID() {
       let result = await fetch(
-        "http://localhost:8080/student/course/" + this.selectedCourse.id
+        "http://localhost:8080/attendance/course/" + this.selectedCourse.id
       );
       let respons = await result.json();
       this.listOfAttendance.length = 0;
@@ -255,15 +250,6 @@ export default {
         }
       });
     },
-    async test() {
-      let result = await fetch("http://localhost:8080/course/508");
-      let respons = await result.json();
-      respons.forEach(e => {
-        if (e) {
-          this.testArr.push(e);
-        }
-      });
-    }
   },
   computed: {
     rows: {

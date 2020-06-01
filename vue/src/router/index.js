@@ -17,7 +17,6 @@ import PimMessage from '../components/PimMessage.vue'
 import EditInformation from '@/views/combined/EditInformation.vue'
 
 import Admin from '@/views/combined/CreateCourse.vue'
-import Calendar from '@/views/combined/Calendar.vue'
 import Report from '../components/admin/Report.vue'
 
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
