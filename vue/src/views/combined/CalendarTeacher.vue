@@ -66,21 +66,14 @@ export default {
   }, 
 
   method:{
-    change_MyJSONevents: function() {
-      let myJSON = this.$store.state.MyLectureTeacher
-    	for (let i in myJSON){
-      	this.myevents.push({ date: myJSON[i].date, start: i })
-      }
-
-      
-    }
+   
 
   },
   computed:{
    events: {
        get(){    
 
-        return this.myevents
+        return this.$store.state.MyLectureTeacher
 
         
         
@@ -89,9 +82,7 @@ export default {
        }
      }
   },
-  created () {
-  	this.change_MyJSONevents();
-  }
+  
    
 
 };

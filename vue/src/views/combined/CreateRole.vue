@@ -93,35 +93,18 @@ export default {
   methods: {
     async createRole() {  
       
-
-      let item = document.getElementsByClassName('form-check-input');
-      let i;
-      for (i = 0; i < item.length; i++) {
-      if (item[i].checked) {
-          item[i].setAttribute('value', "true")
-      } else {
-          item[i].setAttribute('value', "false");
-      }
-      }
-    
-      
-
-      let newRole = {
-        //name: document.getElementById("role_name").value,
-        //create_class: document.getElementById("create_class").value
+      let newRole = {        
         name: document.getElementById("role_name").value,
-        create_class: document.getElementById("create_class").value,
-        create_account: document.getElementById("create_account").value,
-        create_course: document.getElementById("create_course").value,
-        create_education: document.getElementById("create_education").value,
-        create_role: document.getElementById("create_role").value,
-        access_overview: document.getElementById("access_overview").value,
-        access_messages: document.getElementById("access_messages").value,
-        access_classes_courses: document.getElementById("access_classes_courses").value,
-        access_calendar: document.getElementById("access_calendar").value,       
+        create_class: document.getElementById("create_class").checked,
+        create_account: document.getElementById("create_account").checked,
+        create_course: document.getElementById("create_course").checked,
+        create_education: document.getElementById("create_education").checked,
+        create_role: document.getElementById("create_role").checked,
+        access_overview: document.getElementById("access_overview").checked,
+        access_messages: document.getElementById("access_messages").checked,
+        access_classes_courses: document.getElementById("access_classes_courses").checked,
+        access_calendar: document.getElementById("access_calendar").checked,       
       };
-
-
 
       console.log(this.newRole);
 
