@@ -9,7 +9,7 @@
       <router-link to="/">
         <p class="no-margin unselectable text-cream font-weight-bold ml-5">Hem</p>
       </router-link>
-      <router-link to="/pim">
+      <router-link to="/pimmessage">
         <p class="no-margin unselectable text-cream font-weight-bold ml-5">PIM</p>
       </router-link>
       <div>
