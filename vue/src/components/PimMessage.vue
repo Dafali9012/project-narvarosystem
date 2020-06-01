@@ -71,7 +71,7 @@
                   <label for="exampleFormControlSelect1">Vem vill du skriva till?</label>
                   <select required
                     class="form-control"
-                    style="min-width: 100%; margin-left:0;"
+                    style="width: 30%; margin-left:35%;"
                     id="exampleFormControlSelect1"
                   >
                     <option value disabled selected>Mottagare</option>
@@ -82,7 +82,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    style="min-width: 100%; margin-left:0;"
+                    style="width: 50%; margin-left:25%;"
                     id="exampleFormControlInput1"
                     placeholder="Ämne"
                     v-model="message.subject"
@@ -91,7 +91,7 @@
                 <div class="form-group text d-flex">
                   <label for="exampleFormControlTextarea1"></label>
                   <textarea
-                    style="resize: none; width: 100%;"
+                    style="resize: none; width: 100%; margin-top: 5%"
                     maxlength="500"
                     class="form-control"
                     id="exampleFormControlTextarea1"
@@ -101,7 +101,7 @@
                   ></textarea>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="button button-primary mb-5" v-on:click="send">
+                  <button type="button" class="button button-primary mt-5" v-on:click="send">
                     <span>Skicka</span>
                   </button>
                 </div>
