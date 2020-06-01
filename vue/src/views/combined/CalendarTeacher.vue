@@ -67,11 +67,18 @@ export default {
    events: {
        get(){    
 
+<<<<<<< Updated upstream
         let myevents = this.$store.state.MyLectureTeacher
 
         
          
         return myevents
+=======
+        return this.$store.state.MyLectureTeacher
+
+        
+         
+>>>>>>> Stashed changes
        }
      }
   },
