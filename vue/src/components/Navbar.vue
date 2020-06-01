@@ -7,14 +7,14 @@
     </div>
     <div class="d-flex align-items-center justify-content-between">
       <router-link to="/">
-        <p class="no-margin unselectable text-cream ml-5">Hem</p>
+        <p class="no-margin unselectable text-cream font-weight-bold ml-5">Hem</p>
       </router-link>
       <router-link to="/pim">
-        <p class="no-margin unselectable text-cream ml-5">PIM</p>
+        <p class="no-margin unselectable text-cream font-weight-bold ml-5">PIM</p>
       </router-link>
       <div>
         <a href="http://localhost:8080/logout">
-          <p class="no-margin unselectable text-cream ml-5">Logga ut</p>
+          <p class="no-margin unselectable text-cream font-weight-bold ml-5">Logga ut</p>
         </a>
       </div>
     </div>
