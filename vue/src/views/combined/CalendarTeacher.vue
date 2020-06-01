@@ -50,39 +50,14 @@ export default {
   },
   data: function() {
     return {
-    // events: [
-       // {
-          //start: this.$store.state.MyLectureTeacher.date,          
-          //title: "Lecktion " + this.$store.state.MyLectureTeacher.id,
-          //content: "Lektion Om....",
-          //course: "Java 101"
-      //  }
+      
         
-     // ]
-    };    
-  },mounted() {    
+  
+  }
+  }
+  ,mounted() {    
     this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
-  }, 
-  computed:{
-   events: {
-       get(){    
-
-<<<<<<< Updated upstream
-        let myevents = this.$store.state.MyLectureTeacher
-
-        
-         
-        return myevents
-=======
-        return this.$store.state.MyLectureTeacher
-
-        
-         
->>>>>>> Stashed changes
-       }
-     }
   },
-   
 
 };
 </script>
