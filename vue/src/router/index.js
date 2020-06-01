@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueMoment from 'vue-moment'
 //import store from '@/store'
 
 import Combined from '@/views/combined/Combined.vue'
@@ -29,7 +30,10 @@ import CreateRole from '@/views/combined/CreateRole.vue'
 import receivedmessage from '@/components/receivedmessage.vue'
 
 
+
+
 Vue.use(VueRouter)
+Vue.use(VueMoment)
 
 
 const routes = [{
