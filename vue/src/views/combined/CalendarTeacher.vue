@@ -75,34 +75,10 @@ export default {
       this.events.list.push(newEvent)
     }
   },
-  /*
-  method:{
-    dunno(){
-      let databasevent = this.$store.state.MyLectureTeacher,
-      myevents= [],
-
-      res = { date: 'start', id: 'title' }
-
-      for (let k in res) {
-      let newValue = res[k];
-      myevents[newValue] = databasevent[k];
-      myevents[newValue].name = newValue;
-      }
-    }
-  },
-  */
   computed:{
     getMyLectures() {
       return this.$store.state.MyLectureTeacher
     }
-    /*
-   events: {
-       get(){
-        console.log(this.dunno)
-        return this.dunno
-       }
-     }
-     */
   }
-};
+}
 </script>
