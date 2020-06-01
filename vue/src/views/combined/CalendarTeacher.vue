@@ -50,6 +50,7 @@ export default {
   },
   data: function() {
     return {
+      myevents: []
     // events: [
        // {
           //start: this.$store.state.MyLectureTeacher.date,          
@@ -65,23 +66,13 @@ export default {
   }, 
 
   method:{
-
-    dunno(){
-
-      let databasevent = this.$store.state.MyLectureTeacher,
-      myevents= [],
-
-     res = { date: 'start', id: 'title' };
-
-      for (let k in res) {
-      let newValue = res[k];
-      myevents[newValue] = databasevent[k];
-      myevents[newValue].name = newValue;
-      
+    change_MyJSONevents: function() {
+      let myJSON = this.$store.state.MyLectureTeacher
+    	for (let i in myJSON){
+      	this.myevents.push({ date: myJSON[i].date, start: i })
       }
 
-
-       
+      
     }
 
   },
@@ -89,8 +80,7 @@ export default {
    events: {
        get(){    
 
-        console.log(this.dunno)
-        return this.dunno
+        return this.myevents
 
         
         
@@ -99,6 +89,9 @@ export default {
        }
      }
   },
+  created () {
+  	this.change_MyJSONevents();
+  }
    
 
 };
