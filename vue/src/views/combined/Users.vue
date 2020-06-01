@@ -1,14 +1,14 @@
 <template>
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
       </div>
       <div class="col-9 d-flex">
         <div class="root d-flex justify-content-center">
           <div class="main d-flex justify-content-center width-84">
             <div class="filter-window">
-              <div class="d-flex justify-content-between bg-primary">
+              <div class="d-flex justify-content-between  background-primary">
                 <div class="d-flex align-items-center">
                   <p class="no-margin ml-3 text-cream unselectable my-2">Filtrering</p>
                 </div>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="results-window ml-3">
-              <div class="d-flex justify-content-between bg-primary">
+              <div class="d-flex justify-content-between  background-primary">
                 <div class="d-flex align-items-center">
                   <p class="no-margin ml-3 text-cream unselectable my-2">Användare</p>
                 </div>

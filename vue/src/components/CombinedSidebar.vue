@@ -5,6 +5,7 @@
       class="unselectable"
     >{{this.$store.state.loggedInUser.first_name}} {{this.$store.state.loggedInUser.last_name}}</h5>
     <div class="sidebar-line rounded" />
+
     <div class="mt-5">
       <router-link
         v-if="this.$store.state.loggedInUser.role.access_overview"
@@ -12,7 +13,7 @@
         class="option d-flex align-self-center"
       >
         <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
-        <p class="ml-3 unselectable menu-link no-margin">Overview</p>
+        <p class="ml-3 unselectable menu-link no-margin">Överblick</p>
       </router-link>
       <router-link
         v-if="this.$store.state.loggedInUser.role.create_account"

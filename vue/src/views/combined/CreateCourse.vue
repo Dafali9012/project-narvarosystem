@@ -1,7 +1,7 @@
 <template>
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
       </div>
       <div class="col-9 d-flex">
@@ -24,6 +24,7 @@
               </div>
               <div class="mt-4 d-flex justify-content-center">
                 <select class="form-control width-42" id="education" name="education">
+                  <option value disabled selected>Utbildning</option>
                   <option
                     :value="education.id"
                     v-for="education in getEducations"
@@ -31,6 +32,7 @@
                   >{{education.name}}</option>
                 </select>
                 <select class="form-control width-42" id="teacher" name="teacher">
+                  <option value disabled selected>Lärare</option>
                   <option
                     :value="teacher.id"
                     v-for="teacher in getTeachers"
