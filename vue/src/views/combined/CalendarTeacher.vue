@@ -63,15 +63,39 @@ export default {
   },mounted() {    
     this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
   }, 
+
+  method:{
+
+    dunno(){
+
+      let databasevent = this.$store.state.MyLectureTeacher,
+      myevents= [],
+
+     res = { date: 'start', id: 'title' };
+
+      for (let k in res) {
+      let newValue = res[k];
+      myevents[newValue] = databasevent[k];
+      myevents[newValue].name = newValue;
+      
+      }
+
+
+       
+    }
+
+  },
   computed:{
    events: {
        get(){    
 
-        let myevents = this.$store.state.MyLectureTeacher
+        console.log(this.dunno)
+        return this.dunno
 
         
+        
          
-        return myevents
+        
        }
      }
   },
