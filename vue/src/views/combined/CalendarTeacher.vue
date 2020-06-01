@@ -43,6 +43,8 @@
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
 import VueCal from "vue-cal";
 
+
+
 export default {
   components: {
     VueCal,
@@ -62,20 +64,32 @@ export default {
      // ]
     };    
   },created() {    
-    this.$store.dispatch("getMyLectureTeacher", 116);
+    this.$store.dispatch("getMyLectureTeacher", 171);
+    
   },
-  mounted() {
-    for(let event in this.getMyLectures) {
+  methods: {
+    getmyEvents(){
+      let i;
+      for (i = 0; i < this.getMyLectures.length; i++) {
       let newEvent = {
-        title: "event",
-        start: event.date
+        title: "event " + String(this.getMyLectures[i].id),
+        date: Date.parse(this.getMyLectures[i].date)
+        
+        
       }
       this.events.push(newEvent)
+      
     }
+    }
+   
   },
   computed:{
     getMyLectures() {
       return this.$store.state.MyLectureTeacher
+    },
+    
+    getshit(){
+      return this.getmyEvents();
     }
   }
 }

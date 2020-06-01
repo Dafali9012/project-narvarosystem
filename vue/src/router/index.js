@@ -31,6 +31,7 @@ import receivedmessage from '@/components/receivedmessage.vue'
 
 Vue.use(VueRouter)
 
+
 const routes = [{
     path: '/',
     name: 'Login',
