@@ -56,32 +56,35 @@
 
             <form @submit.prevent="createAccount()">
               <div class="mt-5 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Förnamn" id="first-name" />
-                <input class="form-control" type="text" placeholder="Efternamn" id="last-name" />
+                <input v-model="name" class="form-control" type="text" placeholder="Förnamn" style="width: 30%" id="first-name"/>
+                <input v-model="lastName" class="form-control" type="text" placeholder="Efternamn" style="width: 30%" id="last-name"/>
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Telefon" id="telephone" />
-                <input class="form-control" type="text" placeholder="Email" id="email" />
+                <input v-model="phone" class="form-control" type="text" placeholder="Telefon" style="width: 20%" id="telephone"/>
+                <input v-model="email" class="form-control" type="text" placeholder="Email" style="width: 40%" id="email" />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Personnummer" id="ssn" />
-                <input class="form-control" type="password" placeholder="Lösenord" id="password" />
+                <input class="form-control" type="text" placeholder="Personnummer" style="width: 20%" id="ssn" />
               </div>
-              <div class="pic-input mt-4 d-flex flex-column align-items-start">
-                <select class="form-control no-margin width-100" id="role" name="roles">
-                  <option disabled selected>Välj roll</option>
-                  <option :value="role.id" v-for="role in getRoles" :key="role.id">{{role.name}}</option>
-                </select>
+              <div class="mt-4 d-flex justify-content-start">
+                <input
+                  id="password"
+                  class="form-control"
+                  style="width: 64%; margin-left: 18%"
+                  type="password"
+                  placeholder="Lösenord"
+                />
               </div>
               <div
                 v-if="this.accountIndex==0"
-                class="pic-input mt-4 d-flex flex-column align-items-start"
+                class="pic-input mt-4 d-flex flex-column"
+                style="margin-left: 30%"
               >
                 <p>Användarbild:</p>
                 <input class="form-control no-margin width-100" type="file" />
               </div>
               <div v-if="this.accountIndex==0" class="mt-4 d-flex justify-content-center">
-                <select class="form-control" id="education" name="education">
+                <select class="form-control" id="education" name="education" style="width: 20%">
                   <option disabled selected>Välj utbildning</option>
                   <option
                     :value="education.id"
@@ -89,7 +92,7 @@
                     :key="education.id"
                   >{{education.name}}</option>
                 </select>
-                <select class="form-control" id="class" name="class">
+                <select class="form-control" id="class" name="class" style="width: 20%">
                   <option disabled selected>Välj klass</option>
                   <option
                     :value="edClass.id"

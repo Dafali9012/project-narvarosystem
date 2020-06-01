@@ -13,7 +13,7 @@
                   <p class="no-margin ml-3 text-cream unselectable my-2">Filtrering</p>
                 </div>
               </div>
-              <div class="d-flex flex-column align-items-center bg-lightblue text-cream">
+              <div class="d-flex flex-column align-items-center text-cream background-primary">
                 <input class="form-control my-3 width-84" type="text" placeholder="Sök" />
                 <div class="d-flex mb-2 width-84">
                   <input id="ec" type="checkbox" style="width:auto !important;" />
@@ -53,8 +53,8 @@
                 :config="config"
                 @on-select-row="getInfo($event)"
               ></vue-bootstrap4-table>
-              <button class="button button-primary">
-                <span>DELETE</span>
+              <button class="button button-primary" style="margin-left: 70%; margin-top: 5%">
+                <span>Delete</span>
                 {{selectedName}}
               </button>
             </div>

@@ -12,11 +12,11 @@
 
             <form @submit.prevent="createEducation">
               <div class="mt-5 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Utbildningsnamn" id="edu-name" />
+                <input class="form-control" type="text" style="width: 40%" placeholder="Utbildningsnamn" id="edu-name" />
               </div>
 
               <div class="mt-4 d-flex justify-content-center">
-                <select class="form-control" id="edu-manager">
+                <select class="form-control" id="edu-manager" style="width: 40%">
                   <option value disabled selected>Utbildningsledare</option>
                   <option
                     :value="ecPers.id"
@@ -27,18 +27,18 @@
               </div>
 
               <div class="mt-4 d-flex justify-content-center">
-                <select class="form-control" id="edu-city">
+                <select class="form-control" id="edu-city" style="width: 40%">
                   <option value disabled selected>Utbildningsort</option>
                   <option :value="city.id" v-for="city in getCities" :key="city.id">{{city.name}}</option>
                 </select>
               </div>
 
-              <div class="mt-4 d-flex justify-content-center">
+              <div class="d-flex justify-content-center">
                 <textarea
                   class="form-control width-84"
-                  style="resize: none;"
+                  style="resize: none; margin-top: 13%;"
                   type="text"
-                  rows="6"
+                  rows="4"
                   placeholder="Beskrivning ..."
                   id="edu-desc"
                 />
