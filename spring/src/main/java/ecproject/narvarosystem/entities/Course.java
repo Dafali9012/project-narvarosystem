@@ -2,6 +2,8 @@ package ecproject.narvarosystem.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,8 +38,10 @@ public class Course {
     @Column(name = "education_id")
     private Integer education_id;
 
+
     @Column(name = "teacher_id")
     private Integer teacher_id;
+
 
     @ManyToOne(optional = false)
     @JsonIgnore
@@ -46,6 +50,7 @@ public class Course {
 
     @ManyToOne(optional = false)
     @JsonIgnore
+    @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name = "teacher_id", nullable = false, insertable = false, updatable = false)
     private Teacher teacher;
 

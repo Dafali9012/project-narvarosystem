@@ -16,25 +16,22 @@ export default new Vuex.Store({
     ecPersonnel: [],
     teachers: [],
     cities: [],
-    MyClassAsTeacher: [],
-    MyCourseAsTeacher: [],
-    MyCourse: [],
-    MyLecture: [],
+    roles: [],  
     ClassByED: [],
     Messages: [],
     messageToDelete: {},
-    logged: false
+    logged: false,
+    MyLectureStudent: [],
+    MyLectureTeacher: []
 
   },
   mutations: {
     setMessageToDelete(state, value) {
       state.messageToDelete = value;
     },
-
     isLogged(state, value) {
       state.logged = value;
     },
-
     changeLoggedUser(state, value) {
       state.loggedInUser = value
     },
@@ -43,7 +40,6 @@ export default new Vuex.Store({
     },
     setAllClasses(state, value) {
       state.AllClass = value;
-      console.log(state.AllClass)
     },
     setAllEducations(state, value) {
       state.AllEducation = value;
@@ -53,19 +49,7 @@ export default new Vuex.Store({
     },
     setAllUsers(state, value) {
       state.AllUser = value;
-    },
-    setMyClassAsTeacher(state, value) {
-      state.MyClassAsTeacher = value;
-    },
-    setMyCourseAsTeacher(state, value) {
-      state.MyCourseAsTeacher = value;
-    },
-    setMyCourse(state, value) {
-      state.MyCourse = value;
-    },
-    setMyLecture(state, value) {
-      state.MyLecture = value;
-    },
+    }, 
     setClassByED(state, value) {
       state.ClassByED = value;
     },
@@ -81,8 +65,17 @@ export default new Vuex.Store({
     setCities(state, value) {
       state.cities = value;
     },
+    setRoles(state, value) {
+      state.roles = value
+    },
     setMessage(state, value) {
       state.Messages = value;
+    },
+    setMyLectureStudent(state, value){
+      state.MyLectureStudent = value;
+    },
+    setMyLectureTeacher(state, value){
+      state.MyLectureTeacher = value;
     }
   },
   actions: {
@@ -108,7 +101,6 @@ export default new Vuex.Store({
     }) {
       let url = 'http://localhost:8080/class';
       const response = await fetch(url);
-      console.log(response.clone().text)
       const result = await response.json();
       commit("setAllClasses", result);
     },
@@ -135,38 +127,22 @@ export default new Vuex.Store({
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllUsers", json);
-    },
-    getMyClassAsTeacher: async function ({
+    },    
+    getMyLectureStudent: async function ({
       commit
     }, id) {
-      let url = "http://localhost:8080/classroom/my/";
+      let url = "http://localhost:8080/lecture/student/";
       const result = await fetch(url + id);
       const json = await result.json();
-      commit("setMyClassAsTeacher", json);
+      commit("setMyLectureStudent", json);
     },
-    getMyCourseAsTeacher: async function ({
+    getMyLectureTeacher: async function ({
       commit
     }, id) {
-      let url = "http://localhost:8080/course/teacher/";
+      let url = "http://localhost:8080/lecture/teacher/my/";
       const result = await fetch(url + id);
       const json = await result.json();
-      commit("setMyCourseAsTeacher", json);
-    },
-    getMyCourse: async function ({
-      commit
-    }, id) {
-      let url = "http://localhost:8080/course/user/";
-      const result = await fetch(url + id);
-      const json = await result.json();
-      commit("setMyCourse", json);
-    },
-    getMyLecture: async function ({
-      commit
-    }, id) {
-      let url = "http://localhost:8080/lecture/user/";
-      const result = await fetch(url + id);
-      const json = await result.json();
-      commit("setMyLecture", json);
+      commit("setMyLectureTeacher", json);
     },
     getClassByED: async function ({
       commit
@@ -198,13 +174,19 @@ export default new Vuex.Store({
       let result = await response.json()
       commit("setTeachers", result)
     },
-
     async getCities({
       commit
     }) {
       let response = await fetch("http://localhost:8080/city")
       let result = await response.json()
       commit("setCities", result)
+    },
+    async getRoles({
+      commit
+    }) {
+      let response = await fetch("http://localhost:8080/role")
+      let result = await response.json()
+      commit("setRoles", result)
     },
     getMessage: async function ({
       commit
@@ -214,7 +196,6 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setMessage", json);
     }
-
     // deletUser: async function({ commit }, id) {
     //   let url = "http://localhost:8080/user";
     //   const result = await fetch(url);

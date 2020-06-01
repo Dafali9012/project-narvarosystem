@@ -56,20 +56,19 @@
 
             <form @submit.prevent="createAccount()">
               <div class="mt-5 d-flex justify-content-center">
-                <input v-model="name" class="form-control" type="text" placeholder="Förnamn" style="width: 30%" />
-                <input v-model="lastName" class="form-control" type="text" placeholder="Efternamn" style="width: 30%"/>
+                <input v-model="name" class="form-control" type="text" placeholder="Förnamn" style="width: 30%" id="first-name"/>
+                <input v-model="lastName" class="form-control" type="text" placeholder="Efternamn" style="width: 30%" id="last-name"/>
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input v-model="phone" class="form-control" type="text" placeholder="Telefon" style="width: 20%"/>
-                <input v-model="email" class="form-control" type="text" placeholder="Email" style="width: 40%" />
+                <input v-model="phone" class="form-control" type="text" placeholder="Telefon" style="width: 20%" id="telephone"/>
+                <input v-model="email" class="form-control" type="text" placeholder="Email" style="width: 40%" id="email" />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input v-model="sin" class="form-control" type="text" placeholder="Personnummer" style="width: 20%" />
-                <input v-model="address" class="form-control" type="text" placeholder="Address" style="width: 40%"/>
+                <input class="form-control" type="text" placeholder="Personnummer" style="width: 20%" id="ssn" />
               </div>
               <div class="mt-4 d-flex justify-content-start">
                 <input
-                  v-model="password"
+                  id="password"
                   class="form-control"
                   style="width: 64%; margin-left: 18%"
                   type="password"
@@ -82,18 +81,28 @@
                 style="margin-left: 30%"
               >
                 <p>Användarbild:</p>
-                <input class="form-control" type="file" placeholder="Bild" />
+                <input class="form-control no-margin width-100" type="file" />
               </div>
               <div v-if="this.accountIndex==0" class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="education" name="education" style="width: 20%">
-                  <option value="education">Utbildning</option>
+                  <option disabled selected>Välj utbildning</option>
+                  <option
+                    :value="education.id"
+                    v-for="education in getEducations"
+                    :key="education.id"
+                  >{{education.name}}</option>
                 </select>
                 <select class="form-control" id="class" name="class" style="width: 20%">
-                  <option value="class">Klass</option>
+                  <option disabled selected>Välj klass</option>
+                  <option
+                    :value="edClass.id"
+                    v-for="edClass in getClasses"
+                    :key="edClass.id"
+                  >{{edClass.name}}</option>
                 </select>
               </div>
               <div class="button-create mt-4 d-flex justify-content-end">
-                <button v-on:click="createAccount" type="submit" class="button button-primary">
+                <button type="submit" class="button button-primary">
                   <span>Skapa</span>
                 </button>
               </div>
@@ -109,16 +118,25 @@
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
 
 export default {
+  created() {
+    this.$store.dispatch("getRoles");
+    this.$store.dispatch("getAllEducations");
+    this.$store.dispatch("getAllClasses");
+  },
+  computed: {
+    getRoles() {
+      return this.$store.state.roles;
+    },
+    getEducations() {
+      return this.$store.state.AllEducation;
+    },
+    getClasses() {
+      return this.$store.state.AllClass;
+    }
+  },
   data() {
     return {
-      accountIndex: 0,
-      name: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      sin: "",
-      address: "",
-      password: ""
+      accountIndex: 0
     };
   },
   components: {
@@ -128,57 +146,51 @@ export default {
     changeAccountType(value) {
       this.accountIndex = value;
     },
-    createAccount: async function() {
-      if (this.accountIndex == 0) {
-        var newUser = {
-          name: this.name,
-          lastName: this.lastName,
-          email: this.email,
-          phone: this.phone,
-          sin: this.sin,
-          address: this.address,
-          password: this.password,
-          roles: [
-            {
-              role: "STUDENT",
-              roleID: 2
-            }
-          ]
+    async createAccount() {
+      let response;
+      let result;
+
+      let newUser = {
+        first_name: document.getElementById("first-name").value,
+        last_name: document.getElementById("last-name").value,
+        email: document.getElementById("email").value,
+        phone_number: document.getElementById("telephone").value,
+        password: document.getElementById("password").value,
+        ssn: document.getElementById("ssn").value,
+        role_id: document.getElementById("role").value
+      };
+
+      response = await fetch("http://localhost:8080/user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      });
+
+      result = await response.json();
+      console.log(result);
+
+      if (this.accountIndex == 1) {
+        let newPersonnel = {
+          user_id: result.id
         };
-        console.log("skapa student account");
-        const url = "http://localhost:8080/user";
-        await fetch(url, {
+
+        response = await fetch("http://localhost:8080/personnel", {
           method: "POST",
-          body: JSON.stringify(newUser),
-          headers: {
-            "Content-Type": "application/json"
-          }
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newPersonnel)
         });
-      } else if (this.accountIndex == 1) {
-        newUser = {
-          name: this.name,
-          lastName: this.lastName,
-          email: this.email,
-          phone: this.phone,
-          sin: this.sin,
-          address: this.address,
-          password: this.password,
-          roles: [
-            {
-              role: "TEACHER",
-              roleID: 3
-            }
-          ]
+      } else if (this.accountIndex == 0) {
+        let newStudent = {
+          user_id: result.id,
+          class_id: document.getElementById("class").value,
+          picture: null
         };
-        const url = "http://localhost:8080/user";
-        await fetch(url, {
+
+        response = await fetch("http://localhost:8080/student", {
           method: "POST",
-          body: JSON.stringify(newUser),
-          headers: {
-            "Content-Type": "application/json"
-          }
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newStudent)
         });
-        console.log("skapa ec account");
       }
     }
   }

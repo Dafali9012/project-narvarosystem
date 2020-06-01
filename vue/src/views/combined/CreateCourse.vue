@@ -11,10 +11,17 @@
             <div class="content-line rounded" />
             <form @submit.prevent="createCourse">
               <div class="mt-5 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Kursnamn" style="width: 20%" />
-                <input class="form-control" type="number" placeholder="Poäng" style="width: 20%" />
+                <input class="form-control" type="text" placeholder="Kursnamn" id="course-name" style="width: 20%" />
+                <input class="form-control" type="number" placeholder="Poäng" id="course-points" style="width: 20%" />
               </div>
-              
+              <div class="mt-4 d-flex unselectable">
+                <label for="from" style="margin-left:24%">Från:</label>
+                <label for="to" style="margin-left:24%">Till:</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <input class="form-control" type="date" id="from" />
+                <input class="form-control" type="date" id="to" />
+              </div>
               <div class="mt-4 d-flex justify-content-center">
                 <select class="form-control width-42" id="education" name="education" style="width: 20%">
                   <option value disabled selected>Utbildning</option>
@@ -30,7 +37,7 @@
                     :value="teacher.id"
                     v-for="teacher in getTeachers"
                     :key="teacher.id"
-                  >{{teacher.name}}</option>
+                  >{{teacher.consult.userconsult.first_name}} {{teacher.consult.userconsult.last_name}}</option>
                 </select>
               </div>
               <div class="mt-4 d-flex unselectable">
@@ -42,7 +49,12 @@
                 <input class="form-control" type="date" id="to" style="width: 25%"/>
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <textarea class="form-control width-84 mt-5" style="resize: none;" type="text" rows="4" placeholder="Beskrivning" />
+                <textarea
+                  class="form-control width-84 mt-5"
+                  rows="4"
+                  placeholder="Beskrivning"
+                  id="course-desc"
+                />
               </div>
               <div class="button-create mt-4 d-flex justify-content-end">
                 <button type="submit" class="button button-primary">
@@ -70,7 +82,7 @@ export default {
   },
   computed: {
     getTeachers() {
-      return this.$store.state.Teachers;
+      return this.$store.state.teachers;
     },
     getEducations() {
       return this.$store.state.AllEducation;
@@ -78,8 +90,25 @@ export default {
   },
 
   methods: {
-    createCourse() {
-      console.log("skapa kurs");
+    async createCourse() {
+      let newCourse = {
+        name: document.getElementById("course-name").value,
+        teacher_id: document.getElementById("teacher").value,
+        education_id: document.getElementById("education").value,
+        date_start: document.getElementById("from").value,
+        date_end: document.getElementById("to").value,
+        points: document.getElementById("course-points").value,
+        description: document.getElementById("course-desc").value
+      };
+
+      let response = await fetch("http://localhost:8080/course", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newCourse)
+      });
+
+      let result = await response.json();
+      console.log("POST:" + result);
     }
   }
 };

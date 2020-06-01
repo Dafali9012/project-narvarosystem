@@ -82,7 +82,7 @@ export default {
         body: JSON.stringify(newClass)
       });
       let result = await response.json();
-      console.log("POST:" + result);
+      console.log(result);
     }
   }
 };
