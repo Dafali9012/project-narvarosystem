@@ -12,14 +12,16 @@
 
             <form @submit.prevent="createClass">
               <div class="mt-5 d-flex justify-content-center">
-                <select class="form-control width-42" id="education" name="education">
+                <select class="form-control" id="education" name="education" style="width: 25%">
+                  <option value disabled selected>Utbildning</option>
                   <option
                     :value="education.id"
                     v-for="education in getEducations"
                     :key="education.id"
                   >{{education.name}}</option>
                 </select>
-                <select class="form-control" id="manager" name="manager">
+                <select class="form-control" id="manager" name="manager" style="width: 25%">
+                  <option value disabled selected>Utbildningsledare</option>
                   <option
                     :value="ecPers.id"
                     v-for="ecPers in getEcPersonnel"
@@ -29,14 +31,15 @@
               </div>
               <div class="mt-4 d-flex justify-content-center">
                 <input
-                  class="form-control width-84"
+                  class="form-control"
                   type="text"
                   placeholder="Klassnamn"
                   id="class-name"
+                  style="width: 40%"
                 />
               </div>
-              <div class="button-create mt-4 d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Skapa</button>
+              <div class="button-create d-flex justify-content-end">
+                <button type="submit" class="button button-primary" style="margin-top: 10%;"> <span> Skapa </span> </button>
               </div>
             </form>
           </div>

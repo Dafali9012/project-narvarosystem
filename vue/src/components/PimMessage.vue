@@ -66,13 +66,13 @@
             >
               <form action class="send-form">
                 <div class="form-group">
+                  <h2 class="align-self-start">P I M</h2>
+                  <div class="content-line rounded pt-1 mb-5" />
                   <label for="exampleFormControlSelect1">Vem vill du skriva till?</label>
-                  <select
-                    required
+                  <select required
                     class="form-control"
-                    style="min-width: 100%; margin-left:0;"
+                    style="width: 30%; margin-left:35%;"
                     id="exampleFormControlSelect1"
-                    v-model="receiverUser"
                   >
                     <option value disabled selected>Mottagare</option>
                     <option v-for="user in allUsers" :key="user.userID">{{user.name}}</option>
@@ -82,7 +82,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    style="min-width: 100%; margin-left:0;"
+                    style="width: 50%; margin-left:25%;"
                     id="exampleFormControlInput1"
                     placeholder="Ämne"
                     v-model="message.subject"
@@ -91,7 +91,7 @@
                 <div class="form-group text d-flex">
                   <label for="exampleFormControlTextarea1"></label>
                   <textarea
-                    style="resize: none; width: 100%;"
+                    style="resize: none; width: 100%; margin-top: 5%"
                     maxlength="500"
                     class="form-control"
                     id="exampleFormControlTextarea1"
@@ -101,7 +101,7 @@
                   ></textarea>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="button button-primary" v-on:click="send">
+                  <button type="button" class="button button-primary mt-5" v-on:click="send">
                     <span>Skicka</span>
                   </button>
                 </div>
@@ -369,6 +369,10 @@ export default {
 </script>
 
 <style scoped>
+.list-group-item.active{
+  background-color: rgba(67, 105, 148, 0.849);
+  border: none;
+}
 tr .overflow-hidden {
   background: blue !important;
   text-overflow: ellipsis !important;

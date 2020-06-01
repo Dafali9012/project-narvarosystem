@@ -36,7 +36,7 @@
 
 .navbar {
     height: 8vh;
-    background-color: #28343a;
+    background-color:  rgba(67, 105, 148, 0.349);
 }
 
 .logo {
@@ -63,7 +63,7 @@
 .sidebar-line {
     height: 0.1em;
     width: 75%;
-    background-color: #44c7c9;
+    background-color: #1a1e27;
 }
 
 .content-line {
@@ -91,7 +91,7 @@
 
 input,
 select {
-    width: 40% !important;
+    
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -106,13 +106,13 @@ select {
 }
 
 .admin-sidebar {
-    background-color: #0e6dee;
+    background-color: rgba(67, 105, 148, 0.849);
     border-top-right-radius: 15vh;
     min-height: 100%;
 }
 
 .user-sidebar {
-    background-color: #28343a;
+    background-color:   rgba(67, 105, 148, 0.849);
     border-top-right-radius: 15vh;
     min-height: 100%;
 }
@@ -145,9 +145,9 @@ a:focus {
   text-align: center;
   background: rgb(238, 238, 238);
   color: #f7f7f7;
+  border: 1px solid rgba(67, 105, 148, 0.849);
   border-radius: 10px;
-  border-color: #f7f7f7;
-  background-color: #518ee2;
+  background-color: rgba(67, 105, 148, 0.849);
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -174,10 +174,13 @@ a:focus {
   }
 
 .pic-input {
-    margin-left: 8%;
+    margin-left: 1%;
     width: 40%;
 }
 
+.background-primary{
+    background-color:  rgba(116, 128, 143, 0.719);
+}
 /* search / filter */
 
 .filter-window {
