@@ -1,9 +1,9 @@
 <template>
-<div class="root d-flex flex-column container-fluid">
-  <div class="content row mt-3">
-    <div class="admin-sidebar col-sm-3">
-      <CombinedSidebar />
-    </div>
+  <div class="root d-flex flex-column container-fluid">
+    <div class="content row mt-3">
+      <div class="admin-sidebar col-sm-3">
+        <CombinedSidebar />
+      </div>
       <div class="row col-sm-9 p-0 mt-5" style="height: 60vh; ">
         <div class="col-sm-3 d-flex align-items-center ml-5">
           <div class="list-group" id="list-tab" role="tablist">
@@ -69,13 +69,18 @@
                   <h2 class="align-self-start">P I M</h2>
                   <div class="content-line rounded pt-1 mb-5" />
                   <label for="exampleFormControlSelect1">Vem vill du skriva till?</label>
-                  <select required
+                  <select
+                    required
                     class="form-control"
                     style="width: 30%; margin-left:35%;"
                     id="exampleFormControlSelect1"
                   >
                     <option value disabled selected>Mottagare</option>
-                    <option v-for="user in allUsers" :key="user.userID">{{user.name}}</option>
+                    <option
+                      v-for="user in allUsers"
+                      :key="user.user_id"
+                      @click="receiverUser = user"
+                    >{{user.first_name}}</option>
                   </select>
 
                   <label for="exampleFormControlInput1"></label>
@@ -128,19 +133,18 @@
               role="tabpanel"
               aria-labelledby="list-messages-list"
             >
-              <vueTable
+              <vue-bootstrap4-table
                 :rows="rowsSent"
                 :columns="columnsSent"
                 :config="configSent"
                 @on-select-row="getInfo($event)"
-              />
+              ></vue-bootstrap4-table>
             </div>
           </div>
         </div>
       </div>
-      <button v-on:click="log">Click</button>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -267,8 +271,8 @@ export default {
     await this.setLoggedUser();
   },
   methods: {
-    log(){
-      console.log(this.$store.state.AllUser)
+    log() {
+      console.log(this.userSentMessages);
       // console.log(this.allUsers)
     },
     setUsers() {
@@ -369,7 +373,7 @@ export default {
 </script>
 
 <style scoped>
-.list-group-item.active{
+.list-group-item.active {
   background-color: rgba(67, 105, 148, 0.849);
   border: none;
 }

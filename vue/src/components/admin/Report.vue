@@ -191,8 +191,8 @@ export default {
       // console.log('Courses',this.getCourses);
       // console.log('Education',this.getEducations);
       // console.log('CLasses',this.getClasses);
-      console.log(this.listOfAttendance);
-      console.log(this.selectedEducation);
+      // console.log(this.educations);
+      // console.log(this.$store.state.AllEducation);
     },
     setCourses() {
       this.getCourses.forEach(course => {
@@ -209,12 +209,14 @@ export default {
       });
     },
     setEducations() {
-      this.getEducations.forEach(education => {
-        if (education) {
-          console.log(education);
-          this.educations.push(education);
-        }
-      });
+      console.log("run setEducations")
+        this.getEducations.forEach(education => {
+          console.log("in forEach setEducations")
+          if(education){
+          console.log('education is ',education)
+            this.educations.push(education)
+          }
+        })
     },
     async getClassStudents() {
       let result = await fetch(
@@ -269,11 +271,6 @@ export default {
         return this.listOfAttendance;
       }
     },
-    // rows2: {
-    //   get(){
-    //     return this.testArr
-    //   }
-    // },
     getCourses() {
       return this.$store.state.AllCourse;
     },
@@ -285,12 +282,12 @@ export default {
     }
   },
   async created() {
-    await this.$store.dispatch("getAllCourses");
-    await this.setCourses();
     await this.$store.dispatch("getAllClasses");
     await this.setClasses();
     await this.$store.dispatch("getAllEducations");
     await this.setEducations();
+    await this.$store.dispatch("getAllCourses");
+    await this.setCourses();
   }
 };
 </script>
