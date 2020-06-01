@@ -56,37 +56,39 @@
 
             <form @submit.prevent="createAccount()">
               <div class="mt-5 d-flex justify-content-center">
-                <input v-model="name" class="form-control" type="text" placeholder="Förnamn" />
-                <input v-model="lastName" class="form-control" type="text" placeholder="Efternamn" />
+                <input v-model="name" class="form-control" type="text" placeholder="Förnamn" style="width: 30%" />
+                <input v-model="lastName" class="form-control" type="text" placeholder="Efternamn" style="width: 30%"/>
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input v-model="phone" class="form-control" type="text" placeholder="Telefon" />
-                <input v-model="email" class="form-control" type="text" placeholder="Email" />
+                <input v-model="phone" class="form-control" type="text" placeholder="Telefon" style="width: 20%"/>
+                <input v-model="email" class="form-control" type="text" placeholder="Email" style="width: 40%" />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input v-model="sin" class="form-control" type="text" placeholder="Personnummer" />
-                <input v-model="address" class="form-control" type="text" placeholder="Address" />
+                <input v-model="sin" class="form-control" type="text" placeholder="Personnummer" style="width: 20%" />
+                <input v-model="address" class="form-control" type="text" placeholder="Address" style="width: 40%"/>
               </div>
-              <div class="mt-4 d-flex justify-content-center">
+              <div class="mt-4 d-flex justify-content-start">
                 <input
                   v-model="password"
                   class="form-control"
+                  style="width: 64%; margin-left: 18%"
                   type="password"
                   placeholder="Lösenord"
                 />
               </div>
               <div
                 v-if="this.accountIndex==0"
-                class="pic-input mt-4 d-flex flex-column align-items-start"
+                class="pic-input mt-4 d-flex flex-column"
+                style="margin-left: 30%"
               >
                 <p>Användarbild:</p>
-                <input class="form-control no-margin width-100" type="file" placeholder="Bild" />
+                <input class="form-control" type="file" placeholder="Bild" />
               </div>
               <div v-if="this.accountIndex==0" class="mt-4 d-flex justify-content-center">
-                <select class="form-control" id="education" name="education">
+                <select class="form-control" id="education" name="education" style="width: 20%">
                   <option value="education">Utbildning</option>
                 </select>
-                <select class="form-control" id="class" name="class">
+                <select class="form-control" id="class" name="class" style="width: 20%">
                   <option value="class">Klass</option>
                 </select>
               </div>
