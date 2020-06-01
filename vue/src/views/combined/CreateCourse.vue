@@ -14,14 +14,6 @@
                 <input class="form-control" type="text" placeholder="Kursnamn" id="course-name" style="width: 20%" />
                 <input class="form-control" type="number" placeholder="Poäng" id="course-points" style="width: 20%" />
               </div>
-              <div class="mt-4 d-flex unselectable">
-                <label for="from" style="margin-left:24%">Från:</label>
-                <label for="to" style="margin-left:24%">Till:</label>
-              </div>
-              <div class="d-flex justify-content-center">
-                <input class="form-control" type="date" id="from" />
-                <input class="form-control" type="date" id="to" />
-              </div>
               <div class="mt-4 d-flex justify-content-center">
                 <select class="form-control width-42" id="education" name="education" style="width: 20%">
                   <option value disabled selected>Utbildning</option>
@@ -54,6 +46,7 @@
                   rows="4"
                   placeholder="Beskrivning"
                   id="course-desc"
+                  style="resize: none;"
                 />
               </div>
               <div class="button-create mt-4 d-flex justify-content-end">
