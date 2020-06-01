@@ -50,9 +50,7 @@ export default {
   },
   data: function() {
     return {
-      events: {
-        list: []
-      }
+      events: []
     // events: [
        // {
           //start: this.$store.state.MyLectureTeacher.date,          
@@ -64,7 +62,7 @@ export default {
      // ]
     };    
   },created() {    
-    this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
+    this.$store.dispatch("getMyLectureTeacher", 116);
   },
   mounted() {
     for(let event in this.getMyLectures) {
@@ -72,7 +70,7 @@ export default {
         title: "event",
         start: event.date
       }
-      this.events.list.push(newEvent)
+      this.events.push(newEvent)
     }
   },
   computed:{

@@ -13,7 +13,7 @@ import CreateAccount from '@/views/combined/CreateAccount.vue'
 import CreateEducation from '@/views/combined/CreateEducation.vue'
 import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
-import PimMessage from '../components/PimMessage.vue'
+import PimMessage from '@/components/PimMessage.vue'
 import EditInformation from '@/views/combined/EditInformation.vue'
 
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
@@ -26,7 +26,7 @@ import CreateRole from '@/views/combined/CreateRole.vue'
 // import TPresence from "../components/teacher/TeacherPresence.vue"
 // import TRapport from "../components/teacher/TeacherReport.vue"
 // import Pim from '../views/Pim.vue'
-import receivedmessage from '../components/receivedmessage.vue'
+import receivedmessage from '@/components/receivedmessage.vue'
 
 
 Vue.use(VueRouter)
