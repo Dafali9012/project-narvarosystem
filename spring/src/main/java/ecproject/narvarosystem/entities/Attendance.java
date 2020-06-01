@@ -27,16 +27,13 @@ public class Attendance implements Serializable {
     @Column(name = "student_id")
     private Integer student_id;
 
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "lecture_id",nullable = false, insertable = false, updatable = false)
-    @JsonIgnore
     private Lecture lecture;
 
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "student_id",  nullable = false, insertable = false, updatable = false)
-    @JsonIgnore
     private Student student;
 
     public int getId() {

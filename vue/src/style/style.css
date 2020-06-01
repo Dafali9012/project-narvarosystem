@@ -36,11 +36,11 @@
 
 .navbar {
     height: 8vh;
-    background-color:  rgba(67, 105, 148, 0.349);
+    background-color: rgba(67, 105, 148, 0.349);
 }
 
 .logo {
-    height: 100%;
+    height: 90%;
 }
 
 /* user page */
@@ -81,6 +81,10 @@
     flex-grow: 1;
 }
 
+.height-100 {
+    height: 100%;
+}
+
 .width-100 {
     width: 100% !important;
 }
@@ -112,7 +116,7 @@ select {
 }
 
 .user-sidebar {
-    background-color:   rgba(67, 105, 148, 0.849);
+    background-color: rgba(67, 105, 148, 0.849);
     border-top-right-radius: 15vh;
     min-height: 100%;
 }
@@ -124,63 +128,73 @@ select {
     width: 50vw;
     margin-left: 1vw;
 }
+
 .menu-link {
     text-decoration: none;
     color: #fff;
 }
+
 .menu-link:visited {
     color: #fff;
 }
-.menu-link:hover { 
+
+.menu-link:hover {
     color: rgb(165, 165, 165);
-    text-decoration: none; 
+    text-decoration: none;
 }
-a:focus { 
-    text-decoration: none; 
+
+a:focus {
+    text-decoration: none;
 }
+
 .button-primary {
     width: 150px;
-  height: 50px;
-  font-size: 25px;
-  text-align: center;
-  background: rgb(238, 238, 238);
-  color: #f7f7f7;
-  border-radius: 10px;
-  border-color: #f7f7f7;
-  background-color: rgba(67, 105, 148, 0.849);
-  cursor: pointer;
-  transition: all 0.5s;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    background: rgb(238, 238, 238);
+    color: #f7f7f7;
+    border-radius: 10px;
+    border-color: #f7f7f7;
+    background-color: rgba(67, 105, 148, 0.849);
+    cursor: pointer;
+    transition: all 0.5s;
 }
+
 .button-primary span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
-  }
-  .button-primary span:after {
+}
+
+.button-primary span:after {
     content: "\00bb";
     position: absolute;
     opacity: 0;
     top: 0;
     right: -20px;
     transition: 0.5s;
-  }
-  .button-primary:hover span {
+}
+
+.button-primary:hover span {
     padding-right: 25px;
-  }
-  .button:hover span:after {
+}
+
+.button:hover span:after {
     opacity: 1;
     right: 0;
-  }
+}
 
 .pic-input {
     margin-left: 8%;
     width: 40%;
 }
 
-.background-primary{
-    background-color:  rgba(116, 128, 143, 0.719);
+.background-primary {
+    background-color: rgba(116, 128, 143, 0.719);
 }
+
 /* search / filter */
 
 .filter-window {
@@ -191,12 +205,13 @@ a:focus {
     width: 70%;
 }
 
-.presenceLabel{
+.presenceLabel {
     width: 100%;
     text-align: left;
     margin-left: 15px;
 }
-.calendar{
+
+.calendar {
     padding-left: 100px;
 }
 

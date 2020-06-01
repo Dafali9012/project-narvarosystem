@@ -23,7 +23,7 @@
                     style="height: 500px"
                     :cell-click-hold="false"
                     editable-events
-                    :events="events"                    
+                    :events="this.events"                    
                   ></VueCal>
                 </div>
                 <div class="col-6">
@@ -50,6 +50,9 @@ export default {
   },
   data: function() {
     return {
+      events: {
+        list: []
+      }
     // events: [
        // {
           //start: this.$store.state.MyLectureTeacher.date,          
@@ -60,46 +63,46 @@ export default {
         
      // ]
     };    
-  },mounted() {    
+  },created() {    
     this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
-  }, 
-
+  },
+  mounted() {
+    for(let event in this.getMyLectures) {
+      let newEvent = {
+        title: "event",
+        start: event.date
+      }
+      this.events.list.push(newEvent)
+    }
+  },
+  /*
   method:{
-
     dunno(){
-
       let databasevent = this.$store.state.MyLectureTeacher,
       myevents= [],
 
-     res = { date: 'start', id: 'title' };
+      res = { date: 'start', id: 'title' }
 
       for (let k in res) {
       let newValue = res[k];
       myevents[newValue] = databasevent[k];
       myevents[newValue].name = newValue;
-      
       }
-
-
-       
     }
-
   },
+  */
   computed:{
+    getMyLectures() {
+      return this.$store.state.MyLectureTeacher
+    }
+    /*
    events: {
-       get(){    
-
+       get(){
         console.log(this.dunno)
         return this.dunno
-
-        
-        
-         
-        
        }
      }
-  },
-   
-
+     */
+  }
 };
 </script>
