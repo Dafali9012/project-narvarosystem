@@ -14,7 +14,7 @@
                 </div>
               </div>
               <AllEducation></AllEducation>
-            </div> 
+            </div>
             <br />
 
             <div class="d-flex flex-column">
@@ -63,7 +63,8 @@ export default {
   created() {
     this.$store.dispatch("getAllusers");
     this.$store.dispatch("getAllEducations");
-  }
 
+    console.log(this.$store.state.loggedInUser);
+  }
 };
 </script>
