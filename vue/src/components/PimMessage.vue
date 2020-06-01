@@ -138,6 +138,7 @@
           </div>
         </div>
       </div>
+      <button v-on:click="log">Click</button>
   </div>
 </div>
 </template>
@@ -266,6 +267,10 @@ export default {
     await this.setLoggedUser();
   },
   methods: {
+    log(){
+      console.log(this.$store.state.AllUser)
+      // console.log(this.allUsers)
+    },
     setUsers() {
       this.getUsers.forEach(user => {
         if (user) {

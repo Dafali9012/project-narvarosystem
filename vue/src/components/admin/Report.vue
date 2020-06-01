@@ -37,7 +37,6 @@
               :key="c.id"
               :value="c"
               @click="selectedClass = c"
-            
             >{{c.name}}</option>
           </select>
           <label class="align-self-start ml-4" for="from">Från:</label>
@@ -47,7 +46,7 @@
         </div>
       </div>
 
-          <!-- Utbildning Rapport -->
+      <!-- Utbildning Rapport -->
       <div class="results-window ml-3" v-if="raport_utbildning">
         <div class="d-flex justify-content-between bg-primary">
           <div class="d-flex align-items-center">
@@ -98,7 +97,6 @@
           <span>Exportera</span>
         </download-excel>
       </div>
-
     </div>
     <button v-on:click="log">Click</button>
   </div>
@@ -115,7 +113,7 @@ export default {
   },
   data: function() {
     return {
-        testArr:[],
+      testArr: [],
       raport_utbildning: true,
       raport_kurs: false,
       selectedEducation: {},
@@ -151,10 +149,23 @@ export default {
           label: "Efternamn",
           name: "userstudent.last_name"
         },
-                {
-          label: "Name",
+        {
+          label: "Kursnamn",
           name: "name"
+        },
+        {
+          label:"Lecture"
+          
+        },
+        {
+          label:"Datum",
+          name:"attendance_date"
+        },
+        {
+          label:"Present",
+          name:"attendance.present"
         }
+
       ],
       config: {
         checkbox_rows: false,
@@ -174,15 +185,14 @@ export default {
     setRaport() {
       this.raport_utbildning = false;
       this.raport_kurs = true;
-      this.getCoursesByID()
+      this.getCoursesByID();
     },
     log() {
       // console.log('Courses',this.getCourses);
       // console.log('Education',this.getEducations);
       // console.log('CLasses',this.getClasses);
-      console.log(this.listOfAttendance)
-      console.log(this.selectedEducation)
-
+      console.log(this.listOfAttendance);
+      console.log(this.selectedEducation);
     },
     setCourses() {
       this.getCourses.forEach(course => {
@@ -225,11 +235,11 @@ export default {
       );
       let respons = await result.json();
       this.listOfAttendance.length = 0;
-      respons.forEach(element =>{
-        if(element){
-          this.listOfAttendance.push(element)
+      respons.forEach(element => {
+        if (element) {
+          this.listOfAttendance.push(element);
         }
-      })
+      });
     },
     async getStudentEducation() {
       let result = await fetch(
@@ -243,23 +253,21 @@ export default {
         }
       });
     },
-  async test(){
-       let result = await fetch("http://localhost:8080/course/508");
-       let respons = await result.json();
-       respons.forEach(e =>{
-         if(e){
-           this.testArr.push(e)
-         }
-       })
-       
-    } 
-
+    async test() {
+      let result = await fetch("http://localhost:8080/course/508");
+      let respons = await result.json();
+      respons.forEach(e => {
+        if (e) {
+          this.testArr.push(e);
+        }
+      });
+    }
   },
   computed: {
     rows: {
       get() {
-        return this.listOfAttendance
-      },
+        return this.listOfAttendance;
+      }
     },
     // rows2: {
     //   get(){
