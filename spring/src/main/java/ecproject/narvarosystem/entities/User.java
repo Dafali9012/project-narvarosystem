@@ -47,7 +47,6 @@ public class User {
     private ECpersonnel eCpersonnel;
 
     @ManyToOne(optional = false)
-    @JsonIgnore
     @JoinColumn (name = "role_id", nullable = false, insertable = false, updatable = false)
     private Role role;
 

@@ -22,5 +22,7 @@ public interface LectureRepository extends JpaRepository<Lecture, Integer> {
     @Query(value = " SELECT * FROM lecture lc INNER JOIN course cr ON lc.course_id = cr.id INNER JOIN class cl ON cr.education_id = cl.education_id INNER JOIN student st ON st.class_id = cl.id WHERE st.id = :id", nativeQuery = true)
     List<Lecture> findAllByStudent_id(int id);
 
+    @Query(value = " SELECT * FROM lecture lc INNER JOIN course cr ON lc.course_id = cr.id INNER JOIN teacher tr ON tr.id = cr.teacher_id INNER JOIN consult co ON co.id = tr.consult_id INNER JOIN user us ON us.id = co.user_id WHERE us.id = :id UNION SELECT * FROM lecture lc INNER JOIN course cr ON lc.course_id = cr.id INNER JOIN teacher tr ON tr.id = cr.teacher_id INNER JOIN ec_personnel ec ON ec.id = tr.ec_id INNER JOIN user us ON us.id = ec.user_id WHERE us.id = :id" , nativeQuery = true)
+    List<Lecture> findAllByMy_id(int id);
 
 }

@@ -47,5 +47,10 @@ public class LectureController {
         return lectureRepository.findAllByStudent_id(id);
     }
 
+    @GetMapping("/teacher/my/{id}")
+    public  List<Lecture> teacherMyLecture(@PathVariable int id){
+        return lectureRepository.findAllByMy_id(id);
+    }
+
 
 }
