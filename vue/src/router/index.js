@@ -8,32 +8,7 @@ import 'vue-cal/dist/vuecal.css'
 
 
 import Combined from '@/views/combined/Combined.vue'
-
 import Login from '@/views/Login.vue'
-import Overview from '@/views/combined/Overview.vue'
-import Classes from '@/views/combined/Classes.vue'
-import Users from '@/views/combined/Users.vue'
-import Courses from '@/views/combined/Courses.vue'
-import CreateAccount from '@/views/combined/CreateAccount.vue'
-import CreateEducation from '@/views/combined/CreateEducation.vue'
-import CreateClass from '@/views/combined/CreateClass.vue'
-import CreateCourse from '@/views/combined/CreateCourse.vue'
-import PimMessage from '@/components/PimMessage.vue'
-import EditInformation from '@/views/combined/EditInformation.vue'
-
-import Admin from '@/views/combined/CreateCourse.vue'
-import Report from '../components/admin/Report.vue'
-
-import CalendarStudent from '@/views/combined/CalendarStudent.vue'
-import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
-import CreateRole from '@/views/combined/CreateRole.vue'
-
-// import TClasses from "../components/teacher/TeacherClasses.vue"
-// import TCourse from "../components/teacher/TeacherCourses.vue"
-// import TEdit from "../components/teacher/TeacherEdit.vue"
-// import TPresence from "../components/teacher/TeacherPresence.vue"
-// import TRapport from "../components/teacher/TeacherReport.vue"
-// import Pim from '../views/Pim.vue'
 import receivedmessage from '@/components/receivedmessage.vue'
 
 
@@ -49,100 +24,7 @@ const routes = [{
     component: Login
 
   },
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: Admin,
-    meta: {
-      authUser: true
-    }
-  },
-  {
-    path: '/report',
-    name: 'Report',
-    component: Report,
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Admin,
-  },
-  {
-    path: '/overview',
-    name: 'Overview',
-    component: Overview
-  },
-  {
-    path: '/pimmessage',
-    name: 'PimMessage',
-    component: PimMessage
-  },
-  {
-    path: '/message',
-    name: 'Message',
-    component: receivedmessage
-  },
-  {
-    path: '/classes',
-    name: 'Classes',
-    component: Classes
-  },
-  {
-    path: '/users',
-    name: 'Users',
-    component: Users
-  },
-  {
-    path: '/courses',
-    name: 'Courses',
-    component: Courses
-  },
-  {
-    path: '/create-account',
-    name: 'CreateAccount',
-    component: CreateAccount
-  },
-  {
-    path: '/create-class',
-    name: 'CreateClass',
-    component: CreateClass
-  },
-
-  {
-    path: '/create-education',
-    name: 'CreateEducation',
-    component: CreateEducation
-  },
-  {
-    path: '/create-course',
-    name: 'CreateCourse',
-    component: CreateCourse
-  },
-  {
-    path: '/create-role',
-    name: 'CreateRole',
-    component: CreateRole
-  },
-  {
-    path: '/calendar-student',
-    name: 'CalendarStudent',
-    component: CalendarStudent
-  },
-  {
-    path: '/calendar-teacher',
-    name: 'CalendarTeacher',
-    component: CalendarTeacher
-  },
-  {
-    path: '/combined',
-    name: 'Combined',
-    component: Combined
-  },
-  {
-    path: '/edit-information',
-    name: 'EditInformation',
-    component: EditInformation
-  }
+  
 
 ]
 
