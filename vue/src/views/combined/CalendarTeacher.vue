@@ -23,7 +23,8 @@
                     style="height: 500px"
                     :cell-click-hold="false"
                     editable-events
-                    :events="events"                    
+                    :events="events" 
+                    locale="sv"                    
                   ></VueCal>
                 </div>
                 <div class="col-6">
@@ -42,6 +43,7 @@
 <script>
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
 import VueCal from "vue-cal";
+
 import moment from 'moment'
 
 
@@ -75,7 +77,8 @@ export default {
       let newEvent = {
         title: "Lektion " + String(this.getMyLectures[i].id),
         start: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
-        end: moment(this.getMyLectures[i].date).format('YYYY-MM-DD')
+        end: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
+        class: "lec"
         
         
       }
@@ -95,3 +98,10 @@ export default {
   }
 }
 </script>
+<style>
+.vuecal__event.lec {
+  background-color: rgba(17, 83, 206, 0.9) !important;
+  height: 100px;
+  color: white;
+}
+</style>
