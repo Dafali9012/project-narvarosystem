@@ -28,7 +28,52 @@
                   ></VueCal>
                 </div>
                 <div class="col-6">
-                  <h1 class="d-flex text-align-left"> Lägg till</h1>
+                  
+                 <h1 class="d-flex text-align-left"> Skapa ny lektion</h1>
+
+                  <form>                  
+                  <div class="form-group">
+                    <label for="setCourse">Välj Kurs</label>
+                    <select class="form-control" id="setCourse">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="setClass">Välj Klass</label>
+                    <select class="form-control" id="setClass1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="setStudent">Välj Elev</label>
+                    <select class="form-control" id="setStudent">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="settDate">Välj Datum</label>
+                      <input
+                      type="date"                      
+                      id="setDate"                      
+                      class="form-control"/>
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right">Skapa</button>
+                  
+                </form>
+
+                       
                   
                 </div>
               </div>
