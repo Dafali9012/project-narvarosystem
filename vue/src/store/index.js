@@ -8,7 +8,12 @@ export default new Vuex.Store({
   state: {
     contentIndex: 0,
     user: [],
-    loggedInUser: {},
+    loggedInUser: {
+
+      role:{
+        access_calendar_teacher: ""
+      }
+    },
     AllClass: [],
     AllEducation: [],
     AllCourse: [],
@@ -88,7 +93,7 @@ export default new Vuex.Store({
         commit('isLogged', false)
       } else {
         let result = await response.json()
-        commit('changeLoggedUser', result)
+        commit('changeLoggedUser', result)       
 
         commit('isLogged', true)
         if (result.role_id == 1) {

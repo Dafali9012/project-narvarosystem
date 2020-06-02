@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from "../store/index.js"
 import VueMoment from 'vue-moment'
-//import store from '@/store'
+
 
 import 'vue-cal/dist/i18n/sv.js'
 import 'vue-cal/dist/vuecal.css'
@@ -131,7 +132,14 @@ const routes = [{
   {
     path: '/calendar-teacher',
     name: 'CalendarTeacher',
-    component: CalendarTeacher
+    component: CalendarTeacher,
+    beforeEnter: (to, from, next) => {         
+      if (store.state.logged == true) {   
+        next();
+      } else {                
+        next(false);
+      }
+    }
   },
   {
     path: '/combined',
