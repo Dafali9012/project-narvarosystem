@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '@/store'
+import VueMoment from 'vue-moment'
+//import store from '@/store'
+
+import 'vue-cal/dist/i18n/sv.js'
+import 'vue-cal/dist/vuecal.css'
+
 
 import Combined from '@/views/combined/Combined.vue'
 
@@ -13,9 +18,9 @@ import CreateAccount from '@/views/combined/CreateAccount.vue'
 import CreateEducation from '@/views/combined/CreateEducation.vue'
 import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
-import PimMessage from '../components/PimMessage.vue'
+import PimMessage from '@/components/PimMessage.vue'
+import EditInformation from '@/views/combined/EditInformation.vue'
 
-import Admin from '@/views/combined/CreateCourse.vue'
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
 import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
 import CreateRole from '@/views/combined/CreateRole.vue'
@@ -26,29 +31,20 @@ import CreateRole from '@/views/combined/CreateRole.vue'
 // import TPresence from "../components/teacher/TeacherPresence.vue"
 // import TRapport from "../components/teacher/TeacherReport.vue"
 // import Pim from '../views/Pim.vue'
-import receivedmessage from '../components/receivedmessage.vue'
+import receivedmessage from '@/components/receivedmessage.vue'
+
+
 
 
 Vue.use(VueRouter)
+Vue.use(VueMoment)
+
 
 const routes = [{
     path: '/',
     name: 'Login',
     component: Login
 
-  },
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: Admin,
-    meta: {
-      authUser: true
-    }
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Admin,
   },
   {
     path: '/overview',
@@ -107,12 +103,12 @@ const routes = [{
     component: CreateRole
   },
   {
-    path: '/calendar/student',
+    path: '/calendar-student',
     name: 'CalendarStudent',
     component: CalendarStudent
   },
   {
-    path: '/calendar/teacher',
+    path: '/calendar-teacher',
     name: 'CalendarTeacher',
     component: CalendarTeacher
   },
@@ -120,6 +116,11 @@ const routes = [{
     path: '/combined',
     name: 'Combined',
     component: Combined
+  },
+  {
+    path: '/edit-information',
+    name: 'EditInformation',
+    component: EditInformation
   }
 
 ]
@@ -130,6 +131,7 @@ const router = new VueRouter({
   routes
 })
 
+/*
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.authUser)) {
 
@@ -161,5 +163,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
+*/
 export default router

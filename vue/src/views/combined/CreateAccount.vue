@@ -1,23 +1,23 @@
 <template>
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
       </div>
-      <div class="col-9 d-flex">
+      <div class="col-sm-9 d-flex">
         <div class="root d-flex justify-content-center">
           <div class="main d-flex flex-column">
             <h2 class="align-self-start">Skapa nytt konto</h2>
             <div class="content-line rounded" />
 
             <div
-              v-if="this.accountIndex==0"
+              v-if="this.accountIndex == 0"
               class="unselectable mt-5 d-flex justify-content-center"
             >
               <div
-                class="button-account border border-bottom-0 border-dark d-flex align-items-center justify-content-center"
+                class="button-account border border-bottom-0 border-dark d-flex align-items-center justify-content-center fa-lg"
               >
-                <font-awesome-icon :icon="['fas','user-graduate']" class="align-self-center mr-3" />
+                <font-awesome-icon :icon="['fas', 'user-graduate']" class="align-self-center mr-3" />
                 <p class="no-margin">Skapa nytt studentkonto</p>
               </div>
               <div
@@ -25,7 +25,7 @@
                 class="button-account border border-gray d-flex align-items-center justify-content-center menu-link"
               >
                 <font-awesome-icon
-                  :icon="['fas','chalkboard-teacher']"
+                  :icon="['fas', 'chalkboard-teacher']"
                   class="align-self-center text-muted mr-3"
                 />
                 <p class="no-margin text-muted">Skapa nytt EC konto</p>
@@ -38,16 +38,16 @@
                 class="button-account border border-gray d-flex align-items-center justify-content-center menu-link"
               >
                 <font-awesome-icon
-                  :icon="['fas','user-graduate']"
+                  :icon="['fas', 'user-graduate']"
                   class="align-self-center text-muted mr-3"
                 />
                 <p class="no-margin text-muted">Skapa nytt studentkonto</p>
               </div>
               <div
-                class="button-account border border-bottom-0 border-dark d-flex align-items-center justify-content-center"
+                class="button-account border border-bottom-0 border-dark d-flex align-items-center justify-content-center fa-lg"
               >
                 <font-awesome-icon
-                  :icon="['fas','chalkboard-teacher']"
+                  :icon="['fas', 'chalkboard-teacher']"
                   class="align-self-center mr-3"
                 />
                 <p class="no-margin">Skapa nytt EC konto</p>
@@ -56,46 +56,82 @@
 
             <form @submit.prevent="createAccount()">
               <div class="mt-5 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Förnamn" id="first-name" />
-                <input class="form-control" type="text" placeholder="Efternamn" id="last-name" />
+                <input
+                  v-model="name"
+                  class="form-control"
+                  type="text"
+                  placeholder="Förnamn"
+                  style="width: 30%"
+                  id="first-name"
+                />
+                <input
+                  v-model="lastName"
+                  class="form-control"
+                  type="text"
+                  placeholder="Efternamn"
+                  style="width: 30%"
+                  id="last-name"
+                />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Telefon" id="telephone" />
-                <input class="form-control" type="text" placeholder="Email" id="email" />
+                <input
+                  v-model="phone"
+                  class="form-control"
+                  type="text"
+                  placeholder="Telefon"
+                  style="width: 20%"
+                  id="telephone"
+                />
+                <input
+                  v-model="email"
+                  class="form-control"
+                  type="text"
+                  placeholder="Email"
+                  style="width: 40%"
+                  id="email"
+                />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Personnummer" id="ssn" />
-                <input class="form-control" type="password" placeholder="Lösenord" id="password" />
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Personnummer"
+                  style="width: 20%"
+                  id="ssn"
+                />
+                <input
+                  id="password"
+                  class="form-control"
+                  style="width: 40%; "
+                  type="password"
+                  placeholder="Lösenord"
+                />
               </div>
-              <div class="pic-input mt-4 d-flex flex-column align-items-start">
-                <select class="form-control no-margin width-100" id="role" name="roles">
-                  <option disabled selected>Välj roll</option>
-                  <option :value="role.id" v-for="role in getRoles" :key="role.id">{{role.name}}</option>
-                </select>
-              </div>
+              <div class="mt-4 d-flex justify-content-start"></div>
               <div
-                v-if="this.accountIndex==0"
-                class="pic-input mt-4 d-flex flex-column align-items-start"
+                v-if="this.accountIndex == 0"
+                class="pic-input mt-4 d-flex flex-column"
+                style="margin-left: 30%"
               >
                 <p>Användarbild:</p>
-                <input class="form-control no-margin width-100" type="file" />
+                <input class="form-control no-margin mb-4 height-100 width-100" type="file" />
               </div>
-              <div v-if="this.accountIndex==0" class="mt-4 d-flex justify-content-center">
-                <select class="form-control" id="education" name="education">
+              <div v-if="this.accountIndex == 0" class="mt-4 d-flex justify-content-center">
+                <select class="form-control" id="education" name="education" style="width: 35%">
                   <option disabled selected>Välj utbildning</option>
                   <option
                     :value="education.id"
                     v-for="education in getEducations"
                     :key="education.id"
-                  >{{education.name}}</option>
+                  >{{ education.name }}</option>
                 </select>
-                <select class="form-control" id="class" name="class">
+                <select class="form-control" id="class" name="class" style="width: 35%">
                   <option disabled selected>Välj klass</option>
                   <option
                     :value="edClass.id"
                     v-for="edClass in getClasses"
                     :key="edClass.id"
-                  >{{edClass.name}}</option>
+                  >{{ edClass.name }}</option>
                 </select>
               </div>
               <div class="button-create mt-4 d-flex justify-content-end">

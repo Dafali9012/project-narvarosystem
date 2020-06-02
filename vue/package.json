@@ -22,6 +22,7 @@
     "vue-cal": "^3.2.3",
     "vue-excel-xlsx": "^1.0.11",
     "vue-json-excel": "^0.2.98",
+    "vue-moment": "^4.1.0",
     "vue-router": "^3.1.6",
     "vuex": "^3.1.3"
   },

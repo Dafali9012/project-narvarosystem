@@ -1,7 +1,7 @@
 <template>
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
       </div>
       <div class="col-9 d-flex">
@@ -11,26 +11,20 @@
             <div class="content-line rounded" />
             <form @submit.prevent="createCourse">
               <div class="mt-5 d-flex justify-content-center">
-                <input class="form-control" type="text" placeholder="Kursnamn" id="course-name" />
-                <input class="form-control" type="number" placeholder="Poäng" id="course-points" />
-              </div>
-              <div class="mt-4 d-flex unselectable">
-                <label for="from" style="margin-left:9%">Från:</label>
-                <label for="to" style="margin-left:39%">Till:</label>
-              </div>
-              <div class="d-flex justify-content-center">
-                <input class="form-control" type="date" id="from" />
-                <input class="form-control" type="date" id="to" />
+                <input class="form-control" type="text" placeholder="Kursnamn" id="course-name" style="width: 20%" />
+                <input class="form-control" type="number" placeholder="Poäng" id="course-points" style="width: 20%" />
               </div>
               <div class="mt-4 d-flex justify-content-center">
-                <select class="form-control width-42" id="education" name="education">
+                <select class="form-control width-42" id="education" name="education" style="width: 20%">
+                  <option value disabled selected>Utbildning</option>
                   <option
                     :value="education.id"
                     v-for="education in getEducations"
                     :key="education.id"
                   >{{education.name}}</option>
                 </select>
-                <select class="form-control width-42" id="teacher" name="teacher">
+                <select class="form-control width-42" id="teacher" name="teacher" style="width: 20%">
+                  <option value disabled selected>Lärare</option>
                   <option
                     :value="teacher.id"
                     v-for="teacher in getTeachers"
@@ -38,12 +32,21 @@
                   >{{teacher.consult.userconsult.first_name}} {{teacher.consult.userconsult.last_name}}</option>
                 </select>
               </div>
+              <div class="mt-4 d-flex unselectable">
+                <label for="from" style="margin-left:24%">Från:</label>
+                <label for="to" style="margin-left:24%">Till:</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <input class="form-control" type="date" id="from" style="width: 25%"/>
+                <input class="form-control" type="date" id="to" style="width: 25%"/>
+              </div>
               <div class="mt-4 d-flex justify-content-center">
                 <textarea
-                  class="form-control width-84"
-                  rows="3"
+                  class="form-control width-84 mt-5"
+                  rows="4"
                   placeholder="Beskrivning"
                   id="course-desc"
+                  style="resize: none;"
                 />
               </div>
               <div class="button-create mt-4 d-flex justify-content-end">

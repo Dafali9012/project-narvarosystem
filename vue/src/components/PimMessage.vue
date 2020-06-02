@@ -1,128 +1,154 @@
 <template>
-  <div class="root d-flex flex-column container-fluid">
-    <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
-        <CombinedSidebar />
-      </div>
-      <div class="col-9">
-        <div class="row">
-          <div class="col-9">
-            <div class="tab-content" id="nav-tabContent">
-              <div
-                class="tab-pane fade show active"
-                id="list-home"
-                role="tabpanel"
-                aria-labelledby="list-home-list"
-              >
-                <form action class="send-form">
-                  <div class="form-group d-flex justify-content-center">
-                    <label for="exampleFormControlInput1"></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Ämne"
-                      v-model="message.subject"
-                    />
-
-                    <label for="exampleFormControlSelect1"></label>
-                    <select
-                      class="form-control"
-                      id="exampleFormControlSelect1"
-                      v-model="receiverUser"
-                    >
-                      <option>Mottagare</option>
-                      <option v-for="user in allUsers" :key="user.user_id">{{user.first_name}}</option>
-                    </select>
-                  </div>
-                  <div class="form-group text d-flex justify-content-end">
-                    <label for="exampleFormControlTextarea1"></label>
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                      placeholder="Innehållstext"
-                      v-model="message.message"
-                    ></textarea>
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary" v-on:click="send">Skicka</button>
-                  </div>
-                </form>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="list-profile"
-                role="tabpanel"
-                aria-labelledby="list-profile-list"
-              >
-                <vue-bootstrap4-table
-                  :rows="rows"
-                  :columns="columns"
-                  :config="config"
-                  @on-select-row="getInfo($event)"
-                ></vue-bootstrap4-table>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="list-messages"
-                role="tabpanel"
-                aria-labelledby="list-messages-list"
-              >
-                <vueTable
-                  :rows="rowsSent"
-                  :columns="columnsSent"
-                  :config="configSent"
-                  @on-select-row="getInfo($event)"
-                />
-              </div>
-            </div>
+<div class="root d-flex flex-column container-fluid">
+  <div class="content row mt-3">
+    <div class="admin-sidebar col-sm-3">
+      <CombinedSidebar />
+    </div>
+      <div class="row col-sm-9 p-0 mt-5" style="height: 60vh; ">
+        <div class="col-sm-3 d-flex align-items-center ml-5">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a
+              class="list-group-item list-group-item-action active"
+              style="width: 200px; border-radius: 15px;"
+              id="list-home-list"
+              data-toggle="list"
+              href="#list-home"
+              role="tab"
+              aria-controls="home"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'paper-plane']"
+                class="align-self-center mr-2 fa-lg"
+                id="icon"
+              />Nytt meddelande
+            </a>
+            <a
+              v-on:click="cons"
+              class="list-group-item list-group-item-action mt-2"
+              style="width: 135px; border-radius: 15px;"
+              id="list-profile-list"
+              data-toggle="list"
+              href="#list-profile"
+              role="tab"
+              aria-controls="profile"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'inbox']"
+                class="align-self-center mr-1 fa-md"
+                id="icon"
+              />Inkorg
+            </a>
+            <a
+              v-on:click="consSent"
+              class="list-group-item list-group-item-action mt-2"
+              style="width: 135px; border-radius: 15px;"
+              id="list-messages-list"
+              data-toggle="list"
+              href="#list-messages"
+              role="tab"
+              aria-controls="messages"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'share-square']"
+                class="align-self-center mr-1 fa-md"
+                id="icon"
+              />Skickat
+            </a>
           </div>
-          <div class="col-3 justify-content-end">
-            <div class="list-group" id="list-tab" role="tablist">
-              <a
-                class="list-group-item list-group-item-action active"
-                id="list-home-list"
-                data-toggle="list"
-                href="#list-home"
-                role="tab"
-                aria-controls="home"
-              >Skicka</a>
-              <a
-                v-on:click="cons"
-                class="list-group-item list-group-item-action"
-                id="list-profile-list"
-                data-toggle="list"
-                href="#list-profile"
-                role="tab"
-                aria-controls="profile"
-              >Mottagna</a>
-              <a
-                v-on:click="consSent"
-                class="list-group-item list-group-item-action"
-                id="list-messages-list"
-                data-toggle="list"
-                href="#list-messages"
-                role="tab"
-                aria-controls="messages"
-              >Skickade</a>
+        </div>
+        <div class="col-sm-6 d-flex align-items-end ml-3" style>
+          <div class="tab-content" id="nav-tabContent" style="width: 100%; margin-bottom: 5vh;">
+            <div
+              class="tab-pane fade show active"
+              id="list-home"
+              role="tabpanel"
+              aria-labelledby="list-home-list"
+            >
+              <form action class="send-form">
+                <div class="form-group">
+                  <h2 class="align-self-start">P I M</h2>
+                  <div class="content-line rounded pt-1 mb-5" />
+                  <label for="exampleFormControlSelect1">Vem vill du skriva till?</label>
+                  <select required
+                    class="form-control"
+                    style="width: 30%; margin-left:35%;"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option value disabled selected>Mottagare</option>
+                    <option v-for="user in allUsers" :key="user.userID">{{user.name}}</option>
+                  </select>
+
+                  <label for="exampleFormControlInput1"></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="width: 50%; margin-left:25%;"
+                    id="exampleFormControlInput1"
+                    placeholder="Ämne"
+                    v-model="message.subject"
+                  />
+                </div>
+                <div class="form-group text d-flex">
+                  <label for="exampleFormControlTextarea1"></label>
+                  <textarea
+                    style="resize: none; width: 100%; margin-top: 5%"
+                    maxlength="500"
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="5"
+                    placeholder="Skriv något ..."
+                    v-model="message.message"
+                  ></textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="button button-primary mt-5" v-on:click="send">
+                    <span>Skicka</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div
+              class="tab-pane fade"
+              style="margin-bottom: 10vh; width: 100%;"
+              id="list-profile"
+              role="tabpanel"
+              aria-labelledby="list-profile-list"
+            >
+              <vue-bootstrap4-table
+                :rows="rows"
+                :columns="columns"
+                :config="config"
+                @on-select-row="getInfo($event)"
+              ></vue-bootstrap4-table>
+            </div>
+            <div
+              class="tab-pane fade"
+              style="margin-bottom: 10vh"
+              id="list-messages"
+              role="tabpanel"
+              aria-labelledby="list-messages-list"
+            >
+              <vueTable
+                :rows="rowsSent"
+                :columns="columnsSent"
+                :config="configSent"
+                @on-select-row="getInfo($event)"
+              />
             </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
+</div>
 </template>
 
 <script>
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
 import VueBootstrap4Table from "vue-bootstrap4-table";
-import vueTable from "vue-bootstrap4-table";
 
 export default {
   components: {
     VueBootstrap4Table,
-    vueTable,
     CombinedSidebar
   },
   name: "Pim",
@@ -338,6 +364,10 @@ export default {
 </script>
 
 <style scoped>
+.list-group-item.active{
+  background-color: rgba(67, 105, 148, 0.849);
+  border: none;
+}
 tr .overflow-hidden {
   background: blue !important;
   text-overflow: ellipsis !important;
@@ -346,3 +376,4 @@ tr .overflow-hidden {
   /*margin-top: 20vh;*/
 }
 </style>
+

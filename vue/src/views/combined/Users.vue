@@ -1,19 +1,19 @@
 <template>
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
-      <div class="admin-sidebar col-3">
+      <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
       </div>
       <div class="col-9 d-flex">
         <div class="root d-flex justify-content-center">
           <div class="main d-flex justify-content-center width-84">
             <div class="filter-window">
-              <div class="d-flex justify-content-between bg-primary">
+              <div class="d-flex justify-content-between  background-primary">
                 <div class="d-flex align-items-center">
                   <p class="no-margin ml-3 text-cream unselectable my-2">Filtrering</p>
                 </div>
               </div>
-              <div class="d-flex flex-column align-items-center bg-lightblue text-cream">
+              <div class="d-flex flex-column align-items-center text-cream background-primary">
                 <input class="form-control my-3 width-84" type="text" placeholder="Sök" />
                 <div class="d-flex mb-2 width-84">
                   <input id="ec" type="checkbox" style="width:auto !important;" />
@@ -35,7 +35,7 @@
             </div>
 
             <div class="results-window ml-3">
-              <div class="d-flex justify-content-between bg-primary">
+              <div class="d-flex justify-content-between  background-primary">
                 <div class="d-flex align-items-center">
                   <p class="no-margin ml-3 text-cream unselectable my-2">Användare</p>
                 </div>
@@ -53,8 +53,8 @@
                 :config="config"
                 @on-select-row="getInfo($event)"
               ></vue-bootstrap4-table>
-              <button class="button button-primary">
-                <span>DELETE</span>
+              <button class="button button-primary" style="margin-left: 70%; margin-top: 5%">
+                <span>Delete</span>
                 {{selectedName}}
               </button>
             </div>
