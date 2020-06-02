@@ -65,9 +65,9 @@
         </div>
         <download-excel
           class="button button-primary"
-          :data="rows"
+          :fetch = "fetchData"
           :fields="json_fields"
-          name="filename.xls"
+          name="rapport.xls"
         >
           <span>Exportera</span>
         </download-excel>
@@ -91,9 +91,9 @@
         </div>
         <download-excel
           class="button button-primary"
-          :data="rows"
-          :fields="json_fields"
-          name="filename.xls"
+          :fetch = "fetchData"
+          :fields="json_fields_kurs"
+          name="rapport.xls"
         >
           <span>Exportera</span>
         </download-excel>
@@ -117,8 +117,8 @@
         </div>
         <download-excel
           class="button button-primary"
-          :data="rows"
-          :fields="json_fields"
+          :fetch = "fetchData"
+          :fields="json_fields_class"
           name="filename.xls"
         >
           <span>Exportera</span>
@@ -137,7 +137,7 @@ export default {
     downloadExcel,
     VueBootstrap4Table
   },
-  data: function() {
+  data() {
     return {
       raport_utbildning: true,
       raport_kurs: false,
@@ -149,10 +149,27 @@ export default {
       courses: [],
       classes: [],
       educations: [],
+      data: {
+        type: Array,
+        required: false,
+        default: null
+      },
       json_fields: {
-        Namn: "namn",
-        Kursnamn: "course",
-        Närvaro: "närvaro"
+        'Förnamn': 'userstudent.first_name',
+        'Efternamn': 'userstudent.last_name',
+      },
+
+      json_fields_kurs: {
+        'Förnamn': 'student.userstudent.first_name',
+        'Efternamn': 'student.userstudent.last_name',
+        'Datum': 'lecture.date',
+        'Present': 'present'
+      },
+      json_fields_class: {
+        'Förnamn': 'student.userstudent.first_name',
+        'Efternamn': 'student.userstudent.last_name',
+        'Datum': 'lecture.date',
+        'Present': 'present'
       },
 
       columns: [
@@ -219,7 +236,9 @@ export default {
     };
   },
   methods: {
-
+    fetchData(){
+      return this.listOfAttendance
+    },
     showCourseRapport() {
       this.raport_utbildning = false;
       this.raport_class = false;
@@ -239,7 +258,7 @@ export default {
       this.raport_class = true;
       this.raport_kurs = false;
       this.listOfAttendance.length = 0;
-      this.getClassStudents()
+      this.getClassStudents();
     },
 
     setCourses() {
@@ -268,7 +287,6 @@ export default {
         "http://localhost:8080/attendance/class/" + this.selectedClass.id
       );
       let respons = await result.json();
-      console.log('from getClassStudents',respons)
       this.listOfAttendance.length = 0;
 
       respons.forEach(respons => {
@@ -309,6 +327,7 @@ export default {
         return this.listOfAttendance;
       }
     },
+
     getCourses() {
       return this.$store.state.AllCourse;
     },
