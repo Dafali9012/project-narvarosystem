@@ -94,6 +94,16 @@ export default new Vuex.Store({
         if (result.role_id == 1) {
           router.push("/admin")
         }
+        if (result.role_id == 2) {
+          router.push("/pimmessage")
+        }
+        if (result.role_id == 3) {
+          router.push("/pimmessage")
+        }
+        if (result.role_id == 4) {
+          router.push("/pimmessage")
+        }
+        
       }
     },
     getAllClasses: async function ({

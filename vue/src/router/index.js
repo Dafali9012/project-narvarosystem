@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMoment from 'vue-moment'
-//import store from '@/store'
+import store from '@/store'
 
 import 'vue-cal/dist/i18n/sv.js'
 import 'vue-cal/dist/vuecal.css'
@@ -152,30 +152,38 @@ const router = new VueRouter({
   routes
 })
 
-/*
+
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.authUser)) {
 
     if (store.state.logged) {
-      router.push('/overview')
+      
 
-      // if (store.state.loggedInUser.role_id == 1) {
+      if (store.state.loggedInUser.role_id == 1) {
+        router.push('/overview')
+      } else {
+        next();
+      }
 
-      // } else {
-      //   next();
-      // }
+      if (store.state.loggedInUser.role_id == 2) {
+        router.push('/pimmessage')
+      } else {
+        next();
+      }
 
-      // if (store.state.loggedInUser.roles[0].role == 3) {
-      //   router.push('/teacher')
-      // } else {
-      //   next();
-      // }
+      if (store.state.loggedInUser.role_id == 3) {
+        router.push('/pimmessage')
+      } else {
+        next();
+      }
 
-      // if (store.state.loggedInUser.roles[0].role == 2) {
-      //   router.push('/user')
-      // } else {
-      //   next();
-      // }
+      if (store.state.loggedInUser.role_id == 4) {
+        router.push('/pimmessage')
+      } else {
+        next();
+      }
+
+
     } else {
       router.push('/')
     }
@@ -184,5 +192,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-*/
+
 export default router
