@@ -27,6 +27,8 @@ import Report from '../components/admin/Report.vue'
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
 import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
 import CreateRole from '@/views/combined/CreateRole.vue'
+import Welcome from '@/views/combined/Welcome.vue'
+import notfound from '@/views/combined/404.vue'
 
 // import TClasses from "../components/teacher/TeacherClasses.vue"
 // import TCourse from "../components/teacher/TeacherCourses.vue"
@@ -43,12 +45,19 @@ Vue.use(VueRouter)
 Vue.use(VueMoment)
 
 
-const routes = [{
-    path: '/',
-    name: 'Login',
-    component: Login
+const routes = [
+  { path: '*', name: "404", component: notfound},
+{
+  path: '/',
+  name: 'Login',
+  component: Login
 
-  },
+},
+{
+  path: '/welcome',
+  name: 'Welcome',
+  component: Welcome,
+},
   {
     path: '/admin',
     name: 'Admin',
