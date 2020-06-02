@@ -64,7 +64,7 @@ export default {
         body: credentials
       });
       console.log(response)
-      if (response.status==0) {
+      if (response.status == "500") {
         window.confirm("Inloggningen misslyckades");
       } else {
         this.$store.dispatch("updateLoggedUser");

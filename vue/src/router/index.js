@@ -127,7 +127,7 @@ const routes = [
     path: '/calendar-teacher',
     name: 'CalendarTeacher',
     component: CalendarTeacher,
-    beforeEnter: (to, from, next) => {         
+    beforeEnter:(to, from, next) => {         
       if (store.state.loggedInUser.role.access_calendar_teacher == true) {   
         next();
       } else {                

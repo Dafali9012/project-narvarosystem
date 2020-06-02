@@ -13,7 +13,6 @@ import store from './store'
 
 
 
-
 import {
   library
 } from '@fortawesome/fontawesome-svg-core'
@@ -49,6 +48,7 @@ library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faCommen
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
+
 
 new Vue({ 
   router,
