@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import router from '@/router'
 
 Vue.use(Vuex)
 
@@ -8,10 +7,7 @@ export default new Vuex.Store({
   state: {
     contentIndex: 0,
     user: [],
-    loggedInUser: {
-
-      
-    },
+    loggedInUser: {},
     AllClass: [],
     AllEducation: [],
     AllCourse: [],
@@ -87,16 +83,12 @@ export default new Vuex.Store({
     }) {
       let response = await fetch("/login/name")
 
-      if (response.status == 500) {
+      if (response.status==500) {
         commit('isLogged', false)
       } else {
         let result = await response.json()
-        commit('changeLoggedUser', result)       
-
+        commit('changeLoggedUser', result)
         commit('isLogged', true)
-        if (result.role_id == 1) {
-          router.push("/admin")
-        }
       }
     },
     getAllClasses: async function ({
