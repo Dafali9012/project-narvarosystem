@@ -10,9 +10,7 @@ export default new Vuex.Store({
     user: [],
     loggedInUser: {
 
-      role:{
-        access_calendar_teacher: ""
-      }
+      
     },
     AllClass: [],
     AllEducation: [],
