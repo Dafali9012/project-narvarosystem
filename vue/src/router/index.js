@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueMoment from 'vue-moment'
 //import store from '@/store'
+
+import 'vue-cal/dist/i18n/sv.js'
+import 'vue-cal/dist/vuecal.css'
+
 
 import Combined from '@/views/combined/Combined.vue'
 
@@ -13,8 +18,11 @@ import CreateAccount from '@/views/combined/CreateAccount.vue'
 import CreateEducation from '@/views/combined/CreateEducation.vue'
 import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
-import PimMessage from '../components/PimMessage.vue'
+import PimMessage from '@/components/PimMessage.vue'
 import EditInformation from '@/views/combined/EditInformation.vue'
+
+import Admin from '@/views/combined/CreateCourse.vue'
+import Report from '../components/admin/Report.vue'
 
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
 import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
@@ -26,16 +34,38 @@ import CreateRole from '@/views/combined/CreateRole.vue'
 // import TPresence from "../components/teacher/TeacherPresence.vue"
 // import TRapport from "../components/teacher/TeacherReport.vue"
 // import Pim from '../views/Pim.vue'
-import receivedmessage from '../components/receivedmessage.vue'
+import receivedmessage from '@/components/receivedmessage.vue'
+
+
 
 
 Vue.use(VueRouter)
+Vue.use(VueMoment)
+
 
 const routes = [{
     path: '/',
     name: 'Login',
     component: Login
 
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    meta: {
+      authUser: true
+    }
+  },
+  {
+    path: '/report',
+    name: 'Report',
+    component: Report,
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: Admin,
   },
   {
     path: '/overview',

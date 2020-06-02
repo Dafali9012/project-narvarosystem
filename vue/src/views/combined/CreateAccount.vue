@@ -118,7 +118,6 @@
                 <p>Användarbild:</p>
                 <input class="form-control no-margin mb-4 height-100 width-100" type="file" />
               </div>
-
               <div class="d-flex justify-content-center mt-4">
                 <select class="form-control" id="role" name="role" style="width: 40%;">
                   <option disabled selected>Välj roll</option>
@@ -129,7 +128,6 @@
                   >{{ role.name }}</option>
                 </select>
               </div>
-            
               <div v-if="this.accountIndex == 0" class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="education" name="education" style="width: 35%">
                   <option disabled selected>Välj utbildning</option>

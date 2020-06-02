@@ -47,17 +47,16 @@
         <font-awesome-icon :icon="['fas','chalkboard']" class="text-cream align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Skapa ny klass</p>
       </router-link>
-      <!--
-      <router-link v-if="this.$store.state.loggedInUser.role.create_education" to="/users" class="option d-flex align-self-center">
+  
+      <!-- <router-link v-if="this.$store.state.loggedInUser.role.create_education" to="/users" class="option d-flex align-self-center">
         <font-awesome-icon :icon="['fas','list']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Lista över användare</p>
-      </router-link>
-      
-      <router-link to="/overview" class="option d-flex align-self-center">
+      </router-link> -->
+      <router-link to="/report" class="option d-flex align-self-center">
         <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Rapport</p>
       </router-link>
-      -->
+     
       <router-link
         v-if="this.$store.state.loggedInUser.role.access_messages"
         to="/pimmessage"
