@@ -2,6 +2,7 @@ package ecproject.narvarosystem.rest;
 
 
 import ecproject.narvarosystem.Repository.EdClassRepository;
+import ecproject.narvarosystem.entities.Course;
 import ecproject.narvarosystem.entities.EdClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,10 @@ public class EdClassController {
         return this.eDClassRepository.findAll();
     }
 
+    @GetMapping("/student/{id}")
+    public List<Course> studentCourse(@PathVariable int id){
+        return eDClassRepository.findAllByStudent_id(id);
+    }
     @GetMapping("/{id]")
     public List<EdClass> edclasById(@PathVariable int id){
         return eDClassRepository.findAllById(Collections.singleton(id));
