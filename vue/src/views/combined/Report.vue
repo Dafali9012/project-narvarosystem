@@ -37,6 +37,7 @@
               :key="c.id"
               :value="c"
               @click="selectedClass = c"
+              v-on:click="showClassRapport"
             >{{c.name}}</option>
           </select>
           <label class="align-self-start ml-4" for="from">Från:</label>
@@ -97,6 +98,32 @@
           <span>Exportera</span>
         </download-excel>
       </div>
+
+      <!-- Class_Rapport -->
+      <div class="results-window ml-3" v-if="raport_class">
+        <div class="d-flex justify-content-between bg-primary">
+          <div class="d-flex align-items-center">
+            <p class="no-margin ml-3 text-cream unselectable my-2">Klass Rapport</p>
+          </div>
+          <div class="d-flex justify-content-end align-items-center">
+            <font-awesome-icon
+              :icon="['fas','plus-circle']"
+              class="align-self-center mr-3 text-cream"
+            />
+          </div>
+        </div>
+        <div class="bg-white container-fluid">
+          <vue-bootstrap4-table ref="table" :rows="rows" :columns="columns_class" :config="config"></vue-bootstrap4-table>
+        </div>
+        <download-excel
+          class="button button-primary"
+          :data="rows"
+          :fields="json_fields"
+          name="filename.xls"
+        >
+          <span>Exportera</span>
+        </download-excel>
+      </div>
     </div>
   </div>
 </template>
@@ -136,7 +163,7 @@ export default {
         {
           label: "Efternamn",
           name: "userstudent.last_name"
-        },
+        }
       ],
 
       // COLUMN KURS
@@ -150,14 +177,32 @@ export default {
           name: "student.userstudent.last_name"
         },
         {
-          label:"Datum",
-          name:"lecture.date"
+          label: "Datum",
+          name: "lecture.date"
         },
         {
-          label:"Present",
-          name:"present"
+          label: "Present",
+          name: "present"
         }
-
+      ],
+      // COLUMN_CLASS
+      columns_class: [
+        {
+          label: "Förnamn",
+          name: "student.userstudent.first_name"
+        },
+        {
+          label: "Efternamn",
+          name: "student.userstudent.last_name"
+        },
+        {
+          label: "Datum",
+          name: "lecture.date"
+        },
+        {
+          label: "Present",
+          name: "present"
+        }
       ],
       config: {
         checkbox_rows: false,
@@ -169,28 +214,32 @@ export default {
         global_search: {
           visibility: false
         },
-        card_title: "Mina Kurser"
+        card_title: "Rapport"
       }
     };
   },
   methods: {
+
     showCourseRapport() {
       this.raport_utbildning = false;
       this.raport_class = false;
       this.raport_kurs = true;
+      this.listOfAttendance.length = 0;
       this.getCoursesByID();
     },
     showEducationRapport() {
       this.raport_utbildning = true;
       this.raport_class = false;
       this.raport_kurs = false;
-      this.getStudentEducation()
-      
+      this.listOfAttendance.length = 0;
+      this.getStudentEducation();
     },
     showClassRapport() {
       this.raport_utbildning = false;
       this.raport_class = true;
       this.raport_kurs = false;
+      this.listOfAttendance.length = 0;
+      this.getClassStudents()
     },
 
     setCourses() {
@@ -208,21 +257,23 @@ export default {
       });
     },
     setEducations() {
-        this.getEducations.forEach(education => {
-          if(education){
-            this.educations.push(education)
-          }
-        })
+      this.getEducations.forEach(education => {
+        if (education) {
+          this.educations.push(education);
+        }
+      });
     },
     async getClassStudents() {
       let result = await fetch(
-        "http://localhost:8080/student/class/" + this.selectedClass.id
+        "http://localhost:8080/attendance/class/" + this.selectedClass.id
       );
       let respons = await result.json();
+      console.log('from getClassStudents',respons)
       this.listOfAttendance.length = 0;
+
       respons.forEach(respons => {
         if (respons) {
-          this.listOfAttendance.push(respons.userstudent);
+          this.listOfAttendance.push(respons);
         }
       });
     },
@@ -232,6 +283,7 @@ export default {
       );
       let respons = await result.json();
       this.listOfAttendance.length = 0;
+
       respons.forEach(element => {
         if (element) {
           this.listOfAttendance.push(element);
@@ -249,7 +301,7 @@ export default {
           this.listOfAttendance.push(element);
         }
       });
-    },
+    }
   },
   computed: {
     rows: {

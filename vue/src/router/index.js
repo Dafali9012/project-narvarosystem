@@ -7,9 +7,6 @@ import VueMoment from 'vue-moment'
 import 'vue-cal/dist/i18n/sv.js'
 import 'vue-cal/dist/vuecal.css'
 
-
-import Combined from '@/views/combined/Combined.vue'
-
 import Login from '@/views/Login.vue'
 import Overview from '@/views/combined/Overview.vue'
 import Classes from '@/views/combined/Classes.vue'
@@ -21,9 +18,7 @@ import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
 import PimMessage from '@/components/PimMessage.vue'
 import EditInformation from '@/views/combined/EditInformation.vue'
-
-import Admin from '@/views/combined/CreateCourse.vue'
-import Report from '../components/admin/Report.vue'
+import Report from '@/views/combined/Report.vue'
 
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
 import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
@@ -49,35 +44,23 @@ Vue.use(VueMoment)
 
 const routes = [
   { path: '*', name: "404", component: notfound},
-  {
-    path: '/',
-    name: 'Login',
-    component: Login
+  
+    {
+      path: '/',
+      name: 'Login',
+      component: Login
 
-  },
-  {
-    path: '/welcome',
-    name: 'Welcome',
-    component: Welcome,
-  },
+    },
+    {
+      path: '/welcome',
+      name: 'Welcome',
+      component: Welcome,
+    },
 
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: Admin,
-    meta: {
-      authUser: true
-    }
-  },
   {
     path: '/report',
     name: 'Report',
     component: Report,
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Admin,
   },
   {
     path: '/overview',
@@ -151,11 +134,6 @@ const routes = [
         next(false);
       }
     }
-  },
-  {
-    path: '/combined',
-    name: 'Combined',
-    component: Combined
   },
   {
     path: '/edit-information',
