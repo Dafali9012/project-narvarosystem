@@ -44,17 +44,8 @@ public class Role {
     @Column(name = "access_classes_courses")
     private Boolean access_classes_courses;
 
-    @Column(name = "access_calendar_student")
-    private Boolean access_calendar_student;
-
-    @Column(name = "access_calendar_teacher")
-    private Boolean access_calendar_teacher;
-
-    @Column(name = "access_courses")
-    private Boolean access_courses;
-
-    @Column(name = "access_user_edit")
-    private Boolean access_user_edit;
+    @Column(name = "access_calendar")
+    private Boolean access_calendar;
 
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
@@ -149,35 +140,11 @@ public class Role {
         this.access_classes_courses = access_classes_courses;
     }
 
-    public Boolean getAccess_calendar_student() {
-        return access_calendar_student;
+    public Boolean getAccess_calendar() {
+        return access_calendar;
     }
 
-    public void setAccess_calendar_student(Boolean access_calendar_student) {
-        this.access_calendar_student = access_calendar_student;
-    }
-
-    public Boolean getAccess_calendar_teacher() {
-        return access_calendar_teacher;
-    }
-
-    public void setAccess_calendar_teacher(Boolean access_calendar_teacher) {
-        this.access_calendar_teacher = access_calendar_teacher;
-    }
-
-    public Boolean getAccess_courses() {
-        return access_courses;
-    }
-
-    public void setAccess_courses(Boolean access_courses) {
-        this.access_courses = access_courses;
-    }
-
-    public Boolean getAccess_user_edit() {
-        return access_user_edit;
-    }
-
-    public void setAccess_user_edit(Boolean access_user_edit) {
-        this.access_user_edit = access_user_edit;
+    public void setAccess_calendar(Boolean access_calendar) {
+        this.access_calendar = access_calendar;
     }
 }

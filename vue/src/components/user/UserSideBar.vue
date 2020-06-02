@@ -1,0 +1,68 @@
+<template>
+  <div class="user-sidebar col-sm-3">
+    <div class="d-flex flex-column align-items-center text-white">
+      <img
+        src="https://image.flaticon.com/icons/png/512/67/67902.png"
+        class="avatar rounded-circle"
+      />
+      <h5 class="unselectable">Du är inloggad som Elev</h5>
+      <div class="line rounded" />
+
+      <div class="row mt-2 mb-2">
+        <div class="col-6">
+          <p class="text-left">
+            <strong>Förnamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Efternamn:</strong>
+          </p>
+          <p class="text-left">
+            <strong>E-post:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Klass:</strong>
+          </p>
+          <p class="text-left">
+            <strong>Utbildning:</strong>
+          </p>
+        </div>
+        <div class="col-6">
+          <p class="text-right">{{user.name}}</p>
+          <p class="text-right">{{user.lastName}}</p>
+          <p class="text-right">{{user.email}}</p>
+          <p class="text-right">Java19</p>
+          <p class="text-right">Java</p>
+        </div>
+      </div>
+
+      <div class="line rounded" />
+      <div class="mt-5">
+        <div class="option d-flex align-self-center">
+          <font-awesome-icon :icon="['fas', 'cog']" class="align-self-center" />
+          <router-link class="ml-3 menu-link" to="/user/edit">Redigera information</router-link>
+        </div>
+        <div class="option d-flex align-self-center">
+          <font-awesome-icon :icon="['fas', 'book-open']" class="align-self-center" />
+          <router-link class="ml-3 menu-link" to="/user/classes">Mina kurser</router-link>
+        </div>
+        <div class="option d-flex align-self-center">
+          <font-awesome-icon :icon="['fas', 'calendar-alt']" class="align-self-center ml-1" />
+          <router-link class="ml-3 menu-link" to="/user/scheme">Schema</router-link>
+        </div>
+        <div class="option d-flex align-self-center">
+          <font-awesome-icon :icon="['fas', 'comments']" class="align-self-center" />
+          <p class="ml-3 menu-link">PIM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      user: this.$store.state.loggedInUser
+    };
+  }
+};
+</script>
