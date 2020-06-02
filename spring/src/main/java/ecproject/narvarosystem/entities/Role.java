@@ -56,10 +56,6 @@ public class Role {
     @Column(name = "access_user_edit")
     private Boolean access_user_edit;
 
-
-
-
-
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<User> users;
