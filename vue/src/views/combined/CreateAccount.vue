@@ -23,6 +23,7 @@
               <div
                 v-on:click="changeAccountType(1)"
                 class="button-account border border-gray d-flex align-items-center justify-content-center menu-link"
+                style="transition: all 0.5s;"
               >
                 <font-awesome-icon
                   :icon="['fas', 'chalkboard-teacher']"
@@ -36,6 +37,7 @@
               <div
                 v-on:click="changeAccountType(0)"
                 class="button-account border border-gray d-flex align-items-center justify-content-center menu-link"
+                style="transition: all 0.5s;"
               >
                 <font-awesome-icon
                   :icon="['fas', 'user-graduate']"
@@ -55,13 +57,13 @@
             </div>
 
             <form @submit.prevent="createAccount()">
-              <div class="mt-5 d-flex justify-content-center">
+              <div class="mt-5 d-flex justify-content-center" >
                 <input
                   v-model="name"
                   class="form-control"
                   type="text"
                   placeholder="Förnamn"
-                  style="width: 30%"
+                  style="width: 35%"
                   id="first-name"
                 />
                 <input
@@ -69,11 +71,11 @@
                   class="form-control"
                   type="text"
                   placeholder="Efternamn"
-                  style="width: 30%"
+                  style="width: 35%"
                   id="last-name"
                 />
               </div>
-              <div class="mt-4 d-flex justify-content-center">
+              <div class="mt-5 d-flex justify-content-center">
                 <input
                   v-model="phone"
                   class="form-control"
@@ -116,6 +118,16 @@
                 <p>Användarbild:</p>
                 <input class="form-control no-margin mb-4 height-100 width-100" type="file" />
               </div>
+              <div class="d-flex justify-content-center mt-4">
+                <select class="form-control" id="role" name="role" style="width: 40%;">
+                  <option disabled selected>Välj roll</option>
+                  <option
+                    :value="role.id"
+                    v-for="role in getRoles"
+                    :key="role.id"
+                  >{{ role.name }}</option>
+                </select>
+              </div>
               <div v-if="this.accountIndex == 0" class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="education" name="education" style="width: 35%">
                   <option disabled selected>Välj utbildning</option>
@@ -134,8 +146,9 @@
                   >{{ edClass.name }}</option>
                 </select>
               </div>
+              
               <div class="button-create mt-4 d-flex justify-content-end">
-                <button type="submit" class="button button-primary">
+                <button type="submit" class="button button-primary" style="margin-left: 20%">
                   <span>Skapa</span>
                 </button>
               </div>

@@ -21,6 +21,9 @@ import CreateCourse from '@/views/combined/CreateCourse.vue'
 import PimMessage from '@/components/PimMessage.vue'
 import EditInformation from '@/views/combined/EditInformation.vue'
 
+import Admin from '@/views/combined/CreateCourse.vue'
+import Report from '../components/admin/Report.vue'
+
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
 import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
 import CreateRole from '@/views/combined/CreateRole.vue'
@@ -45,6 +48,24 @@ const routes = [{
     name: 'Login',
     component: Login
 
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    meta: {
+      authUser: true
+    }
+  },
+  {
+    path: '/report',
+    name: 'Report',
+    component: Report,
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: Admin,
   },
   {
     path: '/overview',
