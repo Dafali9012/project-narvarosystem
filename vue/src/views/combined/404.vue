@@ -4,7 +4,7 @@
       <div class="col-9 d-flex">
         <div class="root d-flex flex-column container-fluid">
           <div class="content row mt-3 justify-content-center">
-            <div class="main col-9 mt-5">
+            <div class="main col-9 mt-5" style="user-select: none;">
               <h2>Hur har du det med navigation?</h2>
               <p>Sidan du letar efter finns inte, har blivit borttagen, bytat namn eller är temporärt inaktiv</p>
               <img
