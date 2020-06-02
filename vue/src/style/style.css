@@ -194,6 +194,9 @@ a:focus {
 .background-primary {
     background-color: rgba(116, 128, 143, 0.719);
 }
+.background-primary2 {
+    background-color: rgba(67, 105, 148, 0.199);
+}
 
 /* search / filter */
 
