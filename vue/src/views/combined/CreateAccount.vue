@@ -116,6 +116,16 @@
                 <p>Användarbild:</p>
                 <input class="form-control no-margin mb-4 height-100 width-100" type="file" />
               </div>
+              <div>
+                 <select class="form-control" id="role" name="role" style="width: 35%">
+                  <option disabled selected>Välj roll</option>
+                  <option
+                    :value="role.id"
+                    v-for="role in getRoles"
+                    :key="role.id"
+                  >{{ role.name }}</option>
+                </select>
+              </div>
               <div v-if="this.accountIndex == 0" class="mt-4 d-flex justify-content-center">
                 <select class="form-control" id="education" name="education" style="width: 35%">
                   <option disabled selected>Välj utbildning</option>

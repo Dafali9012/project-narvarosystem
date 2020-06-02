@@ -2,7 +2,6 @@ package ecproject.narvarosystem.rest;
 
 import ecproject.narvarosystem.Repository.AttendanceRepository;
 import ecproject.narvarosystem.entities.Attendance;
-import ecproject.narvarosystem.entities.Education;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
