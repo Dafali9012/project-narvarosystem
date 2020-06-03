@@ -68,6 +68,7 @@ export default {
         window.confirm("Inloggningen misslyckades");
       } else {
         this.$store.dispatch("updateLoggedUser");
+        this.$router.push('/welcome')
       }
     },
 

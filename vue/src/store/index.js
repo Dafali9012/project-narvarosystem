@@ -20,6 +20,7 @@ export default new Vuex.Store({
     roles: [],  
     ClassByED: [],
     Messages: [],
+    isLogged:  false,
     messageToDelete: {},    
     MyLectureStudent: [],
     MyLectureTeacher: []
@@ -88,9 +89,9 @@ export default new Vuex.Store({
         commit('isLogged', false)
       } else {
         let result = await response.json()
-
-        commit('changeLoggedUser', result)
         commit('isLogged', true)
+        commit('changeLoggedUser', result)
+        
 
       }
     },
