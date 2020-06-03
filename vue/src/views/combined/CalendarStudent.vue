@@ -44,8 +44,8 @@
                     <label for="lecdatum">Närvaro/Frånvaro</label>
                      <select class="form-control" id="present" name="present">
                   <option value disabled selected>Välj</option>
-                  <option value="1">Närvarande</option>
-                  <option value="0">Frånvarnde</option>
+                  <option value="true">Närvarande</option>
+                  <option value="false">Frånvarnde</option>
                   </select>   
                   </div>                  
                   <button type="submit" class="button button-primary float-right mt-5">Lämna</button>
@@ -80,7 +80,7 @@ export default {
     return { 
       selectedEvent: {},  
       events: [], 
-      //student: this.$store.state.MyStudentID.id      
+      student: this.$store.state.MyStudentID.id      
      
     };    
   },mounted() {    
@@ -88,12 +88,11 @@ export default {
     this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id);   
   },
   methods: {
-    async createAttendance() {
-      console.log("studentid: " + this.$store.state.MyStudentID.id)
+    async createAttendance() {      
       let newAttendance = {
         present: document.getElementById("present").value,
         lecture_id: document.getElementById("lecid").value,
-        //student_id: this.student.id
+        student_id: this.$store.state.MyStudentID[0].id
       };
 
       let response = await fetch("http://localhost:8080/attendance", {
@@ -143,6 +142,7 @@ export default {
    
   },
   computed:{
+    
     getMyLectures() {      
       return this.$store.state.MyLectureStudent
     },

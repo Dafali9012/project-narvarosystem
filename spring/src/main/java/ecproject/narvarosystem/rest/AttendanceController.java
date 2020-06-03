@@ -54,4 +54,9 @@ public class AttendanceController {
         return attendanceRepository.findAllByClass_id(id);
     }
 
+    @PostMapping
+    public Attendance addAttendance(@RequestBody Attendance attendance){
+        return attendanceRepository.save(attendance);
+    }
+
 }
