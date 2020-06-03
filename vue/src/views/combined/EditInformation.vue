@@ -1,5 +1,5 @@
 <template>
-<div class="root d-flex flex-column container-fluid">
+  <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
       <div class="admin-sidebar col-sm-3">
         <CombinedSidebar />
@@ -11,7 +11,7 @@
             <div class="content-line rounded" />
 
             <form @submit.prevent="updateAccount()">
-              <div class="mt-5 d-flex justify-content-center" >
+              <div class="mt-5 d-flex justify-content-center">
                 <input
                   disabled
                   :value="getLoggedUser.first_name"
@@ -22,7 +22,8 @@
                   id="first-name"
                 />
                 <input
-                  
+                  disabled
+                  :value="getLoggedUser.last_name"
                   class="form-control"
                   type="text"
                   placeholder="Efternamn"
@@ -32,7 +33,7 @@
               </div>
               <div class="mt-5 d-flex justify-content-center">
                 <input
-                  
+                  :value="getLoggedUser.phone_number"
                   class="form-control"
                   type="text"
                   placeholder="Telefon"
@@ -40,7 +41,8 @@
                   id="telephone"
                 />
                 <input
-                  
+                  disabled
+                  :value="getLoggedUser.email"
                   class="form-control"
                   type="text"
                   placeholder="Email"
@@ -50,6 +52,8 @@
               </div>
               <div class="mt-4 d-flex justify-content-center">
                 <input
+                  disabled
+                  :value="getLoggedUser.ssn"
                   class="form-control"
                   type="text"
                   placeholder="Personnummer"
@@ -61,47 +65,10 @@
                   class="form-control"
                   style="width: 40%; "
                   type="password"
-                  placeholder="Lösenord"
+                  placeholder="Ändra lösenord"
                 />
               </div>
               <div class="mt-4 d-flex justify-content-start"></div>
-              <div
-                v-if="this.accountIndex == 0"
-                class="pic-input mt-4 d-flex flex-column"
-                style="margin-left: 30%"
-              >
-                <p>Användarbild:</p>
-                <input class="form-control no-margin mb-4 height-100 width-100" type="file" />
-              </div>
-              <div class="d-flex justify-content-center mt-4">
-                <select class="form-control" id="role" name="role" style="width: 40%;">
-                  <option disabled selected>Välj roll</option>
-                  <option
-                    :value="role.id"
-                    v-for="role in getRoles"
-                    :key="role.id"
-                  >{{ role.name }}</option>
-                </select>
-              </div>
-              <div v-if="this.accountIndex == 0" class="mt-4 d-flex justify-content-center">
-                <select class="form-control" id="education" name="education" style="width: 35%">
-                  <option disabled selected>Välj utbildning</option>
-                  <option
-                    :value="education.id"
-                    v-for="education in getEducations"
-                    :key="education.id"
-                  >{{ education.name }}</option>
-                </select>
-                <select class="form-control" id="class" name="class" style="width: 35%">
-                  <option disabled selected>Välj klass</option>
-                  <option
-                    :value="edClass.id"
-                    v-for="edClass in getClasses"
-                    :key="edClass.id"
-                  >{{ edClass.name }}</option>
-                </select>
-              </div>
-              
               <div class="button-create mt-4 d-flex justify-content-end">
                 <button type="submit" class="button button-primary" style="margin-left: 20%">
                   <span>Spara</span>
@@ -124,18 +91,14 @@ export default {
   },
   computed: {
     getLoggedUser() {
-      return this.$store.state.loggedInUser
+      return this.$store.state.loggedInUser;
     }
   },
   data() {
-    return {
-      accountIndex:1
-    }
+    return {};
   },
   methods: {
-    updateAccount() {
-
-    }
+    updateAccount() {}
   }
-}
+};
 </script>
