@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMoment from 'vue-moment'
-import store from '../store'
+import store from '@/store'
 
 import 'vue-cal/dist/i18n/sv.js'
 import 'vue-cal/dist/vuecal.css'
-
-import store from '@/store/index.js'
 
 import Login from '@/views/Login.vue'
 import Overview from '@/views/combined/Overview.vue'
@@ -27,21 +25,10 @@ import CreateRole from '@/views/combined/CreateRole.vue'
 import Welcome from '@/views/combined/Welcome.vue'
 import notfound from '@/views/combined/404.vue'
 
-// import TClasses from "../components/teacher/TeacherClasses.vue"
-// import TCourse from "../components/teacher/TeacherCourses.vue"
-// import TEdit from "../components/teacher/TeacherEdit.vue"
-// import TPresence from "../components/teacher/TeacherPresence.vue"
-// import TRapport from "../components/teacher/TeacherReport.vue"
-// import Pim from '../views/Pim.vue'
 import receivedmessage from '@/components/receivedmessage.vue'
-
-
-
-
 
 Vue.use(VueRouter)
 Vue.use(VueMoment)
-
 
 const routes = [
   { path: '*', name: "404", component: notfound},
@@ -204,10 +191,8 @@ const routes = [
     path: '/calendar-teacher',
     name: 'CalendarTeacher',
     component: CalendarTeacher,
-    beforeEnter: async function (to, from, next) {   
-      let response = await fetch("/login/name")
-      let result = await response.json()    
-      if (result.role.access_calendar_teacher == true) {
+    beforeEnter: (to, from, next) => {   
+      if (store.state.loggedInUser.role.access_calendar_teacher == true) {
         next();
       } else {                
         next('/');

@@ -13,7 +13,6 @@ export default {
   components: { Navbar },
   mounted() {
     this.$store.dispatch("getMessage");
-    this.$store.dispatch("updateLoggedUser")
   },
 
 };
