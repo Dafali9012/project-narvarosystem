@@ -26,14 +26,14 @@ public class Teacher implements Serializable {
     @JoinColumn(name = "ec_id", nullable = true)
     private Integer ec_id;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     @NotFound(action= NotFoundAction.IGNORE)
-    @JoinColumn(name = "consult_id", nullable = true, insertable = false, updatable = false)
+    @JoinColumn(name = "consult_id",  insertable = false, updatable = false)
     private Consult consult;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     @NotFound(action= NotFoundAction.IGNORE)
-    @JoinColumn(name = "ec_id", nullable = true, insertable = false, updatable = false)
+    @JoinColumn(name = "ec_id",  insertable = false, updatable = false)
     private ECpersonnel eCpersonnel;
 
 
