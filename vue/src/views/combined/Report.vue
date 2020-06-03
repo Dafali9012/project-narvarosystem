@@ -1,128 +1,147 @@
 <template>
-  <div class="root d-flex justify-content-center">
-    <div class="main d-flex justify-content-center width-84">
-      <div class="filter-window">
-        <div class="d-flex justify-content-between bg-primary">
-          <div class="d-flex align-items-center">
-            <p class="no-margin ml-3 text-cream unselectable my-2">Filtrering</p>
-          </div>
-        </div>
-        <div class="d-flex flex-column align-items-center bg-lightblue text-cream">
-          <input class="form-control my-4 width-84" type="text" placeholder="Sök" />
-
-          <select class="form-control mb-2 width-84" id="education">
-            <option value="education">Utbildning</option>
-            <option
-              v-for="education in educations"
-              :key="education.id"
-              :value="education"
-              @click="selectedEducation = education"
-              v-on:click="showEducationRapport"
-            >{{education.name}}</option>
-          </select>
-          <select class="form-control mb-2 width-84" id="course">
-            <option value="course">Kurs</option>
-            <option
-              v-for="course in courses"
-              :key="course.id"
-              :value="course"
-              @click="selectedCourse = course"
-              v-on:click="showCourseRapport"
-            >{{course.name}}</option>
-          </select>
-          <select class="form-control mb-4 width-84" id="class">
-            <option value="class">Klass</option>
-            <option
-              v-for="c in classes"
-              :key="c.id"
-              :value="c"
-              @click="selectedClass = c"
-              v-on:click="showClassRapport"
-            >{{c.name}}</option>
-          </select>
-          <label class="align-self-start ml-4" for="from">Från:</label>
-          <input class="form-control mb-2 width-84" type="date" id="from" />
-          <label class="align-self-start ml-4" for="to">Till:</label>
-          <input class="form-control mb-4 width-84" type="date" id="to" />
-        </div>
+  <div class="root d-flex flex-column container-fluid">
+    <div class="content row mt-3">
+      <div class="admin-sidebar col-sm-3">
+        <CombinedSidebar />
       </div>
+      <div class="col-9 d-flex">
+        <div class="root d-flex justify-content-center">
+          <div class="main d-flex justify-content-center width-84">
+            <div class="filter-window">
+              <div class="d-flex justify-content-between bg-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Filtrering</p>
+                </div>
+              </div>
+              <div class="d-flex flex-column align-items-center bg-lightblue text-cream">
+                <input class="form-control my-4 width-84" type="text" placeholder="Sök" />
 
-      <!-- Utbildning Rapport -->
-      <div class="results-window ml-3" v-if="raport_utbildning">
-        <div class="d-flex justify-content-between bg-primary">
-          <div class="d-flex align-items-center">
-            <p class="no-margin ml-3 text-cream unselectable my-2">Utbildning Rapport</p>
-          </div>
-          <div class="d-flex justify-content-end align-items-center">
-            <font-awesome-icon
-              :icon="['fas','plus-circle']"
-              class="align-self-center mr-3 text-cream"
-            />
-          </div>
-        </div>
-        <div class="bg-white container-fluid">
-          <vue-bootstrap4-table ref="table" :rows="rows" :columns="columns" :config="config"></vue-bootstrap4-table>
-        </div>
-        <download-excel
-          class="button button-primary"
-          :fetch = "fetchData"
-          :fields="json_fields"
-          name="rapport.xls"
-        >
-          <span>Exportera</span>
-        </download-excel>
-      </div>
+                <select class="form-control mb-2 width-84" id="education">
+                  <option value="education">Utbildning</option>
+                  <option
+                    v-for="education in educations"
+                    :key="education.id"
+                    :value="education"
+                    @click="selectedEducation = education"
+                    v-on:click="showEducationRapport"
+                  >{{education.name}}</option>
+                </select>
+                <select class="form-control mb-2 width-84" id="course">
+                  <option value="course">Kurs</option>
+                  <option
+                    v-for="course in courses"
+                    :key="course.id"
+                    :value="course"
+                    @click="selectedCourse = course"
+                    v-on:click="showCourseRapport"
+                  >{{course.name}}</option>
+                </select>
+                <select class="form-control mb-4 width-84" id="class">
+                  <option value="class">Klass</option>
+                  <option
+                    v-for="c in classes"
+                    :key="c.id"
+                    :value="c"
+                    @click="selectedClass = c"
+                    v-on:click="showClassRapport"
+                  >{{c.name}}</option>
+                </select>
+                <label class="align-self-start ml-4" for="from">Från:</label>
+                <input class="form-control mb-2 width-84" type="date" id="from" />
+                <label class="align-self-start ml-4" for="to">Till:</label>
+                <input class="form-control mb-4 width-84" type="date" id="to" />
+              </div>
+            </div>
 
-      <!-- Kurs Rapport -->
-      <div class="results-window ml-3" v-if="raport_kurs">
-        <div class="d-flex justify-content-between bg-primary">
-          <div class="d-flex align-items-center">
-            <p class="no-margin ml-3 text-cream unselectable my-2">Kurs Rapport</p>
-          </div>
-          <div class="d-flex justify-content-end align-items-center">
-            <font-awesome-icon
-              :icon="['fas','plus-circle']"
-              class="align-self-center mr-3 text-cream"
-            />
-          </div>
-        </div>
-        <div class="bg-white container-fluid">
-          <vue-bootstrap4-table ref="table" :rows="rows" :columns="columns_kurs" :config="config"></vue-bootstrap4-table>
-        </div>
-        <download-excel
-          class="button button-primary"
-          :fetch = "fetchData"
-          :fields="json_fields_kurs"
-          name="rapport.xls"
-        >
-          <span>Exportera</span>
-        </download-excel>
-      </div>
+            <!-- Utbildning Rapport -->
+            <div class="results-window ml-3" v-if="raport_utbildning">
+              <div class="d-flex justify-content-between bg-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Utbildning Rapport</p>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                  <font-awesome-icon
+                    :icon="['fas','plus-circle']"
+                    class="align-self-center mr-3 text-cream"
+                  />
+                </div>
+              </div>
+              <div class="bg-white container-fluid">
+                <vue-bootstrap4-table ref="table" :rows="rows" :columns="columns" :config="config"></vue-bootstrap4-table>
+              </div>
+              <download-excel
+                class="button button-primary"
+                :fetch="fetchData"
+                :fields="json_fields"
+                name="rapport.xls"
+              >
+                <span>Exportera</span>
+              </download-excel>
+            </div>
 
-      <!-- Class_Rapport -->
-      <div class="results-window ml-3" v-if="raport_class">
-        <div class="d-flex justify-content-between bg-primary">
-          <div class="d-flex align-items-center">
-            <p class="no-margin ml-3 text-cream unselectable my-2">Klass Rapport</p>
-          </div>
-          <div class="d-flex justify-content-end align-items-center">
-            <font-awesome-icon
-              :icon="['fas','plus-circle']"
-              class="align-self-center mr-3 text-cream"
-            />
+            <!-- Kurs Rapport -->
+            <div class="results-window ml-3" v-if="raport_kurs">
+              <div class="d-flex justify-content-between bg-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Kurs Rapport</p>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                  <font-awesome-icon
+                    :icon="['fas','plus-circle']"
+                    class="align-self-center mr-3 text-cream"
+                  />
+                </div>
+              </div>
+              <div class="bg-white container-fluid">
+                <vue-bootstrap4-table
+                  ref="table"
+                  :rows="rows"
+                  :columns="columns_kurs"
+                  :config="config"
+                ></vue-bootstrap4-table>
+              </div>
+              <download-excel
+                class="button button-primary"
+                :fetch="fetchData"
+                :fields="json_fields_kurs"
+                name="rapport.xls"
+              >
+                <span>Exportera</span>
+              </download-excel>
+            </div>
+
+            <!-- Class_Rapport -->
+            <div class="results-window ml-3" v-if="raport_class">
+              <div class="d-flex justify-content-between bg-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Klass Rapport</p>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                  <font-awesome-icon
+                    :icon="['fas','plus-circle']"
+                    class="align-self-center mr-3 text-cream"
+                  />
+                </div>
+              </div>
+              <div class="bg-white container-fluid">
+                <vue-bootstrap4-table
+                  ref="table"
+                  :rows="rows"
+                  :columns="columns_class"
+                  :config="config"
+                ></vue-bootstrap4-table>
+              </div>
+              <download-excel
+                class="button button-primary"
+                :fetch="fetchData"
+                :fields="json_fields_class"
+                name="filename.xls"
+              >
+                <span>Exportera</span>
+              </download-excel>
+            </div>
           </div>
         </div>
-        <div class="bg-white container-fluid">
-          <vue-bootstrap4-table ref="table" :rows="rows" :columns="columns_class" :config="config"></vue-bootstrap4-table>
-        </div>
-        <download-excel
-          class="button button-primary"
-          :fetch = "fetchData"
-          :fields="json_fields_class"
-          name="filename.xls"
-        >
-          <span>Exportera</span>
-        </download-excel>
       </div>
     </div>
   </div>
@@ -131,9 +150,11 @@
 <script>
 import VueBootstrap4Table from "vue-bootstrap4-table";
 import downloadExcel from "vue-json-excel";
+import CombinedSidebar from "@/components/CombinedSidebar"
 
 export default {
   components: {
+    CombinedSidebar,
     downloadExcel,
     VueBootstrap4Table
   },
@@ -338,13 +359,13 @@ export default {
       return this.$store.state.AllEducation;
     }
   },
-  async created() {
-    await this.$store.dispatch("getAllClasses");
-    await this.setClasses();
-    await this.$store.dispatch("getAllEducations");
-    await this.setEducations();
-    await this.$store.dispatch("getAllCourses");
-    await this.setCourses();
+  created() {
+    this.$store.dispatch("getAllClasses");
+    this.setClasses();
+    this.$store.dispatch("getAllEducations");
+    this.setEducations();
+    this.$store.dispatch("getAllCourses");
+    this.setCourses();
   }
 };
 </script>
