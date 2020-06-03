@@ -9,7 +9,20 @@ export default new Vuex.Store({
   state: {
     contentIndex: 0,
     user: [],
-    loggedInUser: {},
+    loggedInUser: {
+      role:{
+        access_overview : false,
+        create_class: false,
+        create_education: false,
+        create_role: false,
+        access_messages: false,
+        access_classes_courses: false,
+        access_calendar_teacher: false,
+        access_calendar_student: false,
+        access_course : false,
+        access_user_edit: false,
+      }
+    },
     AllClass: [],
     AllEducation: [],
     AllCourse: [],
@@ -95,8 +108,6 @@ export default new Vuex.Store({
         let result = await response.json()
         commit('isLogged', true)
         commit('changeLoggedUser', result)
-        
-
       }
     },
     getAllClasses: async function ({
