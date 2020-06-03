@@ -69,7 +69,7 @@ const routes = [
       if (store.state.loggedInUser.role.access_overview == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -81,7 +81,7 @@ const routes = [
       if (store.state.loggedInUser.role.access_messages == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -98,7 +98,7 @@ const routes = [
       if (store.state.loggedInUser.role.access_classes_courses == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -115,7 +115,7 @@ const routes = [
       if (store.state.loggedInUser.role.access_courses == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -127,7 +127,7 @@ const routes = [
       if (store.state.loggedInUser.role.create_account == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -139,7 +139,7 @@ const routes = [
       if (store.state.loggedInUser.role.create_class == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -152,7 +152,7 @@ const routes = [
       if (store.state.loggedInUser.role.create_education == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -164,7 +164,7 @@ const routes = [
       if (store.state.loggedInUser.role.create_course == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -176,7 +176,7 @@ const routes = [
       if (store.state.loggedInUser.role.create_role == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -188,7 +188,7 @@ const routes = [
       if (store.state.loggedInUser.role.access_calendar_student == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -200,7 +200,7 @@ const routes = [
       if (store.state.loggedInUser.role.access_calendar_teacher == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   },
@@ -212,7 +212,7 @@ const routes = [
       if (store.state.loggedInUser.role.access_user_edit == true) {   
         next();
       } else {                
-        next('/login');
+        next('/');
       }
     }
   }
