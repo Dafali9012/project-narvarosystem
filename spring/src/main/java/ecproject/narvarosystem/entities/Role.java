@@ -56,6 +56,7 @@ public class Role {
     @Column(name = "access_user_edit")
     private Boolean access_user_edit;
 
+
     @Column(name = "access_report")
     private Boolean access_report;
 

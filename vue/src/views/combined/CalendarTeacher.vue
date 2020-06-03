@@ -70,7 +70,7 @@
                       id="setDate"                      
                       class="form-control"/>
                   </div>
-                  <button type="submit" class="btn btn-primary float-right">Skapa</button>
+                  <button type="submit" class="button button-primary float-right mt-5">Skapa</button>
                 </form>
                 </div>
               </div>
