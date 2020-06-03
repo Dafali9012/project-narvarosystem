@@ -36,23 +36,25 @@ import receivedmessage from '@/components/receivedmessage.vue'
 
 
 
+
 Vue.use(VueRouter)
 Vue.use(VueMoment)
 
 
 const routes = [
   { path: '*', name: "404", component: notfound},
-{
-  path: '/',
-  name: 'Login',
-  component: Login
+  
+    {
+      path: '/',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/welcome',
+      name: 'Welcome',
+      component: Welcome,
+    },
 
-},
-{
-  path: '/welcome',
-  name: 'Welcome',
-  component: Welcome,
-},
   {
     path: '/report',
     name: 'Report',
@@ -61,12 +63,26 @@ const routes = [
   {
     path: '/overview',
     name: 'Overview',
-    component: Overview
+    component: Overview,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_overview == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/pimmessage',
     name: 'PimMessage',
-    component: PimMessage
+    component: PimMessage,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_messages == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/message',
@@ -76,7 +92,14 @@ const routes = [
   {
     path: '/classes',
     name: 'Classes',
-    component: Classes
+    component: Classes,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_classes_courses == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/users',
@@ -86,38 +109,87 @@ const routes = [
   {
     path: '/courses',
     name: 'Courses',
-    component: Courses
+    component: Courses,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_courses == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-account',
     name: 'CreateAccount',
-    component: CreateAccount
+    component: CreateAccount,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_account == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-class',
     name: 'CreateClass',
-    component: CreateClass
+    component: CreateClass,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_class == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
 
   {
     path: '/create-education',
     name: 'CreateEducation',
-    component: CreateEducation
+    component: CreateEducation,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_education == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-course',
     name: 'CreateCourse',
-    component: CreateCourse
+    component: CreateCourse,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_course == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-role',
     name: 'CreateRole',
-    component: CreateRole
+    component: CreateRole,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_role == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/calendar-student',
     name: 'CalendarStudent',
-    component: CalendarStudent
+    component: CalendarStudent,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_calendar_student == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/calendar-teacher',
@@ -129,14 +201,21 @@ const routes = [
       if (result.role.access_calendar_teacher == true) {
         next();
       } else {                
-        next(false);
+        next('/');
       }
     }
   },
   {
     path: '/edit-information',
     name: 'EditInformation',
-    component: EditInformation
+    component: EditInformation,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_user_edit == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   }
 
 ]

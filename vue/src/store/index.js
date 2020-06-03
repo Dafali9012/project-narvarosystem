@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     contentIndex: 0,
     user: [],
@@ -18,10 +20,11 @@ export default new Vuex.Store({
     roles: [],  
     ClassByED: [],
     Messages: [],
-    messageToDelete: {},
-    logged: false,
+    isLogged:  false,
+    messageToDelete: {},    
     MyLectureStudent: [],
-    MyLectureTeacher: []
+    MyLectureTeacher: [],
+    MyCourseTeacher: []
 
   },
   mutations: {
@@ -75,6 +78,9 @@ export default new Vuex.Store({
     },
     setMyLectureTeacher(state, value){
       state.MyLectureTeacher = value;
+    },
+    setMyCourseTeacher(state, value){
+      state.MyCourseTeacher = value;
     }
   },
   actions: {
@@ -87,8 +93,10 @@ export default new Vuex.Store({
         commit('isLogged', false)
       } else {
         let result = await response.json()
-        commit('changeLoggedUser', result)
         commit('isLogged', true)
+        commit('changeLoggedUser', result)
+        
+
       }
     },
     getAllClasses: async function ({
@@ -138,6 +146,14 @@ export default new Vuex.Store({
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setMyLectureTeacher", json);
+    },
+    getMyCourseTeacher: async function ({
+      commit
+    }, id) {
+      let url = "http://localhost:8080/course/teacher/my/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyCourseTeacher", json);
     },
     getClassByED: async function ({
       commit

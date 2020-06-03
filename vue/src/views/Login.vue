@@ -65,9 +65,11 @@ export default {
       });
       console.log(response)
       if (response.status==500) {
+
         window.confirm("Inloggningen misslyckades");
       } else {
         this.$store.dispatch("updateLoggedUser");
+        this.$router.push('/welcome')
       }
     },
   }
