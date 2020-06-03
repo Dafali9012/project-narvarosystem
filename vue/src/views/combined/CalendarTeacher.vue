@@ -140,7 +140,6 @@ export default {
     getMyLectures() {      
       return this.$store.state.MyLectureTeacher
     },
-    
     getshit(){
       return this.getmyEvents();
     },
