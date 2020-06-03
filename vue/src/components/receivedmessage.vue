@@ -125,6 +125,7 @@ export default {
   },
   created() {
     this.setMessage();
+     this.$store.dispatch("getMessage");
   }
 };
 </script>

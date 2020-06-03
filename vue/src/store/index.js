@@ -19,6 +19,10 @@ export default new Vuex.Store({
     roles: [],  
     ClassByED: [],
     Messages: [],
+    newMessage: {
+      new : false,
+      numberOfUnreadMessages:0
+    },
     messageToDelete: {},
     logged: false,
     MyLectureStudent: [],
@@ -26,6 +30,9 @@ export default new Vuex.Store({
 
   },
   mutations: {
+    setNewMessage(state, value) {
+      state.newMessage = value;
+    },
     setMessageToDelete(state, value) {
       state.messageToDelete = value;
     },
@@ -89,7 +96,6 @@ export default new Vuex.Store({
       } else {
         let result = await response.json()
         commit('changeLoggedUser', result)
-
         commit('isLogged', true)
         if (result.role_id == 1) {
           router.push("/admin")
@@ -194,6 +200,15 @@ export default new Vuex.Store({
       let url = "http://localhost:8080/message";
       const result = await fetch(url);
       const json = await result.json();
+      this.state.newMessage.numberOfUnreadMessages = 0;
+      json.forEach( message => {
+        if(message.receiver_id == this.state.loggedInUser.id){
+          if(message.seen == false){
+            this.state.newMessage.new = true
+            this.state.newMessage.numberOfUnreadMessages ++;
+          }
+        }
+      })
       commit("setMessage", json);
     }
     // deletUser: async function({ commit }, id) {
