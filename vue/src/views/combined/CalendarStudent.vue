@@ -7,82 +7,42 @@
       <div class="col-9 d-flex">
         <div class="root d-flex flex-column container-fluid">
           <div class="content row mt-3">
-            <UserSideBar />
-
             <div class="main col-9 mt-5">
               <div class="row ml-5">
-                <div class="col-6">
+                <div class="col-12">
                   <VueCal
                     class="vuecal--blue-theme"
                     ref="vuecal"
                     :time="false"
-                    hide-weekends
+                    hide-weekends                    
                     show-week-numbers
-                    active-view="month"
-                    :disable-views="['years', 'year', 'week']"
+                    active-view="week"
+                    :disable-views="['years', 'year', 'month', 'day']"
                     style="height: 500px"
                     :cell-click-hold="false"
                     editable-events
-                    :events="events"
-                    @cell-dblclick="$refs.vuecal.createEvent(
-    customEventCreation($event)
-  )"
+                    :events="events" 
+                    locale="sv"                    
                   ></VueCal>
                 </div>
-                <div class="col-6">
-                  <h1>Saker</h1>
-                </div>
+                </div>               
               </div>
             </div>
           </div>
-          <div class="modal-mask" v-show="show" transition="modal">
-            <div class="modal-wrapper">
-              <div class="modal-container">
-                <div class="modal-header">
-                  <slot name="header">Skapa ny lektion</slot>
-                </div>
-
-                <div class="modal-body">
-                  <slot name="body">
-                    <div class="form-row">
-                      <div class="form-group col-md-12">
-                        <label for="inputName">Namn</label>
-                        <input type="text" class="form-control w-100" id="inputName" />
-                      </div>
-                      <div class="form-group col-md-12">
-                        <label for="inputDate">Datum</label>
-                        <input type="text" class="form-control w-100" id="inputDate" />
-                      </div>
-                      <div class="form-group col-md-12">
-                        <label for="inputCourse">Kurs</label>
-                        <select id="inputCourse" class="form-control w-100">
-                          <option selected>Välj...</option>
-                          <option>Java 101</option>
-                          <option>Databashantering</option>
-                        </select>
-                      </div>
-                    </div>
-                  </slot>
-                </div>
-
-                <div class="modal-footer">
-                  <slot name="footer">
-                    <button class="modal-button" v-on:click="close">Stäng</button>
-                    <button class="modal-button" v-on:click="commit">Skapa</button>
-                  </slot>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
-    </div>
+    
   </div>
 </template>
 
 <script>
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
 import VueCal from "vue-cal";
+
+import moment from 'moment'
+
+
 
 export default {
   components: {
@@ -91,30 +51,62 @@ export default {
   },
   data: function() {
     return {
-      events: [
-        {
-          start: "2020-05-15",
-          end: "2020-05-15",
-          title: "Lektion 101",
-          content: "Lektion Om....",
-          course: "Java 101"
-        },
-        {
-          start: "2020-05-22",
-          end: "2020-05-22",
-          title: "Lektion 102",
-          content: "Lektion Om....",
-          course: "Java 101"
-        },
-        {
-          start: "2020-05-25",
-          end: "2020-05-25",
-          title: "Lektion 103",
-          content: "Lektion Om....",
-          course: "Java 101"
-        }
-      ]
-    };
+      events: []    
+    };    
+  },created() {    
+    this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);    
+    
+    
+  },
+  methods: {
+    getmyEvents(){
+      let i;
+      for (i = 0; i < this.getMyLectures.length; i++) {
+      let newEvent = {
+        title: "Lektion " + String(this.getMyLectures[i].id),
+        start: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
+        end: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
+        class: "lec"
+      }
+      this.events.push(newEvent)      
+      }
+    },
+     async createLecture() {
+      let newLecture = {
+        course_id: document.getElementById("course").value,
+        date: document.getElementById("setDate").value        
+      };
+
+      let response = await fetch("http://localhost:8080/lecture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newLecture)
+      });
+
+      let result = await response.json();
+      console.log("POST:" + result);
+    }
+
+   
+  },
+  computed:{
+    getMyLectures() {      
+      return this.$store.state.MyLectureTeacher
+    },
+    
+    getshit(){
+      return this.getmyEvents();
+    },
+    getMyCourses() {
+      return this.$store.state.MyCourseTeacher
+    }
   }
-};
+}
 </script>
+<style>
+.vuecal__event.lec {
+  background-color: rgba(17, 83, 206, 0.9) !important;
+  height: 100px;
+  color: white;
+}
+</style>

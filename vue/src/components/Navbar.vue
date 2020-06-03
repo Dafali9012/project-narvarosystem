@@ -11,7 +11,7 @@
         <p class="no-margin unselectable text-cream font-weight-bold ml-5">PIM</p>
       </router-link>
       <div>
-        <a href="http://localhost:8080/logout">
+        <a @click="logout" id="logout" href="http://localhost:8080/logout" >
           <p class="no-margin unselectable text-cream font-weight-bold ml-5">Logga ut</p>
         </a>
       </div>
@@ -21,7 +21,18 @@
 
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout: function()  {
+     
+      window.localStorage.clear();       
+      console.log("halo")
+      window.location.reload() 
+      
+    }
+  }
+};
+
 </script>
 
 <style scoped>

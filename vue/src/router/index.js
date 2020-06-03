@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMoment from 'vue-moment'
-//import store from '@/store'
+import store from '@/store'
 
 import 'vue-cal/dist/i18n/sv.js'
 import 'vue-cal/dist/vuecal.css'
-
-
-import Combined from '@/views/combined/Combined.vue'
 
 import Login from '@/views/Login.vue'
 import Overview from '@/views/combined/Overview.vue'
@@ -20,9 +17,7 @@ import CreateClass from '@/views/combined/CreateClass.vue'
 import CreateCourse from '@/views/combined/CreateCourse.vue'
 import PimMessage from '@/components/PimMessage.vue'
 import EditInformation from '@/views/combined/EditInformation.vue'
-
-import Admin from '@/views/combined/CreateCourse.vue'
-import Report from '../components/admin/Report.vue'
+import Report from '@/views/combined/Report.vue'
 
 import CalendarStudent from '@/views/combined/CalendarStudent.vue'
 import CalendarTeacher from '@/views/combined/CalendarTeacher.vue'
@@ -30,61 +25,60 @@ import CreateRole from '@/views/combined/CreateRole.vue'
 import Welcome from '@/views/combined/Welcome.vue'
 import notfound from '@/views/combined/404.vue'
 
-// import TClasses from "../components/teacher/TeacherClasses.vue"
-// import TCourse from "../components/teacher/TeacherCourses.vue"
-// import TEdit from "../components/teacher/TeacherEdit.vue"
-// import TPresence from "../components/teacher/TeacherPresence.vue"
-// import TRapport from "../components/teacher/TeacherReport.vue"
-// import Pim from '../views/Pim.vue'
 import receivedmessage from '@/components/receivedmessage.vue'
-
-
-
 
 Vue.use(VueRouter)
 Vue.use(VueMoment)
 
-
 const routes = [
   { path: '*', name: "404", component: notfound},
-{
-  path: '/',
-  name: 'Login',
-  component: Login
+  
+    {
+      path: '/',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/welcome',
+      name: 'Welcome',
+      component: Welcome,
+    },
 
-},
-{
-  path: '/welcome',
-  name: 'Welcome',
-  component: Welcome,
-},
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: Admin,
-    meta: {
-      authUser: true
-    }
-  },
   {
     path: '/report',
     name: 'Report',
     component: Report,
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Admin,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_report == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/overview',
     name: 'Overview',
-    component: Overview
+    component: Overview,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_overview == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/pimmessage',
     name: 'PimMessage',
-    component: PimMessage
+    component: PimMessage,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_messages == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/message',
@@ -94,7 +88,14 @@ const routes = [
   {
     path: '/classes',
     name: 'Classes',
-    component: Classes
+    component: Classes,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_classes_courses == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/users',
@@ -104,53 +105,111 @@ const routes = [
   {
     path: '/courses',
     name: 'Courses',
-    component: Courses
+    component: Courses,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_courses == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-account',
     name: 'CreateAccount',
-    component: CreateAccount
+    component: CreateAccount,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_account == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-class',
     name: 'CreateClass',
-    component: CreateClass
+    component: CreateClass,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_class == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
 
   {
     path: '/create-education',
     name: 'CreateEducation',
-    component: CreateEducation
+    component: CreateEducation,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_education == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-course',
     name: 'CreateCourse',
-    component: CreateCourse
+    component: CreateCourse,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_course == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/create-role',
     name: 'CreateRole',
-    component: CreateRole
+    component: CreateRole,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.create_role == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/calendar-student',
     name: 'CalendarStudent',
-    component: CalendarStudent
+    component: CalendarStudent,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_calendar_student == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/calendar-teacher',
     name: 'CalendarTeacher',
-    component: CalendarTeacher
-  },
-  {
-    path: '/combined',
-    name: 'Combined',
-    component: Combined
+    component: CalendarTeacher,
+    beforeEnter: (to, from, next) => {   
+      if (store.state.loggedInUser.role.access_calendar_teacher == true) {
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/edit-information',
     name: 'EditInformation',
-    component: EditInformation
+    component: EditInformation,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_user_edit == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   }
 
 ]
@@ -161,37 +220,4 @@ const router = new VueRouter({
   routes
 })
 
-/*
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.authUser)) {
-
-    if (store.state.logged) {
-      router.push('/overview')
-
-      // if (store.state.loggedInUser.role_id == 1) {
-
-      // } else {
-      //   next();
-      // }
-
-      // if (store.state.loggedInUser.roles[0].role == 3) {
-      //   router.push('/teacher')
-      // } else {
-      //   next();
-      // }
-
-      // if (store.state.loggedInUser.roles[0].role == 2) {
-      //   router.push('/user')
-      // } else {
-      //   next();
-      // }
-    } else {
-      router.push('/')
-    }
-
-  } else {
-    next();
-  }
-});
-*/
 export default router

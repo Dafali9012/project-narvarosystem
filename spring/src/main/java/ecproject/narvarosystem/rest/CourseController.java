@@ -20,33 +20,37 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<Course> courses(){
+    public List<Course> courses() {
         return courseRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public List<Course> courseById(@PathVariable int id){
+    public List<Course> courseById(@PathVariable int id) {
         return courseRepository.findAllById(Collections.singleton(id));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCourse(@PathVariable int id){
+    public void deleteCourse(@PathVariable int id) {
         courseRepository.deleteById(id);
     }
 
     @GetMapping("/teacher/{id}")
-    public List<Course> teacherCourse(@PathVariable int id){
+    public List<Course> teacherCourse(@PathVariable int id) {
         return courseRepository.findAllByTeacher_id(id);
     }
 
     @GetMapping("/student/{id}")
-    public List<Course> studentCourse(@PathVariable int id){
+    public List<Course> studentCourse(@PathVariable int id) {
         return courseRepository.findAllByStudent_id(id);
     }
 
     @GetMapping("/education/{id}")
-    public List<Course> educationCourse(@PathVariable int id){
+    public List<Course> educationCourse(@PathVariable int id) {
         return courseRepository.findAllByEducation_id(id);
     }
 
+    @GetMapping("/teacher/my/{id}")
+    public List<Course> myID(@PathVariable int id) {
+        return courseRepository.findAllByMyUserID(id);
+    }
 }
