@@ -2,9 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMoment from 'vue-moment'
 
-
 import 'vue-cal/dist/i18n/sv.js'
 import 'vue-cal/dist/vuecal.css'
+
+import store from '@/store/index.js'
 
 import Login from '@/views/Login.vue'
 import Overview from '@/views/combined/Overview.vue'
@@ -59,6 +60,13 @@ const routes = [
     path: '/report',
     name: 'Report',
     component: Report,
+    beforeEnter:(to, from, next) => {         
+      if (store.state.loggedInUser.role.access_report == true) {   
+        next();
+      } else {                
+        next('/');
+      }
+    }
   },
   {
     path: '/overview',
