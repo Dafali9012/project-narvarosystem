@@ -71,6 +71,7 @@ public class Role {
         this.access_report = access_report;
     }
 
+
     public int getId() {
         return id;
     }

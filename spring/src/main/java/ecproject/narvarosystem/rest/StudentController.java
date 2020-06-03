@@ -59,4 +59,9 @@ public class StudentController {
         return studentRepository.findByCourse_id(id);
     }
 
+    @GetMapping("/user/{id}")
+    public List<Student> userStudent(@PathVariable int id) {
+        return studentRepository.findByStudentUserId(id);
+    }
+
 }

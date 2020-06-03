@@ -6,10 +6,12 @@
       </div>
       <div class="col-9 d-flex">
         <div class="root d-flex flex-column container-fluid">
+
           <div class="content row mt-3">
+
             <div class="main col-9 mt-5">
               <div class="row ml-5">
-                <div class="col-12">
+                <div class="col-6">
                   <VueCal
                     class="vuecal--blue-theme"
                     ref="vuecal"
@@ -17,19 +19,44 @@
                     hide-weekends                    
                     show-week-numbers
                     active-view="week"
-                    :disable-views="['years', 'year', 'month', 'day']"
-                    style="height: 500px"
-                    :cell-click-hold="false"
-                    editable-events
+                    :disable-views="['years', 'year', 'month', 'day']"                    
+                    :cell-click-hold="false"                    
                     :events="events" 
-                    locale="sv"                    
-                  ></VueCal>
+                    :on-event-click="onEventClick"                 
+                    locale="sv"></VueCal>
                 </div>
-                </div>               
-              </div>
+
+                <div class="col-6">
+                  
+                 <h1 class="d-flex text-align-left">Lämna närvaro</h1>
+
+                  <form @submit.prevent="createAttendance">                  
+                  <div class="form-group">                    
+                    <label for="lectid">Lektion</label>
+                    <input type="text" disabled :value="selectedEvent.id" id="lecid" class="form-control" :placeholder="selectedEvent.title">
+                  </div>
+                  <div class="form-group">                    
+                    <label for="lecdatum">Datum</label>
+                    <input type="text" disabled :value="selectedEvent.start" id="lecdatum" class="form-control" :placeholder="selectedEvent.start">
+                  </div>
+
+                  <div class="form-group">     
+                    <label for="lecdatum">Närvaro/Frånvaro</label>
+                     <select class="form-control" id="present" name="present">
+                  <option value disabled selected>Välj</option>
+                  <option value="1">Närvarande</option>
+                  <option value="0">Frånvarnde</option>
+                  </select>   
+                  </div>                  
+                  <button type="submit" class="button button-primary float-right mt-5">Lämna</button>
+                </form>
+                </div>
+
+              </div>               
+            </div>
+
             </div>
           </div>
-          
         </div>
       </div>
     
@@ -50,15 +77,35 @@ export default {
     CombinedSidebar
   },
   data: function() {
-    return {
-      events: []    
+    return { 
+      selectedEvent: {},  
+      events: [], 
+      //student: this.$store.state.MyStudentID.id      
+     
     };    
-  },created() {    
-    this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);    
-    
-    
+  },mounted() {    
+    this.$store.dispatch("getMyLectureStudent", this.$store.state.loggedInUser.id);  
+    this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id);   
   },
   methods: {
+    async createAttendance() {
+      console.log("studentid: " + this.$store.state.MyStudentID.id)
+      let newAttendance = {
+        present: document.getElementById("present").value,
+        lecture_id: document.getElementById("lecid").value,
+        //student_id: this.student.id
+      };
+
+      let response = await fetch("http://localhost:8080/attendance", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newAttendance)
+      });
+
+      let result = await response.json();
+      console.log("POST:" + result);
+    },
+  
     getmyEvents(){
       let i;
       for (i = 0; i < this.getMyLectures.length; i++) {
@@ -66,6 +113,7 @@ export default {
         title: "Lektion " + String(this.getMyLectures[i].id),
         start: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
         end: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
+        id: this.getMyLectures[i].id,
         class: "lec"
       }
       this.events.push(newEvent)      
@@ -85,21 +133,22 @@ export default {
 
       let result = await response.json();
       console.log("POST:" + result);
-    }
+    },
+    onEventClick (event) {
+    this.selectedEvent = event    
+
+   
+  }
 
    
   },
   computed:{
     getMyLectures() {      
-      return this.$store.state.MyLectureTeacher
+      return this.$store.state.MyLectureStudent
     },
-    
     getshit(){
       return this.getmyEvents();
-    },
-    getMyCourses() {
-      return this.$store.state.MyCourseTeacher
-    }
+    },    
   }
 }
 </script>
