@@ -7,76 +7,49 @@
       <div class="col-sm-9 d-flex">
         <div class="root d-flex justify-content-center">
           <div class="main d-flex flex-column">
-            <h2 class="align-self-start">Redigera konto</h2>
+            <h2 class="align-self-start">Användarinformation</h2>
             <div class="content-line rounded" />
 
-            <form @submit.prevent="updateAccount()">
-              <div class="mt-5 d-flex justify-content-center">
-                <input
-                  disabled
-                  :value="getLoggedUser.first_name"
-                  class="form-control"
-                  type="text"
-                  placeholder="Förnamn"
-                  style="width: 35%"
-                  id="first-name"
-                />
-                <input
-                  disabled
-                  :value="getLoggedUser.last_name"
-                  class="form-control"
-                  type="text"
-                  placeholder="Efternamn"
-                  style="width: 35%"
-                  id="last-name"
-                />
-              </div>
-              <div class="mt-5 d-flex justify-content-center">
-                <input
-                  :value="getLoggedUser.phone_number"
-                  class="form-control"
-                  type="text"
-                  placeholder="Telefon"
-                  style="width: 20%"
-                  id="telephone"
-                />
-                <input
-                  disabled
-                  :value="getLoggedUser.email"
-                  class="form-control"
-                  type="text"
-                  placeholder="Email"
-                  style="width: 40%"
-                  id="email"
-                />
-              </div>
-              <div class="mt-4 d-flex justify-content-center">
-                <input
-                  disabled
-                  :value="getLoggedUser.ssn"
-                  class="form-control"
-                  type="text"
-                  placeholder="Personnummer"
-                  style="width: 20%"
-                  id="ssn"
-                />
-                <input
-                  id="password"
-                  class="form-control"
-                  style="width: 40%; "
-                  type="password"
-                  placeholder="Ändra lösenord"
-                />
-              </div>
-              <div class="mt-4 d-flex justify-content-start"></div>
-              <div class="button-create mt-4 d-flex justify-content-end">
-                <button type="submit" class="button button-primary" style="margin-left: 20%">
-                  <span>Spara</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+
+             <div class="container mt-5">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Förnamn:</p>
+                        <p>Efternamn:</p>
+                        <p>E-post:</p>
+                        <p>Telefonnummer</p>
+                        <p>Personnummer</p>
+                    </div>
+                    <div class="col-6">
+                        <p>{{user.first_name}}</p>
+                        <p>{{user.last_name}}</p>
+                        <p>{{user.email}}</p>
+                        <p>{{user.phone_number}}</p>
+                        <p>{{user.ssn}}</p>
+                    </div>                    
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Min Klass:</p>
+                        <p>Klassansvarig:</p>
+                        <p>Utbildning:</p>
+                        <p>Utbildningsansvarig</p>                        
+                    </div>
+                    <div class="col-6">
+                        <p>{{student[0].fuck.name}}</p>
+                        <p>{{student[0].fuck.classManager.userec.first_name}} {{student[0].fuck.classManager.userec.last_name}}</p>
+                        <p>{{student[0].fuck.educationOfClass.name}}</p>
+                        <p>{{student[0].fuck.educationOfClass.educationManager.userec.first_name}} {{student[0].fuck.educationOfClass.educationManager.userec.last_name}}</p>                        
+                    </div>                    
+                </div>
+
+            </div>
+
+           </div>
+             </div>
+             </div>
       </div>
     </div>
   </div>
@@ -88,17 +61,15 @@ import CombinedSidebar from "@/components/CombinedSidebar.vue";
 export default {
   components: {
     CombinedSidebar
-  },
-  computed: {
-    getLoggedUser() {
-      return this.$store.state.loggedInUser;
-    }
+  },  
+  mounted() {        
+    this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id);   
   },
   data() {
-    return {};
-  },
-  methods: {
-    updateAccount() {}
-  }
+    return {
+      user:  this.$store.state.loggedInUser,
+      student: this.$store.state.MyStudentID
+    };
+  },  
 };
 </script>

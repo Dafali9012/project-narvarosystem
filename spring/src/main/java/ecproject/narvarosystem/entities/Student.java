@@ -32,8 +32,8 @@ public class Student {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "class_id",  nullable = false, insertable = false, updatable = false)
-    @JsonIgnore
-    private EdClass fuck;
+    //@JsonIgnore
+    private EdClass EdClass;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -82,11 +82,11 @@ public class Student {
 
 
     public EdClass getFuck() {
-        return fuck;
+        return EdClass;
     }
 
-    public void setFuck(EdClass fuck) {
-        this.fuck = fuck;
+    public void setFuck(EdClass edclass) {
+        this.EdClass = edclass;
     }
 
     public int getUser_id() {

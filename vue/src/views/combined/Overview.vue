@@ -155,7 +155,7 @@ export default {
         }, 
         {
           label: "Kurs",
-          name: "course_id",
+          name: "course.name",
           sort: true
         },     
         
