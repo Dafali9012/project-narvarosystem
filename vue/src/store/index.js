@@ -21,6 +21,7 @@ export default new Vuex.Store({
         access_calendar_student: false,
         access_course : false,
         access_user_edit: false,
+        access_report: false,
       }
     },
     AllClass: [],
