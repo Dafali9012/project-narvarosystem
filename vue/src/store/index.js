@@ -38,8 +38,8 @@ export default new Vuex.Store({
     messageToDelete: {},    
     MyLectureStudent: [],
     MyLectureTeacher: [],
-    MyCourseTeacher: []
-
+    MyCourseTeacher: [],
+    MyStudentID: {}
   },
   mutations: {
     setMessageToDelete(state, value) {
@@ -95,7 +95,10 @@ export default new Vuex.Store({
     },
     setMyCourseTeacher(state, value){
       state.MyCourseTeacher = value;
-    }
+    },
+    setMyStudentID(state, value){
+      state.MyStudentID = value;
+    },
   },
   actions: {
     async updateLoggedUser({
@@ -142,7 +145,15 @@ export default new Vuex.Store({
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllUsers", json);
-    },    
+    }, 
+    getMyStudentID: async function ({
+      commit
+    }, id) {
+      let url = "http://localhost:8080/student/user/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyStudentID", json);
+    },   
     getMyLectureStudent: async function ({
       commit
     }, id) {

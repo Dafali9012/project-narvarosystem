@@ -19,10 +19,8 @@
                     hide-weekends                    
                     show-week-numbers
                     active-view="week"
-                    :disable-views="['years', 'year', 'month', 'day']"
-                    style="height: 500px"
-                    :cell-click-hold="false"
-                    editable-events
+                    :disable-views="['years', 'year', 'month', 'day']"                    
+                    :cell-click-hold="false"                    
                     :events="events" 
                     locale="sv"                    
                   ></VueCal>
@@ -99,7 +97,7 @@ export default {
     return {
       events: []    
     };    
-  },created() {    
+  },mounted() {    
     this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
     this.$store.dispatch("getMyCourseTeacher", this.$store.state.loggedInUser.id);
     console.log("id: " + this.$store.state.loggedInUser.id)
