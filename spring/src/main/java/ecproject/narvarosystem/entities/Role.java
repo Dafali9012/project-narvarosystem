@@ -35,14 +35,26 @@ public class Role {
     @Column(name = "create_role")
     private Boolean create_role;
 
+    @Column(name = "create_lecture")
+    private Boolean create_lecture;
+
     @Column(name = "access_overview")
     private Boolean access_overview;
 
     @Column(name = "access_messages")
     private Boolean access_messages;
 
-    @Column(name = "access_classes_courses")
-    private Boolean access_classes_courses;
+    @Column(name = "access_classroom")
+    private Boolean access_classroom;
+
+    @Column(name = "access_report")
+    private Boolean access_report;
+
+    @Column(name = "access_teacher_info")
+    private Boolean access_teacher_info;
+
+    @Column(name = "access_student_info")
+    private Boolean access_student_info;
 
     @Column(name = "access_calendar_teacher")
     private Boolean access_calendar_teacher;
@@ -50,27 +62,11 @@ public class Role {
     @Column(name = "access_calendar_student")
     private Boolean access_calendar_student;
 
-    @Column(name = "access_courses")
-    private Boolean access_courses;
 
-    @Column(name = "access_user_edit")
-    private Boolean access_user_edit;
-
-    @Column(name = "access_report")
-    private Boolean access_report;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<User> users;
-
-    public Boolean getAccess_report() {
-        return access_report;
-    }
-
-    public void setAccess_report(Boolean access_report) {
-        this.access_report = access_report;
-    }
-
 
     public int getId() {
         return id;
@@ -86,14 +82,6 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     public Boolean getCreate_class() {
@@ -136,6 +124,14 @@ public class Role {
         this.create_role = create_role;
     }
 
+    public Boolean getCreate_lecture() {
+        return create_lecture;
+    }
+
+    public void setCreate_lecture(Boolean create_lecture) {
+        this.create_lecture = create_lecture;
+    }
+
     public Boolean getAccess_overview() {
         return access_overview;
     }
@@ -152,12 +148,36 @@ public class Role {
         this.access_messages = access_messages;
     }
 
-    public Boolean getAccess_classes_courses() {
-        return access_classes_courses;
+    public Boolean getAccess_classroom() {
+        return access_classroom;
     }
 
-    public void setAccess_classes_courses(Boolean access_classes_courses) {
-        this.access_classes_courses = access_classes_courses;
+    public void setAccess_classroom(Boolean access_classroom) {
+        this.access_classroom = access_classroom;
+    }
+
+    public Boolean getAccess_report() {
+        return access_report;
+    }
+
+    public void setAccess_report(Boolean access_report) {
+        this.access_report = access_report;
+    }
+
+    public Boolean getAccess_teacher_info() {
+        return access_teacher_info;
+    }
+
+    public void setAccess_teacher_info(Boolean access_teacher_info) {
+        this.access_teacher_info = access_teacher_info;
+    }
+
+    public Boolean getAccess_student_info() {
+        return access_student_info;
+    }
+
+    public void setAccess_student_info(Boolean access_student_info) {
+        this.access_student_info = access_student_info;
     }
 
     public Boolean getAccess_calendar_teacher() {
@@ -176,19 +196,11 @@ public class Role {
         this.access_calendar_student = access_calendar_student;
     }
 
-    public Boolean getAccess_courses() {
-        return access_courses;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setAccess_courses(Boolean access_courses) {
-        this.access_courses = access_courses;
-    }
-
-    public Boolean getAccess_user_edit() {
-        return access_user_edit;
-    }
-
-    public void setAccess_user_edit(Boolean access_user_edit) {
-        this.access_user_edit = access_user_edit;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

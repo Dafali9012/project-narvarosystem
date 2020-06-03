@@ -8,6 +8,22 @@
 
     <div class="mt-5">
       <router-link
+        v-if="this.$store.state.loggedInUser.role.access_student_info"
+        to="/student-information"
+        class="option d-flex align-self-center"
+      >
+        <font-awesome-icon :icon="['fas','user']" class="text-cream align-self-center" />
+        <p class="ml-3 unselectable menu-link no-margin">Användarinformation</p>
+      </router-link>
+      <router-link
+        v-if="this.$store.state.loggedInUser.role.access_teacher_info"
+        to="/teacher-information"
+        class="option d-flex align-self-center"
+      >
+        <font-awesome-icon :icon="['fas','user']" class="text-cream align-self-center" />
+        <p class="ml-3 unselectable menu-link no-margin">Användarinformation</p>
+      </router-link>
+      <router-link
         v-if="this.$store.state.loggedInUser.role.access_overview"
         to="/overview"
         class="option d-flex align-self-center"
@@ -23,6 +39,16 @@
         <font-awesome-icon :icon="['far','id-badge']" class="text-cream align-self-center ml-1" />
         <p class="ml-3 unselectable menu-link no-margin">Skapa nytt konto</p>
       </router-link>
+
+        <router-link
+            v-if="this.$store.state.loggedInUser.role.create_role"
+            to="/create-role"
+            class="option d-flex align-self-center"
+          >
+            <font-awesome-icon :icon="['fas','chart-bar']" class="text-cream align-self-center" />
+            <p class="ml-3 unselectable menu-link no-margin">Skapa Roll</p>
+          </router-link>
+
       <router-link
         v-if="this.$store.state.loggedInUser.role.create_education"
         to="/create-education"
@@ -46,6 +72,15 @@
       >
         <font-awesome-icon :icon="['fas','chalkboard']" class="text-cream align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Skapa ny klass</p>
+      </router-link>
+
+      <router-link
+        v-if="this.$store.state.loggedInUser.role.create_lecture"
+        to="/create-lecture"
+        class="option d-flex align-self-center"
+      >
+        <font-awesome-icon :icon="['fas','chalkboard']" class="text-cream align-self-center" />
+        <p class="ml-3 unselectable menu-link no-margin">Skapa ny lektion</p>
       </router-link>
 
       <router-link to="/report" class="option d-flex align-self-center">
@@ -76,13 +111,15 @@
       </router-link>
 
       <router-link
-        v-if="this.$store.state.loggedInUser.role.create_role"
-        to="/create-role"
+        v-if="this.$store.state.loggedInUser.role.access_classroom"
+        to="/classroom"
         class="option d-flex align-self-center"
       >
-        <font-awesome-icon :icon="['fas','chart-bar']" class="text-cream align-self-center" />
-        <p class="ml-3 unselectable menu-link no-margin">Skapa Roll</p>
+        <font-awesome-icon :icon="['fas','chalkboard']" class="text-cream align-self-center" />
+        <p class="ml-3 unselectable menu-link no-margin">ClassRoom</p>
       </router-link>
+
+      
     </div>
   </div>
 </template>
