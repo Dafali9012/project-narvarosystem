@@ -25,8 +25,7 @@ export default {
   methods: {
     logout: function()  {
      
-      window.localStorage.clear();       
-      console.log("halo")
+      //window.localStorage.clear();  
       window.location.reload() 
       
     }
