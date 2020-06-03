@@ -26,6 +26,7 @@
                 </div>
 
                 <div class="col-6">
+<<<<<<< HEAD
                   <h1 class="d-flex text-align-left">Lämna närvaro</h1>
 
                   <form @submit.prevent="createAttendance">
@@ -62,6 +63,31 @@
                     </div>
                     <button type="submit" class="button button-primary float-right mt-5">Lämna</button>
                   </form>
+=======
+                  
+                 <h1 class="d-flex text-align-left">Lämna närvaro</h1>
+
+                  <form @submit.prevent="createAttendance">                  
+                  <div class="form-group">                    
+                    <label for="lectid">Lektion</label>
+                    <input type="text" disabled :value="selectedEvent.id" id="lecid" class="form-control" :placeholder="selectedEvent.title">
+                  </div>
+                  <div class="form-group">                    
+                    <label for="lecdatum">Datum</label>
+                    <input type="text" disabled :value="selectedEvent.start" id="lecdatum" class="form-control" :placeholder="selectedEvent.start">
+                  </div>
+
+                  <div class="form-group">     
+                    <label for="lecdatum">Närvaro/Frånvaro</label>
+                     <select class="form-control" id="present" name="present">
+                  <option value disabled selected>Välj</option>
+                  <option value="true">Närvarande</option>
+                  <option value="false">Frånvarnde</option>
+                  </select>   
+                  </div>                  
+                  <button type="submit" class="button button-primary float-right mt-5">Lämna</button>
+                </form>
+>>>>>>> dad634259ab357f0cba59615abe8edbd2fb24a18
                 </div>
               </div>
             </div>
@@ -84,6 +110,7 @@ export default {
     CombinedSidebar
   },
   data: function() {
+<<<<<<< HEAD
     return {
       selectedEvent: {},
       events: []
@@ -104,6 +131,24 @@ export default {
         present: document.getElementById("present").value,
         lecture_id: document.getElementById("lecid").value
         //student_id: this.student.id
+=======
+    return { 
+      selectedEvent: {},  
+      events: [], 
+      student: this.$store.state.MyStudentID.id      
+     
+    };    
+  },mounted() {    
+    this.$store.dispatch("getMyLectureStudent", this.$store.state.loggedInUser.id);  
+    this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id);   
+  },
+  methods: {
+    async createAttendance() {      
+      let newAttendance = {
+        present: document.getElementById("present").value,
+        lecture_id: document.getElementById("lecid").value,
+        student_id: this.$store.state.MyStudentID[0].id
+>>>>>>> dad634259ab357f0cba59615abe8edbd2fb24a18
       };
 
       let response = await fetch("http://localhost:8080/attendance", {
@@ -148,9 +193,16 @@ export default {
       this.selectedEvent = event;
     }
   },
+<<<<<<< HEAD
   computed: {
     getMyLectures() {
       return this.$store.state.MyLectureStudent;
+=======
+  computed:{
+    
+    getMyLectures() {      
+      return this.$store.state.MyLectureStudent
+>>>>>>> dad634259ab357f0cba59615abe8edbd2fb24a18
     },
     getshit() {
       return this.getmyEvents();
