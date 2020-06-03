@@ -23,7 +23,8 @@ export default new Vuex.Store({
     isLogged:  false,
     messageToDelete: {},    
     MyLectureStudent: [],
-    MyLectureTeacher: []
+    MyLectureTeacher: [],
+    MyCourseTeacher: []
 
   },
   mutations: {
@@ -77,6 +78,9 @@ export default new Vuex.Store({
     },
     setMyLectureTeacher(state, value){
       state.MyLectureTeacher = value;
+    },
+    setMyCourseTeacher(state, value){
+      state.MyCourseTeacher = value;
     }
   },
   actions: {
@@ -142,6 +146,14 @@ export default new Vuex.Store({
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setMyLectureTeacher", json);
+    },
+    getMyCourseTeacher: async function ({
+      commit
+    }, id) {
+      let url = "http://localhost:8080/course/teacher/my/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyCourseTeacher", json);
     },
     getClassByED: async function ({
       commit
