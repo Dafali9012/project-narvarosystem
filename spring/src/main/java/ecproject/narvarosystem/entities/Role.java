@@ -59,6 +59,10 @@ public class Role {
     @Column(name = "access_report")
     private Boolean access_report;
 
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<User> users;
+
     public Boolean getAccess_report() {
         return access_report;
     }
@@ -66,10 +70,6 @@ public class Role {
     public void setAccess_report(Boolean access_report) {
         this.access_report = access_report;
     }
-
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<User> users;
 
     public int getId() {
         return id;
