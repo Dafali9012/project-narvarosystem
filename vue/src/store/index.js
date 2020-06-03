@@ -219,17 +219,7 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setMessage", json);
     }
-    // deletUser: async function({ commit }, id) {
-    //   let url = "http://localhost:8080/user";
-    //   const result = await fetch(url);
-    //   const json = await result.json();
-    //   commit("setAllUsers", json);
-    // }
+
   },
-  modules: {},
-  getters: {
-    getUser: state => {
-      return state.loggedInUser;
-    }
-  }
+  modules: {}
 })
