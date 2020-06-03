@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from "../store/index.js"
 import VueMoment from 'vue-moment'
 
 
@@ -124,8 +123,10 @@ const routes = [
     path: '/calendar-teacher',
     name: 'CalendarTeacher',
     component: CalendarTeacher,
-    beforeEnter: (to, from, next) => {         
-      if (store.state.loggedInUser.role.access_calendar_teacher == true) {   
+    beforeEnter: async function (to, from, next) {   
+      let response = await fetch("/login/name")
+      let result = await response.json()    
+      if (result.role.access_calendar_teacher == true) {
         next();
       } else {                
         next(false);
@@ -146,37 +147,4 @@ const router = new VueRouter({
   routes
 })
 
-/*
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.authUser)) {
-
-    if (store.state.logged) {
-      router.push('/overview')
-
-      // if (store.state.loggedInUser.role_id == 1) {
-
-      // } else {
-      //   next();
-      // }
-
-      // if (store.state.loggedInUser.roles[0].role == 3) {
-      //   router.push('/teacher')
-      // } else {
-      //   next();
-      // }
-
-      // if (store.state.loggedInUser.roles[0].role == 2) {
-      //   router.push('/user')
-      // } else {
-      //   next();
-      // }
-    } else {
-      router.push('/')
-    }
-
-  } else {
-    next();
-  }
-});
-*/
 export default router

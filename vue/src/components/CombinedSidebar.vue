@@ -66,19 +66,19 @@
         <p class="ml-3 unselectable menu-link no-margin">PIM</p>
       </router-link>
       <router-link
-        v-if="this.$store.state.loggedInUser.role.access_calendar"
-        to="/calendar/student"
+        v-if="this.$store.state.loggedInUser.role.access_calendar_student"
+        to="/calendar-student"
         class="option d-flex align-self-center"
       >
         <font-awesome-icon :icon="['fas','chart-bar']" class="text-cream align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Kalendar Elev</p>
       </router-link>
-      <!--
-      <router-link to="/calendar/teacher" class="option d-flex align-self-center">
+
+      <router-link v-if="this.$store.state.loggedInUser.role.access_calendar_teacher" to="/calendar-teacher" class="option d-flex align-self-center">
         <font-awesome-icon :icon="['fas','chart-bar']" class="align-self-center" />
         <p class="ml-3 unselectable menu-link no-margin">Kalendar Lärare</p>
       </router-link>
-      -->
+
       <router-link
         v-if="this.$store.state.loggedInUser.role.create_role"
         to="/create-role"

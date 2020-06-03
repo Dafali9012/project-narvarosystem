@@ -198,5 +198,10 @@ export default new Vuex.Store({
     //   commit("setAllUsers", json);
     // }
   },
-  modules: {}
+  modules: {},
+  getters: {
+    getUser: state => {
+      return state.loggedInUser;
+    }
+  }
 })
