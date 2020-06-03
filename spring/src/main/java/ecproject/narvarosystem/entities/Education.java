@@ -30,7 +30,7 @@ public class Education {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "manager_id", nullable = false, insertable = false, updatable = false)
-    @JsonIgnore
+    //@JsonIgnore
     private ECpersonnel educationManager;
 
     @OneToMany(mappedBy = "educationOfClass", cascade = CascadeType.ALL)
@@ -43,7 +43,7 @@ public class Education {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "city_id", nullable = false, insertable = false, updatable = false)
-    @JsonIgnore
+    //@JsonIgnore
     private City city;
 
 

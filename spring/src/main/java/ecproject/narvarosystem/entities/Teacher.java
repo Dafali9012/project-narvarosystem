@@ -20,17 +20,19 @@ public class Teacher implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    /*@JoinColumn(name = "consult_id", nullable = true)
+    @JoinColumn(name = "consult_id", nullable = true)
     private Integer consult_id;
 
     @JoinColumn(name = "ec_id", nullable = true)
-    private Integer ec_id;*/
+    private Integer ec_id;
 
     @OneToOne(optional = false)
+    @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name = "consult_id", nullable = true, insertable = false, updatable = false)
     private Consult consult;
 
     @OneToOne(optional = false)
+    @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name = "ec_id", nullable = true, insertable = false, updatable = false)
     private ECpersonnel eCpersonnel;
 
@@ -71,7 +73,7 @@ public class Teacher implements Serializable {
         this.eCpersonnel = eCpersonnel;
     }
 
-    /*public Integer getConsult_id() {
+    public Integer getConsult_id() {
         return consult_id;
     }
 
@@ -85,5 +87,5 @@ public class Teacher implements Serializable {
 
     public void setEc_id(Integer ec_id) {
         this.ec_id = ec_id;
-    }*/
+    }
 }

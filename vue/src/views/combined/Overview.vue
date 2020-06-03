@@ -9,7 +9,18 @@
           <div class="main d-flex flex-column width-84">
             <h2 class="align-self-start">Överblick</h2>
             <div class="content-line rounded mb-5" />
+
             <div class="d-flex flex-column">
+              <div class="d-flex justify-content-between background-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Användare</p>
+                </div>
+              </div>
+              <vue-bootstrap4-table :rows="user_rows" :columns="user_columns" :config="user_config"></vue-bootstrap4-table>
+            </div>
+
+
+            <div class="d-flex flex-column mt-5">
               <div class="d-flex justify-content-between background-primary">
                 <div class="d-flex align-items-center">
                   <p class="no-margin ml-3 text-cream unselectable my-2">Utbildningar</p>
@@ -17,9 +28,9 @@
               </div>
               <vue-bootstrap4-table :rows="edu_rows" :columns="edu_columns" :config="edu_config"></vue-bootstrap4-table>
             </div>
-            <br />
+            
 
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column mt-5">
               <div class="d-flex justify-content-between background-primary">
                 <div class="d-flex align-items-center">
                   <p class="no-margin ml-3 text-cream unselectable my-2">Klasser</p>
@@ -31,9 +42,10 @@
                 :config="class_config"
               ></vue-bootstrap4-table>
             </div>
+           
 
-            <br />
-            <div class="d-flex flex-column">
+            
+            <div class="d-flex flex-column mt-5">
               <div class="d-flex justify-content-between background-primary">
                 <div class="d-flex align-items-center">
                   <p class="no-margin ml-3 text-cream unselectable my-2">Kurser</p>
@@ -45,9 +57,28 @@
                 :config="course_config"
               ></vue-bootstrap4-table>
             </div>
+          
+
+          <div class="d-flex flex-column mt-5">
+              <div class="d-flex justify-content-between background-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Lektioner</p>
+                </div>
+              </div>
+              <vue-bootstrap4-table
+                :rows="lec_rows"
+                :columns="lec_columns"
+                :config="lec_config"
+              ></vue-bootstrap4-table>
+            </div>
           </div>
         </div>
-      </div>
+        </div>
+
+
+
+        
+     
     </div>
   </div>
 </template>
@@ -63,10 +94,91 @@ export default {
   },
   data() {
     return {
+
+
+       user_columns: [
+        {
+          label: "Förstname",
+          name: "first_name",
+          sort: true
+        },
+        {
+          label: "Efternamn",
+          name: "last_name",
+          sort: true
+        },
+        {
+          label: "E-post",
+          name: "email" ,              
+          sort: true
+        },
+        {
+          label: "Telefon",
+          name: "phone_number" ,              
+          sort: true
+        },
+        
+        {
+          label: "Personnummer",
+          name: "ssn",
+          sort: true
+        },
+        {
+          label: "Roll",
+          name: "role.name",
+          sort: true
+        }
+      ],
+      user_config: {
+        checkbox_rows: true,        
+        pagination: false,
+        pagination_info: false,
+        show_refresh_button: false,
+        show_reset_button: false,
+        global_search: {
+          placeholder: "Sök",
+          visibility: true
+        },
+       
+      },
+
+       lec_columns: [
+        {
+          label: "Lektion",
+          name: "id",
+          sort: true
+        },
+        {
+          label: "Datum",
+          name: "date",
+          sort: true
+        }, 
+        {
+          label: "Kurs",
+          name: "course_id",
+          sort: true
+        },     
+        
+        
+      ],
+      lec_config: {
+        checkbox_rows: true,        
+        pagination: false,
+        pagination_info: false,
+        show_refresh_button: false,
+        show_reset_button: false,
+        global_search: {
+          placeholder: "Sök",
+          visibility: true
+        },
+       
+      },
+
+
       class_columns: [
         {
           label: "Klass",
-          name: "classID",
+          name: "id",
           sort: true
         },
         {
@@ -75,24 +187,24 @@ export default {
           sort: true
         },
         {
-          label: "Startdatum",
-          name: "startDate",
+          label: "Ansvarig Förstnamn",
+          name: "classManager.userec.first_name" ,              
           sort: true
         },
         {
-          label: "Slutdatum",
-          name: "endDate",
+          label: "Ansvarig Efternamn",
+          name: "classManager.userec.last_name" ,              
           sort: true
         },
+        
         {
           label: "Utbildning",
-          name: "edID",
+          name: "educationOfClass.name",
           sort: true
         }
       ],
       class_config: {
-        checkbox_rows: true,
-        rows_selectable: true,
+        checkbox_rows: true,        
         pagination: false,
         pagination_info: false,
         show_refresh_button: false,
@@ -101,7 +213,7 @@ export default {
           placeholder: "Sök",
           visibility: true
         },
-        card_title: "Klasser"
+       
       },
 
       edu_columns: [
@@ -109,26 +221,31 @@ export default {
           label: "Utbildning",
           name: "name",
           sort: true
-        },
-        {
-          label: "Poäng",
-          name: "point",
-          sort: true
-        },
+        },        
         {
           label: "Beskrivning",
           name: "description",
           sort: false
         },
         {
-          label: "Lärare",
-          name: "leaderId",
+          label: "Ansvarig Förstnamn",
+          name: "educationManager.userec.first_name",
+          sort: true
+        },
+        {
+          label: "Ansvarig Eftertnamn",
+          name: "educationManager.userec.last_name",
+          sort: true
+        },
+        {
+          label: "Ort",
+          name: "city.name",
           sort: true
         }
+
       ],
       edu_config: {
-        checkbox_rows: true,
-        rows_selectable: true,
+        checkbox_rows: true,        
         pagination: false,
         pagination_info: false,
         show_refresh_button: false,
@@ -137,7 +254,7 @@ export default {
           placeholder: "Sök",
           visibility: true
         },
-        card_title: "Utbildning"
+        
       },
 
       course_columns: [
@@ -148,7 +265,7 @@ export default {
         },
         {
           label: "Poäng",
-          name: "point",
+          name: "points",
           sort: true
         },
         {
@@ -158,23 +275,22 @@ export default {
         },
         {
           label: "Startdatum",
-          name: "startDate",
+          name: "date_start",
           sort: true
         },
         {
           label: "Slutdatum",
-          name: "endDate",
+          name: "date_end",
           sort: true
         },
         {
           label: "Utbildning",
-          name: "edID",
+          name: "education.name",
           sort: true
         }
       ],
       course_config: {
-        checkbox_rows: true,
-        rows_selectable: true,
+        checkbox_rows: true,        
         pagination: false,
         pagination_info: false,
         show_refresh_button: false,
@@ -183,7 +299,7 @@ export default {
           placeholder: "Sök",
           visibility: true
         },
-        card_title: "Kurser"
+        
       }
     };
   },
@@ -191,6 +307,8 @@ export default {
     this.$store.dispatch("getAllClasses");
     this.$store.dispatch("getAllCourses");
     this.$store.dispatch("getAllEducations");
+    this.$store.dispatch("getAllUsers");
+    this.$store.dispatch("getAllLectures");
   },
   methods: {},
   computed: {
@@ -207,6 +325,16 @@ export default {
     course_rows: {
       get() {
         return this.$store.state.AllCourse;
+      }
+    },
+    lec_rows: {
+      get() {
+        return this.$store.state.AllLecture;
+      }
+    },
+    user_rows: {
+      get() {
+        return this.$store.state.AllUser;
       }
     }
   }

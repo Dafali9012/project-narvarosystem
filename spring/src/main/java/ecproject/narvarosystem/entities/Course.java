@@ -44,12 +44,12 @@ public class Course {
 
 
     @ManyToOne(optional = false)
-    @JsonIgnore
+    //@JsonIgnore
     @JoinColumn(name = "education_id", nullable = false, insertable = false, updatable = false)
     private Education education;
 
     @ManyToOne(optional = false)
-    @JsonIgnore
+    //@JsonIgnore
     @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name = "teacher_id", nullable = false, insertable = false, updatable = false)
     private Teacher teacher;

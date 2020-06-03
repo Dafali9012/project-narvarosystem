@@ -28,6 +28,7 @@ export default new Vuex.Store({
     AllEducation: [],
     AllCourse: [],
     AllUser: [],
+    AllLecture: [],
     ecPersonnel: [],
     teachers: [],
     cities: [],
@@ -65,6 +66,9 @@ export default new Vuex.Store({
     },
     setAllUsers(state, value) {
       state.AllUser = value;
+    }, 
+    setAllLectures(state, value) {
+      state.AllLecture = value;
     }, 
     setClassByED(state, value) {
       state.ClassByED = value;
@@ -145,6 +149,14 @@ export default new Vuex.Store({
       const result = await fetch(url);
       const json = await result.json();
       commit("setAllUsers", json);
+    }, 
+    getAllLectures: async function ({
+      commit
+    }) {
+      let url = "http://localhost:8080/lecture";
+      const result = await fetch(url);
+      const json = await result.json();
+      commit("setAllLectures", json);
     }, 
     getMyStudentID: async function ({
       commit

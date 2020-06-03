@@ -26,7 +26,7 @@ public class Lecture {
     private Integer course_id;
 
     @ManyToOne(optional = false)
-    @JsonIgnore
+    //@JsonIgnore
     @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
     private Course course;

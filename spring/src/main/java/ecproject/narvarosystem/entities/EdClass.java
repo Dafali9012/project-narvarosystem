@@ -29,12 +29,12 @@ public class EdClass {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "education_id",nullable=false, insertable = false, updatable = false)
-    @JsonIgnore
+    //@JsonIgnore
     private Education educationOfClass;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "manager_id", nullable=false, insertable = false, updatable = false)
-    @JsonIgnore
+    //@JsonIgnore
     private ECpersonnel classManager;
 
     @JsonIgnore
