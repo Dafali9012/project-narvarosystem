@@ -26,10 +26,6 @@ public class EdClassController {
         return this.eDClassRepository.findAll();
     }
 
-    @GetMapping("/student/{id}")
-    public List<Course> studentCourse(@PathVariable int id){
-        return eDClassRepository.findAllByStudent_id(id);
-    }
     @GetMapping("/{id]")
     public List<EdClass> edclasById(@PathVariable int id){
         return eDClassRepository.findAllById(Collections.singleton(id));
@@ -48,6 +44,11 @@ public class EdClassController {
     @GetMapping("/education/{id}")
     public List<EdClass> educationEdClass(@PathVariable int id){
         return eDClassRepository.findAllByEducation_id(id);
+    }
+
+    @GetMapping("/teacher/my/{id}")
+    public List<EdClass> teacherEdClass(@PathVariable int id){
+        return eDClassRepository.findAllByTeacher_id(id);
     }
 
 

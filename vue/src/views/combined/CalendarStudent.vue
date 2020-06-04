@@ -106,6 +106,7 @@ export default {
           start: moment(this.getMyLectures[i].date).format("YYYY-MM-DD"),
           end: moment(this.getMyLectures[i].date).format("YYYY-MM-DD"),
           id: this.getMyLectures[i].id,
+          content: this.getMyLectures[i].course.name,
           class: "lec"
         };
         this.events.push(newEvent);

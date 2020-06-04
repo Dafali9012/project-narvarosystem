@@ -44,8 +44,22 @@
                         <p>{{student[0].fuck.educationOfClass.educationManager.userec.first_name}} {{student[0].fuck.educationOfClass.educationManager.userec.last_name}}</p>                        
                     </div>                    
                 </div>
-
             </div>
+
+
+  <div class="d-flex flex-column mt-5">
+              <div class="d-flex justify-content-between background-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Mina Kurser</p>
+                </div>
+              </div>
+              <vue-bootstrap4-table
+                :rows="course_rows"
+                :columns="course_columns"
+                :config="course_config"
+              ></vue-bootstrap4-table>
+            </div>
+
 
            </div>
              </div>
@@ -57,19 +71,75 @@
 
 <script>
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
+import VueBootstrap4Table from "vue-bootstrap4-table";
 
 export default {
   components: {
-    CombinedSidebar
+    CombinedSidebar,
+    VueBootstrap4Table
   },  
-  mounted() {        
-    this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id);   
-  },
+  
   data() {
     return {
       user:  this.$store.state.loggedInUser,
-      student: this.$store.state.MyStudentID
-    };
-  },  
+      student: this.$store.state.MyStudentID,
+       course_columns: [
+        {
+          label: "Kurs",
+          name: "name",
+          sort: true
+        },
+        {
+          label: "Poäng",
+          name: "points",
+          sort: true
+        },
+        {
+          label: "Beskrivning",
+          name: "description",
+          sort: false
+        },
+        {
+          label: "Startdatum",
+          name: "date_start",
+          sort: true
+        },
+        {
+          label: "Slutdatum",
+          name: "date_end",
+          sort: true
+        },
+        {
+          label: "Utbildning",
+          name: "education.name",
+          sort: true
+        }
+      ],
+      course_config: {
+        checkbox_rows: true,        
+        pagination: false,
+        pagination_info: false,
+        show_refresh_button: false,
+        show_reset_button: false,
+        global_search: {
+          placeholder: "Sök",
+          visibility: true
+        },
+      }
+    };    
+  }, 
+  mounted() {        
+    this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id); 
+    this.$store.dispatch("getMyCourseStudent", this.$store.state.loggedInUser.id);     
+  },
+  methods: {},
+  computed: {    
+    course_rows: {
+      get() {
+        return this.$store.state.MyCourseStudent;
+      }
+    },    
+  }
+
 };
 </script>

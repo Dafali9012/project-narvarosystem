@@ -111,6 +111,7 @@ export default {
         title: "Lektion " + String(this.getMyLectures[i].id),
         start: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
         end: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
+        content: this.getMyLectures[i].course.name,
         class: "lec"
       }
       this.events.push(newEvent)      

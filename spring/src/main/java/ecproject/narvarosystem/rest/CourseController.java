@@ -51,6 +51,6 @@ public class CourseController {
 
     @GetMapping("/teacher/my/{id}")
     public List<Course> myID(@PathVariable int id) {
-        return courseRepository.findAllByMyUserID(id);
+        return courseRepository.findAllByTeacherUserID(id);
     }
 }
