@@ -162,7 +162,8 @@ export default {
   },mounted() {    
     this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
     this.$store.dispatch("getMyCourseTeacher", this.$store.state.loggedInUser.id);
-    this.$store.dispatch("getMyAttendanceTeacher", this.$store.state.loggedInUser.id);    
+    this.$store.dispatch("getMyAttendanceTeacher", this.$store.state.loggedInUser.id);   
+    this.getmyEvents()
     
   },
   methods: {
@@ -207,9 +208,7 @@ export default {
     getMyLectures() {      
       return this.$store.state.MyLectureTeacher
     },
-    getshit(){
-      return this.getmyEvents();
-    },
+    
     getMyCourses() {
       return this.$store.state.MyCourseTeacher
     }

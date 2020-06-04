@@ -90,12 +90,13 @@ export default {
   },
   data: function() {
     return { 
-      selectedEvent: {},  
-      events: [],      
+      selectedEvent: {}, 
+      events: [], 
+            
      att_columns: [
         {
           label: "Lektion",
-          name: "id",
+          name: "lecture_id",
           sort: true
         },
         {
@@ -131,6 +132,7 @@ export default {
     this.$store.dispatch("getMyLectureStudent", this.$store.state.loggedInUser.id);  
     this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id);   
     this.$store.dispatch("getMyAttendanceStudent", this.$store.state.loggedInUser.id);
+    this.getmyEvents()
   },
   methods: {
     async createAttendance() {      
@@ -164,8 +166,14 @@ export default {
         this.events.push(newEvent);
       }
     },   
+   onEventClick (event) {
+    this.selectedEvent = event   
+
+   
+  }
   },
   computed: {
+    
     att_rows: {
       get() {
         return this.$store.state.MyAttendanceStudent;
@@ -173,11 +181,9 @@ export default {
     },
     getMyLectures() {
       return this.$store.state.MyLectureStudent;
-    },
-    getshit() {
-      return this.getmyEvents();
-    }
-  }
+    },    
+  },
+
 };
 </script>
 <style>
