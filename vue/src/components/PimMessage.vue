@@ -123,7 +123,8 @@
                 :rows="rows"
                 :columns="columns"
                 :config="config"
-                @on-select-row="getInfo($event)"
+                @on-select-row="getInfo($event), setSeenMessage($event)"
+               
               ></vue-bootstrap4-table>
             </div>
             <div
@@ -265,10 +266,12 @@ export default {
     }
   },
   async created() {
+   
     await this.setSentMessages();
     await this.setReceivedMassage();
     await this.setUsers();
     await this.setLoggedUser();
+
   },
   methods: {
     log() {
@@ -357,16 +360,34 @@ export default {
       this.setSentMessages();
     },
 
+    async setSeenMessage(messageId) {
+      let seenMessage = {
+        seen: true
+      };
+      console.log('message to update ',seenMessage)
+      let get = await fetch("http://localhost:8080/message/" +  messageId,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(seenMessage)
+        }
+      );
+      console.log(get)
+
+    },
     getInfo($event) {
       this.$store.dispatch("getMessage");
       let selectedMessage = $event.selected_item;
       this.getReceivedMessages.forEach(message => {
+
         if (message.message_id == selectedMessage.message_id) {
           this.$store.dispatch("getMessage");
           this.$store.commit("setMessageToDelete", message);
+             this.setSeenMessage(selectedMessage.message_id)
         }
       });
       this.$router.push("/message");
+   
     }
   }
 };
