@@ -28,7 +28,7 @@ import Welcome from '@/views/combined/Welcome.vue'
 import notfound from '@/views/combined/404.vue'
 
 
-//import receivedmessage from '@/components/receivedmessage.vue'
+import receivedmessage from '@/components/receivedmessage.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueMoment)
@@ -74,6 +74,18 @@ const routes = [
       path: '/pimmessage',
       name: 'PimMessage',
       component: PimMessage,
+      beforeEnter:(to, from, next) => {         
+        if (store.state.loggedInUser.role.access_messages == true) {   
+          next();
+        } else {                
+          next('/');
+        }
+      }
+    },
+    {
+      path: '/receivedmessage',
+      name: 'receivedMessage',
+      component: receivedmessage,
       beforeEnter:(to, from, next) => {         
         if (store.state.loggedInUser.role.access_messages == true) {   
           next();

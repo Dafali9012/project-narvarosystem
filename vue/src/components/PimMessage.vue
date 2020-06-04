@@ -382,7 +382,7 @@ export default {
              this.setSeenMessage(selectedMessage.message_id)
         }
       });
-      this.$router.push("/message");
+      this.$router.push("/receivedmessage");
    
     }
   }
