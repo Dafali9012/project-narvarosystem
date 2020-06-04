@@ -46,6 +46,13 @@ export default {
   components: {
     CombinedSidebar
   },
+  data() {
+    return {
+      trigger : false,
+      message : ""
+
+      };    
+  }, 
   created() {
     this.$store.dispatch("getAllCourses");
   },
@@ -72,7 +79,9 @@ export default {
 
       let result = await response.json();
       console.log("POST:" + result);
-    }   
+      this.trigger = true,
+      this.message = "Du har skapat följande uppgifter: 'Kurs ID': " + result.course_id + "'Datum': " + result.date;
+       }   
     
   }
 };

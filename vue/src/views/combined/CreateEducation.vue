@@ -49,6 +49,9 @@
                 </button>
               </div>
             </form>
+            <div class="alert alert-secondary mt-5" v-show="trigger" role="alert">
+            {{ message }}
+          </div>
           </div>
         </div>
       </div>
@@ -60,6 +63,13 @@
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
 
 export default {
+  data() {
+    return {
+      trigger : false,
+      message : ""
+
+      };    
+  }, 
   created() {
     this.$store.dispatch("getCities");
     this.$store.dispatch("getEcPersonnel");
@@ -92,6 +102,10 @@ export default {
 
       let result = await response.json();
       console.log(result);
+
+      this.trigger = true,
+      this.message = "Du har skapat följande uppgifter: 'Utbildningnamn': " + result.name + "'Ansvarig ID': " + result.manager_id + " 'Ort ID:' "
+       + result.city_id + " 'Start Datum: '"  + " 'Beskrivning: '" +  result.description;
     }
   }
 };

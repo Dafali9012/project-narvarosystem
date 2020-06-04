@@ -42,7 +42,11 @@
                 <button type="submit" class="button button-primary" style="margin-top: 10%;"> <span> Skapa </span> </button>
               </div>
             </form>
+            <div class="alert alert-secondary mt-5" v-show="trigger" role="alert">
+            {{ message }}
           </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -57,6 +61,13 @@ export default {
     this.$store.dispatch("getAllEducations");
     this.$store.dispatch("getEcPersonnel");
   },
+   data() {
+    return {
+      trigger : false,
+      message : ""
+
+      };    
+  }, 
   components: {
     CombinedSidebar
   },
@@ -83,6 +94,10 @@ export default {
       });
       let result = await response.json();
       console.log(result);
+
+      this.trigger = true,
+      this.message = "Du har skapat följande uppgifter: 'KlassNamn': " + result.name + "'Ansvarig ID': " + result.manager_id + " 'Utbildning ID:' " + result.education_id;
+      
     }
   }
 };

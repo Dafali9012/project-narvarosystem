@@ -149,6 +149,9 @@
                 </button>
               </div>
             </form>
+            <div class="alert alert-secondary mt-5" v-show="trigger" role="alert">
+            {{ message }}
+          </div>
           </div>
         </div>
       </div>
@@ -178,6 +181,8 @@ export default {
   },
   data() {
     return {
+       trigger : false,
+      message : "",
       accountIndex: 0
     };
   },
@@ -210,6 +215,11 @@ export default {
 
       result = await response.json();
       console.log(result);
+
+      this.trigger = true,
+      this.message = "Du har skapat följande uppgifter: 'Förstnam': " + result.first_name + " 'Efternamn': " + result.last_name + " 'E-post': " + result.email
+      + " 'Telefonnummer: '" + result.phone_number + " 'Personnummer': " + result.ssn + " 'Roll ID: '" + result.role_id;
+
 
       if (this.accountIndex == 1) {
         let newPersonnel = {

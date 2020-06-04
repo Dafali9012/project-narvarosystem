@@ -56,6 +56,9 @@
                 </button>
               </div>
             </form>
+            <div class="alert alert-secondary mt-5" v-show="trigger" role="alert">
+            {{ message }}
+          </div>
           </div>
         </div>
       </div>
@@ -74,6 +77,13 @@ export default {
     this.$store.dispatch("getAllEducations");
     this.$store.dispatch("getTeachers");
   },
+  data() {
+    return {
+      trigger : false,
+      message : ""
+
+      };    
+  }, 
   computed: {
     getTeachers() {
       return this.$store.state.teachers;
@@ -103,6 +113,10 @@ export default {
 
       let result = await response.json();
       console.log("POST:" + result);
+
+      this.trigger = true,
+      this.message = "Du har skapat följande uppgifter: 'Kursnamn': " + result.name + "'Lärare ID': " + result.teacher_id + " 'Utbildning ID:' "
+       + result.education_id + " 'Start Datum: '" +  result.date_start + " 'Slut Datum: '" +  result.date_end +" 'Poäng': " + result.points + " 'Beskrivning: '" +  result.description;
     }
   }
 };
