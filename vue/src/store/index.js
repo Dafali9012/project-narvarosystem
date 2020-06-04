@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from "vuex-persistedstate";
+import router from '@/router'
 
 Vue.use(Vuex)
 
@@ -38,6 +39,7 @@ export default new Vuex.Store({
       new : false,
       numberOfUnreadMessages:0
     },
+    isLogged: false,
     messageToDelete: {},
     logged: false,
     MyLectureStudent: [],
@@ -119,7 +121,7 @@ export default new Vuex.Store({
 
         commit('isLogged', true)
         if (result.role_id == 1) {
-          router.push("/admin")
+          router.push("/welcome")
         }
       }
     },
