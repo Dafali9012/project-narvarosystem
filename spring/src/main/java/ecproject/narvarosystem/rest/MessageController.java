@@ -31,12 +31,6 @@ public class MessageController {
     public Message  updateMessage(@PathVariable int id, @RequestBody Message message ) {
         Message toUpdate = messageRepository.findAllById((Collections.singleton(id))).get(0);
         if (message.getSeen() != null)toUpdate.setSeen(message.getSeen());
-//        if (message.getDate() != null)toUpdate.setDate(message.getDate());
-//        if (message.getMessage() != null)toUpdate.setMessage(message.getMessage());
-//        if (message.getSubject() != null)toUpdate.setSubject(message.getSubject());
-//        if (message.getSender_id() != -1)toUpdate.setSender_id(message.getSender_id());
-//        if (message.getReceiver_id() != -1)toUpdate.setReceiver_id(message.getReceiver_id());
-
 
         return messageRepository.save(toUpdate);
     }

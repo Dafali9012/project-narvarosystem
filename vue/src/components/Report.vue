@@ -83,25 +83,6 @@ export default {
             'Närvaro': 'närvaro'
             
         },
-      
-      rows: [
-        {
-          namn: "David Glane",
-          course: "Databas hantering",         
-          närvaro: "95%",
-         
-        },
-        {
-           namn: "Daniel ",
-          course: "Databas hantering",         
-          närvaro: "55%",
-        },
-        {
-           namn: "Hang",
-          course: "Databas hantering",         
-          närvaro: "65%",
-        },
-      ],
       columns: [
         {
           label: "Namn",
