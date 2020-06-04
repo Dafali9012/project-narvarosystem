@@ -1,51 +1,10 @@
-<template>
+<template>  
+
   <div class="root d-flex flex-column container-fluid">
     <div class="content row mt-3">
       <div class="admin-sidebar col-sm-3">
-        <CombinedSidebar />
-
-  <div class="root d-flex justify-content-center">
-    <div class="main d-flex justify-content-center width-84">
-      <div class="filter-window">
-        <div class="d-flex justify-content-between bg-primary">
-          <div class="d-flex align-items-center">
-            <p class="no-margin ml-3 text-cream unselectable my-2">Filtrering</p>
-          </div>
-        </div>
-        <div class="d-flex flex-column align-items-center bg-lightblue text-cream">
-
-          <select class="form-control mb-2 width-84" id="education">
-            <option value="education">Utbildning</option>
-            <option
-              v-for="education in educations"
-              :key="education.id"
-              :value="education"
-              @click="selectedEducation = education"
-              v-on:click="showEducationRapport"
-            >{{education.name}}</option>
-          </select>
-          <select class="form-control mb-2 width-84" id="course">
-            <option value="course">Kurs</option>
-            <option
-              v-for="course in courses"
-              :key="course.id"
-              :value="course"
-              @click="selectedCourse = course"
-              v-on:click="showCourseRapport"
-            >{{course.name}}</option>
-          </select>
-          <select class="form-control mb-4 width-84" id="class">
-            <option value="class">Klass</option>
-            <option
-              v-for="c in classes"
-              :key="c.id"
-              :value="c"
-              @click="selectedClass = c"
-              v-on:click="showClassRapport"
-            >{{c.name}}</option>
-          </select>
-        </div>
-      </div>
+        <CombinedSidebar />   
+        </div>   
       <div class="col-9 d-flex">
         <div class="root d-flex justify-content-center">
           <div class="main d-flex justify-content-center width-84">

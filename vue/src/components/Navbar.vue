@@ -12,7 +12,7 @@
         <p v-if="isNewMessage"  class="no-margin unselectable text-cream font-weight-bold ml-5">PIM {{nrOfNewMessage}}</p>
       </router-link>
       <div>
-        <a id="logout" href="http://localhost:8080/logout" >
+        <a id="logout" @click="logout" href="http://localhost:8080/logout" >
           <p class="no-margin unselectable text-cream font-weight-bold ml-5">Logga ut</p>
         </a>
       </div>
@@ -28,7 +28,15 @@ export default {
 
     };
   },
- 
+    methods: {
+      logout: function()  {
+      
+        window.localStorage.clear();     
+        window.location.reload() 
+        
+      }
+    },
+   
   computed: {
     isNewMessage() {
       return this.$store.state.newMessage;
