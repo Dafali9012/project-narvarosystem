@@ -15,7 +15,7 @@
                 </div>
               </div>
               <div class="d-flex flex-column align-items-center bg-lightblue text-cream">
-                <input class="form-control my-4 width-84" type="text" placeholder="Sök" />
+                
 
                 <select class="form-control mb-2 width-84" id="education">
                   <option value="education">Utbildning</option>
@@ -46,11 +46,7 @@
                     @click="selectedClass = c"
                     v-on:click="showClassRapport"
                   >{{c.name}}</option>
-                </select>
-                <label class="align-self-start ml-4" for="from">Från:</label>
-                <input class="form-control mb-2 width-84" type="date" id="from" />
-                <label class="align-self-start ml-4" for="to">Till:</label>
-                <input class="form-control mb-4 width-84" type="date" id="to" />
+                </select>                
               </div>
             </div>
 
