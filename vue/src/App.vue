@@ -11,9 +11,10 @@ import Navbar from "./components/Navbar.vue";
 export default {
   name: "app",
   components: { Navbar },
-  mounted() {
-    this.$store.dispatch("getMessage");
-  },
-
+  created() {
+    this.$store.dispatch("getAllUsers");
+    this.$store.dispatch("updateLoggedUser");
+    this.$store.dispatch("getMessage");   
+  }
 };
 </script>

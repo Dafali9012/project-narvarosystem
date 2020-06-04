@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from "vuex-persistedstate";
+import router from '@/router'
 
 Vue.use(Vuex)
 
@@ -35,8 +36,11 @@ export default new Vuex.Store({
     roles: [],  
     ClassByED: [],
     Messages: [],
-    isLogged:  false,
-    messageToDelete: {},    
+    newMessage: false,
+    numberOfUnreadMessages:0,
+    isLogged: false,
+    messageToDelete: {},
+    logged: false,
     MyLectureStudent: [],
     MyLectureTeacher: [],
     MyClassTeacher: [],
@@ -47,6 +51,12 @@ export default new Vuex.Store({
     MyStudentID: {}
   },
   mutations: {
+    setNewMessage(state, value) {
+      state.newMessage = value;
+    },
+    setNewMessageNr(state, value) {
+      state.numberOfUnreadMessages = value;
+    },
     setMessageToDelete(state, value) {
       state.messageToDelete = value;
     },
@@ -132,6 +142,11 @@ export default new Vuex.Store({
         let result = await response.json()
         commit('isLogged', true)
         commit('changeLoggedUser', result)
+
+        commit('isLogged', true)
+        if (result.role_id == 1) {
+          router.push("/welcome")
+        }
       }
     },
     getAllClasses: async function ({
@@ -282,12 +297,29 @@ export default new Vuex.Store({
       let result = await response.json()
       commit("setRoles", result)
     },
-    getMessage: async function ({
-      commit
-    }) {
+
+    getMessage: async function ({ commit }) {
       let url = "http://localhost:8080/message";
       const result = await fetch(url);
       const json = await result.json();
+
+      commit("setNewMessageNr", 0 )
+      let nrOfNewMessages = 0;
+      json.forEach( message => {
+        if(message.receiver_id == this.state.loggedInUser.id){
+
+          if(message.seen == false){
+            console.log('mess ->',message)
+            commit("setNewMessage", true)
+            nrOfNewMessages ++
+          } else{
+            commit("setNewMessage",false)
+          }
+        }
+      })
+
+      console.log('msg nr',nrOfNewMessages)
+      commit("setNewMessageNr", nrOfNewMessages)
       commit("setMessage", json);
     }
 

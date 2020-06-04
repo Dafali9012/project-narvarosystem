@@ -127,7 +127,6 @@ export default {
        await this.$store.dispatch("getAllusers")
        await this.setUsers()
        await this.setLoggedUser()
-       await this.$store.dispatch('getMessage')
     }
 }
 </script>

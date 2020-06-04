@@ -92,7 +92,7 @@ export default {
       }
     },
     back() {
-      this.$router.push("/admin");
+      this.$router.push("/pimmessage");
     },
     setMessage() {
       this.message = this.getMessage;
@@ -108,7 +108,7 @@ export default {
         { method: "DELETE" }
       );
       if (result.status == 200) {
-        this.$router.push("/admin");
+        this.$router.push("/pimmessage");
       }
     }
   },
@@ -124,6 +124,7 @@ export default {
     }
   },
   created() {
+    
     this.setMessage();
   }
 };

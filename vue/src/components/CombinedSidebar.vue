@@ -126,6 +126,8 @@
 <script>
 export default {
   methods: {},
-  computed: {}
+ created(){
+   this.$store.dispatch("getMessage");
+ }
 };
 </script>

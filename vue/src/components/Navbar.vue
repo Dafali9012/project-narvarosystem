@@ -8,10 +8,11 @@
         <p class="no-margin unselectable text-cream font-weight-bold ml-5">Hem</p>
       </router-link>
       <router-link to="/pimmessage">
-        <p class="no-margin unselectable text-cream font-weight-bold ml-5">PIM</p>
+        <p v-if="isNewMessage == false" class="no-margin unselectable text-cream font-weight-bold ml-5">PIM</p>
+        <p v-if="isNewMessage"  class="no-margin unselectable text-cream font-weight-bold ml-5">PIM {{nrOfNewMessage}}</p>
       </router-link>
       <div>
-        <a @click="logout" id="logout" href="http://localhost:8080/logout" >
+        <a id="logout" href="http://localhost:8080/logout" >
           <p class="no-margin unselectable text-cream font-weight-bold ml-5">Logga ut</p>
         </a>
       </div>
@@ -22,15 +23,22 @@
 
 <script>
 export default {
-  methods: {
-    logout: function()  {
-     
-      window.localStorage.clear();       
-      console.log("halo")
-      window.location.reload() 
+  data() {
+    return {
+
+    };
+  },
+ 
+  computed: {
+    isNewMessage() {
+      return this.$store.state.newMessage;
+    },
+    nrOfNewMessage() {
+      return this.$store.state.numberOfUnreadMessages;
       
     }
-  }
+  },
+
 };
 
 </script>
