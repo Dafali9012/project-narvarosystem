@@ -1,14 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import router from '@/router'
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     contentIndex: 0,
     user: [],
-    loggedInUser: {},
+    loggedInUser: {
+      role:{
+        access_overview : false,
+        create_class: false,
+        create_education: false,
+        create_role: false,
+        access_messages: false,
+        access_classes_courses: false,
+        access_calendar_teacher: false,
+        access_calendar_student: false,
+        access_course : false,
+        access_user_edit: false,
+        access_report: false,
+      }
+    },
     AllClass: [],
     AllEducation: [],
     AllCourse: [],
@@ -26,7 +41,8 @@ export default new Vuex.Store({
     messageToDelete: {},
     logged: false,
     MyLectureStudent: [],
-    MyLectureTeacher: []
+    MyLectureTeacher: [],
+    MyCourseTeacher: []
 
   },
   mutations: {
@@ -83,6 +99,9 @@ export default new Vuex.Store({
     },
     setMyLectureTeacher(state, value){
       state.MyLectureTeacher = value;
+    },
+    setMyCourseTeacher(state, value){
+      state.MyCourseTeacher = value;
     }
   },
   actions: {
@@ -91,11 +110,13 @@ export default new Vuex.Store({
     }) {
       let response = await fetch("/login/name")
 
-      if (response.status == 500) {
+      if (response.status==500) {
         commit('isLogged', false)
       } else {
         let result = await response.json()
+        commit('isLogged', true)
         commit('changeLoggedUser', result)
+
         commit('isLogged', true)
         if (result.role_id == 1) {
           router.push("/admin")
@@ -149,6 +170,14 @@ export default new Vuex.Store({
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setMyLectureTeacher", json);
+    },
+    getMyCourseTeacher: async function ({
+      commit
+    }, id) {
+      let url = "http://localhost:8080/course/teacher/my/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyCourseTeacher", json);
     },
     getClassByED: async function ({
       commit
@@ -211,12 +240,7 @@ export default new Vuex.Store({
       })
       commit("setMessage", json);
     }
-    // deletUser: async function({ commit }, id) {
-    //   let url = "http://localhost:8080/user";
-    //   const result = await fetch(url);
-    //   const json = await result.json();
-    //   commit("setAllUsers", json);
-    // }
+
   },
   modules: {}
 })

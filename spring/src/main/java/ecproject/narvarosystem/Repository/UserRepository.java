@@ -12,10 +12,9 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-   //@Query(value="SELECT * FROM user WHERE first_name = :firstName", nativeQuery=true)
-   // List<User> findAllByFirstName(String firstname);
     List<User> findAll();
 
+    @Query(value="SELECT * FROM user WHERE email = :email", nativeQuery=true)
     User findByEmail(String email);
 
     @Query(value="SELECT TOP 1 * FROM user WHERE first_name = :firstName", nativeQuery=true)

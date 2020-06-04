@@ -31,20 +31,21 @@
                   
                  <h1 class="d-flex text-align-left"> Skapa ny lektion</h1>
 
-                  <form>                  
+                  <form @submit.prevent="createLecture">                  
                   <div class="form-group">
                     <label for="setCourse">Välj Kurs</label>
-                    <select class="form-control" id="setCourse">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                    <select class="form-control" id="course" name="course">
+                      <option value disabled selected>Kurser</option>
+                      <option
+                        :value="course.id"
+                        v-for="course in getMyCourses"
+                        :key="course.id"
+                      >{{course.name}}</option>
+                    </select>                    
                   </div>
                   <div class="form-group">
                     <label for="setClass">Välj Klass</label>
-                    <select class="form-control" id="setClass1">
+                    <select class="form-control" id="setClass" disabled>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -54,7 +55,7 @@
                   </div>
                   <div class="form-group">
                     <label for="setStudent">Välj Elev</label>
-                    <select class="form-control" id="setStudent">
+                    <select class="form-control" id="setStudent" disabled>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -63,7 +64,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                      <label for="settDate">Välj Datum</label>
+                      <label for="setDate">Välj Datum</label>
                       <input
                       type="date"                      
                       id="setDate"                      
@@ -96,19 +97,12 @@ export default {
   },
   data: function() {
     return {
-      events: []
-    // events: [
-       // {
-          //start: this.$store.state.MyLectureTeacher.date,          
-          //title: "Lecktion " + this.$store.state.MyLectureTeacher.id,
-          //content: "Lektion Om....",
-          //course: "Java 101"
-      //  }
-        
-     // ]
+      events: []    
     };    
   },created() {    
-    this.$store.dispatch("getMyLectureTeacher", 171);
+    this.$store.dispatch("getMyLectureTeacher", this.$store.state.loggedInUser.id);
+    this.$store.dispatch("getMyCourseTeacher", this.$store.state.loggedInUser.id);
+    console.log("id: " + this.$store.state.loggedInUser.id)
     
   },
   methods: {
@@ -120,21 +114,37 @@ export default {
         start: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
         end: moment(this.getMyLectures[i].date).format('YYYY-MM-DD'),
         class: "lec"
-        
-        
       }
       this.events.push(newEvent)      
       }
+    },
+     async createLecture() {
+      let newLecture = {
+        course_id: document.getElementById("course").value,
+        date: document.getElementById("setDate").value        
+      };
+
+      let response = await fetch("http://localhost:8080/lecture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newLecture)
+      });
+
+      let result = await response.json();
+      console.log("POST:" + result);
     }
+
    
   },
   computed:{
-    getMyLectures() {
+    getMyLectures() {      
       return this.$store.state.MyLectureTeacher
     },
-    
     getshit(){
       return this.getmyEvents();
+    },
+    getMyCourses() {
+      return this.$store.state.MyCourseTeacher
     }
   }
 }

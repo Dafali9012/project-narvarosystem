@@ -46,16 +46,10 @@
 
 <script>
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
-import AllClass from "@/components/admin/AllClass.vue";
-import AllEducation from "@/components/admin/AllEducation.vue";
-import AllCourse from "@/components/admin/AllCourse.vue";
 
 export default {
   components: {
-    CombinedSidebar,
-    AllClass,
-    AllEducation,
-    AllCourse
+    CombinedSidebar
   },
   methods: {
     helloWorld() {
@@ -63,7 +57,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getAllusers");
+    this.$store.dispatch("getAllUsers");
     this.$store.dispatch("getAllEducations");
 
     console.log(this.$store.state.loggedInUser);
