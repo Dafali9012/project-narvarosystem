@@ -11,11 +11,12 @@ import Navbar from "./components/Navbar.vue";
 export default {
   name: "app",
   components: { Navbar },
-  created() {
-    this.$store.dispatch("getMessage");
-    this.$store.dispatch("getAllUsers");
-    this.$store.dispatch("updateLoggedUser");
-  }
+  async created() {
+    await this.$store.dispatch("getMessage");
+    await this.$store.dispatch("getAllUsers");
+    await this.$store.dispatch("updateLoggedUser")
+  },
+
 };
 </script>
 

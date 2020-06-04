@@ -37,15 +37,14 @@ import {
   faUser,
   faInbox,
   faShareSquare,
-  faPaperPlane,
-  faEnvelope
+  faPaperPlane
 } from '@fortawesome/free-solid-svg-icons'
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
   faShareSquare
-library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle, faCog, faCalendarAlt, faKey, faUser, faSort, faInbox, faShareSquare, faPaperPlane,faEnvelope)
+library.add(faIdBadge, faList, faGraduationCap, faBookOpen, faChartBar, faComments, faChalkboard, faUserGraduate, faChalkboardTeacher, faPlusCircle, faCog, faCalendarAlt, faKey, faUser, faSort, faInbox, faShareSquare, faPaperPlane)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

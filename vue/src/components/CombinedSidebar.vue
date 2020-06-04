@@ -93,8 +93,6 @@
 <script>
 export default {
   methods: {},
- created(){
-   this.$store.dispatch("getMessage");
- }
+  computed: {}
 };
 </script>
