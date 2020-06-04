@@ -274,6 +274,10 @@ export default {
 
   },
   methods: {
+    log() {
+      console.log(this.userSentMessages);
+      // console.log(this.allUsers)
+    },
     setUsers() {
       this.getUsers.forEach(user => {
         if (user) {
@@ -332,7 +336,6 @@ export default {
       this.setReceiver();
       this.message.sender_id = this.loggedUser.id;
       this.message.receiver_id = this.receiverUser.id;
-      this.message.seen = 0;
       let today = new Date();
       this.message.date = today;
       let response = await fetch("http://localhost:8080/message", {
@@ -342,6 +345,7 @@ export default {
       });
       let result = await response.json();
       console.log(result);
+      console.log(this.message);
     },
 
     cons() {
@@ -360,6 +364,7 @@ export default {
       let seenMessage = {
         seen: true
       };
+      console.log('message to update ',seenMessage)
       let get = await fetch("http://localhost:8080/message/" +  messageId,
         {
           method: "PUT",
