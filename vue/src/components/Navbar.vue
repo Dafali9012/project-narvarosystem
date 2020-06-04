@@ -39,6 +39,16 @@ export default {
     }
   }
 };
+  methods: {
+    logout: function()  {
+     
+      window.localStorage.clear();       
+      console.log("halo")
+      window.location.reload() 
+      
+    }
+  }
+};
 
 </script>
 
