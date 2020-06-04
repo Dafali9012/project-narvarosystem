@@ -59,6 +59,7 @@
             <form @submit.prevent="createAccount()">
               <div class="mt-5 d-flex justify-content-center" >
                 <input
+                  v-model="name"
                   class="form-control"
                   type="text"
                   placeholder="Förnamn"
@@ -66,6 +67,7 @@
                   id="first-name"
                 />
                 <input
+                  v-model="lastName"
                   class="form-control"
                   type="text"
                   placeholder="Efternamn"
@@ -75,6 +77,7 @@
               </div>
               <div class="mt-5 d-flex justify-content-center">
                 <input
+                  v-model="phone"
                   class="form-control"
                   type="text"
                   placeholder="Telefon"
@@ -82,6 +85,7 @@
                   id="telephone"
                 />
                 <input
+                  v-model="email"
                   class="form-control"
                   type="text"
                   placeholder="Email"

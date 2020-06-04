@@ -29,8 +29,7 @@
                     :value="teacher.id"
                     v-for="teacher in getTeachers"
                     :key="teacher.id"
-                  ><p v-if="teacher.consult!=null">{{teacher.consult.userconsult.first_name}} {{teacher.consult.userconsult.last_name}}</p>
-                  <p v-if="teacher.eCpersonnel!=null">{{teacher.eCpersonnel.userec.first_name}} {{teacher.eCpersonnel.userec.last_name}}</p></option>
+                  >{{teacher.consult.userconsult.first_name}} {{teacher.consult.userconsult.last_name}}</option>
                 </select>
               </div>
               <div class="mt-4 d-flex unselectable">

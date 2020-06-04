@@ -64,14 +64,14 @@ export default {
         body: credentials
       });
       console.log(response)
-      if (response.status==500) {
-
+      if (response.status == 500) {
         window.confirm("Inloggningen misslyckades");
       } else {
-        this.$store.dispatch("updateLoggedUser");
-        this.$router.push('/welcome')
+       await this.$store.dispatch("updateLoggedUser");
+        console.log(this.$store.state.loggedInUser)
       }
     },
+
   }
 };
 </script>

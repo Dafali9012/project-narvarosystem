@@ -56,20 +56,9 @@ public class Role {
     @Column(name = "access_user_edit")
     private Boolean access_user_edit;
 
-    @Column(name = "access_report")
-    private Boolean access_report;
-
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<User> users;
-
-    public Boolean getAccess_report() {
-        return access_report;
-    }
-
-    public void setAccess_report(Boolean access_report) {
-        this.access_report = access_report;
-    }
 
     public int getId() {
         return id;
