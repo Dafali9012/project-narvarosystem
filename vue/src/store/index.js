@@ -23,6 +23,7 @@ export default new Vuex.Store({
       new : false,
       numberOfUnreadMessages:0
     },
+    isLogged: false,
     messageToDelete: {},
     logged: false,
     MyLectureStudent: [],
@@ -98,7 +99,7 @@ export default new Vuex.Store({
         commit('changeLoggedUser', result)
         commit('isLogged', true)
         if (result.role_id == 1) {
-          router.push("/admin")
+          router.push("/welcome")
         }
       }
     },

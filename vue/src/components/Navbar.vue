@@ -4,7 +4,7 @@
       <img src="@/assets/images/logo.png" class="height-100 ml-3" />
     </div>
     <div class="d-flex align-items-center justify-content-between">
-      <router-link to="/">
+      <router-link to="/welcome">
         <p class="no-margin unselectable text-cream font-weight-bold ml-5">Hem</p>
       </router-link>
       <router-link to="/pimmessage">
