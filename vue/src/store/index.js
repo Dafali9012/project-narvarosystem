@@ -35,10 +35,8 @@ export default new Vuex.Store({
     roles: [],  
     ClassByED: [],
     Messages: [],
-    newMessage: {
-      new : false,
-      numberOfUnreadMessages:0
-    },
+    newMessage: '',
+    numberOfUnreadMessages:0,
     isLogged: false,
     messageToDelete: {},
     logged: false,
@@ -50,6 +48,9 @@ export default new Vuex.Store({
   mutations: {
     setNewMessage(state, value) {
       state.newMessage = value;
+    },
+    setNewMessageNr(state, value) {
+      state.numberOfUnreadMessages = value;
     },
     setMessageToDelete(state, value) {
       state.messageToDelete = value;
@@ -225,21 +226,27 @@ export default new Vuex.Store({
       let result = await response.json()
       commit("setRoles", result)
     },
-    getMessage: async function ({
-      commit
-    }) {
+
+    getMessage: async function ({ commit }) {
       let url = "http://localhost:8080/message";
       const result = await fetch(url);
       const json = await result.json();
-      this.state.newMessage.numberOfUnreadMessages = 0;
+
+      commit("setNewMessageNr", 0 )
+      
+      let nrOfNewMessages = 0;
+
       json.forEach( message => {
         if(message.receiver_id == this.state.loggedInUser.id){
+
           if(message.seen == false){
-            this.state.newMessage.new = true
-            this.state.newMessage.numberOfUnreadMessages ++;
+            commit("setNewMessage", true)
+            nrOfNewMessages ++
           }
         }
       })
+      console.log('msg nr',nrOfNewMessages)
+      commit("setNewMessageNr", nrOfNewMessages)
       commit("setMessage", json);
     }
 

@@ -357,6 +357,7 @@ export default {
     },
 
     async setSeenMessage(messageId) {
+      this.$store.dispatch("getMessage");
       let seenMessage = {
         seen: true
       };
@@ -371,12 +372,10 @@ export default {
 
     },
     getInfo($event) {
-      this.$store.dispatch("getMessage");
       let selectedMessage = $event.selected_item;
       this.getReceivedMessages.forEach(message => {
-
+        
         if (message.message_id == selectedMessage.message_id) {
-          this.$store.dispatch("getMessage");
           this.$store.commit("setMessageToDelete", message);
              this.setSeenMessage(selectedMessage.message_id)
         }
