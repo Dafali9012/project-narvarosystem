@@ -16,7 +16,9 @@
                   <p class="no-margin ml-3 text-cream unselectable my-2">Användare</p>
                 </div>
               </div>
-              <vue-bootstrap4-table :rows="user_rows" :columns="user_columns" :config="user_config"></vue-bootstrap4-table>
+              <vue-bootstrap4-table :rows="user_rows" :columns="user_columns" :config="user_config" @on-select-row="getUser($event)"></vue-bootstrap4-table>
+              <div><strong>Utvald användare: </strong><p>{{selectedUser}}</p></div>
+              <button class="button button-primary" v-on:click="deleteUSer"> <span> Radera </span> </button>
             </div>
 
             <div class="d-flex flex-column mt-5">
@@ -29,8 +31,11 @@
                 :rows="role_rows"
                 :columns="role_columns"
                 :config="role_config"
+                @on-select-row="getRole($event)"
               ></vue-bootstrap4-table>
             </div>
+            <div><strong>Utvald roll: </strong><p>{{selectedRole}}</p></div>
+            <button class="button button-primary" v-on:click="deleteRole"> <span> Radera </span> </button> 
 
             <div class="d-flex flex-column mt-5">
               <div class="d-flex justify-content-between background-primary">
@@ -38,8 +43,10 @@
                   <p class="no-margin ml-3 text-cream unselectable my-2">Utbildningar</p>
                 </div>
               </div>
-              <vue-bootstrap4-table :rows="edu_rows" :columns="edu_columns" :config="edu_config"></vue-bootstrap4-table>
+              <vue-bootstrap4-table :rows="edu_rows" :columns="edu_columns" :config="edu_config" @on-select-row="getEdu($event)"></vue-bootstrap4-table>
             </div>
+            <div><strong>Utvald utbildning: </strong><p>{{selectedEdu}}</p></div>
+            <button class="button button-primary" v-on:click="deleteEdu"> <span> Radera </span> </button> 
             
 
             <div class="d-flex flex-column mt-5">
@@ -52,8 +59,11 @@
                 :rows="class_rows"
                 :columns="class_columns"
                 :config="class_config"
+                @on-select-row="getClass($event)"
               ></vue-bootstrap4-table>
             </div>
+            <div><strong>Utvald klass: </strong><p>{{selectedClass}}</p></div>
+            <button class="button button-primary" v-on:click="deleteClass"> <span> Radera </span> </button> 
            
 
             
@@ -67,8 +77,11 @@
                 :rows="course_rows"
                 :columns="course_columns"
                 :config="course_config"
+                @on-select-row="getCourse($event)"
               ></vue-bootstrap4-table>
             </div>
+            <div><strong>Utvald Kurs: </strong><p>{{selectedCourse}}</p></div>
+            <button class="button button-primary" v-on:click="deleteCourse"> <span> Radera </span> </button> 
           
 
           <div class="d-flex flex-column mt-5">
@@ -81,8 +94,11 @@
                 :rows="lec_rows"
                 :columns="lec_columns"
                 :config="lec_config"
+                @on-select-row="getLecture($event)"
               ></vue-bootstrap4-table>
             </div>
+            <div><strong>Utvald Kurs: </strong><p>{{selectedLecture}}</p></div>
+            <button class="button button-primary" v-on:click="deleteLecture"> <span> Radera </span> </button> 
 
 
           </div>
@@ -108,7 +124,12 @@ export default {
   },
   data() {
     return {
-
+      selectedUser: "",
+      selectedRole: "",
+      selectedCourse: "",
+      selectedClass: "",
+      selectedEdu: "",
+      selectedLecture: "",
 
        user_columns: [
         {
@@ -406,7 +427,57 @@ export default {
     this.$store.dispatch("getAllLectures");
     this.$store.dispatch("getRoles");
   },
-  methods: {},
+  methods: {
+     getUser($event){
+      this.selectedUser = $event.selected_item.first_name + " " +  $event.selected_item.last_name ;
+    },
+    getRole($event){
+      this.selectedRole = $event.selected_item.name;
+    },
+    getCourse($event){
+      this.selectedCourse = $event.selected_item.name;
+    },
+    getClass($event){
+      this.selectedClass = $event.selected_item.name;
+    },
+    getEdu($event){
+      this.selectedEdu = $event.selected_item.name;
+    },
+    getLecture($event){
+      this.selectedLecture = $event.selected_item.id;
+    },
+    deleteUSer: async function(){
+      let userToDelete = this.user_rows.find( u => u.first_name === this.selectedUser);
+      let result = await fetch("http://localhost:8080/user/"+userToDelete.id ,{method: 'DELETE'})
+      console.log(result)      
+    },
+    deleteRole: async function(){
+      let roleToDelete = this.role_rows.find( u => u.name === this.selectedRole);
+      let result = await fetch("http://localhost:8080/role/"+roleToDelete.id ,{method: 'DELETE'})
+      console.log(result)      
+    },
+    deleteCourse: async function(){
+      let courseToDelete = this.course_rows.find( u => u.name === this.selectedCourse);
+      let result = await fetch("http://localhost:8080/course/"+courseToDelete.id ,{method: 'DELETE'})
+      console.log(result)      
+    },
+    deleteClass: async function(){
+      let classToDelete = this.class_rows.find( u => u.name === this.selectedClass);
+      let result = await fetch("http://localhost:8080/class/"+classToDelete.id ,{method: 'DELETE'})
+      console.log(result)      
+    },
+    deleteEdu: async function(){
+      let eduToDelete = this.edu_rows.find( u => u.name === this.selectedEdu);
+      let result = await fetch("http://localhost:8080/education/"+eduToDelete.id ,{method: 'DELETE'})
+      console.log(result)      
+    },
+    deleteLecture: async function(){
+      let lectureToDelete = this.lec_rows.find( u => u.id === this.selectedLecture);
+      let result = await fetch("http://localhost:8080/lecture/"+lectureToDelete.id ,{method: 'DELETE'})
+      console.log(result)      
+    },
+    
+  },
   computed: {
     role_rows: {
       get() {

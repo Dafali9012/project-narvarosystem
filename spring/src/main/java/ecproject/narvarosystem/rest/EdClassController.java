@@ -26,12 +26,12 @@ public class EdClassController {
         return this.eDClassRepository.findAll();
     }
 
-    @GetMapping("/{id]")
+    @GetMapping("/{id}")
     public List<EdClass> edclasById(@PathVariable int id){
         return eDClassRepository.findAllById(Collections.singleton(id));
     }
 
-    @DeleteMapping("/{id]")
+    @DeleteMapping("/{id}")
     public void deleteEdClass(@PathVariable int id){
         eDClassRepository.deleteById(id);
     }
