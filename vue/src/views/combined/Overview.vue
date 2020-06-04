@@ -19,6 +19,18 @@
               <vue-bootstrap4-table :rows="user_rows" :columns="user_columns" :config="user_config"></vue-bootstrap4-table>
             </div>
 
+            <div class="d-flex flex-column mt-5">
+              <div class="d-flex justify-content-between background-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Roller</p>
+                </div>
+              </div>
+              <vue-bootstrap4-table
+                :rows="role_rows"
+                :columns="role_columns"
+                :config="role_config"
+              ></vue-bootstrap4-table>
+            </div>
 
             <div class="d-flex flex-column mt-5">
               <div class="d-flex justify-content-between background-primary">
@@ -71,6 +83,8 @@
                 :config="lec_config"
               ></vue-bootstrap4-table>
             </div>
+
+
           </div>
         </div>
         </div>
@@ -130,6 +144,87 @@ export default {
         }
       ],
       user_config: {
+        checkbox_rows: true,        
+        pagination: false,
+        pagination_info: false,
+        show_refresh_button: false,
+        show_reset_button: false,
+        global_search: {
+          placeholder: "Sök",
+          visibility: true
+        },
+       
+      },
+
+      role_columns: [
+        {
+          label: "Namn",
+          name: "name",
+          sort: true
+        },
+        {
+          label: "Skapa Klass",
+          name: "create_class",
+          sort: true
+        },
+        {
+          label: "Skapa Konto",
+          name: "create_account" ,              
+          sort: true
+        },
+        {
+          label: "Skapa Kurs",
+          name: "create_course" ,              
+          sort: true
+        },
+        
+        {
+          label: "Skapa Utbildning",
+          name: "create_education",
+          sort: true
+        },
+        {
+          label: "Skapa Roll",
+          name: "create_role",
+          sort: true
+        },
+        {
+          label: "Skapa Lektion",
+          name: "create_lecture",
+          sort: true
+        },
+        {
+          label: "Se Överblick",
+          name: "access_overview",
+          sort: true
+        },
+        {
+          label: "Se Klassrum",
+          name: "access_classroom",
+          sort: true
+        },
+        {
+          label: "Lärare Information",
+          name: "access_teacher_info",
+          sort: true
+        },
+        {
+          label: "Elev Information",
+          name: "access_student_info",
+          sort: true
+        },
+        {
+          label: "Lärare Kalendar",
+          name: "access_calendar_teacher",
+          sort: true
+        },
+        {
+          label: "Elev Kalendar",
+          name: "access_calendar_student",
+          sort: true
+        },
+      ],
+      role_config: {
         checkbox_rows: true,        
         pagination: false,
         pagination_info: false,
@@ -309,9 +404,15 @@ export default {
     this.$store.dispatch("getAllEducations");
     this.$store.dispatch("getAllUsers");
     this.$store.dispatch("getAllLectures");
+    this.$store.dispatch("getRoles");
   },
   methods: {},
   computed: {
+    role_rows: {
+      get() {
+        return this.$store.state.roles;
+      }
+    },
     class_rows: {
       get() {
         return this.$store.state.AllClass;
