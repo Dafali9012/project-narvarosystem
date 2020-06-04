@@ -54,6 +54,16 @@ public class AttendanceController {
         return attendanceRepository.findAllByClass_id(id);
     }
 
+    @GetMapping("/student/my/{id}")
+    public List<Attendance> studentIdAttendance(@PathVariable int id){
+        return attendanceRepository.findAllByStudentUSER_id(id);
+    }
+
+    @GetMapping("/teacher/my/{id}")
+    public List<Attendance> teacherIdAttendance(@PathVariable int id){
+        return attendanceRepository.findAllByTeacherUSER_id(id);
+    }
+
     @PostMapping
     public Attendance addAttendance(@RequestBody Attendance attendance){
         return attendanceRepository.save(attendance);

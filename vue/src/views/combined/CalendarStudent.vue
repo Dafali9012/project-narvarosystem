@@ -51,6 +51,22 @@
                 </form>
                 </div>
               </div>
+
+              <div class="d-flex flex-column mt-5">
+              <div class="d-flex justify-content-between background-primary">
+                <div class="d-flex align-items-center">
+                  <p class="no-margin ml-3 text-cream unselectable my-2">Närvaro/Frånvaro</p>
+                </div>
+              </div>
+              <vue-bootstrap4-table
+                :rows="att_rows"
+                :columns="att_columns"
+                :config="att_config"
+              ></vue-bootstrap4-table>
+            </div>
+
+
+
             </div>
           </div>
         </div>
@@ -62,23 +78,59 @@
 <script>
 import CombinedSidebar from "@/components/CombinedSidebar.vue";
 import VueCal from "vue-cal";
+import VueBootstrap4Table from "vue-bootstrap4-table";
 
 import moment from "moment";
 
 export default {
   components: {
     VueCal,
+    VueBootstrap4Table,
     CombinedSidebar
   },
   data: function() {
     return { 
       selectedEvent: {},  
       events: [],      
-     
-    };    
+     att_columns: [
+        {
+          label: "Lektion",
+          name: "id",
+          sort: true
+        },
+        {
+          label: "Datum",
+          name: "lecture.date",
+          sort: true
+        },
+        {
+          label: "Närvaro",
+          name: "present",
+          sort: true
+        },        
+        {
+          label: "Kurs",
+          name: "lecture.course.name",
+          sort: true
+        }        
+      ],
+      att_config: {
+        checkbox_rows: true,        
+        pagination: false,
+        pagination_info: false,
+        show_refresh_button: false,
+        show_reset_button: false,
+        global_search: {
+          placeholder: "Sök",
+          visibility: true
+        },
+      }
+
+    };      
   },mounted() {    
     this.$store.dispatch("getMyLectureStudent", this.$store.state.loggedInUser.id);  
     this.$store.dispatch("getMyStudentID", this.$store.state.loggedInUser.id);   
+    this.$store.dispatch("getMyAttendanceStudent", this.$store.state.loggedInUser.id);
   },
   methods: {
     async createAttendance() {      
@@ -132,6 +184,11 @@ export default {
     }
   },
   computed: {
+    att_rows: {
+      get() {
+        return this.$store.state.MyAttendanceStudent;
+      }
+    },
     getMyLectures() {
       return this.$store.state.MyLectureStudent;
     },

@@ -42,6 +42,8 @@ export default new Vuex.Store({
     MyClassTeacher: [],
     MyCourseTeacher: [],
     MyCourseStudent: [],
+    MyAttendanceStudent: [],
+    MyAttendanceTeacher: [],
     MyStudentID: {}
   },
   mutations: {
@@ -111,6 +113,12 @@ export default new Vuex.Store({
     setMyStudentID(state, value){
       state.MyStudentID = value;
     },
+    setMyAttendanceStudent(state, value){
+      state.MyAttendanceStudent = value;
+    },
+    setMyAttendanceTeacher(state, value){
+      state.MyAttendanceTeacher = value;
+    }
   },
   actions: {
     async updateLoggedUser({
@@ -174,6 +182,22 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setMyStudentID", json);
     },  
+    getMyAttendanceStudent: async function ({
+      commit
+    }, id) {
+      let url = "http://localhost:8080/attendance/student/my/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyAttendanceStudent", json);
+    }, 
+    getMyAttendanceTeacher: async function ({
+      commit
+    }, id) {
+      let url = "http://localhost:8080/attendance/teacher/my/";
+      const result = await fetch(url + id);
+      const json = await result.json();
+      commit("setMyAttendanceTeacher", json);
+    }, 
     getMyCourseStudent: async function ({
       commit
     }, id) {
