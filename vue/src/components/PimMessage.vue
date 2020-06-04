@@ -336,6 +336,7 @@ export default {
       this.setReceiver();
       this.message.sender_id = this.loggedUser.id;
       this.message.receiver_id = this.receiverUser.id;
+      this.message.seen = 0;
       let today = new Date();
       this.message.date = today;
       let response = await fetch("http://localhost:8080/message", {

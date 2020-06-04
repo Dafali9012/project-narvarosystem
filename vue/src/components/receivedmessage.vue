@@ -92,7 +92,7 @@ export default {
       }
     },
     back() {
-      this.$router.push("/admin");
+      this.$router.push("/pimmessage");
     },
     setMessage() {
       this.message = this.getMessage;
