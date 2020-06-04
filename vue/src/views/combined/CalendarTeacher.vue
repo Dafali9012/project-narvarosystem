@@ -166,6 +166,7 @@ export default {
     
   },
   methods: {
+     
     getmyEvents(){
       let i;
       for (i = 0; i < this.getMyLectures.length; i++) {

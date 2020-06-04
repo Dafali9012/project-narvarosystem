@@ -163,25 +163,7 @@ export default {
         };
         this.events.push(newEvent);
       }
-    },
-    async createLecture() {
-      let newLecture = {
-        course_id: document.getElementById("course").value,
-        date: document.getElementById("setDate").value
-      };
-
-      let response = await fetch("http://localhost:8080/lecture", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newLecture)
-      });
-
-      let result = await response.json();
-      console.log("POST:" + result);
-    },
-    onEventClick(event) {
-      this.selectedEvent = event;
-    }
+    },   
   },
   computed: {
     att_rows: {
