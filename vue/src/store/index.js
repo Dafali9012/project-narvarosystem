@@ -34,14 +34,21 @@ export default new Vuex.Store({
     roles: [],  
     ClassByED: [],
     Messages: [],
-    isLogged:  false,
-    messageToDelete: {},    
+    newMessage: {
+      new : false,
+      numberOfUnreadMessages:0
+    },
+    messageToDelete: {},
+    logged: false,
     MyLectureStudent: [],
     MyLectureTeacher: [],
     MyCourseTeacher: []
 
   },
   mutations: {
+    setNewMessage(state, value) {
+      state.newMessage = value;
+    },
     setMessageToDelete(state, value) {
       state.messageToDelete = value;
     },
@@ -109,6 +116,11 @@ export default new Vuex.Store({
         let result = await response.json()
         commit('isLogged', true)
         commit('changeLoggedUser', result)
+
+        commit('isLogged', true)
+        if (result.role_id == 1) {
+          router.push("/admin")
+        }
       }
     },
     getAllClasses: async function ({
@@ -217,6 +229,15 @@ export default new Vuex.Store({
       let url = "http://localhost:8080/message";
       const result = await fetch(url);
       const json = await result.json();
+      this.state.newMessage.numberOfUnreadMessages = 0;
+      json.forEach( message => {
+        if(message.receiver_id == this.state.loggedInUser.id){
+          if(message.seen == false){
+            this.state.newMessage.new = true
+            this.state.newMessage.numberOfUnreadMessages ++;
+          }
+        }
+      })
       commit("setMessage", json);
     }
 

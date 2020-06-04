@@ -123,7 +123,8 @@
                 :rows="rows"
                 :columns="columns"
                 :config="config"
-                @on-select-row="getInfo($event)"
+                @on-select-row="getInfo($event), setSeenMessage($event)"
+               
               ></vue-bootstrap4-table>
             </div>
             <div
@@ -265,16 +266,14 @@ export default {
     }
   },
   async created() {
+   
     await this.setSentMessages();
     await this.setReceivedMassage();
     await this.setUsers();
     await this.setLoggedUser();
+
   },
   methods: {
-    log() {
-      console.log(this.userSentMessages);
-      // console.log(this.allUsers)
-    },
     setUsers() {
       this.getUsers.forEach(user => {
         if (user) {
@@ -333,6 +332,7 @@ export default {
       this.setReceiver();
       this.message.sender_id = this.loggedUser.id;
       this.message.receiver_id = this.receiverUser.id;
+      this.message.seen = 0;
       let today = new Date();
       this.message.date = today;
       let response = await fetch("http://localhost:8080/message", {
@@ -342,7 +342,6 @@ export default {
       });
       let result = await response.json();
       console.log(result);
-      console.log(this.message);
     },
 
     cons() {
@@ -357,16 +356,33 @@ export default {
       this.setSentMessages();
     },
 
+    async setSeenMessage(messageId) {
+      let seenMessage = {
+        seen: true
+      };
+      let get = await fetch("http://localhost:8080/message/" +  messageId,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(seenMessage)
+        }
+      );
+      console.log(get)
+
+    },
     getInfo($event) {
       this.$store.dispatch("getMessage");
       let selectedMessage = $event.selected_item;
       this.getReceivedMessages.forEach(message => {
+
         if (message.message_id == selectedMessage.message_id) {
           this.$store.dispatch("getMessage");
           this.$store.commit("setMessageToDelete", message);
+             this.setSeenMessage(selectedMessage.message_id)
         }
       });
       this.$router.push("/message");
+   
     }
   }
 };
