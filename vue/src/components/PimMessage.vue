@@ -341,6 +341,8 @@ export default {
         body: JSON.stringify(this.message)
       });
       let result = await response.json();
+       this.message.subject = ""
+        this.message.message = ""
       console.log(result);
     },
 

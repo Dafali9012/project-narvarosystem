@@ -8,7 +8,7 @@
         <p class="no-margin unselectable text-cream font-weight-bold ml-5">Hem</p>
       </router-link>
       <router-link to="/pimmessage">
-        <p v-if="!isNewMessage" class="no-margin unselectable text-cream font-weight-bold ml-5">PIM</p>
+        <p v-if="isNewMessage == false" class="no-margin unselectable text-cream font-weight-bold ml-5">PIM</p>
         <p v-if="isNewMessage"  class="no-margin unselectable text-cream font-weight-bold ml-5">PIM {{nrOfNewMessage}}</p>
       </router-link>
       <div>
@@ -28,6 +28,7 @@ export default {
 
     };
   },
+ 
   computed: {
     isNewMessage() {
       return this.$store.state.newMessage;

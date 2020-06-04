@@ -35,7 +35,7 @@ export default new Vuex.Store({
     roles: [],  
     ClassByED: [],
     Messages: [],
-    newMessage: '',
+    newMessage: false,
     numberOfUnreadMessages:0,
     isLogged: false,
     messageToDelete: {},
@@ -233,18 +233,20 @@ export default new Vuex.Store({
       const json = await result.json();
 
       commit("setNewMessageNr", 0 )
-      
       let nrOfNewMessages = 0;
-
       json.forEach( message => {
         if(message.receiver_id == this.state.loggedInUser.id){
 
           if(message.seen == false){
+            console.log('mess ->',message)
             commit("setNewMessage", true)
             nrOfNewMessages ++
+          } else{
+            commit("setNewMessage",false)
           }
         }
       })
+
       console.log('msg nr',nrOfNewMessages)
       commit("setNewMessageNr", nrOfNewMessages)
       commit("setMessage", json);
