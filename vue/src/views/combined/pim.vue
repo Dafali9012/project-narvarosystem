@@ -32,7 +32,7 @@
                       v-model="receiverUser"
                     >
                       <option>Mottagare</option>
-                      <option v-for="user in allUsers" :key="user.user_id">{{user.first_name}}</option>
+                      <option v-for="user in allUsers" :key="user.user_id"><span>{{user.first_name}}</span><span>{{user.last_name}}</span></option>
                     </select>
                   </div>
                   <div class="form-group text d-flex justify-content-end">

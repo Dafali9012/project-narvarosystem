@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from "vuex-persistedstate";
-import router from '@/router'
+
 
 Vue.use(Vuex)
 
@@ -144,9 +144,7 @@ export default new Vuex.Store({
         commit('changeLoggedUser', result)
 
         commit('isLogged', true)
-        if (result.role_id == 1) {
-          router.push("/welcome")
-        }
+        
       }
     },
     getAllClasses: async function ({
